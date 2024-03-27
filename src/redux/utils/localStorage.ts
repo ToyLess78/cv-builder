@@ -20,3 +20,20 @@ export const loadFromLocalStorage = (key: string) => {
         return undefined;
     }
 };
+
+export const clearLocalStorage = () => {
+    try {
+        localStorage.clear();
+    } catch (error) {
+        console.error('Error clearing localStorage:', error);
+    }
+};
+
+export const removeFromLocalStorage = (key: string) => {
+    try {
+        localStorage.removeItem(key);
+    } catch (error) {
+        console.error('Error removing data from localStorage:', error);
+    }
+};
+

@@ -74,5 +74,4 @@ export const { setCertificates, setIsCertificates, setDefaultCertificates } = ce
 
 export const selectCertificates = (state: RootState) => state.certificates;
 
-
 export default certificatesSlice.reducer;

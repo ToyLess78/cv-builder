@@ -27,8 +27,6 @@ console.log(data)
 
 function App() {
 
-
-    const [isLanguages, setIsLanguages] = useState(true);
     const [state, setState] = useState(templates[0])
     const onRender = (e: React.FormEvent<HTMLInputElement>): void => {
         console.log(e.currentTarget.value)
@@ -80,12 +78,7 @@ function App() {
                 data-tooltip-offset={0}
             />
             {(state === 'breeze') &&
-                <Breeze
-                    {...{
-                        isLanguages,
-                        setIsLanguages,
-                    }}
-                />
+                <Breeze />
             }
             {(state === 'strong') && <small>strong</small>}
             {(state === 'galaxy') && <small>galaxy</small>}
