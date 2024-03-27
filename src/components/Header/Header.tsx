@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './Heeader.module.css';
-import { Title } from '../Title/Title.tsx';
-import { Image } from '../Image/Image.tsx';
+import { Title } from '../Title/Title';
+import { Image } from '../Image/Image';
 import { FaRegEdit } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store.ts';
-import { selectInfo } from '../../redux/slices/infoSlice.ts';
+import { RootState } from '../../redux/store/store';
+import { selectInfo } from '../../redux/slices/infoSlice';
 
 export const Header: React.FC = () => {
     const info = useSelector((state: RootState) => selectInfo(state));

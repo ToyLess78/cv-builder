@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../store/store.ts';
-import { loadFromLocalStorage, removeFromLocalStorage, saveToLocalStorage } from '../utils/localStorage.ts';
+import { RootState } from '../store/store';
+import { loadFromLocalStorage, removeFromLocalStorage, saveToLocalStorage } from '../utils/localStorage';
 
 interface LanguagesState {
         isLanguages: boolean,

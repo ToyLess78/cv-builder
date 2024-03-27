@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import infoReducer from '../slices/infoSlice.ts';
-import asideReducer from '../slices/asideSlice.ts';
-import languagesReducer from '../slices/languagesSlice.ts';
-import certificatesReducer from '../slices/certificatesSlice.ts';
-import contactReducer from '../slices/contactSlice.ts';
+import infoReducer from '../slices/infoSlice';
+import asideReducer from '../slices/asideSlice';
+import languagesReducer from '../slices/languagesSlice';
+import certificatesReducer from '../slices/certificatesSlice';
+import contactReducer from '../slices/contactSlice';
 
 export const store = configureStore({
     reducer: {

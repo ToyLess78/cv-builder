@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 import { MdOutlineVisibility } from 'react-icons/md';
-import { AsideItem } from '../Aside/AsideItem.tsx';
+import { AsideItem } from '../Aside/AsideItem';
 import { FaRegEdit } from 'react-icons/fa';
 import { BiHide } from 'react-icons/bi';
 import nextId from 'react-id-generator';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store.ts';
-import { selectAside, setIsAdditional } from '../../redux/slices/asideSlice.ts';
+import { RootState } from '../../redux/store/store';
+import { selectAside, setIsAdditional } from '../../redux/slices/asideSlice';
 
 interface IAdditionalProps {
     children: ReactNode;

@@ -1,9 +1,9 @@
 import './App.css'
-import { data } from '../public/data.ts';
+import { data } from '../public/data';
 import React, { Fragment, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 import { IoColorFillOutline } from 'react-icons/io5';
-import { Breeze } from './temeplates/Breeze.tsx';
+import { Breeze } from './temeplates/Breeze';
 import nextId from 'react-id-generator';
 
 export interface IAside {

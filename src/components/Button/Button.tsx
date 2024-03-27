@@ -1,5 +1,5 @@
 import React, { ReactNode, useRef } from 'react';
-import { CssColor } from '../../types/types.ts';
+import { CssColor } from '../../types/types';
 
 
 interface ButtonProps {

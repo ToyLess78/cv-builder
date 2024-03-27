@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store.ts';
-import { selectLanguages, setIsLanguages } from '../../redux/slices/languagesSlice.ts';
-import { AsideItem } from '../Aside/AsideItem.tsx';
+import { RootState } from '../../redux/store/store';
+import { selectLanguages, setIsLanguages } from '../../redux/slices/languagesSlice';
+import { AsideItem } from '../Aside/AsideItem';
 import { FaRegEdit } from 'react-icons/fa';
 import { BiHide } from 'react-icons/bi';
 import nextId from 'react-id-generator';
@@ -55,7 +55,7 @@ export const Languages: React.FC<ILanguagesProps> = ({ children }) => {
                         </>}
                     {children}
                     <ul className='languages'>
-                        {languages.data.map(l => {
+                        {languages.data?.map(l => {
                             return <li key={nextId()}><span>{l[0]}</span><p>{l[1]}</p></li>
                         })}
                     </ul>

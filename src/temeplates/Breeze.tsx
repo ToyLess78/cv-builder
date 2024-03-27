@@ -1,19 +1,17 @@
 import React from 'react';
-import { Header } from '../components/Header/Header.tsx';
-import { Body } from '../components/Body/Body.tsx';
-import { Main } from '../components/Main/Main.tsx';
-import { Aside } from '../components/Aside/Aside.tsx';
-import { AsideItem } from '../components/Aside/AsideItem.tsx';
-import { FaRegEdit } from 'react-icons/fa';
-import { Title } from '../components/Title/Title.tsx';
-import { Certificates } from '../components/Certificates/Certificates.tsx';
-import { Contact } from '../components/Contact/Contact.tsx';
+import { Header } from '../components/Header/Header';
+import { Body } from '../components/Body/Body';
+import { Main } from '../components/Main/Main';
+import { Aside } from '../components/Aside/Aside';
+import { Title } from '../components/Title/Title';
+import { Certificates } from '../components/Certificates/Certificates';
+import { Contact } from '../components/Contact/Contact';
 import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store/store.ts';
-import { selectAside } from '../redux/slices/asideSlice.ts';
-import { Skills } from '../components/common/Skills.tsx';
-import { Additional } from '../components/common/Additional.tsx';
-import { Languages } from '../components/common/Languages.tsx';
+import { RootState } from '../redux/store/store';
+import { selectAside } from '../redux/slices/asideSlice';
+import { Skills } from '../components/common/Skills';
+import { Additional } from '../components/common/Additional';
+import { Languages } from '../components/common/Languages';
 
 
 // setIsCertificates: React.Dispatch<React.SetStateAction<boolean>>
@@ -48,16 +46,9 @@ export const Breeze: React.FC = () => {
                         <Title text='languages'/>
                     </Languages>
 
-                    <AsideItem>
-                        <FaRegEdit
-                            className='edite'
-                            data-tooltip-id='tooltip'
-                            data-tooltip-content='Edite Contact'
-                            data-tooltip-offset={0}
-                        />
+                    <Contact>
                         <Title text='contact'/>
-                        <Contact/>
-                    </AsideItem>
+                    </Contact>
                 </Aside>
             </Body>
         </>

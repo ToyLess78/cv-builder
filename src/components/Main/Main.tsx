@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Main.module.css'
-import { Test } from '../Test/Test.tsx';
+import { Test } from '../Test/Test';
 
 interface IMainProps {
     isOrder: boolean

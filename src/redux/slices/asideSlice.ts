@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../store/store.ts';
-import { loadFromLocalStorage, saveToLocalStorage } from '../utils/localStorage.ts';
+import { RootState } from '../store/store';
+import { loadFromLocalStorage, saveToLocalStorage } from '../utils/localStorage';
 
 interface AsideState {
     skills: {
@@ -15,7 +15,7 @@ interface AsideState {
     };
 }
 
-const defaultSkills = {
+const defaultSkillsState = {
     title: 'skills',
     data: [
         'JavaScript (ES6+)',
@@ -30,7 +30,7 @@ const defaultSkills = {
     ]
 }
 
-const defaultAdditional = {
+const defaultAdditionalState = {
     isAdditional: true,
     title: 'additional',
     data: [
@@ -45,8 +45,8 @@ const defaultAdditional = {
 }
 
 const initialState: AsideState = loadFromLocalStorage('aside') ||  {
-    skills: defaultSkills,
-    additional: defaultAdditional
+    skills: defaultSkillsState,
+    additional: defaultAdditionalState
 };
 
 const asideSlice = createSlice({
@@ -66,11 +66,11 @@ const asideSlice = createSlice({
             saveToLocalStorage('aside', state);
         },
         setDefaultSkills(state) {
-            state.skills = defaultSkills;
+            state.skills = defaultSkillsState;
             saveToLocalStorage('aside', state);
         },
         setDefaultAdditional(state) {
-            state.additional = defaultAdditional;
+            state.additional = defaultAdditionalState;
             saveToLocalStorage('aside', state);
         }
     }

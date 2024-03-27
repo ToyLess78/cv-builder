@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store.ts';
-import { selectCertificates, setIsCertificates } from '../../redux/slices/certificatesSlice.ts';
+import { RootState } from '../../redux/store/store';
+import { selectCertificates, setIsCertificates } from '../../redux/slices/certificatesSlice';
 import { MdOutlineVisibility } from 'react-icons/md';
-import { AsideItem } from '../Aside/AsideItem.tsx';
+import { AsideItem } from '../Aside/AsideItem';
 import { FaRegEdit } from 'react-icons/fa';
 import { BiHide } from 'react-icons/bi';
 
