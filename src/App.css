@@ -139,10 +139,23 @@ label:hover {
 a {
   color: dimgrey;
 }
-.certificate {
+.certificates {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  min-height: 8.2rem;
+}
+
+.additional {
+  display: flex;
+  flex-direction: column;
+  min-height: 7.4rem;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  min-height: 4.7rem;
 }
 
 .certificates a {
@@ -175,7 +188,7 @@ a {
   min-height: 7.4rem;
 }
 .contact {
-  min-height: 6rem;
+  min-height: 6.7rem;
 }
 .icon {
   color: dimgrey;

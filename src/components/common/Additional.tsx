@@ -56,7 +56,7 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
                             />
                         </>}
                     {children}
-                    <ul>
+                    <ul className='additional'>
                         {aside?.additional.data.map(a => {
                             return <li key={nextId()}>{a}</li>
                         })}

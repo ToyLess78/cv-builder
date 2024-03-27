@@ -27,7 +27,7 @@ export const Skills: React.FC<ISkillsProps> = ({ children }) => {
                         data-tooltip-offset={0}
                     />
                     {children}
-                    <ul>
+                    <ul className='skills'>
                         {aside?.skills.data?.map(s => {
                             return <li key={nextId()}>{s}</li>
                         })}

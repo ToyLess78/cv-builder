@@ -12,6 +12,7 @@ import { selectAside } from '../redux/slices/asideSlice';
 import { Skills } from '../components/common/Skills';
 import { Additional } from '../components/common/Additional';
 import { Languages } from '../components/common/Languages';
+import { selectCertificates } from '../redux/slices/certificatesSlice';
 
 
 // setIsCertificates: React.Dispatch<React.SetStateAction<boolean>>
@@ -20,7 +21,7 @@ import { Languages } from '../components/common/Languages';
 export const Breeze: React.FC = () => {
 
     const aside = useSelector((state: RootState) => selectAside(state));
-
+    const certificates = useSelector((state: RootState) => selectCertificates(state));
 
     return (
         <>
@@ -39,7 +40,7 @@ export const Breeze: React.FC = () => {
                     </Additional>
 
                     <Certificates>
-                        <Title text='certificates'/>
+                        <Title text={certificates.title}/>
                     </Certificates>
 
                     <Languages>
@@ -47,7 +48,7 @@ export const Breeze: React.FC = () => {
                     </Languages>
 
                     <Contacts>
-                        <Title text='contact'/>
+                        <Title text='contacts'/>
                     </Contacts>
                 </Aside>
             </Body>
