@@ -5,7 +5,7 @@ import { Main } from '../components/Main/Main';
 import { Aside } from '../components/Aside/Aside';
 import { Title } from '../components/Title/Title';
 import { Certificates } from '../components/Certificates/Certificates';
-import { Contact } from '../components/Contact/Contact';
+import { Contacts } from '../components/Contacts/Contacts';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/store';
 import { selectAside } from '../redux/slices/asideSlice';
@@ -46,9 +46,9 @@ export const Breeze: React.FC = () => {
                         <Title text='languages'/>
                     </Languages>
 
-                    <Contact>
+                    <Contacts>
                         <Title text='contact'/>
-                    </Contact>
+                    </Contacts>
                 </Aside>
             </Body>
         </>

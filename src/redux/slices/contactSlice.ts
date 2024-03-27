@@ -1,33 +1,47 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../store/store.ts';
-import { loadFromLocalStorage, removeFromLocalStorage, saveToLocalStorage } from '../utils/localStorage.ts';
+import { RootState } from '../store/store';
+import { loadFromLocalStorage, removeFromLocalStorage, saveToLocalStorage } from '../utils/localStorage';
 
-interface ContactState {
-    isSocial: boolean;
+interface ContactsState {
+    isSocials: boolean;
+    isGithub: boolean;
+    isLinkedin: boolean;
+    isTelegram: boolean;
+    isTwitter: boolean;
+    isFacebook: boolean;
     location: string;
     email: string;
     phone: string;
     github: string;
     linkedin: string;
     telegram: string;
+    twitter: string;
+    facebook: string;
 }
 
-const defaultContactState =  {
-    isSocial: true,
+const defaultContactsState = {
+    isSocials: true,
+    isGithub: true,
+    isLinkedin: true,
+    isTelegram: true,
+    isTwitter: true,
+    isFacebook: true,
     location: 'Ukraine',
     email: 'hello@example.com',
     phone: '001122334455',
     github: 'https://github.com/ToyLess78',
     linkedin: 'https://www.linkedin.com',
-    telegram: 'https://t.me/JATly'
+    telegram: 'https://t.me/JATly',
+    twitter: 'https://twitter.com/',
+    facebook: 'https://www.facebook.com/'
 }
-const initialState: ContactState = loadFromLocalStorage('contact') || defaultContactState;
+const initialState: ContactsState = loadFromLocalStorage('contact') || defaultContactsState;
 
-const contactSlice = createSlice({
+const contactsSlice = createSlice({
     name: 'contact',
     initialState,
     reducers: {
-        setContact(state, action: PayloadAction<Partial<ContactState>>) {
+        setContacts(state, action: PayloadAction<Partial<ContactsState>>) {
             const newState = {
                 ...state,
                 ...action.payload
@@ -35,19 +49,48 @@ const contactSlice = createSlice({
             saveToLocalStorage('contact', newState);
             return newState;
         },
-        setIsSocial(state, action: PayloadAction<boolean>) {
-            state.isSocial = action.payload;
+        setIsSocials(state, action: PayloadAction<boolean>) {
+            state.isSocials = action.payload;
             saveToLocalStorage('contact', state);
         },
-        setDefaultContactState() {
+        setIsGithub(state, action: PayloadAction<boolean>) {
+            state.isGithub = action.payload;
+            saveToLocalStorage('contact', state);
+        },
+        setIsLinkedin(state, action: PayloadAction<boolean>) {
+            state.isLinkedin = action.payload;
+            saveToLocalStorage('contact', state);
+        },
+        setIsTelegram(state, action: PayloadAction<boolean>) {
+            state.isTelegram = action.payload;
+            saveToLocalStorage('contact', state);
+        },
+        setIsTwitter(state, action: PayloadAction<boolean>) {
+            state.isTwitter = action.payload;
+            saveToLocalStorage('contact', state);
+        },
+        setIsFacebook(state, action: PayloadAction<boolean>) {
+            state.isFacebook = action.payload;
+            saveToLocalStorage('contact', state);
+        },
+        setDefaultContactsState() {
             removeFromLocalStorage('contact');
-            return defaultContactState;
+            return defaultContactsState;
         }
     }
 });
 
-export const { setContact, setIsSocial, setDefaultContactState } = contactSlice.actions;
+export const {
+    setContacts,
+    setIsSocials,
+    setDefaultContactsState,
+    setIsGithub,
+    setIsLinkedin,
+    setIsTelegram,
+    setIsTwitter,
+    setIsFacebook
+} = contactsSlice.actions;
 
-export const selectContact = (state: RootState) => state.contact;
+export const selectContacts = (state: RootState) => state.contact;
 
-export default contactSlice.reducer;
+export default contactsSlice.reducer;
