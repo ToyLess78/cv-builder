@@ -1,0 +1,45 @@
+.header {
+    text-align: left;
+    grid-template-columns: 2.5fr 1fr;
+    grid-template-rows: 1fr;
+    gap: .5rem 0;
+    grid-auto-flow: row;
+    display: grid;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.info {
+    justify-self: stretch;
+    position: relative;
+}
+
+.about {
+    justify-self: stretch;
+    display: flex;
+    position: relative;
+}
+
+.about p {
+    margin-right: 2rem;
+}
+
+.header img {
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(85%);
+}
+
+.img {
+    margin: -2rem -2rem 0 2rem;
+    position: relative;
+}
+.img img {
+    transition: opacity .6s ease-in-out;
+}

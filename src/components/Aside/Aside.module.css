@@ -1,0 +1,12 @@
+.aside {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 2rem 0;
+    position: relative;
+}

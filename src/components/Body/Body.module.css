@@ -1,0 +1,11 @@
+.body {
+    text-align: left;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+    gap: .5rem 2rem;
+    grid-auto-flow: row;
+    display: grid;
+    justify-items: stretch;
+    align-items: stretch;
+    margin-top: 2rem;
+}

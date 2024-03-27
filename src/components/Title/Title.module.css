@@ -1,0 +1,17 @@
+.title {
+    display: flex;
+    flex-direction: row;
+    text-transform: uppercase;
+    color: #1976D2;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    margin-right: 1rem;
+    padding-top: .3rem;
+}
+
+.title:after {
+    content: "";
+    flex: 1 1;
+    border-left: 2px solid #1976D2;
+    margin: .5rem auto 0 auto;
+}
