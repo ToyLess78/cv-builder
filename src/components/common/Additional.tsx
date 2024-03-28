@@ -3,10 +3,10 @@ import { MdOutlineVisibility } from 'react-icons/md';
 import { AsideItem } from '../Aside/AsideItem';
 import { FaRegEdit } from 'react-icons/fa';
 import { BiHide } from 'react-icons/bi';
-import nextId from 'react-id-generator';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
 import { selectAside, setIsAdditional } from '../../redux/slices/asideSlice';
+import { AdditionalList } from './AdditionalList';
 
 interface IAdditionalProps {
     children: ReactNode;
@@ -56,11 +56,7 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
                             />
                         </>}
                     {children}
-                    <ul className='additional'>
-                        {aside?.additional.data.map(a => {
-                            return <li key={nextId()}>{a}</li>
-                        })}
-                    </ul>
+                    <AdditionalList/>
                 </AsideItem>
             }
         </>
