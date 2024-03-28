@@ -1,0 +1,103 @@
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    height: 1px;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease 0.5s, height 0.5s ease;
+    width: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    color: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    transition: color 0.5s ease;
+    width: 80%;
+    text-align: left;
+}
+
+.content h4 {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.label {
+    cursor: pointer;
+    font-family: 'Consolas', arial, sans-serif;
+    font-size: 2em;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease 0.5s;
+    backdrop-filter: blur(10px);
+
+}
+
+.input {
+    cursor: pointer;
+    height: 0;
+    opacity: 0;
+    width: 0;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input:checked {
+    height: 40px;
+    opacity: 1;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 200;
+    -webkit-appearance: none;
+    width: 40px;
+}
+
+.input:checked::after, input:checked:before {
+    border-top: 1px solid #fff;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: rotate(45deg);
+    width: 100%;
+    z-index: 1;
+}
+
+.input:checked::after {
+    transform: rotate(-45deg);
+}
+
+.input:checked + label {
+    color: #fff;
+    transition: color 0.5s ease;
+}
+
+.input:checked ~ .modal {
+    height: 100%;
+    width: 100%;
+    transition: width 0.5s ease, height 0.5s ease 0.5s;
+}
+
+.input:checked ~ .modal .content {
+    color: inherit;
+    transition: color 0.5s ease 0.5s;
+    background-color: white;
+    width: 80%;
+    padding: 2rem;
+}
+
+.input:checked ~ .modal .content h4 {
+    opacity: 1;
+}

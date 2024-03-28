@@ -5,6 +5,7 @@ import { Tooltip } from 'react-tooltip';
 import { IoColorFillOutline } from 'react-icons/io5';
 import { Breeze } from './temeplates/Breeze';
 import nextId from 'react-id-generator';
+import { Overlay } from './components/Overlay/Overlay';
 
 export interface IAside {
     skills: string[]
@@ -59,6 +60,7 @@ function App() {
                         </label>
                     </Fragment>)}
             </nav>
+            <Overlay />
 
             <Tooltip
                 id='tooltip'
