@@ -1,0 +1,89 @@
+.container,
+.open {
+    display: flex;
+    transition: all 0.5s ease;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    height: 1px;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease 0.5s, height 0.5s ease;
+    width: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    color: transparent;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    transition: all 0.5s ease;
+    width: 90%;
+}
+
+.content h4 {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.open .overlay {
+    height: 100%;
+    width: 100%;
+    transition: width 0.5s ease, height 0.5s ease 0.5s;
+}
+
+.open .content {
+    color: inherit;
+    transition: color 0.5s ease 0.5s;
+    background-color: white;
+    padding: 1rem;
+    opacity: 1;
+}
+
+.open .content h4 {
+    opacity: 1;
+}
+
+.content h4 {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.open .overlay {
+    height: 100%;
+    width: 100%;
+    transition: width 0.5s ease, height 0.5s ease 0.5s;
+}
+
+.open .content {
+    color: inherit;
+    transition: color 0.5s ease 0.5s;
+    background-color: white;
+    padding: 1rem;
+    opacity: 1;
+}
+
+.open .content h4 {
+    opacity: 1;
+}
+
+
+.btn {
+    float: right;
+    cursor: pointer;
+    transition: color .4s ease;
+}
+
+.btn:hover,
+.btn:focus {
+    color: var(--primary);
+}
+

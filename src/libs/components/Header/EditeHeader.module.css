@@ -1,0 +1,47 @@
+.info,
+.name {
+    display: flex;
+}
+
+.name {
+    gap: 2rem;
+}
+
+.name div {
+    width: 47%;
+}
+
+.info {
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 4rem;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 60%;
+}
+
+.inputs button {
+    margin-top: 1rem;
+}
+
+.about {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 70%;
+    margin: 1rem auto;
+
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+

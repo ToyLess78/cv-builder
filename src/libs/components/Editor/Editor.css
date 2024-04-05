@@ -1,0 +1,25 @@
+.ql-snow.ql-toolbar button.ql-active .ql-fill,
+.ql-snow.ql-toolbar button:hover .ql-fill,
+.ql-snow.ql-toolbar button:focus .ql-fill {
+    fill: var(--primary) !important;
+}
+
+.ql-snow.ql-toolbar button.ql-active,
+.ql-snow.ql-toolbar button:hover,
+.ql-snow.ql-toolbar button:focus,
+.ql-snow.ql-toolbar button.ql-active,
+.ql-snow.ql-toolbar button:hover,
+.ql-snow.ql-toolbar button:focus,
+.ql-snow a {
+    color: var(--primary) !important;
+}
+
+.ql-snow.ql-toolbar button.ql-active .ql-stroke,
+.ql-snow.ql-toolbar button:hover .ql-stroke,
+.ql-snow.ql-toolbar button:focus .ql-stroke {
+    stroke: var(--primary) !important;
+}
+
+.ql-toolbar.ql-snow {
+    background-color: var(--primary-opacity);
+}
