@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store';
-import { selectAside } from '../../redux/slices/asideSlice';
+import { RootState } from '~/store/store';
+import { selectAside } from '~/slices/asideSlice';
 import { AsideItem } from '../Aside/AsideItem';
 import { FaRegEdit } from 'react-icons/fa';
 import nextId from 'react-id-generator';

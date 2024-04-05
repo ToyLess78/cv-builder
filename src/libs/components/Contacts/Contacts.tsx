@@ -4,8 +4,8 @@ import { FaLocationDot, FaXTwitter } from 'react-icons/fa6';
 import { IoMailSharp } from 'react-icons/io5';
 import { BiHide } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store';
-import { selectContacts, setIsSocials } from '../../redux/slices/contactSlice';
+import { RootState } from '~/store/store';
+import { selectContacts, setIsSocials } from '~/slices/contactSlice';
 import { MdOutlineVisibility } from 'react-icons/md';
 import { AsideItem } from '../Aside/AsideItem';
 

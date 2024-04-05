@@ -1,11 +1,24 @@
 #root {
+  --primary: rgba(25, 118, 210, 1);
+  --primary-alpha-50: rgba(25, 118, 210, .5);
+  --primary-opacity: rgba(25, 118, 210, .05);
+  --gray: #ccc;
+  --light-gray: #ededed;
+  --primary-text: #213547;
+  --secondary-text: rgba(105, 105, 105, 1);
   width: 998px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   background-color: #ffffff;
   position: relative;
+  z-index: 0;
 }
+
+:focus {
+  outline: none;
+}
+
 
 .logo {
   height: 6em;
@@ -74,38 +87,6 @@
 .month-picker div {
   border-radius: 2px;
   box-shadow: none;
-}
-input[name="layout"] {
-  display: none;
-}
-input[name="layout"]:checked + label {
-  border-bottom: 2px solid dimgrey;
-  cursor: default;
-  width: 4rem;
-color: dimgrey;
-}
-label + input[name="layout"]:checked {
-  border-bottom: 2px solid dimgrey;
-  cursor: default;
-  width: 4rem;
-  color: dimgrey;
-}
-label {
-  display: inline-block;
-  margin: 0 .5em;
-  cursor: pointer;
-  width: 2rem;
-  border-bottom: 2px solid #d9d9d9;
-  color: transparent;
-  transition: all .6s ease-in-out;
-  font-size: medium;
-  text-transform: capitalize;
-}
-
-label:hover {
-  border-bottom: 2px solid dimgrey;
-  width: 4rem;
-  color: dimgrey;
 }
 
 .social {
@@ -237,4 +218,9 @@ a {
 svg {
   outline: none;
 }
+.p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:hover {
+  background: #f3f4f6;
+}
+
+
 

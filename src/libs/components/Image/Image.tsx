@@ -3,6 +3,10 @@ import ImageUploading, { ImageType } from 'react-images-uploading';
 import { BiHide } from 'react-icons/bi';
 import { MdOutlineVisibility } from 'react-icons/md';
 import { LuUpload } from 'react-icons/lu';
+import { useSelector } from 'react-redux';
+import { RootState } from '~/store/store';
+import { selectInfo } from '~/slices/infoSlice';
+import { selectThemeColor } from '~/slices/themeSlice';
 
 interface IImageProps {
     styles: string;
@@ -11,7 +15,10 @@ interface IImageProps {
 export const Image: React.FC<IImageProps> = ({ styles }) => {
 
     const [image, setImage] = React.useState<ImageType | null>(null);
-    const [opacity, setOpacity] = useState(true)
+    const [opacity, setOpacity] = useState(true);
+    const info = useSelector((state: RootState) => selectInfo(state));
+    const themeColor = useSelector((state: RootState) => selectThemeColor(state));
+
 
     const onChange = (imageList: ImageType[]) => {
         setImage(imageList[0] || null);
@@ -28,9 +35,9 @@ export const Image: React.FC<IImageProps> = ({ styles }) => {
 
               }) => (
                 <section className={styles}>
-                    <div className='polygon' style={{ background: '#1976D2', opacity: Number(!opacity) }}>
-                        <h2>Y</h2>
-                        <h2>N</h2>
+                    <div className='polygon' style={{ background: themeColor, opacity: Number(!opacity) }}>
+                        <h2>{info.firstname.trim().charAt(0)}</h2>
+                        <h2>{info.lastname.trim().charAt(0)}</h2>
                     </div>
                     {opacity &&
                         <>

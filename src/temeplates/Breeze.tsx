@@ -1,30 +1,56 @@
-import React from 'react';
-import { Header } from '../components/Header/Header';
-import { Body } from '../components/Body/Body';
-import { Main } from '../components/Main/Main';
-import { Aside } from '../components/Aside/Aside';
-import { Title } from '../components/Title/Title';
-import { Certificates } from '../components/Certificates/Certificates';
-import { Contacts } from '../components/Contacts/Contacts';
-import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store/store';
-import { selectAside } from '../redux/slices/asideSlice';
-import { Skills } from '../components/common/Skills';
-import { Additional } from '../components/common/Additional';
-import { Languages } from '../components/common/Languages';
-import { selectCertificates } from '../redux/slices/certificatesSlice';
-
-
-// setIsCertificates: React.Dispatch<React.SetStateAction<boolean>>
-
+import React, {useState} from 'react';
+import {useSelector} from 'react-redux';
+import {RootState} from '~/store/store';
+import {selectAside} from '~/slices/asideSlice';
+import {selectCertificates} from '~/slices/certificatesSlice';
+import {loadFromLocalStorage} from '~/utils/utils';
+import {
+    Additional,
+    Aside,
+    Body,
+    BreezeTitle,
+    Certificates,
+    ColourPicker,
+    Contacts,
+    EditAdditional,
+    Header,
+    Languages,
+    Main,
+    Overlay,
+    Skills
+} from '~/components/components';
+import {selectIsEdite} from '~/slices/editeSlice';
+import {EditeInfo} from '~/components/Header/EditeInfo';
+import {EditeAbout} from '~/components/Header/EditeAbout';
 
 export const Breeze: React.FC = () => {
 
     const aside = useSelector((state: RootState) => selectAside(state));
     const certificates = useSelector((state: RootState) => selectCertificates(state));
+    const palette = [
+        'rgba(25, 118, 210, 1)',
+        'rgba(230, 126, 34, 1)',
+        'rgba(241, 196, 15, 1)',
+        'rgba(231, 76, 60, 1)',
+        'rgba(46, 204, 113, 1)',
+        'rgba(155, 89, 182, 1)'
+    ]
+
+    const theme = 'breeze';
+    const [color, setColor] = useState(loadFromLocalStorage(theme) || palette[0]);
+
+
+    const isEdite = useSelector((state: RootState) => selectIsEdite(state));
 
     return (
         <>
+            <Overlay>
+                {isEdite === 'additional' && <EditAdditional />}
+                {isEdite === 'info' && <EditeInfo />}
+                {isEdite === 'about' && <EditeAbout />}
+
+            </Overlay>
+            <ColourPicker {...{ theme, palette, color, setColor }} />
             <Header/>
 
             <Body>
@@ -32,23 +58,23 @@ export const Breeze: React.FC = () => {
                 <Aside>
 
                     <Skills>
-                        <Title text={aside?.skills.title}/>
+                        <BreezeTitle text={aside?.skills.title}/>
                     </Skills>
 
                     <Additional>
-                        <Title text={aside?.additional.title}/>
+                        <BreezeTitle text={aside?.additional.title}/>
                     </Additional>
 
                     <Certificates>
-                        <Title text={certificates.title}/>
+                        <BreezeTitle text={certificates.title}/>
                     </Certificates>
 
                     <Languages>
-                        <Title text='languages'/>
+                        <BreezeTitle text='languages'/>
                     </Languages>
 
                     <Contacts>
-                        <Title text='contacts'/>
+                        <BreezeTitle text='contacts'/>
                     </Contacts>
                 </Aside>
             </Body>

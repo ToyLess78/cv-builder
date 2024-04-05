@@ -1,18 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../store/store';
-import { loadFromLocalStorage, saveToLocalStorage } from '../utils/localStorage';
+import { RootState } from '~/store/store';
+import { loadFromLocalStorage, saveToLocalStorage } from '~/utils/utils';
 
-interface AsideState {
+export interface IAdditionalState {
+    isAdditional: boolean;
+    title: string;
+    data: string[];
+}
+export interface AsideState {
     skills: {
         title: string;
         data: string[];
 
     };
-    additional: {
-        isAdditional: boolean;
-        title: string;
-        data: string[];
-    };
+    additional: IAdditionalState;
 }
 
 const defaultSkillsState = {
@@ -39,7 +40,7 @@ const defaultAdditionalState = {
         'REST API',
         'WebSocket',
         'CI/CD',
-        'CSCC',
+        'SCSS',
         'BEM'
     ]
 }

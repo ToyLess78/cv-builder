@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../store/store';
-import { loadFromLocalStorage, saveToLocalStorage } from '../utils/localStorage';
+import { RootState } from '~/store/store';
+import { loadFromLocalStorage, saveToLocalStorage } from '~/utils/utils';
 
 interface Certificate {
     id: string;

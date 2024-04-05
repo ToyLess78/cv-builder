@@ -18,12 +18,14 @@
 .info {
     justify-self: stretch;
     position: relative;
+    min-width: 30%;
 }
 
 .about {
     justify-self: stretch;
     display: flex;
     position: relative;
+    min-height: 4.72rem;
 }
 
 .about p {

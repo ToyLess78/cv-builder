@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 import { MdOutlineVisibility } from 'react-icons/md';
-import { AsideItem } from '../Aside/AsideItem';
+import { AdditionalList, AsideItem } from '~/components/components';
 import { FaRegEdit } from 'react-icons/fa';
 import { BiHide } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store';
-import { selectAside, setIsAdditional } from '../../redux/slices/asideSlice';
-import { AdditionalList } from './AdditionalList';
+import { RootState } from '~/store/store';
+import { selectAside, setIsAdditional } from '~/slices/asideSlice';
+import { setIsEdite } from '~/slices/editeSlice';
 
 interface IAdditionalProps {
     children: ReactNode;
@@ -45,6 +45,7 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
                                 data-tooltip-id='tooltip'
                                 data-tooltip-content={`Edite ${aside?.additional.title}`}
                                 data-tooltip-offset={0}
+                                onClick={() => dispatch(setIsEdite('additional'))}
                             />
                             <BiHide
                                 size='1.2rem'
@@ -56,7 +57,7 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
                             />
                         </>}
                     {children}
-                    <AdditionalList/>
+                    <AdditionalList {...aside.additional}/>
                 </AsideItem>
             }
         </>
