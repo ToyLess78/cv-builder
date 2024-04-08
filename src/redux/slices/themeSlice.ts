@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CssColor } from '~/types/types';
+import { CssColor } from '~/types/color-types';
 import { RootState } from '~/store/store';
 
 interface ThemeState {

@@ -25,7 +25,7 @@ export const EditeAbout: React.FC = () => {
 
     useEffect(() => {
         setEditeAbout({ ...editeAbout, introduction: text as string})
-    }, [text, editeAbout])
+    }, [text])
 
     return (
         <div className={styles.about}>

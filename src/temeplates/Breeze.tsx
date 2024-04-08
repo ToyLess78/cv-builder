@@ -22,7 +22,7 @@ import {
 import {selectIsEdite} from '~/slices/editeSlice';
 import {EditeInfo} from '~/components/Header/EditeInfo';
 import {EditeAbout} from '~/components/Header/EditeAbout';
-import { breezePalette } from '~/public/paletts';
+import { breezePalette } from '~/public/palettes';
 
 export const Breeze: React.FC = () => {
 

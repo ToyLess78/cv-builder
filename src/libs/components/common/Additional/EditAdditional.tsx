@@ -18,7 +18,7 @@ export const EditAdditional: React.FC = () => {
 
     useEffect(() => {
         setIsAdditional({ ...isAdditional, data: selectedSkills })
-    }, [selectedSkills, isAdditional])
+    }, [selectedSkills])
 
     const search = (event: AutoCompleteCompleteEvent) => {
         const query = event.query.trim().toLowerCase();
