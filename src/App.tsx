@@ -23,7 +23,7 @@ const App: React.FC = () => {
                 id='tooltip'
                 variant='light'
                 style={{
-                    color: 'dimgrey',
+                    color: 'var(--secondary-text)',
                     backgroundColor: '#ffffff95',
                     zIndex: 100,
                     textTransform: 'capitalize'

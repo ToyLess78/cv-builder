@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './ColourPicker.module.css';
 import nextId from 'react-id-generator';
 import { saveToLocalStorage } from '~/utils/utils';
-import { CssColor } from '~/types/types';
+import { CssColor } from '~/types/color-types';
 import { useDispatch } from 'react-redux';
 import { setThemeColor } from '~/slices/themeSlice';
 

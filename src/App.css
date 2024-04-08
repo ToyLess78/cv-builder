@@ -5,7 +5,7 @@
   --gray: #ccc;
   --light-gray: #ededed;
   --primary-text: #213547;
-  --secondary-text: rgba(105, 105, 105, 1);
+  --secondary-text: rgba(93, 107, 121, 1);
   width: 998px;
   margin: 0 auto;
   padding: 2rem;
@@ -110,7 +110,7 @@
 
 .edite:hover,
 .hide:hover{
-  color: dimgrey;
+  color: var(--secondary-text);
 }
 .social .hide {
   position: relative;
@@ -118,7 +118,7 @@
   left: 0;
 }
 a {
-  color: dimgrey;
+  color: var(--secondary-text);
 }
 .certificates {
   display: flex;
@@ -172,7 +172,7 @@ a {
   min-height: 6.7rem;
 }
 .icon {
-  color: dimgrey;
+  color: var(--secondary-text);
   margin-right: .5rem;
 }
 .polygon {

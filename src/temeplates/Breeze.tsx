@@ -22,23 +22,15 @@ import {
 import {selectIsEdite} from '~/slices/editeSlice';
 import {EditeInfo} from '~/components/Header/EditeInfo';
 import {EditeAbout} from '~/components/Header/EditeAbout';
+import { breezePalette } from '~/public/paletts';
 
 export const Breeze: React.FC = () => {
 
     const aside = useSelector((state: RootState) => selectAside(state));
     const certificates = useSelector((state: RootState) => selectCertificates(state));
-    const palette = [
-        'rgba(25, 118, 210, 1)',
-        'rgba(230, 126, 34, 1)',
-        'rgba(241, 196, 15, 1)',
-        'rgba(231, 76, 60, 1)',
-        'rgba(46, 204, 113, 1)',
-        'rgba(155, 89, 182, 1)'
-    ]
 
     const theme = 'breeze';
-    const [color, setColor] = useState(loadFromLocalStorage(theme) || palette[0]);
-
+    const [color, setColor] = useState(loadFromLocalStorage(theme) || breezePalette[0]);
 
     const isEdite = useSelector((state: RootState) => selectIsEdite(state));
 
@@ -50,7 +42,7 @@ export const Breeze: React.FC = () => {
                 {isEdite === 'about' && <EditeAbout />}
 
             </Overlay>
-            <ColourPicker {...{ theme, palette, color, setColor }} />
+            <ColourPicker {...{ theme, palette: breezePalette, color, setColor }} />
             <Header/>
 
             <Body>
