@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  transition: all 0.5s ease;
+}
+
+.open {
+  display: flex;
+  transition: all 0.5s ease;
+
+  .overlay {
+    height: 100%;
+    width: 100%;
+    transition: width 0.5s ease, height 0.5s ease 0.5s;
+  }
+
+  .content {
+    color: inherit;
+    transition: color 0.5s ease 0.5s;
+    background-color: white;
+    padding: 1rem;
+    opacity: 1;
+
+    h4 {
+      opacity: 1;
+    }
+  }
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  height: 1px;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease 0.5s, height 0.5s ease;
+  width: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  color: transparent;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  transition: all 0.5s ease;
+  width: 90%;
+
+  h4 {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+}
+
+.btn {
+  float: right;
+  cursor: pointer;
+  transition: color .4s ease;
+
+  &:hover {
+    color: var(--primary);
+  }
+
+  &:focus {
+    color: var(--primary);
+  }
+}

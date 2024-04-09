@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './EditeHeader.module.css';
+import styles from './EditeHeader.module.scss';
 import { Info } from '~/components/Header/Info';
 import { UnderlineInput } from '~/components/common/Inputs/Inputs';
 import { MainButton } from '~/components/Buttons/Buttons';

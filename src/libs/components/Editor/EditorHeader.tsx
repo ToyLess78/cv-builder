@@ -1,5 +1,5 @@
 import React from 'react';
-import './Editor.css';
+import './Editor.scss';
 
 export const EditorHeader: React.FC = () => {
     return (<>

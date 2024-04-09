@@ -1,11 +1,4 @@
 #root {
-  --primary: rgba(25, 118, 210, 1);
-  --primary-alpha-50: rgba(25, 118, 210, .5);
-  --primary-opacity: rgba(25, 118, 210, .05);
-  --gray: #ccc;
-  --light-gray: #ededed;
-  --primary-text: #213547;
-  --secondary-text: rgba(93, 107, 121, 1);
   width: 998px;
   margin: 0 auto;
   padding: 2rem;

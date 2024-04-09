@@ -1,0 +1,18 @@
+.title {
+  --primary: rgba(25, 118, 210, 1);
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+  color: var(--primary);
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  margin-right: 1rem;
+  padding-top: .3rem;
+
+  &:after {
+    content: "";
+    flex: 1 1;
+    border-left: 2px solid var(--primary);
+    margin: .5rem auto 0 auto;
+  }
+}

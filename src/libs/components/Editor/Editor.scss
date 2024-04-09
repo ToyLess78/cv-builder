@@ -1,0 +1,49 @@
+.ql-snow.ql-toolbar {
+  button.ql-active {
+    .ql-fill {
+      fill: var(--primary) !important;
+    }
+
+    color: var(--primary) !important;
+
+    .ql-stroke {
+      stroke: var(--primary) !important;
+    }
+  }
+
+  button {
+    &:hover {
+      .ql-fill {
+        fill: var(--primary) !important;
+      }
+
+      color: var(--primary) !important;
+
+      .ql-stroke {
+        stroke: var(--primary) !important;
+      }
+    }
+
+    &:focus {
+      .ql-fill {
+        fill: var(--primary) !important;
+      }
+
+      color: var(--primary) !important;
+
+      .ql-stroke {
+        stroke: var(--primary) !important;
+      }
+    }
+  }
+}
+
+.ql-snow {
+  a {
+    color: var(--primary) !important;
+  }
+}
+
+.ql-toolbar.ql-snow {
+  background-color: var(--primary-opacity);
+}

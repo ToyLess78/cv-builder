@@ -1,0 +1,339 @@
+.container {
+  position: relative;
+  text-align: left;
+
+  input {
+    font: 15px/24px Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+  }
+
+  label {
+    text-transform: capitalize;
+  }
+}
+
+.underline {
+  border: 0;
+  padding: 4px 0;
+  background-color: transparent;
+
+  ~ {
+    .focus {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 7rem;
+      height: 1px;
+      background-color: var(--gray);
+      transition: all 0.4s;
+    }
+
+    label {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 9px;
+      color: #aaa;
+      transition: 0.3s;
+      z-index: -1;
+      letter-spacing: 1px;
+    }
+  }
+
+  &:focus {
+    ~ {
+      .focus {
+        background-color: var(--primary);
+        width: 100%;
+        transition: all 0.4s;
+      }
+
+      label {
+        top: -16px;
+        font-size: .7rem;
+        color: var(--primary);
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &:valid {
+    &:not(:focus) {
+      ~ {
+        label {
+          top: -16px;
+          font-size: .7rem;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
+
+.border {
+  border: 1px solid var(--gray);
+  padding: 7px 14px;
+  transition: 0.4s;
+  background: transparent;
+
+  ~ {
+    .focus {
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--primary);
+        transition: 0.2s;
+        transition-delay: 0.2s;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 1px;
+        background-color: var(--primary);
+        transition: 0.2s;
+        top: auto;
+        bottom: 0;
+        right: auto;
+        left: 0;
+        transition-delay: 0.6s;
+      }
+
+      i {
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 0;
+          background-color: var(--primary);
+          transition: 0.2s;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          width: 1px;
+          height: 0;
+          background-color: var(--primary);
+          transition: 0.2s;
+          left: auto;
+          right: 0;
+          top: auto;
+          bottom: 0;
+          transition-delay: 0.4s;
+        }
+      }
+    }
+
+    label {
+      position: absolute;
+      left: 14px;
+      width: 100%;
+      top: 10px;
+      color: #aaa;
+      transition: 0.3s;
+      z-index: -1;
+      letter-spacing: 1px;
+    }
+  }
+
+  &:focus {
+    ~ {
+      .focus {
+        &:before {
+          width: 100%;
+          transition: 0.2s;
+          transition-delay: 0.6s;
+        }
+
+        &:after {
+          width: 100%;
+          transition: 0.2s;
+          transition-delay: 0.6s;
+        }
+
+        i {
+          &:before {
+            height: 100%;
+            transition: 0.2s;
+          }
+
+          &:after {
+            height: 100%;
+            transition: 0.2s;
+            transition-delay: 0.4s;
+          }
+        }
+      }
+
+      label {
+        top: -18px;
+        left: 0;
+        font-size: .7rem;
+        color: var(--primary);
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &:valid {
+    ~ {
+      .focus {
+        i {
+          &:after {
+            transition-delay: 0.4s;
+          }
+        }
+      }
+    }
+
+    &:not(:focus) {
+      ~ {
+        label {
+          top: -18px;
+          left: 0;
+          font-size: .7rem;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
+
+.gray {
+  padding: 7px 15px;
+  border: 1px solid var(--gray);
+  position: relative;
+  background: transparent;
+
+  ~ {
+    .bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 100%;
+      background-color: transparent;
+      transition: 0.4s;
+      z-index: -1;
+    }
+
+    label {
+      position: absolute;
+      left: 14px;
+      width: 100%;
+      top: 10px;
+      color: #aaa;
+      transition: 0.3s;
+      z-index: -1;
+      letter-spacing: 1px;
+    }
+  }
+
+  &:focus {
+    ~ {
+      .bg {
+        transition: 0.4s;
+        width: 100%;
+        background-color: var(--light-gray);
+      }
+
+      label {
+        top: -18px;
+        left: 0;
+        font-size: .7rem;
+        color: #333;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &:valid {
+    &:not(:focus) {
+      ~ {
+        label {
+          top: -18px;
+          left: 0;
+          font-size: .7rem;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
+
+.primary {
+  padding: 7px 15px;
+  border: 1px solid var(--gray);
+  position: relative;
+  background: transparent;
+
+  ~ {
+    .bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 100%;
+      background-color: transparent;
+      transition: 0.4s;
+      z-index: -1;
+    }
+
+    label {
+      position: absolute;
+      left: 14px;
+      width: 100%;
+      top: 10px;
+      color: #aaa;
+      transition: 0.3s;
+      z-index: -1;
+      letter-spacing: 1px;
+    }
+  }
+
+  &:focus {
+    ~ {
+      .bg {
+        transition: 0.4s;
+        width: 100%;
+        background-color: var(--primary-opacity);
+        border: 1px solid var(--primary);
+      }
+
+      label {
+        top: -18px;
+        left: 0;
+        font-size: .7rem;
+        color: var(--primary);
+        transition: 0.3s;
+      }
+    }
+
+    border: var(--primary);
+  }
+
+  &:valid {
+    &:not(:focus) {
+      ~ {
+        label {
+          top: -18px;
+          left: 0;
+          font-size: .7rem;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}

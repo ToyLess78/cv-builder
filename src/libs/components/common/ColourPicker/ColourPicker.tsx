@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import styles from './ColourPicker.module.css';
+import styles from './ColourPicker.module.scss';
 import nextId from 'react-id-generator';
 import { saveToLocalStorage } from '~/utils/utils';
 import { CssColor } from '~/types/color-types';

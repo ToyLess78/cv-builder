@@ -1,0 +1,61 @@
+@media print {
+  .container {
+    display: none;
+  }
+}
+
+.container {
+  position: sticky;
+  top: 2rem;
+  margin-left: auto;
+  margin-right: .5rem;
+  width: max-content;
+  z-index: 1;
+
+  .colourPicker {
+    width: max-content;
+    height: max-content;
+    border-radius: .1rem;
+    padding: .05rem;
+    border: .05rem solid dimgray;
+    position: absolute;
+    background-color: white;
+
+    .color {
+      display: block;
+      margin: .1rem;
+      width: .6rem;
+      height: 2rem;
+      border-style: solid;
+      cursor: pointer;
+      border-width: 0 1.25rem 0 0;
+      border-color: #e8e7e7;
+      -webkit-transition: border-width .5s ease;
+      -moz-transition: border-width .5s ease;
+      -ms-transition: border-width .5s ease;
+      -o-transition: border-width .5s ease;
+      transition: border-width .5s ease;
+
+      &:hover {
+        border-width: 0 0 0 1.25rem;
+        -webkit-transition: border-width .5s, width .5s;
+        -moz-transition: border-width .5s, width .5s;
+        -ms-transition: border-width .5s, width .5s;
+        -o-transition: border-width .5s, width .5s;
+        transition: border-width .5s, width .5s;
+      }
+    }
+
+    input[type=radio] {
+      &:checked {
+        ~ {
+          .color {
+            border-width: 0 0 0 1.25rem;
+          }
+        }
+      }
+
+      display: none;
+    }
+  }
+}

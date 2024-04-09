@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styles from './Overlay.module.css';
+import styles from './Overlay.module.scss';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';

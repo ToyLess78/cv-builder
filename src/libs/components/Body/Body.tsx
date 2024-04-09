@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styles from './Body.module.css';
+import styles from './Body.module.scss';
 
 interface IBodyProps {
     children: ReactNode

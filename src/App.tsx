@@ -5,15 +5,19 @@ import { Breeze } from './temeplates/Breeze';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectThemeColor } from '~/slices/themeSlice';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { setAlphaToRGBA } from '~/utils/color.utils';
 
 const App: React.FC = () => {
     const themeColor = useSelector((state: RootState) => selectThemeColor(state));
-
+useEffect(() => {
+    document.documentElement.style.setProperty('--primary', themeColor as string);
+    document.documentElement.style.setProperty('--primary-opacity', setAlphaToRGBA(themeColor as string, 0.1));
+}, [themeColor])
     // const templates = ['success', 'advance', 'headway', 'breeze', 'strong', 'precise', 'serene', 'modern', 'fortune', 'recency', 'verdure', 'master', 'primary', 'prime', 'grand', 'alpha', 'galaxy', 'goodly', 'gallant', 'winner', 'elegant', 'future']
+    // style={{'--primary': themeColor, '--primary-opacity': setAlphaToRGBA(themeColor as string, 0.1)} as React.CSSProperties}
     return (
-        <div style={{'--primary': themeColor, '--primary-opacity': setAlphaToRGBA(themeColor as string, 0.1)} as React.CSSProperties}
+        <
         >
             {/*<Buttons hoverColor='#1976D2'>Buttons 1</Buttons>*/}
             {/*<Buttons hoverColor='#1976D2'>Buttons 2</Buttons>*/}
@@ -37,7 +41,7 @@ const App: React.FC = () => {
                 data-tooltip-offset={0}
             />
                 <Breeze/>
-        </div>
+        </>
     )
 }
 

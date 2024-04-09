@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 import { BreezeTitle, EditeButton } from '~/components/components';
 import { Image } from '../Image/Image';
 import { useDispatch, useSelector } from 'react-redux';

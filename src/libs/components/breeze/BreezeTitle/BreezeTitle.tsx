@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styles from './BreezeTitle.module.css'
+import styles from './BreezeTitle.module.scss'
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectThemeColor } from '~/slices/themeSlice';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AdditionalList } from './AdditionalList';
 import { AutoComplete, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
-import styles from './Additional.module.css'
+import styles from './Additional.module.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectAside, setAdditional } from '~/slices/asideSlice';

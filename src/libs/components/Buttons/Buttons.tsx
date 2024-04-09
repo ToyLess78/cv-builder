@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Buttons.module.css';
+import styles from './Buttons.module.scss';
 import { FaRegEdit } from 'react-icons/fa';
 
 export const MainButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ children }) => {

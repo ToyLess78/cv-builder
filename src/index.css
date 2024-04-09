@@ -16,6 +16,14 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    --primary: rgba(25, 118, 210, 1);
+    --primary-alpha-50: rgba(25, 118, 210, .5);
+    --primary-opacity: rgba(25, 118, 210, .05);
+    --gray: #ccc;
+    --light-gray: rgba(217, 217, 217, 1);
+    --primary-text: #213547;
+    --secondary-text: rgba(93, 107, 121, 1);
 }
 
 body {
@@ -39,4 +47,3 @@ button:focus-visible {
 ul {
     list-style-type: none;
 }
-

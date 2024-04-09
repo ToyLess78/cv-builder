@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectInfo } from '~/slices/infoSlice';
