@@ -1,6 +1,6 @@
 import { Calendar } from 'primereact/calendar';
 import React, { useEffect, useRef, useState } from 'react';
-import { Nullable } from 'primereact/ts-helpers';
+import { FormEvent, Nullable } from 'primereact/ts-helpers';
 import styles from './MonthPicker.module.scss';
 import './RippleDemo.css';
 
@@ -32,11 +32,11 @@ export const MonthPicker = () => {
     const [isMonth, setIsMonth] = useState<Nullable<(Date | null)[] | Date>>(null);
 
     useEffect(() => {
-        dateWithPresent && setIsMonth(dateWithPresent)
-        datesWithRange && setIsMonth(datesWithRange)
-        console.log('isMonth', isMonth)
+        dateWithPresent && setIsMonth(dateWithPresent);
+        datesWithRange && setIsMonth(datesWithRange);
+        console.log('isMonth', isMonth);
 
-    }, [dateWithPresent, datesWithRange, isMonth])
+    }, [dateWithPresent, datesWithRange, isMonth]);
 
     const handleToggle = () => {
         setIsPresent(!isPresent);
@@ -55,59 +55,65 @@ export const MonthPicker = () => {
             </div>
         );
     };
+
     const monthParser = (date: Date) => String(date.getMonth() + 1).padStart(2, '0');
 
 
+    const handleChangeRangeDate = (e: FormEvent<(Date | null)[], React.SyntheticEvent<Element, Event>>) => {
+        setDatesWithRange(e.value);
+    };
+    const handleChangePresentDate = (e: FormEvent<Date, React.SyntheticEvent<Element, Event>>) => {
+        setDateWithPresent(e.value);
+    };
+
     return (
-        <div>
-            <div className="card">
-                <form className="p-fluid grid formgrid" onSubmit={() => console.log('submit')}>
-                    <PresentCheck/>
-                    { isPresent ?
-                        <Calendar
-                            inputId="monthpicker"
-                            value={ dateWithPresent }
-                            onChange={ (e) => {
-                                setDateWithPresent(e.value);
-                                console.log('inputRef', inputRefDateWithPresent.current?.value);
-                            } }
-                            view="month"
-                            dateFormat="mm/yy - Present"
-                            inputRef={ inputRefDateWithPresent }
-                            // touchUI
-                            placeholder="Start Date & Present"
-                            required
-                        /> :
-                        <Calendar
-                            panelClassName={ styles.panel }
-                            id="monthpicker"
-                            inputRef={ inputRefDatesWithRange }
-                            value={ datesWithRange } onChange={ (e) => {
-                            setDatesWithRange(e.value);
-                            console.log('datesWithRange', datesWithRange);
-                        } }
-                            view="month"
-                            dateFormat="mm/yy"
-                            selectionMode="range"
-                            readOnlyInput
-                            hideOnRangeSelection
-                            inputClassName={ 'input-class' }
-                            placeholder="Start & End Date"
-                            required
-                        />
-                    }
+        <div className={ styles.container }>
+            <PresentCheck/>
+            { isPresent ?
+                <Calendar
+                    onChange={handleChangePresentDate}
+                    selectionMode='single'
+                    value={dateWithPresent}
+                    inputRef={inputRefDateWithPresent}
+                    dateFormat='mm/yy - Present'
+                    placeholder='Start Date & Present'
+                    view="month"
+                    className={styles.calendar}
+                    panelClassName={styles.panel}
+                    inputClassName={styles.input}
+                    hideOnRangeSelection
+                    readOnlyInput
+                    required
+                /> :
+                <Calendar
+                    onChange={handleChangeRangeDate}
+                    selectionMode='range'
+                    value={datesWithRange}
+                    inputRef={inputRefDatesWithRange}
+                    dateFormat='mm/yy'
+                    placeholder='Start & End Date'
+                    view="month"
+                    className={styles.calendar}
+                    panelClassName={styles.panel}
+                    inputClassName={styles.input}
+                    hideOnRangeSelection
+                    readOnlyInput
+                    required
+                />
+            }
 
-                    <p>{ isPresent ? inputRefDateWithPresent.current?.value : inputRefDatesWithRange.current?.value }</p>
-                    <span>
+            <span className={ styles.border }></span>
+
+
+            <p>{ isPresent ? inputRefDateWithPresent.current?.value : inputRefDatesWithRange.current?.value }</p>
+            <span>
                         { isPresent && dateWithPresent && `${ monthParser(dateWithPresent) }/${ dateWithPresent.getFullYear() } - Present` }
-                        { !isPresent && datesWithRange && datesWithRange[0] !== null && datesWithRange[1] !== null &&
-                            `${ monthParser(datesWithRange[0]) }/${ datesWithRange[0].getFullYear() } - ${ monthParser(datesWithRange[1]) }/${ datesWithRange[1].getFullYear() }` }
+                { !isPresent && datesWithRange && datesWithRange[0] !== null && datesWithRange[1] !== null &&
+                    `${ monthParser(datesWithRange[0]) }/${ datesWithRange[0].getFullYear() } - ${ monthParser(datesWithRange[1]) }/${ datesWithRange[1].getFullYear() }` }
                     </span>
-                    <p>{isMonth && isMonth.toString()}</p>
-                    <button type='submit' >Submit</button>
+            <p>{ isMonth && isMonth.toString() }</p>
+            <button type="submit">Submit</button>
 
-                </form>
-            </div>
         </div>
     );
 };
