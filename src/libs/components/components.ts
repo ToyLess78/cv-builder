@@ -17,4 +17,4 @@ export { Overlay } from '~/components/Overlay/Overlay';
 export { BreezeTitle } from '~/components/breeze/BreezeTitle/BreezeTitle';
 export { BgInput, BorderInput, UnderlineInput, PrimaryInput } from './common/Inputs/Inputs';
 export { EditeButton, MainButton } from './Buttons/Buttons';
-export { MonthPicker } from './common/MonthPicker/MonthPicker';
+export { MonthYearPickerWithRange, MonthYearPickerSingle } from './common/MonthPicker/MonthYearPicker';
