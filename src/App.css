@@ -62,7 +62,8 @@
   .edite,
   .hide,
   .nav,
-  .palette {
+  .save,
+  .more {
     display: none;
   }
   .polygon {
@@ -198,15 +199,29 @@ a {
 .show .hide {
   top: .9rem;
 }
-.palette {
+.more {
   position: absolute;
-  left: 1rem;
-  top: 1rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: .2rem;
   color: #d9d9d9;
   cursor: pointer;
 }
-.palette:hover {
-  color: inherit;
+.save {
+  position: absolute;
+  color: #d9d9d9;
+  left: .7rem;
+  top: .5rem;
+  cursor: pointer;
+
+
+
+}
+.more:hover,
+.save:hover {
+  color: var(--primary);
 }
 svg {
   outline: none;

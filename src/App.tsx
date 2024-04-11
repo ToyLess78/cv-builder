@@ -1,12 +1,13 @@
-import './App.css'
+import './App.css';
 import { Tooltip } from 'react-tooltip';
-import { IoColorFillOutline } from 'react-icons/io5';
 import { Breeze } from './temeplates/Breeze';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectThemeColor } from '~/slices/themeSlice';
 import React, { useEffect } from 'react';
 import { setAlphaToRGBA } from '~/utils/color.utils';
+import { RiMoreLine } from 'react-icons/ri';
+import { HiOutlineSave } from 'react-icons/hi';
 
 const App: React.FC = () => {
     const themeColor = useSelector((state: RootState) => selectThemeColor(state));
@@ -24,23 +25,29 @@ useEffect(() => {
             {/*<Example/>*/}
 
             <Tooltip
-                id='tooltip'
-                variant='light'
-                style={{
+                id="tooltip"
+                variant="light"
+                style={ {
                     color: 'var(--secondary-text)',
                     backgroundColor: '#ffffff95',
                     zIndex: 100,
                     textTransform: 'capitalize'
-                }}
+                } }
             />
-            <IoColorFillOutline
-                size='1.5rem'
-                className='palette'
-                data-tooltip-id='tooltip'
-                data-tooltip-content='Edite Palette'
-                data-tooltip-offset={0}
+
+            <HiOutlineSave
+                size="1.2rem"
+                className="save"
+                onClick={() => window.print()}
             />
-                <Breeze/>
+            <RiMoreLine
+                size="2rem"
+                className="more"
+                data-tooltip-id="tooltip"
+                data-tooltip-content="More Templates"
+                data-tooltip-offset={ -15 }
+            />
+            <Breeze/>
         </>
     )
 }
