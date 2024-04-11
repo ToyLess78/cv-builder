@@ -13,9 +13,9 @@ interface InfoState {
 const initialState: InfoState = loadFromLocalStorage('info') || {
     firstname: 'Your',
     lastname: 'Name',
-    position: 'Trainee JavaScript Developer',
+    position: 'Web Developer',
     title: 'about',
-    introduction: '<p>As a burgeoning developer embarking on the initial phases of my journey, I am fervently driven to bolster my skills and expertise. I recognize *COMPANY* as a pivotal platform that aligns seamlessly with my aspirations in the field of development.</p><p>My unyielding conviction lies in the belief that the realm of coding presents an array of untapped opportunities for me to delve into and adeptly conquer.</p>'
+    introduction: '<p>Experienced web developer adept in all stages of advanced web development. Knowledgeable in user interface, testing, and debugging processes. Bringing forth expertise in design, installation, testing and maintenance of web systems. Equipped with a diverse and promising skill-set. Proficient in an assortment of technologies, including Java, ASP.NET, C#, IIS, Tomcat, and Microsoft SQL Server. Able to effectively self-manage during independent projects, as well as collaborate in a team setting.</p>'
 };
 
 const infoSlice = createSlice({
