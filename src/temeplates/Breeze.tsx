@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
-import {RootState} from '~/store/store';
-import {selectAside} from '~/slices/asideSlice';
-import {selectCertificates} from '~/slices/certificatesSlice';
-import {loadFromLocalStorage} from '~/utils/utils';
+import React, { lazy, Suspense, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '~/store/store';
+import { selectAside } from '~/slices/asideSlice';
+import { selectCertificates } from '~/slices/certificatesSlice';
+import { loadFromLocalStorage } from '~/utils/utils';
 import {
     Additional,
     Aside,
@@ -12,17 +12,18 @@ import {
     Certificates,
     ColourPicker,
     Contacts,
-    EditAdditional,
     Header,
-    Languages,
+    Languages, Loading,
     Main,
     Overlay,
     Skills
 } from '~/components/components';
-import {selectIsEdite} from '~/slices/editeSlice';
-import {EditeInfo} from '~/components/Header/EditeInfo';
-import {EditeAbout} from '~/components/Header/EditeAbout';
+import { selectIsEdite } from '~/slices/editeSlice';
 import { breezePalette } from '~/public/palettes';
+const  EditeAbout  = lazy(() => import('~/components/Header/EditeAbout'));
+const  EditeInfo  = lazy(() => import('~/components/Header/EditeInfo'));
+const  EditAdditional  = lazy(() => import('~/components/common/Additional/EditAdditional'));
+
 
 export const Breeze: React.FC = () => {
 
@@ -32,18 +33,21 @@ export const Breeze: React.FC = () => {
     const theme = 'breeze';
     const [color, setColor] = useState(loadFromLocalStorage(theme) || breezePalette[0]);
 
+
     const isEdite = useSelector((state: RootState) => selectIsEdite(state));
 
     return (
         <>
             <Overlay>
-                {isEdite === 'additional' && <EditAdditional />}
-                {isEdite === 'info' && <EditeInfo />}
-                {isEdite === 'about' && <EditeAbout />}
-
-            </Overlay>
+                <Suspense fallback={<Loading />}>
+                    {isEdite === 'additional' && <EditAdditional />}
+                    {isEdite === 'info' && <EditeInfo />}
+                    {isEdite === 'about' && <EditeAbout />}
+            </Suspense>
+        </Overlay>
             <ColourPicker {...{ theme, palette: breezePalette, color, setColor }} />
             <Header/>
+
 
             <Body>
                 <Main isOrder={false}/>
