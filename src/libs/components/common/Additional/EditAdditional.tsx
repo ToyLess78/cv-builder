@@ -72,3 +72,5 @@ export const EditAdditional: React.FC = () => {
         </>
     )
 }
+
+export default EditAdditional;

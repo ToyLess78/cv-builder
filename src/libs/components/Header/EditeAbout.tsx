@@ -10,7 +10,7 @@ import { About } from '~/components/Header/About';
 import { BreezeTitle } from '~/components/breeze/BreezeTitle/BreezeTitle';
 import { EditorCustom } from '~/components/Editor/EditorCustom';
 
-export const EditeAbout: React.FC = () => {
+const EditeAbout: React.FC = () => {
 
     const info = useSelector((state: RootState) => selectInfo(state));
     const [editeAbout, setEditeAbout] = useState(info);
@@ -45,3 +45,4 @@ export const EditeAbout: React.FC = () => {
         </div>
     )
 }
+export default EditeAbout;

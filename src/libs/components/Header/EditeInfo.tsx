@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './EditeHeader.module.scss';
 import { Info } from '~/components/Header/Info';
 import { UnderlineInput } from '~/components/common/Inputs/Inputs';
@@ -8,7 +8,7 @@ import { RootState } from '~/store/store';
 import { selectInfo, setInfo } from '~/slices/infoSlice';
 import { setIsEdite } from '~/slices/editeSlice';
 
-export const EditeInfo: React.FC = () => {
+const EditeInfo: React.FC = () => {
 
     const info = useSelector((state: RootState) => selectInfo(state));
     const [editeInfo, setEditeInfo] = useState(info);
@@ -19,6 +19,9 @@ export const EditeInfo: React.FC = () => {
         dispatch(setInfo(editeInfo));
         dispatch(setIsEdite(''));
     }
+    useEffect(() => {
+        document.title = `CV_${editeInfo.position}_${editeInfo.firstname} ${editeInfo.lastname}`;
+    }, [editeInfo])
 
     return (
         <div className={styles.info}>
@@ -46,3 +49,5 @@ export const EditeInfo: React.FC = () => {
         </div>
     )
 }
+
+export default EditeInfo;
