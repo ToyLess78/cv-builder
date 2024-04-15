@@ -65,9 +65,9 @@
   }
 }
 
-@-webkit-keyframes "scale-up-tl" {
+@-webkit-keyframes scaleUp {
   0% {
-    transform: scale(0.1);
+    transform: scale(0.3);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
   }
@@ -77,9 +77,9 @@
     transform-origin: 0 0;
   }
 }
-@keyframes "scale-up-tl" {
+@keyframes scaleUp {
   0% {
-    transform: scale(0.1);
+    transform: scale(0.3);
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
   }
@@ -92,11 +92,10 @@
 
 .panel {
   background-color: white;
-  border-inline: 1px solid var(--primary);
-  border-bottom: 1px solid var(--primary);
-  -webkit-animation: scale-up-tl 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  animation: scale-up-tl 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  margin-top: 1px;
+  border: 1px solid var(--primary);
+  -webkit-animation: scaleUp .4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scaleUp .4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  margin-top: -1px;
 
   span {
     padding: 0.5rem;
@@ -117,8 +116,6 @@
     padding: 0.5rem;
     margin: 0;
     border-bottom: none;
-    border-top-right-radius: 6px;
-    border-top-left-radius: 6px;
     color: var(--gray);
     background-color: var(--primary-opacity);
 

@@ -2,7 +2,6 @@ import { Calendar } from 'primereact/calendar';
 import React, { useEffect, useRef, useState } from 'react';
 import { FormEvent, Nullable } from 'primereact/ts-helpers';
 import styles from './MonthYearPicker.module.scss';
-import './RippleDemo.css';
 
 interface YearCheckProps {
     isYear: boolean;
@@ -24,22 +23,22 @@ const YearCheck: React.FC<YearCheckProps> = ({isYear, setIsYear}) => {
     );
 };
 export const MonthYearPickerWithRange = () => {
-    const today = new Date();
-    const month = today.getMonth();
-    const year = today.getFullYear();
-    const prevMonth = (month === 0) ? 11 : month - 1;
-    const prevYear = (prevMonth === 11) ? year - 1 : year;
-    const nextMonth = (month === 11) ? 0 : month + 1;
-    const nextYear = (nextMonth === 0) ? year + 1 : year;
-
-
-    const minDate = new Date();
-    minDate.setMonth(prevMonth);
-    minDate.setFullYear(prevYear);
-
-    const maxDate = new Date();
-    maxDate.setMonth(nextMonth);
-    maxDate.setFullYear(nextYear);
+    // const today = new Date();
+    // const month = today.getMonth();
+    // const year = today.getFullYear();
+    // const prevMonth = (month === 0) ? 11 : month - 1;
+    // const prevYear = (prevMonth === 11) ? year - 1 : year;
+    // const nextMonth = (month === 11) ? 0 : month + 1;
+    // const nextYear = (nextMonth === 0) ? year + 1 : year;
+    //
+    //
+    // const minDate = new Date();
+    // minDate.setMonth(prevMonth);
+    // minDate.setFullYear(prevYear);
+    //
+    // const maxDate = new Date();
+    // maxDate.setMonth(nextMonth);
+    // maxDate.setFullYear(nextYear);
 
     const [isPresent, setIsPresent] = useState(false);
     const [rangeDates, setRangeDates] = useState<Nullable<(Date | null)[]>>(null);
@@ -50,7 +49,6 @@ export const MonthYearPickerWithRange = () => {
     const [isMonth, setIsMonth] = useState<Nullable<(Date | null)[] | Date>>(null);
 
     const [isYear, setIsYear] = useState(false);
-
 
     useEffect(() => {
         singleDate && setIsMonth(singleDate);
@@ -77,9 +75,7 @@ export const MonthYearPickerWithRange = () => {
         );
     };
 
-
     const monthParser = (date: Date) => String(date.getMonth() + 1).padStart(2, '0');
-
 
     const handleChangeRangeDates = (e: FormEvent<(Date | null)[], React.SyntheticEvent<Element, Event>>) => {
         setRangeDates(e.value);
@@ -214,6 +210,5 @@ export const MonthYearPickerSingle: React.FC = () => {
 
             <span className={ styles.border }></span>
         </div>
-
     );
 };

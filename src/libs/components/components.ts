@@ -18,3 +18,4 @@ export { BreezeTitle } from '~/components/breeze/BreezeTitle/BreezeTitle';
 export { BgInput, BorderInput, UnderlineInput, PrimaryInput } from './common/Inputs/Inputs';
 export { EditeButton, MainButton } from './Buttons/Buttons';
 export { MonthYearPickerWithRange, MonthYearPickerSingle } from './common/MonthPicker/MonthYearPicker';
+export { Loading } from './Loading/Loading';
