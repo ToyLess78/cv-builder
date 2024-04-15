@@ -27,3 +27,19 @@ export const Overlay: React.FC<IOverlayProps> = ({ children}) => {
         </div>
     )
 }
+
+interface IMenuOverlayProps  extends IOverlayProps{
+    isOpen: boolean;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+export const MenuOverlay: React.FC<IMenuOverlayProps> = ({ children, isOpen, setIsOpen}) => {
+    return (
+        <div className={isOpen ? styles.open : styles.container}>
+            <div className={styles.overlay} onClick={() => {setIsOpen(!isOpen)}}>
+                <div className={styles.wrapper} onClick={(e) => e.stopPropagation()}>
+                        {children}
+                </div>
+            </div>
+        </div>
+    )
+}

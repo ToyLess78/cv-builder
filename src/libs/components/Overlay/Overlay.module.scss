@@ -13,6 +13,16 @@
     transition: width 0.5s ease, height 0.5s ease 0.5s;
   }
 
+  .wrapper {
+    color: inherit;
+    padding: 1rem;
+    background-color: transparent;
+
+    h5 {
+      opacity: 1;
+    }
+  }
+
   .content {
     color: inherit;
     transition: color 0.5s ease 0.5s;
@@ -39,6 +49,24 @@
   z-index: 100;
   display: flex;
   justify-content: center;
+}
+
+.wrapper {
+  color: transparent;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  transition: all 0.5s ease;
+
+  h5 {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
 }
 
 .content {
