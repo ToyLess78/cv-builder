@@ -1,18 +1,35 @@
-import React, { useState, ReactNode, CSSProperties } from 'react';
-import { TiChevronLeftOutline, TiChevronRightOutline } from 'react-icons/ti';
-import './Carousel.scss';
+import React, { CSSProperties, ReactNode, useState } from 'react';
+import styles from './Carousel.module.scss';
+import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
+import { loadFromLocalStorage, saveToLocalStorage } from '~/utils/local-storage.utills';
 
 const MAX_VISIBILITY = 3;
 
 interface CardProps {
     title: string;
-    content: string;
+    src?: string;
+    onClick: () => void
 }
+const  templatesArr = [
+    './templates/1.png',
+    './templates/2.png',
+    './templates/3.png',
+    './templates/4.png',
+    './templates/5.png',
+    './templates/6.png',
+    './templates/7.png',
+    './templates/8.png',
+    './templates/9.png',
+    './templates/10.png',
+    './templates/11.png',
+    './templates/12.png',
+    './templates/13.png',
+]
+const Card: React.FC<CardProps> = ({ title, src, onClick }) => (
+    <div className={styles.card} onClick={onClick}>
+        {src && <img src={src} alt='template'/>}
+        <h5>{title}</h5>
 
-export const Card: React.FC<CardProps> = ({ title, content }) => (
-    <div className='card'>
-        <h2>{title}</h2>
-        <p>{content}</p>
     </div>
 );
 
@@ -20,8 +37,8 @@ interface CarouselProps {
     children: ReactNode;
 }
 
-export const Carousel: React.FC<CarouselProps> = ({ children }) => {
-    const [active, setActive] = useState<number>(2);
+const Carousel: React.FC<CarouselProps> = ({ children }) => {
+    const [active, setActive] = useState<number>(loadFromLocalStorage('active') !== undefined ? loadFromLocalStorage('active') : 2);
     const count = React.Children.count(children);
 
     const getCardContainerStyles = (i: number): {
@@ -43,27 +60,50 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
     });
 
     return (
-        <div className='carousel'>
+        <div className={ styles.carousel }>
             {active > 0 && (
-                <button className='nav left' onClick={() => setActive((i) => i - 1)}>
-                    <TiChevronLeftOutline />
+                <button className={`${styles.nav} ${styles.left}`} onClick={() => setActive((i) => i - 1)}>
+                    <IoIosArrowDropleft />
                 </button>
             )}
+
             {React.Children.map(children, (child, i) => (
                 <div
-                    className='card-container'
+                    className={styles.container}
                     style={getCardContainerStyles(i) as CSSProperties}
                 >
                     {child}
                 </div>
             ))}
             {active < count - 1 && (
-                <button className='nav right' onClick={() => setActive((i) => i + 1)}>
-                    <TiChevronRightOutline />
+                <button className={`${styles.nav} ${styles.right}`} onClick={() => setActive((i) => i + 1)}>
+                    <IoIosArrowDropright />
                 </button>
             )}
         </div>
     );
 };
 
+interface MenuProps {
+    isOpen: boolean;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const Menu: React.FC<MenuProps> = ({isOpen, setIsOpen}) => {
+    return (
+                    <Carousel>
+                        {templatesArr.map((src, i) => (
+                            <Card
+                                onClick={() => {
+                                    setIsOpen(!isOpen);
+                                    saveToLocalStorage('active', i )
+                                }}
+                                key={i}
+                                title={'Card ' + (i + 1)}
+                                src={src}
+                            />
+                        ))}
+                    </Carousel>
+    )
+}
+export default Menu;
 
