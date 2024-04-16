@@ -64,7 +64,7 @@
 .edite {
   position: absolute;
   left: -1.2rem;
-  color: #d9d9d9;
+  color: var(--light-gray);
   cursor: pointer;
   top: .2rem;
 
@@ -75,13 +75,44 @@
 
 .hide {
   position: absolute;
-  left: -1.2rem;
-  color: #d9d9d9;
+  left: -1.3rem;
+  color: var(--light-gray);
   cursor: pointer;
   top: 1.5rem;
 
   &:hover {
     color: var(--secondary-text);
+  }
+}
+
+.show {
+  position: relative;
+  margin-top: -2rem;
+
+  .hide {
+    top: .9rem;
+  }
+}
+
+.box {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  right: -2rem;
+  top: 1rem;
+  color: var(--light-gray);
+
+  svg {
+    cursor: pointer;
+
+    &:first-child {
+      margin-left: .2rem;
+    }
+
+    &:hover {
+      color: var(--secondary-text);
+    }
   }
 }
 

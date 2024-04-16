@@ -121,18 +121,6 @@ a {
   min-height: 8.2rem;
 }
 
-.additional {
-  display: flex;
-  flex-direction: column;
-  min-height: 7.4rem;
-}
-
-.skills {
-  display: flex;
-  flex-direction: column;
-  min-height: 4.7rem;
-}
-
 .certificates a {
   display: flex;
   text-decoration: none;
@@ -189,11 +177,6 @@ a {
 .show {
   position: relative;
   margin-top: -2rem;
-}
-.empty {
-  position: relative;
-  margin-top: -2rem;
-  margin-bottom: 1rem;
 }
 
 .show .hide {
