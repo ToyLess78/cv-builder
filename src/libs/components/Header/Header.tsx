@@ -20,12 +20,14 @@ export const Header: React.FC = () => {
                 <Info>
                     <EditeButton
                         onClick={() => dispatch(setIsEdite('info'))}
+                        title='name & job title'
                     />
                 </Info>
 
                 <About>
                     <EditeButton
                         onClick={() => dispatch(setIsEdite('about'))}
+                        title={info.title}
                     />
                     <BreezeTitle text={info.title}/>
                 </About>

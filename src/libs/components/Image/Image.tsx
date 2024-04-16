@@ -8,6 +8,7 @@ import { selectInfo } from '~/slices/infoSlice';
 import { selectThemeColor } from '~/slices/themeSlice';
 import ImageUploading from '~/components/Image/ImageUploading';
 import { ImageType } from '~/types/image-uploading.types';
+import classes from './Image.module.scss';
 
 interface IImageProps {
     styles: string;
@@ -33,8 +34,8 @@ export const Image: React.FC<IImageProps> = ({ styles }) => {
                    onImageUpdate,
 
                }) => (
-                <section className={ styles }>
-                    <div className='polygon' style={ { background: themeColor, opacity: Number(!opacity) } }>
+                <section className={styles}>
+                    <div className={classes.polygon} style={ { background: themeColor, opacity: Number(!opacity) } }>
                         <h2>{ info.firstname.trim().charAt(0) }</h2>
                         <h2>{ info.lastname.trim().charAt(0) }</h2>
                     </div>
