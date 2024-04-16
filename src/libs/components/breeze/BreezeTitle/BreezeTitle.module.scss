@@ -10,8 +10,15 @@
 
   &:after {
     content: "";
-    flex: 1 1;
+    flex-grow: 1;
     border-left: 2px solid var(--primary);
     margin: .5rem auto 0 auto;
+  }
+}
+
+@media print {
+  .title {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 }
