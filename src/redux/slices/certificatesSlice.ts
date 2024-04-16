@@ -2,17 +2,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage, saveToLocalStorage } from '~/utils/utils';
 
-interface Certificate {
+interface ICertificate {
     id: string;
     title: string;
     issue: string;
     link: string;
 }
 
-interface CertificatesState {
+export interface ICertificatesState {
     isCertificates: boolean;
     title: string;
-    data: Certificate[];
+    data: ICertificate[];
 }
 
 const defaultCertificates = {
@@ -45,19 +45,23 @@ const defaultCertificates = {
         }
     ]
 };
-const initialState: CertificatesState = loadFromLocalStorage('certificates') || defaultCertificates;
+const initialState: ICertificatesState = loadFromLocalStorage('certificates') || defaultCertificates;
 
 const certificatesSlice = createSlice({
     name: 'certificates',
     initialState,
     reducers: {
-        setCertificates(state, action: PayloadAction<Partial<CertificatesState>>) {
-            const newState = {
-                ...state,
-                ...action.payload
-            };
-            saveToLocalStorage('certificates', newState);
-            return newState;
+        // setCertificates(state, action: PayloadAction<Partial<CertificatesState>>) {
+        //     const newState = {
+        //         ...state,
+        //         ...action.payload
+        //     };
+        //     saveToLocalStorage('certificates', newState);
+        //     return newState;
+        // },
+        setCertificates(state, action: PayloadAction<ICertificate[]>) {
+            state.data = action.payload;
+            saveToLocalStorage('certificates', state);
         },
         setIsCertificates(state, action: PayloadAction<boolean>) {
             state.isCertificates = action.payload;
