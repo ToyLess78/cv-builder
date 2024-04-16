@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import infoReducer from '~/slices/infoSlice';
-import asideReducer from '~/slices/asideSlice';
+import asideReducer from '~/slices/skillsSlice';
 import languagesReducer from '~/slices/languagesSlice';
 import certificatesReducer from '~/slices/certificatesSlice';
 import contactReducer from '~/slices/contactSlice';
@@ -10,7 +10,7 @@ import editeReducer from '~/slices/editeSlice';
 export const store = configureStore({
     reducer: {
         info: infoReducer,
-        aside: asideReducer,
+        skills: asideReducer,
         languages: languagesReducer,
         certificates: certificatesReducer,
         contact: contactReducer,

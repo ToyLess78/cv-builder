@@ -69,5 +69,7 @@ export const skills = [
     'AWS RDS',
     'AWS DynamoDB',
     'AWS S3',
-    'AWS Lambda'
+    'AWS Lambda',
+    'Docker',
+    'Docker Compose',
 ];

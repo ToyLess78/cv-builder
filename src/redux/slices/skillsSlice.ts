@@ -7,12 +7,12 @@ export interface IAdditionalState {
     title: string;
     data: string[];
 }
-export interface AsideState {
-    skills: {
-        title: string;
-        data: string[];
-
-    };
+export interface ISkillsState {
+    title: string;
+    data: string[];
+}
+export interface IAsideState {
+    skills: ISkillsState;
     additional: IAdditionalState;
 }
 
@@ -45,40 +45,40 @@ const defaultAdditionalState = {
     ]
 }
 
-const initialState: AsideState = loadFromLocalStorage('aside') ||  {
+const initialState: IAsideState = loadFromLocalStorage('skills') ||  {
     skills: defaultSkillsState,
     additional: defaultAdditionalState
 };
 
-const asideSlice = createSlice({
-    name: 'aside',
+const skillsSlice = createSlice({
+    name: 'skills',
     initialState,
     reducers: {
         setIsAdditional(state, action: PayloadAction<boolean>) {
             state.additional.isAdditional = action.payload;
-            saveToLocalStorage('aside', state);
+            saveToLocalStorage('skills', state);
         },
-        setSkills(state, action: PayloadAction<string[]>) {
-            state.skills.data = action.payload;
-            saveToLocalStorage('aside', state);
+        setSkills(state, action: PayloadAction<Partial<IAsideState['skills']>>) {
+            state.skills = { ...state.skills, ...action.payload };
+            saveToLocalStorage('skills', state);
         },
-        setAdditional(state, action: PayloadAction<Partial<AsideState['additional']>>) {
+        setAdditional(state, action: PayloadAction<Partial<IAsideState['additional']>>) {
             state.additional = { ...state.additional, ...action.payload };
-            saveToLocalStorage('aside', state);
+            saveToLocalStorage('skills', state);
         },
         setDefaultSkills(state) {
             state.skills = defaultSkillsState;
-            saveToLocalStorage('aside', state);
+            saveToLocalStorage('skills', state);
         },
         setDefaultAdditional(state) {
             state.additional = defaultAdditionalState;
-            saveToLocalStorage('aside', state);
+            saveToLocalStorage('skills', state);
         }
     }
 });
 
-export const { setAdditional, setIsAdditional, setSkills, setDefaultSkills, setDefaultAdditional } = asideSlice.actions;
+export const { setAdditional, setIsAdditional, setSkills, setDefaultSkills, setDefaultAdditional } = skillsSlice.actions;
 
-export const selectAside = (state: RootState) => state.aside;
+export const selectSkills = (state: RootState) => state.skills;
 
-export default asideSlice.reducer;
+export default skillsSlice.reducer;
