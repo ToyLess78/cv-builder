@@ -15,7 +15,7 @@ export { Main } from '~/components/Main/Main';
 export { Overlay } from '~/components/Overlay/Overlay';
 export { BreezeTitle } from '~/components/breeze/BreezeTitle/BreezeTitle';
 export { BgInput, BorderInput, UnderlineInput, PrimaryInput } from './common/Inputs/Inputs';
-export { EditeButton, MainButton, ReturnButton, HideButton, ShowButton } from './common/Buttons/Buttons';
+export { EditeButton, MainButton, ReturnButton, HideButton, ShowButton, AddButton } from './common/Buttons/Buttons';
 export { MonthYearPickerWithRange, MonthYearPickerSingle } from './common/MonthPicker/MonthYearPicker';
 export { Loading } from './Loading/Loading';
 export { EditeWrapper } from './common/EditeWrapper/EditeWrapper';
