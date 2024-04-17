@@ -69,9 +69,10 @@ export const ReturnButton: React.FC<IEditeButtonProps> = ({onClick, title}) => {
 interface IEditeButtonsBoxProps {
     onRemove?: () => void;
     onEdite?: () => void;
+    style?: React.CSSProperties;
 }
 
-export const EditeButtonsBox: React.FC<IEditeButtonsBoxProps> = ({onRemove, onEdite}) => {
+export const EditeButtonsBox: React.FC<IEditeButtonsBoxProps> = ({onRemove, onEdite, style}) => {
     return (
         <div className={styles.box}>
             <FaRegEdit
@@ -79,6 +80,7 @@ export const EditeButtonsBox: React.FC<IEditeButtonsBoxProps> = ({onRemove, onEd
                 data-tooltip-content='Edite'
                 data-tooltip-offset={ 0 }
                 onClick={onEdite}
+                style={style}
             />
             <IoMdRemoveCircleOutline
                 data-tooltip-content='Remove'
@@ -88,5 +90,22 @@ export const EditeButtonsBox: React.FC<IEditeButtonsBoxProps> = ({onRemove, onEd
                 onClick={onRemove}
             />
         </div>
+    )
+}
+
+interface IAddButtonProps {
+    text?: string;
+    onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>)  => void;
+    style?: React.CSSProperties;
+}
+
+export const AddButton: React.FC<IAddButtonProps> = ({text, onClick, style}) => {
+    return (
+        <div className={styles.add}>
+            <button className={styles.btn} onClick={onClick} style={style}>
+                + Add {text}
+            </button>
+        </div>
+
     )
 }
