@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage, saveToLocalStorage } from '~/utils/utils';
 
-interface ICertificate {
+export interface ICertificate {
     id: string;
     title: string;
     issue: string;
@@ -51,15 +51,8 @@ const certificatesSlice = createSlice({
     name: 'certificates',
     initialState,
     reducers: {
-        // setCertificates(state, action: PayloadAction<Partial<CertificatesState>>) {
-        //     const newState = {
-        //         ...state,
-        //         ...action.payload
-        //     };
-        //     saveToLocalStorage('certificates', newState);
-        //     return newState;
-        // },
-        setCertificates(state, action: PayloadAction<ICertificate[]>) {
+
+        setCertificatesData(state, action: PayloadAction<ICertificate[]>) {
             state.data = action.payload;
             saveToLocalStorage('certificates', state);
         },
@@ -74,7 +67,7 @@ const certificatesSlice = createSlice({
     }
 });
 
-export const { setCertificates, setIsCertificates, setDefaultCertificates } = certificatesSlice.actions;
+export const { setCertificatesData, setIsCertificates, setDefaultCertificates } = certificatesSlice.actions;
 
 export const selectCertificates = (state: RootState) => state.certificates;
 
