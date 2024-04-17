@@ -2,19 +2,21 @@ import React, { ReactNode } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { ICertificatesState, selectCertificates, setIsCertificates } from '~/slices/certificatesSlice';
+import { ICertificate, selectCertificates, setIsCertificates } from '~/slices/certificatesSlice';
 import { AsideItem } from '../Aside/AsideItem';
 import { EditeButton, EditeButtonsBox, HideButton, ShowButton } from '~/components/common/Buttons/Buttons';
 import styles from './Certificates.module.scss';
+import { setIsEdite } from '~/slices/editeSlice';
 
 interface ICertificatesProps {
     children: ReactNode;
-    data?: ICertificatesState | null;
-    onRemove?: () => void;
-    onEdite?: () => void;
+    data?: ICertificate[] | null;
+    onRemove?: (id: string) => void;
+    onEdite?: (id: string) => void;
+    edited?: ICertificate;
 }
 
-export const Certificates: React.FC<ICertificatesProps> = ({children, data = null, onRemove, onEdite}) => {
+export const Certificates: React.FC<ICertificatesProps> = ({children, data = null,  onRemove, onEdite, edited}) => {
     const certificates = useSelector((state: RootState) => selectCertificates(state));
     const {isCertificates} = certificates;
     const dispatch = useDispatch();
@@ -35,6 +37,7 @@ export const Certificates: React.FC<ICertificatesProps> = ({children, data = nul
                 <AsideItem>
                     <EditeButton
                         title={ certificates.title }
+                        onClick={ () => dispatch(setIsEdite('certificates')) }
                     />
                     <HideButton
                         onClick={ handleSetIsCertificates }
@@ -57,9 +60,13 @@ export const Certificates: React.FC<ICertificatesProps> = ({children, data = nul
 
                     { children }
                     <ul className={ styles.certificates }>
-                        { data.data?.map(c => {
+                        { data?.map(c => {
                             return <li key={ c.id }>
-                                <EditeButtonsBox onRemove={onRemove} onEdite={onEdite}/>
+                                <EditeButtonsBox
+                                    onRemove={onRemove ? () => onRemove(c.id) : undefined}
+                                    onEdite={onEdite ? () => onEdite(c.id) : undefined}
+                                    style={{visibility: c.id === edited?.id ? 'hidden' : 'visible'}}
+                                />
                                 <p>{ c.title }</p>
                                 <a href={ c.link }><span>{ c.issue }</span><FiExternalLink/></a>
                             </li>;
