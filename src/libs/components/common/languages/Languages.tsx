@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectLanguages, setIsLanguages } from '~/slices/languagesSlice';
-import { AsideItem } from '../Aside/AsideItem';
+import { AsideItem } from '../../Aside/AsideItem';
 import { FaRegEdit } from 'react-icons/fa';
 import { BiHide } from 'react-icons/bi';
 import nextId from 'react-id-generator';
