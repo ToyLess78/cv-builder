@@ -68,14 +68,14 @@ const EditeCertificates: React.FC = () => {
                     onEdite={ editeCertificate }
                     edited={ edited }
                 >
-                    <BreezeTitle text={ stateCertificates.title }/>
+                    <BreezeTitle text={stateCertificates.title }/>
                 </Certificates>
             }
             edite={
                 <>
                     <AddButton
                         onClick={ addCertificate }
-                        text={ stateCertificates.title }
+                        text={ 'New ' + stateCertificates.title }
                         style={{visibility: edited.title.trim() && edited.issue.trim() && edited.link.trim() ? 'visible' : 'hidden'}}
                     />
                     <UnderlineInput
