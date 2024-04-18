@@ -5,7 +5,7 @@ export { Certificates } from '~/components/certificates/Certificates';
 export { Additional } from './common/additional/Additional';
 export { AdditionalList } from './common/additional/AdditionalList';
 export { ColourPicker } from './common/ColourPicker/ColourPicker';
-export { Languages } from './common/Languages';
+export { Languages } from './common/languages/Languages';
 export { Skills } from './common/skills/Skills';
 export { Contacts } from '~/components/Contacts/Contacts';
 export { EditorCustom } from '~/components/Editor/EditorCustom';
