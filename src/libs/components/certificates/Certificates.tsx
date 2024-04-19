@@ -65,10 +65,11 @@ export const Certificates: React.FC<ICertificatesProps> = ({children, data = nul
                                 <EditeButtonsBox
                                     onRemove={onRemove ? () => onRemove(c.id) : undefined}
                                     onEdite={onEdite ? () => onEdite(c.id) : undefined}
-                                    style={{visibility: c.id === edited?.id ? 'hidden' : 'visible'}}
+                                    editeStyle={{visibility: c.id === edited?.id ? 'hidden' : 'visible'}}
+                                    removeStyle={{visibility: c.issue.length &&  c.title.length ? 'visible' : 'hidden'}}
                                 />
                                 <p>{ c.title }</p>
-                                <a href={ c.link }><span>{ c.issue }</span><FiExternalLink/></a>
+                                {c.issue.length ? <a href={ c.link }><span>{ c.issue }</span><FiExternalLink/></a> : ''}
                             </li>;
                         }) }
                     </ul>

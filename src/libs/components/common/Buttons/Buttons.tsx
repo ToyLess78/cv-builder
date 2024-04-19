@@ -69,10 +69,11 @@ export const ReturnButton: React.FC<IEditeButtonProps> = ({onClick, title}) => {
 interface IEditeButtonsBoxProps {
     onRemove?: () => void;
     onEdite?: () => void;
-    style?: React.CSSProperties;
+    editeStyle?: React.CSSProperties;
+    removeStyle?: React.CSSProperties;
 }
 
-export const EditeButtonsBox: React.FC<IEditeButtonsBoxProps> = ({onRemove, onEdite, style}) => {
+export const EditeButtonsBox: React.FC<IEditeButtonsBoxProps> = ({onRemove, onEdite, removeStyle, editeStyle}) => {
     return (
         <div className={styles.box}>
             <FaRegEdit
@@ -80,7 +81,7 @@ export const EditeButtonsBox: React.FC<IEditeButtonsBoxProps> = ({onRemove, onEd
                 data-tooltip-content='Edite'
                 data-tooltip-offset={ 0 }
                 onClick={onEdite}
-                style={style}
+                style={editeStyle}
             />
             <IoMdRemoveCircleOutline
                 data-tooltip-content='Remove'
@@ -88,6 +89,7 @@ export const EditeButtonsBox: React.FC<IEditeButtonsBoxProps> = ({onRemove, onEd
                 size='1.2rem'
                 data-tooltip-offset={ 20 }
                 onClick={onRemove}
+                style={removeStyle}
             />
         </div>
     )
