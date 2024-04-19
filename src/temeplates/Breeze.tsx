@@ -19,13 +19,13 @@ import {
     Overlay,
     Skills
 } from '~/components/components';
-import { selectIsEdite } from '~/slices/editeSlice';
+import { selectIsEdit } from '~/slices/editSlice';
 import { breezePalette } from '~/public/palettes';
 
-const EditeCertificates = lazy(() => import('~/components/certificates/EditeCertificates'));
-const EditeAbout = lazy(() => import('~/components/Header/EditeAbout'));
-const EditeInfo = lazy(() => import('~/components/Header/EditeInfo'));
-const EditeSkills = lazy(() => import('~/components/common/skills/EditeSkills'));
+const EditCertificates = lazy(() => import('~/components/certificates/EditCertificates'));
+const EditAbout = lazy(() => import('~/components/Header/EditAbout'));
+const EditInfo = lazy(() => import('~/components/Header/EditInfo'));
+const EditSkills = lazy(() => import('~/components/common/skills/EditSkills'));
 
 
 export const Breeze: React.FC = () => {
@@ -37,17 +37,17 @@ export const Breeze: React.FC = () => {
     const [color, setColor] = useState(loadFromLocalStorage(theme) || breezePalette[0]);
 
 
-    const isEdite = useSelector((state: RootState) => selectIsEdite(state));
+    const isEdit = useSelector((state: RootState) => selectIsEdit(state));
 
     return (
         <>
             <Overlay>
                 <Suspense fallback={ <Loading/> }>
-                    { isEdite === 'additional' && <EditeSkills isAdditional/> }
-                    { isEdite === 'info' && <EditeInfo/> }
-                    { isEdite === 'about' && <EditeAbout/> }
-                    { isEdite === 'skills' && <EditeSkills/> }
-                    { isEdite === 'certificates' && <EditeCertificates />}
+                    { isEdit === 'additional' && <EditSkills isAdditional/> }
+                    { isEdit === 'info' && <EditInfo/> }
+                    { isEdit === 'about' && <EditAbout/> }
+                    { isEdit === 'skills' && <EditSkills/> }
+                    { isEdit === 'certificates' && <EditCertificates/> }
                 </Suspense>
             </Overlay>
             <ColourPicker { ...{theme, palette: breezePalette, color, setColor} } />

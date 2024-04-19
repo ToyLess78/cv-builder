@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import styles from './EditeHeader.module.scss';
+import styles from './EditHeader.module.scss';
 import { Info } from '~/components/Header/Info';
 import { UnderlineInput } from '~/components/common/Inputs/Inputs';
 import { MainButton } from '~/components/common/Buttons/Buttons';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectInfo, setInfo } from '~/slices/infoSlice';
-import { setIsEdite } from '~/slices/editeSlice';
+import { setIsEdit } from '~/slices/editSlice';
 
-const EditeInfo: React.FC = () => {
+const EditInfo: React.FC = () => {
 
     const info = useSelector((state: RootState) => selectInfo(state));
-    const [editeInfo, setEditeInfo] = useState(info);
+    const [editeInfo, setEditInfo] = useState(info);
     const dispatch = useDispatch();
 
     const handlerOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(setInfo(editeInfo));
-        dispatch(setIsEdite(''));
+        dispatch(setIsEdit(''));
     }
     useEffect(() => {
         document.title = `CV_${editeInfo.position}_${editeInfo.firstname} ${editeInfo.lastname}`;
@@ -31,18 +31,18 @@ const EditeInfo: React.FC = () => {
                     <UnderlineInput
                         label='first name'
                         value={editeInfo.firstname}
-                        onChange={(e) => setEditeInfo({ ...editeInfo, firstname: e.currentTarget.value })}
+                        onChange={(e) => setEditInfo({ ...editeInfo, firstname: e.currentTarget.value })}
                     />
                     <UnderlineInput
                         label='last name'
                         value={editeInfo.lastname}
-                        onChange={(e) => setEditeInfo({ ...editeInfo, lastname: e.currentTarget.value })}
+                        onChange={(e) => setEditInfo({ ...editeInfo, lastname: e.currentTarget.value })}
                     />
                 </div>
                 <UnderlineInput
                     label='job title'
                     value={editeInfo.position}
-                    onChange={(e) => setEditeInfo({ ...editeInfo, position: e.currentTarget.value })}
+                    onChange={(e) => setEditInfo({ ...editeInfo, position: e.currentTarget.value })}
                 />
                 <MainButton type='submit'>Save Changes</MainButton>
             </form>
@@ -50,4 +50,4 @@ const EditeInfo: React.FC = () => {
     )
 }
 
-export default EditeInfo;
+export default EditInfo;

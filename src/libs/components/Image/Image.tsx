@@ -42,7 +42,7 @@ export const Image: React.FC<IImageProps> = ({ styles }) => {
                     { opacity &&
                         <>
                             <LuUpload
-                                className='edite'
+                                className='edit'
                                 data-tooltip-id='tooltip'
                                 data-tooltip-content='Upload Photo'
                                 data-tooltip-offset={ 0 }

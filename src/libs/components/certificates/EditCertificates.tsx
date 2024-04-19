@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { AddButton, BreezeTitle, Certificates, EditeWrapper, UnderlineInput } from '~/components';
+import { AddButton, BreezeTitle, Certificates, EditWrapper, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectCertificates, setCertificatesData } from '~/slices/certificatesSlice';
 import nextId from 'react-id-generator';
-import { setIsEdite } from '~/slices/editeSlice';
+import { setIsEdit } from '~/slices/editSlice';
 
-const EditeCertificates: React.FC = () => {
+const EditCertificates: React.FC = () => {
 
     const stateCertificates = useSelector((state: RootState) => selectCertificates(state));
 
@@ -56,22 +56,22 @@ const EditeCertificates: React.FC = () => {
     const handlerOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(setCertificatesData(certificates));
-        dispatch(setIsEdite(''));
+        dispatch(setIsEdit(''));
     };
 
     return (
-        <EditeWrapper
+        <EditWrapper
             preview={
                 < Certificates
                     data={ certificates }
                     onRemove={ removeCertificate }
-                    onEdite={ editeCertificate }
+                    onEdit={ editeCertificate }
                     edited={ edited }
                 >
                     <BreezeTitle text={stateCertificates.title }/>
                 </Certificates>
             }
-            edite={
+            edit={
                 <>
                     <AddButton
                         onClick={ addCertificate }
@@ -100,4 +100,4 @@ const EditeCertificates: React.FC = () => {
     );
 };
 
-export default EditeCertificates;
+export default EditCertificates;

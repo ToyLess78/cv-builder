@@ -12,24 +12,24 @@ export const MainButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>>
     );
 };
 
-interface IEditeButtonProps {
+interface IEditButtonProps {
     onClick?: React.MouseEventHandler<SVGElement>;
     title: string;
 }
 
-export const EditeButton: React.FC<IEditeButtonProps> = ({onClick, title}) => {
+export const EditButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
     return (
         <FaRegEdit
-            className={ styles.edite }
+            className={ styles.edit }
             onClick={ onClick }
             data-tooltip-id="tooltip"
-            data-tooltip-content={ `Edite ${ title }` }
+            data-tooltip-content={ `Edit ${ title }` }
             data-tooltip-offset={ 0 }
         />
     );
 };
 
-export const HideButton: React.FC<IEditeButtonProps> = ({onClick, title}) => {
+export const HideButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
     return (
         <BiHide
             size='1.3rem'
@@ -42,7 +42,7 @@ export const HideButton: React.FC<IEditeButtonProps> = ({onClick, title}) => {
     );
 };
 
-export const ShowButton: React.FC<IEditeButtonProps> = ({onClick, title}) => {
+export const ShowButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
     return (
         <div className={styles.show}>
             <MdOutlineVisibility
@@ -57,30 +57,30 @@ export const ShowButton: React.FC<IEditeButtonProps> = ({onClick, title}) => {
     );
 };
 
-export const ReturnButton: React.FC<IEditeButtonProps> = ({onClick, title}) => {
+export const ReturnButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
     return (
         <BsArrowReturnRight
             data-tooltip-id="tooltip"
             data-tooltip-content={ `Return default data ${ title }` }
-            data-tooltip-offset={ 0 } className={ styles.edite } onClick={ onClick }/>
+            data-tooltip-offset={ 0 } className={ styles.edit } onClick={ onClick }/>
     );
 };
 
-interface IEditeButtonsBoxProps {
+interface IEditButtonsBoxProps {
     onRemove?: () => void;
-    onEdite?: () => void;
+    onEdit?: () => void;
     editeStyle?: React.CSSProperties;
     removeStyle?: React.CSSProperties;
 }
 
-export const EditeButtonsBox: React.FC<IEditeButtonsBoxProps> = ({onRemove, onEdite, removeStyle, editeStyle}) => {
+export const EditButtonsBox: React.FC<IEditButtonsBoxProps> = ({onRemove, onEdit, removeStyle, editeStyle}) => {
     return (
         <div className={styles.box}>
             <FaRegEdit
                 data-tooltip-id='tooltip'
-                data-tooltip-content='Edite'
+                data-tooltip-content='Edit'
                 data-tooltip-offset={ 0 }
-                onClick={onEdite}
+                onClick={onEdit}
                 style={editeStyle}
             />
             <IoMdRemoveCircleOutline

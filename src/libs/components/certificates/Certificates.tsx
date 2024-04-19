@@ -4,19 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { ICertificate, selectCertificates, setIsCertificates } from '~/slices/certificatesSlice';
 import { AsideItem } from '../Aside/AsideItem';
-import { EditeButton, EditeButtonsBox, HideButton, ShowButton } from '~/components/common/Buttons/Buttons';
+import { EditButton, EditButtonsBox, HideButton, ShowButton } from '~/components/common/Buttons/Buttons';
 import styles from './Certificates.module.scss';
-import { setIsEdite } from '~/slices/editeSlice';
+import { setIsEdit } from '~/slices/editSlice';
 
 interface ICertificatesProps {
     children: ReactNode;
     data?: ICertificate[] | null;
     onRemove?: (id: string) => void;
-    onEdite?: (id: string) => void;
+    onEdit?: (id: string) => void;
     edited?: ICertificate;
 }
 
-export const Certificates: React.FC<ICertificatesProps> = ({children, data = null,  onRemove, onEdite, edited}) => {
+export const Certificates: React.FC<ICertificatesProps> = ({children, data = null,  onRemove, onEdit, edited}) => {
     const certificates = useSelector((state: RootState) => selectCertificates(state));
     const {isCertificates} = certificates;
     const dispatch = useDispatch();
@@ -35,9 +35,9 @@ export const Certificates: React.FC<ICertificatesProps> = ({children, data = nul
 
             { isCertificates && !data &&
                 <AsideItem>
-                    <EditeButton
+                    <EditButton
                         title={ certificates.title }
-                        onClick={ () => dispatch(setIsEdite('certificates')) }
+                        onClick={ () => dispatch(setIsEdit('certificates')) }
                     />
                     <HideButton
                         onClick={ handleSetIsCertificates }
@@ -62,9 +62,9 @@ export const Certificates: React.FC<ICertificatesProps> = ({children, data = nul
                     <ul className={ styles.certificates }>
                         { data?.map(c => {
                             return <li key={ c.id }>
-                                <EditeButtonsBox
+                                <EditButtonsBox
                                     onRemove={onRemove ? () => onRemove(c.id) : undefined}
-                                    onEdite={onEdite ? () => onEdite(c.id) : undefined}
+                                    onEdit={onEdit ? () => onEdit(c.id) : undefined}
                                     editeStyle={{visibility: c.id === edited?.id ? 'hidden' : 'visible'}}
                                     removeStyle={{visibility: c.issue.length &&  c.title.length ? 'visible' : 'hidden'}}
                                 />

@@ -61,7 +61,7 @@
   }
 }
 
-.edite {
+.edit {
   position: absolute;
   left: -1.2rem;
   color: var(--light-gray);
@@ -172,7 +172,7 @@
 }
 
 @media print {
-  .edite {
+  .edit {
     display: none;
   }
   .hide {

@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './Header.module.scss';
-import { BreezeTitle, EditeButton } from '~/components/components';
+import { BreezeTitle, EditButton } from '~/components/components';
 import { Image } from '../Image/Image';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectInfo } from '~/slices/infoSlice';
 import { Info } from '~/components/Header/Info';
 import { About } from '~/components/Header/About';
-import { setIsEdite } from '~/slices/editeSlice';
+import { setIsEdit } from '~/slices/editSlice';
 
 export const Header: React.FC = () => {
 
@@ -18,15 +18,15 @@ export const Header: React.FC = () => {
         <header className={styles.header}>
             <div className={styles.container}>
                 <Info>
-                    <EditeButton
-                        onClick={() => dispatch(setIsEdite('info'))}
+                    <EditButton
+                        onClick={() => dispatch(setIsEdit('info'))}
                         title='name & job title'
                     />
                 </Info>
 
                 <About>
-                    <EditeButton
-                        onClick={() => dispatch(setIsEdite('about'))}
+                    <EditButton
+                        onClick={() => dispatch(setIsEdit('about'))}
                         title={info.title}
                     />
                     <BreezeTitle text={info.title}/>

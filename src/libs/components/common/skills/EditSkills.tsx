@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { AutoComplete, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 import { selectSkills, setAdditional, setSkills } from '~/slices/skillsSlice';
 import styles from './Skills.module.scss';
-import { AsideItem, BreezeTitle, EditeWrapper, Skills, UnderlineInput } from '~/components';
+import { AsideItem, BreezeTitle, EditWrapper, Skills, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { skills } from '~/public/skills';
-import { setIsEdite } from '~/slices/editeSlice';
+import { setIsEdit } from '~/slices/editSlice';
 
-interface IEditeSkillsAutoCompleteProps {
+interface IEditSkillsAutoCompleteProps {
     isAdditional?: boolean;
 }
 
-const EditeSkills: React.FC<IEditeSkillsAutoCompleteProps> =
+const EditSkills: React.FC<IEditSkillsAutoCompleteProps> =
     ({isAdditional = false}) => {
 
         const dispatch = useDispatch();
@@ -46,11 +46,11 @@ const EditeSkills: React.FC<IEditeSkillsAutoCompleteProps> =
             e.preventDefault();
             setIsSkills({...isSkills, data: selectedSkills});
             isAdditional ? dispatch(setAdditional(isSkills)) : dispatch(setSkills(isSkills));
-            dispatch(setIsEdite(''));
+            dispatch(setIsEdit(''));
         };
 
         return (
-            <EditeWrapper
+            <EditWrapper
                 preview={
                     <AsideItem>
                         <div className={ styles.box }>
@@ -61,7 +61,7 @@ const EditeSkills: React.FC<IEditeSkillsAutoCompleteProps> =
                             />
                         </div>
                     </AsideItem> }
-                edite={
+                edit={
                     <>
                         <div className={ styles.container }>
                             <UnderlineInput
@@ -88,4 +88,4 @@ const EditeSkills: React.FC<IEditeSkillsAutoCompleteProps> =
         );
     };
 
-export default EditeSkills;
+export default EditSkills;

@@ -25,9 +25,9 @@ export const Contacts: React.FC<ContactProps> = ({ isIcons = false, children }) 
     return (
         <AsideItem>
             <FaRegEdit
-                className='edite'
+                className='edit'
                 data-tooltip-id='tooltip'
-                data-tooltip-content='Edite Contact'
+                data-tooltip-content='Edit Contact'
                 data-tooltip-offset={0}
             />
 

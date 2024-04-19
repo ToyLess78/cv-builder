@@ -5,8 +5,8 @@ import { ISkillsState, selectSkills } from '~/slices/skillsSlice';
 import { AsideItem } from '../../Aside/AsideItem';
 import nextId from 'react-id-generator';
 import styles from './Skills.module.scss';
-import { EditeButton, ReturnButton } from '~/components/common/Buttons/Buttons';
-import { setIsEdite } from '~/slices/editeSlice';
+import { EditButton, ReturnButton } from '~/components/common/Buttons/Buttons';
+import { setIsEdit } from '~/slices/editSlice';
 
 interface ISkillsProps {
     children?: ReactNode;
@@ -24,9 +24,9 @@ export const Skills: React.FC<ISkillsProps> = ({children, isButtons = true, data
         <>
             { isButtons && aside?.skills.data.length &&
                 <AsideItem>
-                    <EditeButton
+                    <EditButton
                         title={ aside?.skills.title }
-                        onClick={ () => dispatch(setIsEdite('skills')) }
+                        onClick={ () => dispatch(setIsEdit('skills')) }
                     />
 
                     { children }

@@ -5,7 +5,7 @@ import languagesReducer from '~/slices/languagesSlice';
 import certificatesReducer from '~/slices/certificatesSlice';
 import contactReducer from '~/slices/contactSlice';
 import themeReducer  from '~/slices/themeSlice';
-import editeReducer from '~/slices/editeSlice';
+import editReducer from '~/slices/editSlice';
 
 export const store = configureStore({
     reducer: {
@@ -15,7 +15,7 @@ export const store = configureStore({
         certificates: certificatesReducer,
         contact: contactReducer,
         theme: themeReducer,
-        edite: editeReducer,
+        edit: editReducer,
     },
 })
 

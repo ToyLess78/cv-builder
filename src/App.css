@@ -59,7 +59,7 @@
 
 @media print {
 
-  .edite,
+  .edit,
   .hide,
   .nav,
   .save,
@@ -88,21 +88,21 @@
   display: flex;
   gap: 1rem;
 }
-.edite,
+.edit,
 .hide {
   position: absolute;
   left: -1.2rem;
   color: #d9d9d9;
   cursor: pointer;
 }
-.edite {
+.edit {
   top: .2rem;
 }
 .hide {
   top: 1.5rem;
 }
 
-.edite:hover,
+.edit:hover,
 .hide:hover{
   color: var(--secondary-text);
 }
