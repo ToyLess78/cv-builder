@@ -39,9 +39,9 @@ export const Languages: React.FC<ILanguagesProps> = ({ children }) => {
                     {isLanguages &&
                         <>
                             <FaRegEdit
-                                className='edite'
+                                className='edit'
                                 data-tooltip-id='tooltip'
-                                data-tooltip-content='Edite Languages'
+                                data-tooltip-content='Edit Languages'
                                 data-tooltip-offset={0}
                             />
                             <BiHide
