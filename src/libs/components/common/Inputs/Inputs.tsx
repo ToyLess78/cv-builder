@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Inputs.module.scss';
+import { Dropdown, DropdownChangeEvent, DropdownProps } from 'primereact/dropdown';
+import { SelectItemOptionsType } from 'primereact/selectitem';
 
 interface InputProps extends React.HTMLProps<HTMLElement> {
     label?: string;
@@ -9,7 +11,7 @@ interface InputProps extends React.HTMLProps<HTMLElement> {
 }
 
 
-export const BorderInput: React.FC<InputProps> = ({label, type='text', value, onChange }) => {
+export const BorderInput: React.FC<InputProps> = ({label, type = 'text', value, onChange}) => {
     return (
         <div className={styles.container}>
             <input className={styles.border} type={type} value={value} onChange={onChange} required/>
@@ -44,12 +46,53 @@ export const BgInput: React.FC<InputProps> = ({label, type='text', value, onChan
 }
 export const PrimaryInput: React.FC<InputProps> = ({ label, type='text', value, onChange }) => {
     return (
-        <div className={styles.container}>
-            <input className={styles.primary} type={type} value={value} onChange={onChange} required/>
-            <label>{label}</label>
-            <span className={styles.bg}>
+        <div className={ styles.container }>
+            <input className={ styles.primary } type={ type } value={ value } onChange={ onChange } required/>
+            <label>{ label }</label>
+            <span className={ styles.bg }>
                 <i/>
             </span>
         </div>
-    )
+    );
 }
+
+interface IItems {
+    name: string;
+    code: string;
+}
+
+const OptionTemplate = (option: IItems) => {
+    return (
+        <div className={ styles.option }
+        ><span>{ option.name }</span> <span className={ styles.tooltip }>{ option?.code }</span></div>
+    );
+};
+
+interface ISelectProps extends DropdownProps {
+    options: SelectItemOptionsType | undefined;
+    onChange: (event: DropdownChangeEvent) => void;
+    value: IItems | null;
+    title: string;
+    filter: boolean;
+}
+
+export const Select: React.FC<ISelectProps> = ({options, onChange, title, value, filter}) => {
+    return (
+        <>
+        <Dropdown
+            className={ styles.dropdown }
+            value={ value }
+            onChange={ onChange }
+            options={ options }
+            optionLabel="name"
+            data-placeholder={ value?.name.length ? 'false' : 'true'}
+            placeholder={ value?.name.length ? value?.name :
+                `Select a ${ title }`}
+            itemTemplate={ OptionTemplate }
+            showClear
+            panelClassName={ styles.panel }
+            filter={filter}
+        />
+        </>
+    );
+};
