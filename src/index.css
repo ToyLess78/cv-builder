@@ -3,6 +3,30 @@
     padding: 0;
 
 }
+@-webkit-keyframes scaleUp {
+    0% {
+        transform: scale(0.3);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+    }
+}
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.3);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+    }
+}
 
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -24,6 +48,7 @@
     --light-gray: rgba(217, 217, 217, 1);
     --primary-text: #213547;
     --secondary-text: rgba(93, 107, 121, 1);
+    --animation: scaleUp .4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 body {

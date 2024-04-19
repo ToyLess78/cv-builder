@@ -65,36 +65,11 @@
   }
 }
 
-@-webkit-keyframes scaleUp {
-  0% {
-    transform: scale(0.3);
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-  }
-  100% {
-    transform: scale(1);
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-  }
-}
-@keyframes scaleUp {
-  0% {
-    transform: scale(0.3);
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-  }
-  100% {
-    transform: scale(1);
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-  }
-}
-
 .panel {
   background-color: white;
   border: 1px solid var(--primary);
-  -webkit-animation: scaleUp .4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  animation: scaleUp .4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  -webkit-animation: var(--animation);
+  animation: var(--animation);
   margin-top: -1px;
 
   span {
