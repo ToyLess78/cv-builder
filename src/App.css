@@ -126,17 +126,12 @@ a {
   text-decoration: none;
 }
 
-.languages li {
-  display: flex;
-}
-.certificates span,
-.languages span {
+.certificates span {
   flex-grow: 1;
   text-align: left;
   display: flex;
 }
-.certificates span::after,
-.languages span::after {
+.certificates span::after {
   content: '';
   border-bottom: 2px dotted #AAA;
   flex:1;
@@ -147,9 +142,6 @@ a {
   text-decoration: none;
 }
 
-.languages {
-  min-height: 7.4rem;
-}
 .contact {
   min-height: 6.7rem;
 }
