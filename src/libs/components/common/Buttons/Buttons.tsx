@@ -22,7 +22,7 @@ export const EditButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
         <FaRegEdit
             className={ styles.edit }
             onClick={ onClick }
-            data-tooltip-id="tooltip"
+            data-tooltip-id='tooltip'
             data-tooltip-content={ `Edit ${ title }` }
             data-tooltip-offset={ 0 }
         />
@@ -35,7 +35,7 @@ export const HideButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
             size='1.3rem'
             className={ styles.hide }
             onClick={ onClick }
-            data-tooltip-id="tooltip"
+            data-tooltip-id='tooltip'
             data-tooltip-content={ `Hide ${ title }` }
             data-tooltip-offset={ 20 }
         />
@@ -60,22 +60,40 @@ export const ShowButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
 export const ReturnButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
     return (
         <BsArrowReturnRight
-            data-tooltip-id="tooltip"
+            data-tooltip-id='tooltip'
             data-tooltip-content={ `Return default data ${ title }` }
             data-tooltip-offset={ 0 } className={ styles.edit } onClick={ onClick }/>
     );
 };
 
-interface IEditButtonsBoxProps {
+interface IRemoveButtonProps {
     onRemove?: () => void;
+    removeStyle?: React.CSSProperties;
+}
+
+export const RemoveButton: React.FC<IRemoveButtonProps> = ({onRemove, removeStyle}) => {
+    return (
+        <div className={ styles.box }>
+            <IoMdRemoveCircleOutline
+                data-tooltip-content='Remove'
+                data-tooltip-id='tooltip'
+                size='1.2rem'
+                data-tooltip-offset={ 0 }
+                onClick={ onRemove }
+                style={ removeStyle }
+            />
+        </div>
+    );
+};
+
+interface IEditButtonsBoxProps extends IRemoveButtonProps {
     onEdit?: () => void;
     editeStyle?: React.CSSProperties;
-    removeStyle?: React.CSSProperties;
 }
 
 export const EditButtonsBox: React.FC<IEditButtonsBoxProps> = ({onRemove, onEdit, removeStyle, editeStyle}) => {
     return (
-        <div className={styles.box}>
+        <div className={ styles.box }>
             <FaRegEdit
                 data-tooltip-id='tooltip'
                 data-tooltip-content='Edit'
