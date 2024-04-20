@@ -3,46 +3,56 @@ import { DropdownChangeEvent } from 'primereact/dropdown';
 import levels from '~/public/levels';
 import languages from '~/public/languages';
 import styles from './Languages.module.scss';
-import { Select } from '~/components';
-
-interface IItems {
-    name: string;
-    code: string;
-}
+import { BreezeTitle, EditWrapper, Languages, Select } from '~/components';
+import { useSelector } from 'react-redux';
+import { RootState } from '~/store/store';
+import { selectLanguages } from '~/slices/languagesSlice';
 
 const EditLanguage: React.FC = () => {
-    const [selectedLevel, setSelectedLevel] = useState<IItems | null>({name: 'Native', code: 'mother tongue'});
-    const [selectedLanguage, setSelectedLanguage] = useState<IItems | null>(null);
 
-
-    const onChange = (e: DropdownChangeEvent) => {
-
-        setSelectedLevel(e.value);
-        console.log(e.value);
+    const onChangeLevel = (e: DropdownChangeEvent, id: string) => {
+        setLanguageState(languageState.map(x => (x.id === id ? {...x, level: e.value} : x)));
     };
 
+    const onChangeLanguage = (e: DropdownChangeEvent, id: string) => {
+        setLanguageState(languageState.map(x => (x.id === id ? {...x, language: e.value} : x)));
+    };
+
+    const state = useSelector((state: RootState) => selectLanguages(state));
+    const [languageState, setLanguageState] = useState(state.data);
+
     return (
-        <div className={styles.container}>
-            <div className={styles.card}>
-                <Select
-                    options={levels}
-                    onChange={ onChange }
-                    value={ selectedLevel }
-                    title='Level'
-                    filter={false}
-                />
+        <EditWrapper
+            preview={
+                <Languages data={languageState}>
+                    <BreezeTitle text='languages'/>
+                </Languages>
+            }
+            edit={
+                <div className={ styles.wrapper }>
+                    { languageState.map(l => (
+                        <div className={ styles.container } key={ l.id }>
 
-            </div>
-            <div className={styles.card}>
-                <Select
-                    options={languages}
-                    onChange={ (e: DropdownChangeEvent) => setSelectedLanguage(e.value) }
-                    value={ selectedLanguage }
-                    title='Language'
-                    filter={true}
-                />
-            </div>
-        </div>)
-};
+                            <Select
+                                options={ languages }
+                                onChange={ (e: DropdownChangeEvent) => onChangeLanguage(e, l.id) }
+                                value={ l.language }
+                                title='Language'
+                                filter
+                            />
 
+                            <Select
+                                options={ levels }
+                                onChange={ (e: DropdownChangeEvent) => onChangeLevel(e, l.id) }
+                                value={ l.level }
+                                title='Level'
+                            />
+                        </div>
+                    )) }
+                </div>
+            }
+            isGrow
+        />
+    )
+}
 export default EditLanguage;
