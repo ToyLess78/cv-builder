@@ -447,7 +447,7 @@
 
 .option {
   margin: 0;
-  padding: .5rem .3rem;
+  padding: .5rem .5rem;
   border: 0 none;
   color: var(--secondary-text);
   background: transparent;
@@ -458,6 +458,7 @@
   .tooltip {
     visibility: hidden;
     color: var(--gray);
+    text-transform: uppercase;
     transition: visibility .4s ease;
   }
 

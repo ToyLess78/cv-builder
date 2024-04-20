@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Inputs.module.scss';
 import { Dropdown, DropdownChangeEvent, DropdownProps } from 'primereact/dropdown';
 import { SelectItemOptionsType } from 'primereact/selectitem';
+import { IItems } from '~/slices/languagesSlice';
 
 interface InputProps extends React.HTMLProps<HTMLElement> {
     label?: string;
@@ -56,15 +57,12 @@ export const PrimaryInput: React.FC<InputProps> = ({ label, type='text', value, 
     );
 }
 
-interface IItems {
-    name: string;
-    code: string;
-}
-
 const OptionTemplate = (option: IItems) => {
     return (
-        <div className={ styles.option }
-        ><span>{ option.name }</span> <span className={ styles.tooltip }>{ option?.code }</span></div>
+        <div className={ styles.option }>
+            <span>{ option.name }</span>
+            <span className={ styles.tooltip }>{ option?.code }</span>
+        </div>
     );
 };
 
@@ -73,26 +71,26 @@ interface ISelectProps extends DropdownProps {
     onChange: (event: DropdownChangeEvent) => void;
     value: IItems | null;
     title: string;
-    filter: boolean;
+    filter?: boolean;
 }
 
-export const Select: React.FC<ISelectProps> = ({options, onChange, title, value, filter}) => {
+export const Select: React.FC<ISelectProps> = ({options, onChange, title, value, filter = false}) => {
     return (
         <>
-        <Dropdown
-            className={ styles.dropdown }
-            value={ value }
-            onChange={ onChange }
-            options={ options }
-            optionLabel="name"
-            data-placeholder={ value?.name.length ? 'false' : 'true'}
-            placeholder={ value?.name.length ? value?.name :
-                `Select a ${ title }`}
-            itemTemplate={ OptionTemplate }
-            showClear
-            panelClassName={ styles.panel }
-            filter={filter}
-        />
+            <Dropdown
+                className={ styles.dropdown }
+                value={ value }
+                onChange={ onChange }
+                options={ options }
+                optionLabel="name"
+                data-placeholder={ value?.name.length ? 'false' : 'true' }
+                placeholder={ value?.name.length ? value?.name :
+                    `Select a ${ title }` }
+                itemTemplate={ OptionTemplate }
+                showClear
+                panelClassName={ styles.panel }
+                filter={ filter }
+            />
         </>
     );
 };
