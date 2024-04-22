@@ -21,12 +21,13 @@ import {
 } from '~/components/components';
 import { selectIsEdit } from '~/slices/editSlice';
 import { breezePalette } from '~/public/palettes';
-import EditLanguage from '~/components/common/languages/EditLanguage';
 
 const EditCertificates = lazy(() => import('~/components/certificates/EditCertificates'));
-const EditAbout = lazy(() => import('~/components/Header/EditAbout'));
-const EditInfo = lazy(() => import('~/components/Header/EditInfo'));
-const EditSkills = lazy(() => import('~/components/common/skills/EditSkills'));
+const EditAbout = lazy(() => import('~/components/header/EditAbout'));
+const EditInfo = lazy(() => import('~/components/header/EditInfo'));
+const EditSkills = lazy(() => import('~/components/skills/EditSkills'));
+const EditLanguage = lazy(() => import('~/components/languages/EditLanguage'));
+const EditContacts = lazy(() => import('~/components/contacts/EditContacts'));
 
 
 export const Breeze: React.FC = () => {
@@ -50,6 +51,7 @@ export const Breeze: React.FC = () => {
                     { isEdit === 'skills' && <EditSkills/> }
                     { isEdit === 'certificates' && <EditCertificates/> }
                     { isEdit === 'languages' && <EditLanguage/> }
+                    { isEdit === 'contacts' && <EditContacts/> }
                 </Suspense>
             </Overlay>
             <ColourPicker { ...{theme, palette: breezePalette, color, setColor} } />
