@@ -6,18 +6,16 @@ interface IEditeWrapperProps {
     preview: ReactNode;
     edit: ReactNode;
     onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
-    isGrow?: boolean;
+    width?: string;
 }
 
-export const EditWrapper: React.FC<IEditeWrapperProps> = ({preview, edit, onSubmit, isGrow = false}) => {
+export const EditWrapper: React.FC<IEditeWrapperProps> = ({preview, edit, onSubmit, width = '70%'}) => {
     return (
         <div className={ styles.wrapper }>
-            <div style={{flexGrow: isGrow ? '1' : '0'}}>
             { preview }
-            </div>
-            <form className={ styles.form } onSubmit={ onSubmit }>
+            <form className={ styles.form } onSubmit={ onSubmit } style={ {width: width} }>
                 { edit }
-                <MainButton type='submit'>Save Changes</MainButton>
+                <MainButton type="submit">Save Changes</MainButton>
             </form>
         </div>
     );
