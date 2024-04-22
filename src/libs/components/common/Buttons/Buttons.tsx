@@ -5,6 +5,9 @@ import { BsArrowReturnRight } from 'react-icons/bs';
 import { BiHide } from 'react-icons/bi';
 import { MdOutlineVisibility } from 'react-icons/md';
 import { IoMdRemoveCircleOutline } from 'react-icons/io';
+import { LuUpload } from 'react-icons/lu';
+import { HiOutlineSave } from 'react-icons/hi';
+import { RiMoreLine } from 'react-icons/ri';
 
 export const MainButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({children}) => {
     return (
@@ -14,7 +17,8 @@ export const MainButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>>
 
 interface IEditButtonProps {
     onClick?: React.MouseEventHandler<SVGElement>;
-    title: string;
+    title?: string;
+    offset?: number;
 }
 
 export const EditButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
@@ -29,38 +33,87 @@ export const EditButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
     );
 };
 
-export const HideButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
+export const HideButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 20}) => {
     return (
         <BiHide
-            size='1.3rem'
+            size="1.3rem"
             className={ styles.hide }
             onClick={ onClick }
-            data-tooltip-id='tooltip'
+            data-tooltip-id="tooltip"
             data-tooltip-content={ `Hide ${ title }` }
-            data-tooltip-offset={ 20 }
+            data-tooltip-offset={ offset }
         />
     );
 };
 
-export const ShowButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
+export const UploadButton: React.FC<IEditButtonProps> = ({onClick, offset = 0}) => {
     return (
-        <div className={styles.show}>
+        <LuUpload
+            size="1.2rem"
+            className={ styles.edit }
+            onClick={ onClick }
+            data-tooltip-id="tooltip"
+            data-tooltip-content="Upload Photo"
+            data-tooltip-offset={ offset }
+        />
+    );
+};
+
+export const ShowAsideButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 0}) => {
+    return (
+        <div className={ styles.show }>
             <MdOutlineVisibility
-                size='1.2rem'
-                className={styles.hide}
-                data-tooltip-id='tooltip'
-                data-tooltip-content={`Show ${ title }`}
-                data-tooltip-offset={0}
+                size="1.2rem"
+                className={ styles.hide }
+                data-tooltip-id="tooltip"
+                data-tooltip-content={ `Show ${ title }` }
+                data-tooltip-offset={ offset }
                 onClick={ onClick }
             />
         </div>
     );
 };
 
+export const ShowButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 0}) => {
+    return (
+        <MdOutlineVisibility
+            className={ styles.visible }
+            size="1.3rem"
+            data-tooltip-id="tooltip"
+            data-tooltip-content={ `Show ${ title }` }
+            data-tooltip-offset={ offset }
+            onClick={ onClick }
+        />
+    );
+};
+
+export const MoreButton: React.FC<IEditButtonProps> = ({onClick, offset = -15}) => {
+    return (
+        <RiMoreLine
+            className={ styles.more }
+            size="2rem"
+            data-tooltip-id="tooltip"
+            data-tooltip-content="More Templates"
+            data-tooltip-offset={ offset }
+            onClick={ onClick }
+        />
+    );
+};
+
+export const SaveButton: React.FC<IEditButtonProps> = ({onClick}) => {
+    return (
+        <HiOutlineSave
+            className={ styles.save }
+            size="1.2rem"
+            onClick={ onClick }
+        />
+    );
+};
+
 export const ReturnButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
     return (
         <BsArrowReturnRight
-            data-tooltip-id='tooltip'
+            data-tooltip-id="tooltip"
             data-tooltip-content={ `Return default data ${ title }` }
             data-tooltip-offset={ 0 } className={ styles.edit } onClick={ onClick }/>
     );
@@ -73,11 +126,11 @@ interface IRemoveButtonProps {
 
 export const RemoveButton: React.FC<IRemoveButtonProps> = ({onRemove, removeStyle}) => {
     return (
-        <div className={ styles.box }>
+        <div className={ styles.remove }>
             <IoMdRemoveCircleOutline
-                data-tooltip-content='Remove'
-                data-tooltip-id='tooltip'
-                size='1.2rem'
+                data-tooltip-content="Remove"
+                data-tooltip-id="tooltip"
+                size="1.2rem"
                 data-tooltip-offset={ 0 }
                 onClick={ onRemove }
                 style={ removeStyle }
