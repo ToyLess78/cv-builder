@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './EditHeader.module.scss';
-import { Info } from '~/components/Header/Info';
+import { Info } from '~/components/header/Info';
 import { UnderlineInput } from '~/components/common/Inputs/Inputs';
 import { MainButton } from '~/components/common/Buttons/Buttons';
 import { useDispatch, useSelector } from 'react-redux';

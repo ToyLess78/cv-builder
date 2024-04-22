@@ -5,7 +5,7 @@ import { RootState } from '~/store/store';
 import { selectInfo } from '~/slices/infoSlice';
 
 interface IAboutProps {
-    introduction: string
+    summary: string
 }
 
 export const About: React.FC<{ children?: ReactNode, props?: IAboutProps }> = ({children, props}) => {
@@ -15,7 +15,7 @@ export const About: React.FC<{ children?: ReactNode, props?: IAboutProps }> = ({
     return (
         <section className={styles.about}>
             {children}
-            <div dangerouslySetInnerHTML={{ __html: props?.introduction || info.introduction }}></div>
+            <div dangerouslySetInnerHTML={{ __html: props?.summary || info.summary }}></div>
         </section>
     )
 }

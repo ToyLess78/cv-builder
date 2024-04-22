@@ -3,8 +3,8 @@ import { FiExternalLink } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { ICertificate, selectCertificates, setIsCertificates } from '~/slices/certificatesSlice';
-import { AsideItem } from '../Aside/AsideItem';
-import { EditButton, EditButtonsBox, HideButton, ShowButton } from '~/components/common/Buttons/Buttons';
+import { AsideItem } from '~/components/common/Aside/AsideItem';
+import { EditButton, EditButtonsBox, HideButton, ShowAsideButton } from '~/components/common/Buttons/Buttons';
 import styles from './Certificates.module.scss';
 import { setIsEdit } from '~/slices/editSlice';
 
@@ -28,7 +28,7 @@ export const Certificates: React.FC<ICertificatesProps> = ({children, data = nul
         <>
 
             { !isCertificates &&
-                <ShowButton
+                <ShowAsideButton
                     onClick={ handleSetIsCertificates }
                     title={ certificates.title }
                 /> }

@@ -13,9 +13,9 @@ export interface IItems {
 }
 
 export interface ILanguage {
-    id: string,
-    language: IItems,
-    level: IItems
+    id: string;
+    language: IItems | null;
+    level: IItems | null;
 }
 
 const defaultLanguages = {
@@ -23,7 +23,7 @@ const defaultLanguages = {
     data:
         [
             {
-                id: 'id261',
+                id: 'id2613.0.2',
                 language: {
                     code: 'en',
                     name: 'English'
@@ -34,7 +34,7 @@ const defaultLanguages = {
                 }
             },
             {
-                id: 'id291',
+                id: 'id2913.0.2',
                 language: {
                     code: 'uk',
                     name: 'Ukrainian'
@@ -45,7 +45,7 @@ const defaultLanguages = {
                 }
             },
             {
-                id: 'id276',
+                id: 'id2763.0.2',
                 language: {
                     code: 'ru',
                     name: 'Russian'
@@ -79,11 +79,15 @@ const languagesSlice = createSlice({
         setDefaultLanguages() {
             removeFromLocalStorage('languages');
             return defaultLanguages;
-        }
+        },
+        setLanguagesData(state, action: PayloadAction<ILanguage[]>) {
+            state.data = action.payload;
+            saveToLocalStorage('languages', state);
+        },
     }
 });
 
-export const { setLanguages, setIsLanguages, setDefaultLanguages } = languagesSlice.actions;
+export const { setLanguages, setLanguagesData, setIsLanguages, setDefaultLanguages } = languagesSlice.actions;
 
 export const selectLanguages = (state: RootState) => state.languages;
 

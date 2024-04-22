@@ -3,12 +3,17 @@ import { DropdownChangeEvent } from 'primereact/dropdown';
 import levels from '~/public/levels';
 import languages from '~/public/languages';
 import styles from './Languages.module.scss';
-import { BreezeTitle, EditWrapper, Languages, Select } from '~/components';
-import { useSelector } from 'react-redux';
+import { AddButton, BreezeTitle, EditWrapper, Languages, Select } from '~/components';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectLanguages } from '~/slices/languagesSlice';
+import { selectLanguages, setLanguagesData } from '~/slices/languagesSlice';
+import nextId from 'react-id-generator';
+import { setIsEdit } from '~/slices/editSlice';
 
 const EditLanguage: React.FC = () => {
+
+    const state = useSelector((state: RootState) => selectLanguages(state));
+    const [languageState, setLanguageState] = useState(state.data);
 
     const onChangeLevel = (e: DropdownChangeEvent, id: string) => {
         setLanguageState(languageState.map(x => (x.id === id ? {...x, level: e.value} : x)));
@@ -18,17 +23,48 @@ const EditLanguage: React.FC = () => {
         setLanguageState(languageState.map(x => (x.id === id ? {...x, language: e.value} : x)));
     };
 
-    const state = useSelector((state: RootState) => selectLanguages(state));
-    const [languageState, setLanguageState] = useState(state.data);
+    const removeLanguage = (id: string) => {
+        setLanguageState(languageState.filter(item => item.id !== id));
+    };
+
+    const addLanguage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
+        const language = {
+            id: nextId(),
+            language: null,
+            level: null
+        }
+        setLanguageState([...languageState, language]);
+    };
+
+    const dispatch = useDispatch();
+
+    const handlerOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        dispatch(setLanguagesData(languageState));
+        dispatch(setIsEdit(''));
+    };
 
     return (
         <EditWrapper
+            width='35rem'
             preview={
-                <Languages data={languageState}>
+            <div style={{width: '17rem'}}>
+                <Languages
+                    data={languageState}
+                    onRemove={removeLanguage}
+                >
                     <BreezeTitle text='languages'/>
                 </Languages>
+            </div>
             }
             edit={
+            <>
+                <AddButton
+                    onClick={ addLanguage }
+                    text= 'Language'
+                    style={{visibility: languageState[languageState.length - 1]?.language?.name.trim() && languageState[languageState.length - 1]?.level?.name.trim() ? 'visible' : 'hidden'}}
+                />
                 <div className={ styles.wrapper }>
                     { languageState.map(l => (
                         <div className={ styles.container } key={ l.id }>
@@ -50,8 +86,9 @@ const EditLanguage: React.FC = () => {
                         </div>
                     )) }
                 </div>
+            </>
             }
-            isGrow
+            onSubmit={ handlerOnSubmit }
         />
     )
 }

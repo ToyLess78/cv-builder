@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectInfo, setInfo } from '~/slices/infoSlice';
 import { setIsEdit } from '~/slices/editSlice';
-import { About } from '~/components/Header/About';
+import { About } from '~/components/header/About';
 import { BreezeTitle } from '~/components/breeze/BreezeTitle/BreezeTitle';
-import { EditorCustom } from '~/components/Editor/EditorCustom';
+import { EditorCustom } from '~/components/common/Editor/EditorCustom';
 
 const EditAbout: React.FC = () => {
 
@@ -21,10 +21,10 @@ const EditAbout: React.FC = () => {
         dispatch(setInfo(editeAbout));
         dispatch(setIsEdit(''));
     }
-    const [text, setText] = useState<null | string>(editeAbout.introduction);
+    const [text, setText] = useState<null | string>(editeAbout.summary);
 
     useEffect(() => {
-        setEditAbout({ ...editeAbout, introduction: text as string})
+        setEditAbout({ ...editeAbout, summary: text as string})
     }, [text])
 
     return (

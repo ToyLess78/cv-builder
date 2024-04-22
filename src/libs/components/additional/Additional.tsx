@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { AdditionalList, AsideItem, EditButton, HideButton, ShowButton } from '~/components/components';
+import { AdditionalList, AsideItem, EditButton, HideButton, ShowAsideButton } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectSkills, setIsAdditional } from '~/slices/skillsSlice';
@@ -23,7 +23,7 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
     return (
         <>
             { !isAdditional &&
-                <ShowButton
+                <ShowAsideButton
                     onClick={ handleSetIsAdditional }
                     title={ aside?.additional.title }
                 /> }
