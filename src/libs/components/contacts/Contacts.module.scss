@@ -1,0 +1,19 @@
+.contact {
+  min-height: 6.7rem;
+
+  a {
+    text-decoration: none;
+  }
+
+  .icon {
+    color: var(--secondary-text);
+    margin-right: .5rem;
+  }
+}
+
+.social {
+  padding-top: 1rem;
+  display: flex;
+  gap: 1rem;
+
+}

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage, removeFromLocalStorage, saveToLocalStorage } from '~/utils/utils';
 
-interface ContactsState {
+export interface ContactsState {
     isSocials: boolean;
     isGithub: boolean;
     isLinkedin: boolean;
