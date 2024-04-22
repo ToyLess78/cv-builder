@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
-import { BiHide } from 'react-icons/bi';
-import { MdOutlineVisibility } from 'react-icons/md';
-import { LuUpload } from 'react-icons/lu';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectInfo } from '~/slices/infoSlice';
 import { selectThemeColor } from '~/slices/themeSlice';
-import ImageUploading from '~/components/Image/ImageUploading';
 import { ImageType } from '~/types/image-uploading.types';
 import classes from './Image.module.scss';
+import ImageUploading from './ImageUploading';
+import { HideButton, ShowButton, UploadButton } from '~/components/common/Buttons/Buttons';
 
 interface IImageProps {
     styles: string;
 }
 
-export const Image: React.FC<IImageProps> = ({ styles }) => {
+export const Image: React.FC<IImageProps> = ({styles}) => {
 
-    const [ image, setImage ] = React.useState<ImageType | null>(null);
-    const [ opacity, setOpacity ] = useState(true);
+    const [image, setImage] = React.useState<ImageType | null>(null);
+    const [opacity, setOpacity] = useState(true);
     const info = useSelector((state: RootState) => selectInfo(state));
     const themeColor = useSelector((state: RootState) => selectThemeColor(state));
 
@@ -41,30 +39,19 @@ export const Image: React.FC<IImageProps> = ({ styles }) => {
                     </div>
                     { opacity &&
                         <>
-                            <LuUpload
-                                className='edit'
-                                data-tooltip-id='tooltip'
-                                data-tooltip-content='Upload Photo'
-                                data-tooltip-offset={ 0 }
+                            <UploadButton
                                 onClick={ () => onImageUpdate(0) }
                             />
-                            <BiHide
-                                size='1.2rem'
-                                className='hide'
-                                data-tooltip-id='tooltip'
-                                data-tooltip-content='Hide Photo'
-                                data-tooltip-offset={ 20 }
+                            <HideButton
+                                offset={ 0 }
+                                title="Photo"
                                 onClick={ () => setOpacity(!opacity) }
                             />
                         </> }
 
                     { !opacity &&
-                        <MdOutlineVisibility
-                            size='1.2rem'
-                            className='hide'
-                            data-tooltip-id='tooltip'
-                            data-tooltip-content='Return Photo'
-                            data-tooltip-offset={ 0 }
+                        <ShowButton
+                            title="Photo"
                             onClick={ () => setOpacity(!opacity) }
                         /> }
                     <img src={ image?.dataURL || 'avatar.jpg' } alt='photo' style={ { opacity: Number(opacity) } }/>

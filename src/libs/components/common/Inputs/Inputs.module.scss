@@ -333,7 +333,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 14rem;
+  width: 16rem;
   background: #ffffff;
   border: none;
   transition: all .2s;
@@ -415,7 +415,7 @@
 .panel {
   background-color: white;
   border: 1px solid var(--primary);
-  width: 14rem;
+  width: 16rem;
   margin-top: -.1rem;
   -webkit-animation: var(--animation);
   animation: var(--animation);
@@ -436,11 +436,12 @@
     font-size: 1rem;
     color: var(--secondary-text);
     background: transparent;
-    border-bottom: 1px solid var(--light-gray);
+    border-bottom: 1px solid var(--primary);
+    transition: all .2s ease;
 
     &:hover,
     &:focus {
-      background-color: #f3f4f6;
+      background-color: var(--primary-opacity);
     }
   }
 }
