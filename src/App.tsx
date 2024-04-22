@@ -6,14 +6,14 @@ import { RootState } from '~/store/store';
 import { selectThemeColor } from '~/slices/themeSlice';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { setAlphaToRGBA } from '~/utils/color.utils';
-import { RiMoreLine } from 'react-icons/ri';
-import { HiOutlineSave } from 'react-icons/hi';
-import { MenuOverlay } from '~/components/Overlay/Overlay';
-import { Loading } from '~/components';
+import { MenuOverlay } from '~/components/common/Overlay/Overlay';
+import { Loading, MoreButton, SaveButton } from '~/components';
+import { resetId } from 'react-id-generator';
 
-const Menu = lazy(() => import('~/components/Carousel/Carousel'));
+const Menu = lazy(() => import('~/components/common/Carousel/Carousel'));
 
 const App: React.FC = () => {
+    resetId();
     const themeColor = useSelector((state: RootState) => selectThemeColor(state));
     useEffect(() => {
         document.documentElement.style.setProperty('--primary', themeColor as string);
@@ -48,17 +48,10 @@ const App: React.FC = () => {
                 } }
             />
 
-            <HiOutlineSave
-                size="1.2rem"
-                className="save"
+            <SaveButton
                 onClick={() => window.print()}
             />
-            <RiMoreLine
-                size="2rem"
-                className="more"
-                data-tooltip-id="tooltip"
-                data-tooltip-content="More Templates"
-                data-tooltip-offset={ -15 }
+            <MoreButton
                 onClick={ () => setIsOpen(!isOpen) }
             />
             <Breeze/>

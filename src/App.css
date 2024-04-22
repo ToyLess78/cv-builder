@@ -83,34 +83,6 @@
   box-shadow: none;
 }
 
-.social {
-  padding-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-.edit,
-.hide {
-  position: absolute;
-  left: -1.2rem;
-  color: #d9d9d9;
-  cursor: pointer;
-}
-.edit {
-  top: .2rem;
-}
-.hide {
-  top: 1.5rem;
-}
-
-.edit:hover,
-.hide:hover{
-  color: var(--secondary-text);
-}
-.social .hide {
-  position: relative;
-  top: 0;
-  left: 0;
-}
 a {
   color: var(--secondary-text);
 }
@@ -138,17 +110,6 @@ a {
   margin: 10px 10px;
 }
 
-.contact a {
-  text-decoration: none;
-}
-
-.contact {
-  min-height: 6.7rem;
-}
-.icon {
-  color: var(--secondary-text);
-  margin-right: .5rem;
-}
 .polygon {
   width: 5rem;
   height: 12rem;
@@ -166,44 +127,10 @@ a {
   margin-right: auto;
   transition: opacity .6s ease-in-out;
 }
-.show {
-  position: relative;
-  margin-top: -2rem;
-}
 
-.show .hide {
-  top: .9rem;
-}
-.more {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  top: .2rem;
-  color: #d9d9d9;
-  cursor: pointer;
-}
-.save {
-  position: absolute;
-  color: #d9d9d9;
-  left: .7rem;
-  top: .5rem;
-  cursor: pointer;
-
-
-
-}
-.more:hover,
-.save:hover {
-  color: var(--primary);
-}
 svg {
   outline: none;
 }
 .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:hover {
   background: #f3f4f6;
 }
-
-
-
