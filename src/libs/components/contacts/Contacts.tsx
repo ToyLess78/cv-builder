@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import { FaFacebook, FaGithub, FaLinkedin, FaPhone, FaTelegramPlane } from 'react-icons/fa';
-import { FaLocationDot, FaXTwitter } from 'react-icons/fa6';
+import { FaPhone } from 'react-icons/fa';
+import { FaLocationDot } from 'react-icons/fa6';
 import { IoMailSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
@@ -9,6 +9,7 @@ import { AsideItem } from '~/components/common/Aside/AsideItem';
 import styles from './Contacts.module.scss';
 import { EditButton, HideButton, ShowButton } from '~/components/common/Buttons/Buttons';
 import { setIsEdit } from '~/slices/editSlice';
+import { IconsMap } from '~/components/contacts/IconsMap';
 
 interface ISocialProps {
     data?: ContactsState | null;
@@ -20,37 +21,16 @@ interface IContactProps extends ISocialProps {
     social?: boolean;
 }
 
-export const Social: React.FC<ISocialProps> = ({data = null}) => {
-    const contactState = useSelector((state: RootState) => selectContacts(state));
-    const contacts = data || contactState;
-    const {isSocials, isGithub, isLinkedin, isTelegram, isTwitter, isFacebook} = contacts;
+export const Social: React.FC<ISocialProps> = ({data}) => {
     return (
-        <>
-            { isSocials &&
-                <div className={ styles.social }>
+        <div className={ styles.social }>
 
-                    { isGithub &&
-                        <a href={ contacts?.github }>
-                            <FaGithub size='1.3rem'/></a> }
+            { data?.data?.map(s => (
+                    s?.isShow && <a key={ s?.id } href={ s?.link }>{ IconsMap.get(s?.id) }</a>
+                )
+            ) }
+        </div>
 
-                    { isLinkedin &&
-                        <a href={ contacts?.linkedin }>
-                            <FaLinkedin size='1.3rem'/></a> }
-
-                    { isTelegram &&
-                        <a href={ contacts?.telegram }>
-                            <FaTelegramPlane size='1.3rem'/></a> }
-
-                    { isTwitter &&
-                        <a href={ contacts?.twitter }>
-                            <FaXTwitter size='1.3rem'/></a> }
-
-                    { isFacebook &&
-                        <a href={ contacts?.facebook }>
-                            <FaFacebook size='1.3rem'/></a> }
-                </div>
-            }
-        </>
     );
 };
 
@@ -102,15 +82,15 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
 
                 </li>
 
-                { isSocials && social ?
+                { isSocials ?
 
                     <li>
-                        <Social/>
+                        <Social data={ contacts }/>
                     </li> :
 
                     !data && social &&
                     <ShowButton
-                        title='Social'
+                        title="Social"
                         offset={ 20 }
                         onClick={ handleSetIsSocial }
                     />
