@@ -7,20 +7,80 @@ import { ImStackoverflow } from 'react-icons/im';
 import { SiSlack } from 'react-icons/si';
 
 const icons = {
-    linkedIn: <FaLinkedin size='1.3rem'/>,
-    gitHub: <FaGithub size='1.3rem'/>,
-    twitter: <FaXTwitter size='1.3rem'/>,
-    telegram: <FaTelegramPlane size='1.3rem'/>,
-    facebook: <FaFacebook size='1.3rem'/>,
-    gitLab: <BsGitlab size='1.2rem'/>,
-    bitbucket: <FaBitbucket size='1.1rem'/>,
-    discord: <BsDiscord size='1.3rem'/>,
-    reddit: <BsReddit size='1.3rem'/>,
-    youTube: <IoLogoYoutube size='1.3rem'/>,
-    instagram: <GrInstagram size='1.2rem'/>,
-    stackOverflow: <ImStackoverflow size='1.1rem'/>,
-    whatsApp: <BsWhatsapp size='1.2rem'/>,
-    weChat: <BsWechat size='1.4rem'/>,
-    slack: <SiSlack size='1.1rem'/>,
+    linkedIn: <FaLinkedin
+        size="1.3rem"
+        data-tooltip-id="tooltip"
+        data-tooltip-content="linkedIn"
+        data-tooltip-offset="0"/>,
+    gitHub: <FaGithub
+        data-tooltip-id="tooltip"
+        data-tooltip-content="gitHub"
+        size="1.3rem"
+        data-tooltip-offset="0"/>,
+    twitter: <FaXTwitter
+        data-tooltip-id="tooltip"
+        data-tooltip-content="twitter"
+        size="1.3rem"
+        data-tooltip-offset="0"/>,
+    telegram: <FaTelegramPlane
+        data-tooltip-id="tooltip"
+        data-tooltip-content="telegram"
+        size="1.3rem"
+        data-tooltip-offset="0"/>,
+    facebook: <FaFacebook
+        data-tooltip-id="tooltip"
+        data-tooltip-content="facebook"
+        size="1.3rem"
+        data-tooltip-offset="0"/>,
+    gitLab: <BsGitlab
+        data-tooltip-id="tooltip"
+        data-tooltip-content="gitLab"
+        size="1.2rem"
+        data-tooltip-offset="0"/>,
+    bitbucket: <FaBitbucket
+        data-tooltip-id="tooltip"
+        data-tooltip-content="bitbucket"
+        size="1.1rem"
+        data-tooltip-offset="0"/>,
+    discord: <BsDiscord
+        data-tooltip-id="tooltip"
+        data-tooltip-content="discord"
+        size="1.3rem"
+        data-tooltip-offset="0"/>,
+    reddit: <BsReddit
+        data-tooltip-id="tooltip"
+        data-tooltip-content="reddit"
+        size="1.3rem"
+        data-tooltip-offset="0"/>,
+    youTube: <IoLogoYoutube
+        data-tooltip-id="tooltip"
+        data-tooltip-content="youTube"
+        size="1.3rem"
+        data-tooltip-offset="0"/>,
+    instagram: <GrInstagram
+        data-tooltip-id="tooltip"
+        data-tooltip-content="instagram"
+        size="1.2rem"
+        data-tooltip-offset="0"/>,
+    stackOverflow: <ImStackoverflow
+        data-tooltip-id="tooltip"
+        data-tooltip-content="stackOverflow"
+        size="1.1rem"
+        data-tooltip-offset="0"/>,
+    whatsApp: <BsWhatsapp
+        data-tooltip-id="tooltip"
+        data-tooltip-content="whatsApp"
+        size="1.2rem"
+        data-tooltip-offset="0"/>,
+    weChat: <BsWechat
+        data-tooltip-id="tooltip"
+        data-tooltip-content="weChat"
+        size="1.4rem"
+        data-tooltip-offset="0"/>,
+    slack: <SiSlack
+        data-tooltip-id="tooltip"
+        data-tooltip-content="slack"
+        size="1.1rem"
+        data-tooltip-offset="0"/>
 }
 export const IconsMap = new Map(Object.entries(icons));
