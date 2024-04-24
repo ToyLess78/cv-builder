@@ -19,3 +19,4 @@ export { EditButton, MainButton, ReturnButton, HideButton, ShowAsideButton, AddB
 export { MonthYearPickerWithRange, MonthYearPickerSingle } from './common/MonthPicker/MonthYearPicker';
 export { Loading } from '~/components/common/Loading/Loading';
 export { EditWrapper } from './common/EditWrapper/EditWrapper';
+export { CheckBox } from '~/components/common/CheckBox/CheckBox';
