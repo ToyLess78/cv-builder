@@ -134,49 +134,8 @@ svg {
 .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:hover {
   background: #f3f4f6;
 }
-.card-tab {
-  position: relative;
-  width: fit-content;
-}
-.card-menu {
-  position: absolute;
-  top: -1px;
-  margin-left: 100%;
-}
-.card-menu button {
-  border-radius: 50%;
-  background: var(--secondary-text);
-  border: none;
-  padding: 3px;
-  color: white;
-  outline: none !important;
-}
-.card-menu ul {
-  gap: 1rem;
-  padding-left: 1rem;
-}
-.tab ul {
-display: flex;
-  gap: 1rem;
-}
-.tab a[aria-selected="true"] svg {
-  color: var(--primary)
-}
 
-.tab svg:hover {
-  color: var(--primary)
-}
 
-.disabled  svg {
-  color: var(--light-gray)
-}
-.disabled svg:hover {
-  color: var(--primary-alpha-50)
-}
-
-.disabled a[aria-selected="true"] svg {
-  color: var(--primary-alpha-50)
-}
 article {
   position: absolute;
   width: 100vw;

@@ -43,7 +43,7 @@ const App: React.FC = () => {
                 style={ {
                     color: 'var(--secondary-text)',
                     backgroundColor: '#ffffff95',
-                    zIndex: 100,
+                    zIndex: 1000,
                     textTransform: 'capitalize'
                 } }
             />
