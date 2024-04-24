@@ -1,28 +1,10 @@
 import { Calendar } from 'primereact/calendar';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { FormEvent, Nullable } from 'primereact/ts-helpers';
 import styles from './MonthYearPicker.module.scss';
+import { CheckBox } from '~/components/components';
 
-interface YearCheckProps {
-    isYear: boolean;
-    setIsYear: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const YearCheck: React.FC<YearCheckProps> = ({isYear, setIsYear}) => {
-    const handleToggleYear = () => {
-        setIsYear(!isYear);
-    };
-    return (
-        <div className={ styles.present }>
-            <label className={ styles.switch }>
-                <input type="checkbox" checked={ isYear } onChange={ handleToggleYear }/>
-                <span className={ styles.slider }></span>
-            </label>
-            <span className={ isYear ? styles.checked : styles.uncheck }>Currently only Year</span>
-        </div>
-    );
-};
-export const MonthYearPickerWithRange = () => {
+export const MonthYearPickerWithRange: FC = () => {
     // const today = new Date();
     // const month = today.getMonth();
     // const year = today.getFullYear();
@@ -50,6 +32,10 @@ export const MonthYearPickerWithRange = () => {
 
     const [isYear, setIsYear] = useState(false);
 
+    const handleToggleYear = () => {
+        setIsYear(!isYear);
+    };
+
     useEffect(() => {
         singleDate && setIsMonth(singleDate);
         rangeDates && setIsMonth(rangeDates);
@@ -63,18 +49,6 @@ export const MonthYearPickerWithRange = () => {
         !isPresent && setSingleDate(null);
     };
 
-    const RangeCheck: React.FC = () => {
-        return (
-            <div className={ styles.present }>
-                <label className={ styles.switch }>
-                    <input type="checkbox" checked={ isPresent } onChange={ handleToggleRange }/>
-                    <span className={ styles.slider }></span>
-                </label>
-                <span className={ isPresent ? styles.checked : styles.uncheck }>Currently work here</span>
-            </div>
-        );
-    };
-
     const monthParser = (date: Date) => String(date.getMonth() + 1).padStart(2, '0');
 
     const handleChangeRangeDates = (e: FormEvent<(Date | null)[], React.SyntheticEvent<Element, Event>>) => {
@@ -86,8 +60,16 @@ export const MonthYearPickerWithRange = () => {
 
     return (
         <div className={ styles.container }>
-            <YearCheck { ...{isYear, setIsYear} } />
-            <RangeCheck/>
+            <CheckBox
+                checked={ isYear }
+                onChange={ handleToggleYear }
+                title="Currently only Year"
+            />
+            <CheckBox
+                checked={ isPresent }
+                onChange={ handleToggleRange }
+                title="Currently work here"
+            />
             { isYear && isPresent &&
                 <Calendar
                     onChange={ handleChangeSingleDate }
@@ -166,7 +148,7 @@ export const MonthYearPickerWithRange = () => {
     );
 };
 
-export const MonthYearPickerSingle: React.FC = () => {
+export const MonthYearPickerSingle: FC = () => {
 
     const [isYear, setIsYear] = useState(false);
     const [date, setDate] = useState<Nullable<Date>>(null);
@@ -174,10 +156,17 @@ export const MonthYearPickerSingle: React.FC = () => {
     const handleChangeDate = (e: FormEvent<Date, React.SyntheticEvent<Element, Event>>) => {
         setDate(e.value);
     };
+    const handleToggleYear = () => {
+        setIsYear(!isYear);
+    };
 
     return (
         <div className={ styles.container }>
-            <YearCheck { ...{isYear, setIsYear} } />
+            <CheckBox
+                checked={ isYear }
+                onChange={ handleToggleYear }
+                title="Currently only Year"
+            />
 
             { isYear &&
                 <Calendar
