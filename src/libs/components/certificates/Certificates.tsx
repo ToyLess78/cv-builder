@@ -45,7 +45,7 @@ export const Certificates: React.FC<ICertificatesProps> = ({children, data = nul
                     />
 
                     { children }
-                    <ul className={ certificates.title }>
+                    <ul className={ styles.certificates }>
                         { certificates.data?.map(c => {
                             return <li key={ c.id }>
                                 <p>{ c.title }</p>
