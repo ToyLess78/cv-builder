@@ -13,7 +13,11 @@
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  transition: opacity .6s ease-in-out;
+  -webkit-transition: background .5s ease, opacity .6s ease-in-out;
+  -moz-transition: background .5s ease, opacity .6s ease-in-out;
+  -ms-transition: background .5s ease, opacity .6s ease-in-out;
+  -o-transition: background .5s ease, opacity .6s ease-in-out;
+  transition: background .5s ease, opacity .6s ease-in-out;
 }
 
 @media print {

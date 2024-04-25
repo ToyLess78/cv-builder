@@ -7,12 +7,22 @@
   text-orientation: sideways;
   margin-right: 1rem;
   padding-top: .3rem;
+  -webkit-transition: color .5s ease;
+  -moz-transition: color .5s ease;
+  -ms-transition: color .5s ease;
+  -o-transition: color .5s ease;
+  transition: color .5s ease;
 
   &:after {
     content: "";
     flex-grow: 1;
     border-left: 2px solid var(--primary);
     margin: .5rem auto 0 auto;
+    -webkit-transition: border-color .5s ease;
+    -moz-transition: border-color .5s ease;
+    -ms-transition: border-color .5s ease;
+    -o-transition: border-color .5s ease;
+    transition: border-color .5s ease;
   }
 }
 
