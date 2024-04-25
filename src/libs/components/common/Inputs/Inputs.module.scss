@@ -8,7 +8,9 @@
     width: 100%;
     box-sizing: border-box;
     letter-spacing: 1px;
-    text-transform: capitalize;
+    &[type="text"] {
+      text-transform: capitalize;
+    }
   }
 
   label {
