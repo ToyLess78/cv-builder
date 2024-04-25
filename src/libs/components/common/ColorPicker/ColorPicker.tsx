@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './ColourPicker.module.scss';
+import styles from './ColorPicker.module.scss';
 import nextId from 'react-id-generator';
 import { saveToLocalStorage } from '~/utils/utils';
 import { CssColor } from '~/types/color-types';
@@ -13,17 +13,17 @@ interface IColourPickerProps {
     setColor: React.Dispatch<React.SetStateAction<string | CssColor>>;
 }
 
-export const ColourPicker: React.FC<IColourPickerProps> = ({ theme, palette, color, setColor }) => {
+export const ColorPicker: React.FC<IColourPickerProps> = ({ theme, palette, color, setColor }) => {
 
     const dispatch = useDispatch();
-    const [lastActive, setLastAcctive] = useState('')
+    const [lastActive, setLastActive] = useState('')
 
     useEffect(() => {
         dispatch(setThemeColor(color))
     }, [color, dispatch]);
 
     const handleOnChange = (e: React.FormEvent<HTMLInputElement>): void => {
-        setLastAcctive(color);
+        setLastActive(color);
         setColor(e.currentTarget.value)
         saveToLocalStorage(theme, e.currentTarget.value)
     };

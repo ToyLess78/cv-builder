@@ -4,7 +4,7 @@ export { Body } from '~/components/common/Body/Body';
 export { Certificates } from '~/components/certificates/Certificates';
 export { Additional } from '~/components/additional/Additional';
 export { AdditionalList } from '~/components/additional/AdditionalList';
-export { ColourPicker } from './common/ColourPicker/ColourPicker';
+export { ColorPicker } from '~/components/common/ColorPicker/ColorPicker';
 export { Languages } from '~/components/languages/Languages';
 export { Skills } from '~/components/skills/Skills';
 export { Contacts } from '~/components/contacts/Contacts';

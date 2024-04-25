@@ -7,9 +7,11 @@ import { selectThemeColor } from '~/slices/themeSlice';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { setAlphaToRGBA } from '~/utils/color.utils';
 import { MenuOverlay, Overlay } from '~/components/common/Overlay/Overlay';
-import { Loading, MoreButton, SaveButton } from '~/components';
+import { ColorPicker, Loading, MoreButton, SaveButton } from '~/components';
 import { resetId } from 'react-id-generator';
 import { selectIsEdit } from '~/slices/editSlice';
+import { breezePalette } from '~/public/palettes';
+import { loadFromLocalStorage } from '~/utils/local-storage.utills';
 
 const Menu = lazy(() => import('~/components/common/Carousel/Carousel'));
 const EditCertificates = lazy(() => import('~/components/certificates/EditCertificates'));
@@ -34,13 +36,13 @@ const App: React.FC = () => {
     // const templates = ['success', 'advance', 'headway', 'breeze', 'strong', 'precise', 'serene', 'modern', 'fortune', 'recency', 'verdure', 'master', 'primary', 'prime', 'grand', 'alpha', 'galaxy', 'goodly', 'gallant', 'winner', 'elegant', 'future']
     // style={{'--primary': themeColor, '--primary-opacity': setAlphaToRGBA(themeColor as string, 0.1)} as React.CSSProperties}
     const isEdit = useSelector((state: RootState) => selectIsEdit(state));
+    const theme = 'breeze';
+    const [color, setColor] = useState(loadFromLocalStorage(theme) || breezePalette[0]);
 
     return (
-        <
-        >
-            {/*<Buttons hoverColor='#1976D2'>Buttons 1</Buttons>*/ }
-            {/*<Buttons hoverColor='#1976D2'>Buttons 2</Buttons>*/ }
-            {/*<Example/>*/ }
+        <>
+            <ColorPicker { ...{theme, palette: breezePalette, color, setColor} } />
+        <div id="app">
             <Overlay>
                 <Suspense fallback={ <Loading/> }>
                     { isEdit === 'additional' && <EditSkills isAdditional/> }
@@ -76,6 +78,7 @@ const App: React.FC = () => {
                 onClick={ () => setIsOpen(!isOpen) }
             />
             <Breeze/>
+        </div>
         </>
     )
 }
