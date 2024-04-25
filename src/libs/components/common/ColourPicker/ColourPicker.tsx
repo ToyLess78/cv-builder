@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ColourPicker.module.scss';
 import nextId from 'react-id-generator';
 import { saveToLocalStorage } from '~/utils/utils';
@@ -16,12 +16,14 @@ interface IColourPickerProps {
 export const ColourPicker: React.FC<IColourPickerProps> = ({ theme, palette, color, setColor }) => {
 
     const dispatch = useDispatch();
+    const [lastActive, setLastAcctive] = useState('')
 
     useEffect(() => {
         dispatch(setThemeColor(color))
     }, [color, dispatch]);
 
     const handleOnChange = (e: React.FormEvent<HTMLInputElement>): void => {
+        setLastAcctive(color);
         setColor(e.currentTarget.value)
         saveToLocalStorage(theme, e.currentTarget.value)
     };
@@ -37,14 +39,12 @@ export const ColourPicker: React.FC<IColourPickerProps> = ({ theme, palette, col
                             id={id}
                             name='color'
                             value={c}
-                            key={nextId()}
                             onChange={handleOnChange}
                             checked={color === c}
                         />
                         <span
-                            className={styles.color}
+                            className={lastActive === c ? `${styles.last} ${styles.color}` : styles.color}
                             style={{ backgroundColor: c }}
-                            key={nextId()}
                         />
                     </label>
                 })}
