@@ -12,6 +12,9 @@
 
 .box {
   display: flex;
+  div li {
+    white-space: nowrap;
+  }
 }
 
 .container {
