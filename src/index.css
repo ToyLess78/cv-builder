@@ -43,7 +43,7 @@
 
     --primary: rgba(25, 118, 210, 1);
     --primary-alpha-50: rgba(25, 118, 210, .5);
-    --primary-opacity: rgba(25, 118, 210, .05);
+    --primary-opacity: rgba(25, 118, 210, .06);
     --gray: #ccc;
     --light-gray: rgba(217, 217, 217, 1);
     --primary-text: #213547;
@@ -79,5 +79,10 @@ body {
 }
 a {
     color: var(--secondary-text);
+}
+@media print {
+    #tooltip {
+        display: none;
+    }
 }
 
