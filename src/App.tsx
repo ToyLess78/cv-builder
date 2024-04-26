@@ -27,7 +27,7 @@ const App: React.FC = () => {
     const themeColor = useSelector((state: RootState) => selectThemeColor(state));
     useEffect(() => {
         document.documentElement.style.setProperty('--primary', themeColor as string);
-        document.documentElement.style.setProperty('--primary-opacity', setAlphaToRGBA(themeColor as string, 0.1));
+        document.documentElement.style.setProperty('--primary-opacity', setAlphaToRGBA(themeColor as string, .06));
     }, [themeColor]);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -69,6 +69,10 @@ const App: React.FC = () => {
                     zIndex: 1000,
                     textTransform: 'capitalize'
                 } }
+                openEvents={
+                    {mouseenter: true}
+                }
+                noArrow
             />
 
             <SaveButton
