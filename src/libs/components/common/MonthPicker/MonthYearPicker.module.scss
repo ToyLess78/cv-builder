@@ -11,7 +11,7 @@
     &:hover {
       &:not([data-pc-section="decadetitle"]) {
         &:not([data-pc-section="decadetitletext"]) {
-          background-color: #f3f4f6;
+          background-color: var(--hover-bg);
         }
       }
     }
