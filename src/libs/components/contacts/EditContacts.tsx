@@ -101,7 +101,9 @@ const EditContacts: React.FC = () => {
                                 model={ menuItems } direction="left"
                                 className={ styles.menu }
                                 data-tooltip-id="tooltip"
-                                data-tooltip-content="Add social"/>
+                                data-tooltip-content="Add social"
+                                data-tooltip-place='top-end'
+                                />
 
                             <TabView className={ styles.tab }>
                                 { editContacts.data?.map((s) => {
