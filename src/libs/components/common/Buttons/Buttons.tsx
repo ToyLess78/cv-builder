@@ -49,7 +49,7 @@ export const HideButton: React.FC<IEditButtonProps> = ({onClick, title, offset =
 export const UploadButton: React.FC<IEditButtonProps> = ({onClick, offset = 0}) => {
     return (
         <LuUpload
-            size="1.2rem"
+            size="1.1rem"
             className={ styles.edit }
             onClick={ onClick }
             data-tooltip-id="tooltip"
@@ -104,8 +104,11 @@ export const SaveButton: React.FC<IEditButtonProps> = ({onClick}) => {
     return (
         <HiOutlineSave
             className={ styles.save }
-            size="1.2rem"
+            size="1.3rem"
             onClick={ onClick }
+            data-tooltip-id="tooltip"
+            data-tooltip-content="Save PDF"
+            data-tooltip-offset={0}
         />
     );
 };
