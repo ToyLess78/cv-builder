@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
-import { loadFromLocalStorage, saveToLocalStorage } from '~/utils/utils';
+import { loadFromLocalStorage } from '~/utils/utils';
 
 export interface IAdditionalState {
     isAdditional: boolean;
@@ -56,23 +56,18 @@ const skillsSlice = createSlice({
     reducers: {
         setIsAdditional(state, action: PayloadAction<boolean>) {
             state.additional.isAdditional = action.payload;
-            saveToLocalStorage('skills', state);
         },
         setSkills(state, action: PayloadAction<Partial<IAsideState['skills']>>) {
             state.skills = { ...state.skills, ...action.payload };
-            saveToLocalStorage('skills', state);
         },
         setAdditional(state, action: PayloadAction<Partial<IAsideState['additional']>>) {
             state.additional = { ...state.additional, ...action.payload };
-            saveToLocalStorage('skills', state);
         },
         setDefaultSkills(state) {
             state.skills = defaultSkillsState;
-            saveToLocalStorage('skills', state);
         },
         setDefaultAdditional(state) {
             state.additional = defaultAdditionalState;
-            saveToLocalStorage('skills', state);
         }
     }
 });

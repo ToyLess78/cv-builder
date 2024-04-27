@@ -54,11 +54,9 @@ const certificatesSlice = createSlice({
 
         setCertificatesData(state, action: PayloadAction<ICertificate[]>) {
             state.data = action.payload;
-            saveToLocalStorage('certificates', state);
         },
         setIsCertificates(state, action: PayloadAction<boolean>) {
             state.isCertificates = action.payload;
-            saveToLocalStorage('certificates', state);
         },
         setDefaultCertificates(state) {
             state = defaultCertificates;

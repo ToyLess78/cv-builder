@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
-import { loadFromLocalStorage, saveToLocalStorage } from '~/utils/local-storage.utills';
+import { loadFromLocalStorage } from '~/utils/local-storage.utills';
 
 interface InfoState {
     firstname: string;
@@ -23,12 +23,10 @@ const infoSlice = createSlice({
     initialState,
     reducers: {
         setInfo(state, action: PayloadAction<Partial<InfoState>>) {
-            const newState = {
+            return {
                 ...state,
                 ...action.payload
             };
-            saveToLocalStorage('info', newState);
-            return newState;
         }
     }
 });

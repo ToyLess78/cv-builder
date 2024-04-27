@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
-import { loadFromLocalStorage, removeFromLocalStorage, saveToLocalStorage } from '~/utils/utils';
+import { loadFromLocalStorage, removeFromLocalStorage } from '~/utils/utils';
 
 export interface ISocialItem {
     id: string;
@@ -109,20 +109,16 @@ const contactsSlice = createSlice({
     initialState,
     reducers: {
         setContacts(state, action: PayloadAction<Partial<ContactsState>>) {
-            const newState = {
+            return  {
                 ...state,
                 ...action.payload
             };
-            saveToLocalStorage('contact', newState);
-            return newState;
         },
         setIsSocials(state, action: PayloadAction<boolean>) {
             state.isSocials = action.payload;
-            saveToLocalStorage('contact', state);
         },
         setContactData(state, action: PayloadAction<ISocialItem[]>) {
             state.data = action.payload;
-            saveToLocalStorage('contact', state);
         },
         setDefaultContactsState() {
             removeFromLocalStorage('contact');
