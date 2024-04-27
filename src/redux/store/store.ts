@@ -6,7 +6,7 @@ import certificatesReducer from '~/slices/certificates.slice';
 import contactReducer from '~/slices/contact.slice';
 import themeReducer from '~/slices/theme.slice';
 import editReducer from '~/slices/edit.slice';
-import experienceReducer from '~/slices/experience.slice';
+import experienceReducer from '~/slices/experiences.slice';
 
 type ReducerKey = keyof RootState;
 

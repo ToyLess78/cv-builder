@@ -12,6 +12,7 @@ import { resetId } from 'react-id-generator';
 import { selectIsEdit } from '~/slices/edit.slice';
 import { breezePalette } from '~/public/palettes';
 import { loadFromLocalStorage } from '~/utils/local-storage.utills';
+import { selectInfo } from '~/slices/info.slice';
 
 const Menu = lazy(() => import('~/components/common/Carousel/Carousel'));
 const EditCertificates = lazy(() => import('~/components/certificates/EditCertificates'));
@@ -32,6 +33,16 @@ const App: React.FC = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
+    const info = useSelector((state: RootState) => selectInfo(state));
+
+    const handlerSaveOnClick = () => {
+        document.title = `CV_${ info.position }_${ info.firstname } ${ info.lastname }`;
+        window.print();
+    };
+
+    window.onafterprint = () => {
+        document.title = 'CV Builder';
+    };
 
     // const templates = ['success', 'advance', 'headway', 'breeze', 'strong', 'precise', 'serene', 'modern', 'fortune', 'recency', 'verdure', 'master', 'primary', 'prime', 'grand', 'alpha', 'galaxy', 'goodly', 'gallant', 'winner', 'elegant', 'future']
     // style={{'--primary': themeColor, '--primary-opacity': setAlphaToRGBA(themeColor as string, 0.1)} as React.CSSProperties}
@@ -76,7 +87,7 @@ const App: React.FC = () => {
             />
 
             <SaveButton
-                onClick={() => window.print()}
+                onClick={ handlerSaveOnClick }
             />
             <MoreButton
                 onClick={ () => setIsOpen(!isOpen) }
