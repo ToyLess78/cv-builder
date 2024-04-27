@@ -1,5 +1,5 @@
 import { Calendar } from 'primereact/calendar';
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { FormEvent, Nullable } from 'primereact/ts-helpers';
 import styles from './MonthYearPicker.module.scss';
 import { CheckBox } from '~/components/components';
@@ -24,11 +24,9 @@ export const MonthYearPickerWithRange: FC = () => {
 
     const [isPresent, setIsPresent] = useState(false);
     const [rangeDates, setRangeDates] = useState<Nullable<(Date | null)[]>>(null);
-    const [singleDate, setSingleDate] = useState<Nullable<Date>>(null);
+    const [singleDate, setSingleDate] = useState<Nullable<Date>>(new Date("2024-04-30T21:00:00.000Z"));
 
-    const inputRefSingleDate = useRef<HTMLInputElement>(null);
-    const inputRefRangeDates = useRef<HTMLInputElement>(null);
-    const [isMonth, setIsMonth] = useState<Nullable<(Date | null)[] | Date>>(null);
+    const [duration, setDuration] = useState<Nullable<(Date | null)[] | Date>>([new Date("2022-04-30T21:00:00.000Z"), new Date("2024-04-30T21:00:00.000Z")]);
 
     const [isYear, setIsYear] = useState(false);
 
@@ -37,11 +35,10 @@ export const MonthYearPickerWithRange: FC = () => {
     };
 
     useEffect(() => {
-        singleDate && setIsMonth(singleDate);
-        rangeDates && setIsMonth(rangeDates);
-        console.log('isMonth', isMonth);
+        singleDate && setDuration(singleDate);
+        rangeDates && setDuration(rangeDates);
 
-    }, [singleDate, rangeDates, isMonth]);
+    }, [singleDate, rangeDates, duration]);
 
     const handleToggleRange = () => {
         setIsPresent(!isPresent);
@@ -49,13 +46,13 @@ export const MonthYearPickerWithRange: FC = () => {
         !isPresent && setSingleDate(null);
     };
 
-    const monthParser = (date: Date) => String(date.getMonth() + 1).padStart(2, '0');
 
     const handleChangeRangeDates = (e: FormEvent<(Date | null)[], React.SyntheticEvent<Element, Event>>) => {
         setRangeDates(e.value);
     };
     const handleChangeSingleDate = (e: FormEvent<Date, React.SyntheticEvent<Element, Event>>) => {
         setSingleDate(e.value);
+        console.log(e.value);
     };
 
     return (
@@ -74,7 +71,6 @@ export const MonthYearPickerWithRange: FC = () => {
                 <Calendar
                     onChange={ handleChangeSingleDate }
                     value={ singleDate }
-                    inputRef={ inputRefSingleDate }
                     dateFormat="yy - Present"
                     placeholder="Start Date & Present"
                     view="year"
@@ -89,7 +85,6 @@ export const MonthYearPickerWithRange: FC = () => {
                 <Calendar
                     onChange={ handleChangeSingleDate }
                     value={ singleDate }
-                    inputRef={ inputRefSingleDate }
                     dateFormat="mm/yy - Present"
                     placeholder="Start Date & Present"
                     view="month"
@@ -105,7 +100,6 @@ export const MonthYearPickerWithRange: FC = () => {
                     onChange={ handleChangeRangeDates }
                     selectionMode="range"
                     value={ rangeDates }
-                    inputRef={ inputRefRangeDates }
                     dateFormat="yy"
                     placeholder="Start & End Date"
                     view="year"
@@ -122,7 +116,6 @@ export const MonthYearPickerWithRange: FC = () => {
                     onChange={ handleChangeRangeDates }
                     selectionMode="range"
                     value={ rangeDates }
-                    inputRef={ inputRefRangeDates }
                     dateFormat="mm/yy"
                     placeholder="Start & End Date"
                     view="month"
@@ -137,13 +130,6 @@ export const MonthYearPickerWithRange: FC = () => {
 
             <span className={ styles.border }></span>
 
-            <p>{ isPresent ? inputRefSingleDate.current?.value : inputRefRangeDates.current?.value }</p>
-            <span>
-                        { isPresent && singleDate && `${ monthParser(singleDate) }/${ singleDate.getFullYear() } - Present` }
-                { !isPresent && rangeDates && rangeDates[0] !== null && rangeDates[1] !== null &&
-                    `${ monthParser(rangeDates[0]) }/${ rangeDates[0].getFullYear() } - ${ monthParser(rangeDates[1]) }/${ rangeDates[1].getFullYear() }` }
-                    </span>
-            <p>{ isYear && isYear.toString() }</p>
         </div>
     );
 };
