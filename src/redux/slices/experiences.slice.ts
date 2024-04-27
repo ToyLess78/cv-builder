@@ -14,13 +14,15 @@ interface Experience {
 interface ExperiencesState {
     title: string;
     editedId: string;
+    isExperiences: boolean;
     data: Experience[];
 }
 
 const initialState: ExperiencesState = loadFromLocalStorage('experiences') || {
     title: 'work experience',
     editedId: '',
-    data:[
+    isExperiences: true,
+    data: [
         {
             id: '31T22:00:00.000Z',
             duration: 'Aug 2024',
@@ -58,7 +60,10 @@ const experiencesSlice = createSlice({
         setEditedId(state, action: PayloadAction<string>) {
             state.editedId = action.payload;
         },
-        setEditedExperience(state, action: PayloadAction<{ experience: Partial<Experience> }>) {
+        setIsExperiences(state, action: PayloadAction<boolean>) {
+            state.isExperiences = action.payload;
+        },
+        setEditedExperience(state, action: PayloadAction<{experience: Partial<Experience>}>) {
             state.data = state.data.map(exp => {
                 if (exp.id === action.payload.experience.id) {
                     return {
@@ -75,7 +80,7 @@ const experiencesSlice = createSlice({
     }
 });
 
-export const { setExperiences, setEditedId, setEditedExperience, addExperience} = experiencesSlice.actions;
+export const { setExperiences, setEditedId, setEditedExperience, addExperience, setIsExperiences} = experiencesSlice.actions;
 
 export const selectExperiences = (state: RootState) => state.experiences;
 
