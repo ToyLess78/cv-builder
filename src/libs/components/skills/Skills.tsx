@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { ISkillsState, selectSkills } from '~/slices/skillsSlice';
+import { ISkillsState, selectSkills } from '~/slices/skills.slice';
 import { AsideItem } from '~/components/common/Aside/AsideItem';
 import nextId from 'react-id-generator';
 import styles from './Skills.module.scss';
 import { EditButton, ReturnButton } from '~/components/common/Buttons/Buttons';
-import { setIsEdit } from '~/slices/editSlice';
+import { setIsEdit } from '~/slices/edit.slice';
 
 interface ISkillsProps {
     children?: ReactNode;

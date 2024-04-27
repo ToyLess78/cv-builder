@@ -6,9 +6,9 @@ import styles from './Languages.module.scss';
 import { AddButton, BreezeTitle, EditWrapper, Languages, Select } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectLanguages, setLanguagesData } from '~/slices/languagesSlice';
+import { selectLanguages, setLanguagesData } from '~/slices/languages.slice';
 import nextId from 'react-id-generator';
-import { setIsEdit } from '~/slices/editSlice';
+import { setIsEdit } from '~/slices/edit.slice';
 
 const EditLanguage: React.FC = () => {
 

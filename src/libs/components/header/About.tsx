@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import styles from './Header.module.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectInfo } from '~/slices/infoSlice';
+import { selectInfo } from '~/slices/info.slice';
 
 interface IAboutProps {
     summary: string

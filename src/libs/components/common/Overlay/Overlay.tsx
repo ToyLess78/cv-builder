@@ -3,7 +3,7 @@ import styles from './Overlay.module.scss';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectIsEdit, setIsEdit } from '~/slices/editSlice';
+import { selectIsEdit, setIsEdit } from '~/slices/edit.slice';
 
 interface IOverlayProps {
     children: ReactNode;

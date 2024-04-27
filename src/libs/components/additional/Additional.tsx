@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react';
 import { AdditionalList, AsideItem, EditButton, HideButton, ShowAsideButton } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectSkills, setIsAdditional } from '~/slices/skillsSlice';
-import { setIsEdit } from '~/slices/editSlice';
+import { selectSkills, setIsAdditional } from '~/slices/skills.slice';
+import { setIsEdit } from '~/slices/edit.slice';
 
 interface IAdditionalProps {
     children: ReactNode;

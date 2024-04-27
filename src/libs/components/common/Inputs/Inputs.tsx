@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Inputs.module.scss';
 import { Dropdown, DropdownChangeEvent, DropdownProps } from 'primereact/dropdown';
 import { SelectItemOptionsType } from 'primereact/selectitem';
-import { IItems } from '~/slices/languagesSlice';
+import { IItems } from '~/slices/languages.slice';
 
 interface InputProps extends React.HTMLProps<HTMLElement> {
     label?: string;

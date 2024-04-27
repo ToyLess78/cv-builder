@@ -4,11 +4,11 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { IoMailSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { ContactsState, selectContacts, setIsSocials } from '~/slices/contactSlice';
+import { ContactsState, selectContacts, setIsSocials } from '~/slices/contact.slice';
 import { AsideItem } from '~/components/common/Aside/AsideItem';
 import styles from './Contacts.module.scss';
 import { EditButton, HideButton, ShowButton } from '~/components/common/Buttons/Buttons';
-import { setIsEdit } from '~/slices/editSlice';
+import { setIsEdit } from '~/slices/edit.slice';
 import { IconsMap } from '~/components/contacts/IconsMap';
 
 interface ISocialProps {

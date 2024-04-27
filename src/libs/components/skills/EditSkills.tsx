@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { AutoComplete, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
-import { selectSkills, setAdditional, setSkills } from '~/slices/skillsSlice';
+import { selectSkills, setAdditional, setSkills } from '~/slices/skills.slice';
 import styles from './Skills.module.scss';
 import { AsideItem, BreezeTitle, EditWrapper, Skills, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { skills } from '~/public/skills';
-import { setIsEdit } from '~/slices/editSlice';
+import { setIsEdit } from '~/slices/edit.slice';
 
 interface IEditSkillsAutoCompleteProps {
     isAdditional?: boolean;

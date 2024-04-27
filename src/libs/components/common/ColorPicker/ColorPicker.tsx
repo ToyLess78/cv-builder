@@ -4,7 +4,7 @@ import nextId from 'react-id-generator';
 import { saveToLocalStorage } from '~/utils/utils';
 import { CssColor } from '~/types/color-types';
 import { useDispatch } from 'react-redux';
-import { setThemeColor } from '~/slices/themeSlice';
+import { setThemeColor } from '~/slices/theme.slice';
 
 interface IColourPickerProps {
     theme: string;

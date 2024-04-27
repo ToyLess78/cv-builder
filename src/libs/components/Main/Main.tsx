@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Main.module.css';
-import { MonthYearPickerSingle, MonthYearPickerWithRange } from '~/components';
+import { BreezeTitle, MonthYearPickerSingle, MonthYearPickerWithRange } from '~/components';
+import Experience from '~/components/experience/Experience';
 
 
 interface IMainProps {
@@ -16,6 +17,9 @@ export const Main: React.FC<IMainProps> = () => {
             {/*    <h1 className='title'>I'm alphardex.</h1>*/}
             {/*    <p className='subtitle'>A CSS Wizard</p>*/}
             {/*</article>*/}
+            <Experience>
+                <BreezeTitle text={'work experience'}/>
+            </Experience>
             <MonthYearPickerWithRange/>
             <MonthYearPickerSingle/>
 

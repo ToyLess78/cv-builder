@@ -1,6 +1,6 @@
 import React from 'react';
 import nextId from 'react-id-generator';
-import { IAdditionalState } from '~/slices/skillsSlice';
+import { IAdditionalState } from '~/slices/skills.slice';
 import styles from './Additional.module.scss'
 
 export const AdditionalList: React.FC<IAdditionalState> = (additional) => {

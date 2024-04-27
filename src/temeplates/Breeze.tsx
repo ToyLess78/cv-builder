@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectSkills } from '~/slices/skillsSlice';
-import { selectCertificates } from '~/slices/certificatesSlice';
+import { selectSkills } from '~/slices/skills.slice';
+import { selectCertificates } from '~/slices/certificates.slice';
 import {
     Additional,
     Aside,

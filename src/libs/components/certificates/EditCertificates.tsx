@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { AddButton, BreezeTitle, Certificates, EditWrapper, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectCertificates, setCertificatesData } from '~/slices/certificatesSlice';
+import { selectCertificates, setCertificatesData } from '~/slices/certificates.slice';
 import nextId from 'react-id-generator';
-import { setIsEdit } from '~/slices/editSlice';
+import { setIsEdit } from '~/slices/edit.slice';
 
 const EditCertificates: React.FC = () => {
 

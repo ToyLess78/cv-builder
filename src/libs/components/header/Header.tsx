@@ -4,10 +4,10 @@ import { BreezeTitle, EditButton } from '~/components/components';
 import { Image } from '~/components/common/Image/Image';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectInfo } from '~/slices/infoSlice';
+import { selectInfo } from '~/slices/info.slice';
 import { Info } from '~/components/header/Info';
 import { About } from '~/components/header/About';
-import { setIsEdit } from '~/slices/editSlice';
+import { setIsEdit } from '~/slices/edit.slice';
 
 export const Header: React.FC = () => {
 

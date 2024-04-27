@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { BreezeTitle, CheckBox, Contacts, EditWrapper, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectContacts, setContacts } from '~/slices/contactSlice';
+import { selectContacts, setContacts } from '~/slices/contact.slice';
 import styles from './Contacts.module.scss';
 import { TabPanel, TabView } from 'primereact/tabview';
 import { SpeedDial } from 'primereact/speeddial';
 import { MenuItem } from 'primereact/menuitem';
 import { IconsMap } from '~/components/contacts/IconsMap';
-import { setIsEdit } from '~/slices/editSlice';
+import { setIsEdit } from '~/slices/edit.slice';
 
 const EditContacts: React.FC = () => {
     const contactState = useSelector((state: RootState) => selectContacts(state));

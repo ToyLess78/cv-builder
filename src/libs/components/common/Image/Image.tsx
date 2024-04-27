@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectInfo } from '~/slices/infoSlice';
-import { selectThemeColor } from '~/slices/themeSlice';
+import { selectInfo } from '~/slices/info.slice';
+import { selectThemeColor } from '~/slices/theme.slice';
 import { ImageType } from '~/types/image-uploading.types';
 import classes from './Image.module.scss';
 import ImageUploading from './ImageUploading';

@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { ILanguage, selectLanguages, setIsLanguages } from '~/slices/languagesSlice';
+import { ILanguage, selectLanguages, setIsLanguages } from '~/slices/languages.slice';
 import { AsideItem } from '~/components/common/Aside/AsideItem';
 import styles from './Languages.module.scss';
 import { EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components/common/Buttons/Buttons';
-import { setIsEdit } from '~/slices/editSlice';
+import { setIsEdit } from '~/slices/edit.slice';
 
 interface ILanguagesProps {
     children: ReactNode;

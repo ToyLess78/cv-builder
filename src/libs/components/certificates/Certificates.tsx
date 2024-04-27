@@ -2,11 +2,11 @@ import React, { ReactNode } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { ICertificate, selectCertificates, setIsCertificates } from '~/slices/certificatesSlice';
+import { ICertificate, selectCertificates, setIsCertificates } from '~/slices/certificates.slice';
 import { AsideItem } from '~/components/common/Aside/AsideItem';
 import { EditButton, EditButtonsBox, HideButton, ShowAsideButton } from '~/components/common/Buttons/Buttons';
 import styles from './Certificates.module.scss';
-import { setIsEdit } from '~/slices/editSlice';
+import { setIsEdit } from '~/slices/edit.slice';
 
 interface ICertificatesProps {
     children: ReactNode;

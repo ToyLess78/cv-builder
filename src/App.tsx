@@ -3,13 +3,13 @@ import { Tooltip } from 'react-tooltip';
 import { Breeze } from './temeplates/Breeze';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectThemeColor } from '~/slices/themeSlice';
+import { selectThemeColor } from '~/slices/theme.slice';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { setAlphaToRGBA } from '~/utils/color.utils';
 import { MenuOverlay, Overlay } from '~/components/common/Overlay/Overlay';
 import { ColorPicker, Loading, MoreButton, SaveButton } from '~/components';
 import { resetId } from 'react-id-generator';
-import { selectIsEdit } from '~/slices/editSlice';
+import { selectIsEdit } from '~/slices/edit.slice';
 import { breezePalette } from '~/public/palettes';
 import { loadFromLocalStorage } from '~/utils/local-storage.utills';
 
