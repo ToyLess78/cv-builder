@@ -4,7 +4,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { BsArrowReturnRight } from 'react-icons/bs';
 import { BiHide } from 'react-icons/bi';
 import { MdOutlineVisibility } from 'react-icons/md';
-import { IoMdRemoveCircleOutline } from 'react-icons/io';
+import { IoMdAddCircleOutline, IoMdRemoveCircleOutline } from 'react-icons/io';
 import { LuUpload } from 'react-icons/lu';
 import { HiOutlineSave } from 'react-icons/hi';
 import { RiMoreLine } from 'react-icons/ri';
@@ -19,21 +19,23 @@ interface IEditButtonProps {
     onClick?: React.MouseEventHandler<SVGElement>;
     title?: string;
     offset?: number;
+    style?: React.CSSProperties | undefined;
 }
 
-export const EditButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
+export const EditButton: React.FC<IEditButtonProps> = ({onClick, title, style}) => {
     return (
         <FaRegEdit
             className={ styles.edit }
             onClick={ onClick }
-            data-tooltip-id='tooltip'
+            data-tooltip-id="tooltip"
             data-tooltip-content={ `Edit ${ title }` }
             data-tooltip-offset={ 0 }
+            style={ style }
         />
     );
 };
 
-export const HideButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 20}) => {
+export const HideButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 20, style = {top: '1.5rem'}}) => {
     return (
         <BiHide
             size="1.3rem"
@@ -42,6 +44,7 @@ export const HideButton: React.FC<IEditButtonProps> = ({onClick, title, offset =
             data-tooltip-id="tooltip"
             data-tooltip-content={ `Hide ${ title }` }
             data-tooltip-offset={ offset }
+            style={ style }
         />
     );
 };
@@ -59,7 +62,7 @@ export const UploadButton: React.FC<IEditButtonProps> = ({onClick, offset = 0}) 
     );
 };
 
-export const ShowAsideButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 0}) => {
+export const ShowAsideButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 0, style}) => {
     return (
         <div className={ styles.show }>
             <MdOutlineVisibility
@@ -69,6 +72,7 @@ export const ShowAsideButton: React.FC<IEditButtonProps> = ({onClick, title, off
                 data-tooltip-content={ `Show ${ title }` }
                 data-tooltip-offset={ offset }
                 onClick={ onClick }
+                style={ style }
             />
         </div>
     );
@@ -83,6 +87,20 @@ export const ShowButton: React.FC<IEditButtonProps> = ({onClick, title, offset =
             data-tooltip-content={ `Show ${ title }` }
             data-tooltip-offset={ offset }
             onClick={ onClick }
+        />
+    );
+};
+
+export const AddItemButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 0, style = {bottom: '0'}}) => {
+    return (
+        <IoMdAddCircleOutline
+            className={ styles.hide }
+            size="1.2rem"
+            data-tooltip-id="tooltip"
+            data-tooltip-content={ `Add ${ title }` }
+            data-tooltip-offset={ offset }
+            onClick={ onClick }
+            style={ style }
         />
     );
 };
