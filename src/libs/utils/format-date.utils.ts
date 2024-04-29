@@ -1,32 +1,42 @@
-export const formatDateToString = (dateTime: Date | Date[], isYear: boolean): string | string[] => {
-    const options: Intl.DateTimeFormatOptions = isYear ? {
-        year: 'numeric'
-    } : {
-        month: 'short',
-        year: 'numeric'
-    };
+import { Nullable } from 'primereact/ts-helpers';
 
-    if (Array.isArray(dateTime)) {
-        return dateTime?.map(date => new Intl.DateTimeFormat('en-GB', options).format(date));
+const regexIsPresent = / - Present*/;
+const regexIsRange = / - */;
+const regexIsSlash = /(\d{2})\/(\d{4})/;
+
+export const reformatDateSingle = (datesString: string): Nullable<Date | null> => {
+    if (!datesString) return null;
+
+    if (regexIsPresent.test(datesString)) {
+        const cleanedString = datesString.replace(regexIsPresent, '');
+        if (regexIsSlash.test(cleanedString)) {
+            const formattedString = cleanedString.replace(regexIsSlash, '$2/$1');
+            return new Date(formattedString);
+        } else if (cleanedString) {
+            return new Date(cleanedString) || null;
+        }
+
     } else {
-        return new Intl.DateTimeFormat('en-GB', options).format(dateTime);
+        return null;
     }
 };
 
-export const formatStringToDate = (dateTime: string | string[]): Date | Date[] => {
+export const reformatDateRange = (datesString: string): Nullable<(Date | null)[]> => {
+    if (!datesString) return null;
 
-    if (Array.isArray(dateTime)) {
-        return dateTime?.map(date => new Date(date) || new Date());
+    if (regexIsRange.test(datesString)) {
+        const datesArray = datesString.split(' - ');
+        return datesArray.map(date => {
+            if (!date) {
+                return null;
+            }
+            if (regexIsSlash.test(date)) {
+                return new Date(date.replace(regexIsSlash, '$2/$1')) || null;
+            } else {
+                return new Date(date) || null;
+            }
+        });
     } else {
-        return new Date(dateTime) || new Date();
-    }
-};
-
-export const formatDurationToString = (dateTime: string | string[]): string | string[] => {
-
-    if (Array.isArray(dateTime)) {
-        return `${ dateTime[0] } - ${ dateTime[1] }`;
-    } else {
-        return `${ dateTime } - Present`;
+        return null;
     }
 };
