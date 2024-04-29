@@ -1,13 +1,24 @@
 import React, { ReactNode } from 'react';
 import styles from './Experience.module.scss';
-import { formatDurationToString } from '~/utils/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectExperiences, setEditedId, setIsExperiences } from '~/slices/experiences.slice';
-import { AddItemButton, EditButton, HideButton, ShowAsideButton } from '~/components';
+import {
+    IExperience,
+    removeExperience,
+    selectExperiences,
+    setEditedId,
+    setIsExperiences
+} from '~/slices/experiences.slice';
+import { AddItemButton, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
 import { setIsEdit } from '~/slices/edit.slice';
+import nextId from 'react-id-generator';
 
-const Experience: React.FC<{children?: ReactNode}> = ({children}) => {
+interface IExperienceProps {
+    children?: ReactNode;
+    experienceItem?: IExperience | null;
+}
+
+export const Experience: React.FC<IExperienceProps> = ({children, experienceItem = null}) => {
 
     const experience = useSelector((state: RootState) => selectExperiences(state));
     const {isExperiences, title, data} = experience;
@@ -15,18 +26,18 @@ const Experience: React.FC<{children?: ReactNode}> = ({children}) => {
     const dispatch = useDispatch();
 
     const handlerSetEdit = (id: string) => {
-        dispatch(setIsEdit('experience'));
         dispatch(setEditedId(id));
+        dispatch(setIsEdit('experience'));
     };
 
     const handlerAddExperience = () => {
+        dispatch(setEditedId(nextId()));
         dispatch(setIsEdit('experience'));
-        dispatch(setEditedId(''));
     };
 
     return (
         <>
-            { isExperiences ?
+            { isExperiences && !experienceItem ?
                 <section className={ styles.experience }>
                     { children }
                     <div className={ styles.wrapper }>
@@ -37,9 +48,14 @@ const Experience: React.FC<{children?: ReactNode}> = ({children}) => {
                                     title={ exp.jobTitle }
                                     onClick={ () => handlerSetEdit(exp.id) }
                                 />
+                                { data.length > 1 && <RemoveButton
+                                    style={ {left: '-3.8rem', top: '1.5rem'} }
+                                    removeOffset={ 20 }
+                                    onRemove={ () => dispatch(removeExperience(exp.id)) }
+                                /> }
                                 <strong>{ `${ exp.jobTitle } - ${ exp.employer }` } <em> { exp.location }</em></strong>
                                 <br/>
-                                <span className={ styles.duration }>{ formatDurationToString(exp.duration) }</span>
+                                <span className={ styles.duration }>{ exp.duration }</span>
                                 <div className={ styles.description }
                                      dangerouslySetInnerHTML={ {__html: exp.description} }></div>
 
@@ -49,11 +65,11 @@ const Experience: React.FC<{children?: ReactNode}> = ({children}) => {
                     <HideButton
                         title={ title }
                         style={ {bottom: '1.3rem'} }
+                        offset={ 0 }
                         onClick={ () => dispatch(setIsExperiences(false)) }
                     />
                     <AddItemButton
                         title="experience"
-                        style={ {left: '-1.2rem', bottom: '0'} }
                         onClick={ handlerAddExperience }
                     />
                 </section> :
@@ -62,9 +78,22 @@ const Experience: React.FC<{children?: ReactNode}> = ({children}) => {
                     style={ {top: '-1rem'} }
                     onClick={ () => dispatch(setIsExperiences(true)) }
                 /> }
+            {isExperiences && experienceItem &&
+                <section className={ styles.experience }>
+                    { children }
+                    <div className={ styles.wrapper }>
+                        <div className={ styles.title }>
+                            <strong>{ `${ experienceItem.jobTitle } ${experienceItem.employer.length ? ' - ' : ''} ${ experienceItem.employer }` } <em> { experienceItem.location }</em></strong>
+                            <br/>
+                            <span className={ styles.duration }>{ experienceItem.duration }</span>
+                            <div className={ styles.description }
+                                 dangerouslySetInnerHTML={ {__html: experienceItem.description} }>
+                            </div>
 
+                        </div>
+                    </div>
+                </section>
+            }
         </>
     )
-}
-
-export default Experience;
+};
