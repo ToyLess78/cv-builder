@@ -3,7 +3,7 @@
   border: 1px solid var(--primary);
   -webkit-animation: var(--animation);
   animation: var(--animation);
-  margin-top: -1px;
+  margin-top: -.05rem;
 
   span {
     padding: 0.5rem;
@@ -54,6 +54,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  font: inherit;
 
   .border {
     width: 8.5rem;
@@ -62,19 +63,47 @@
     transition: all 0.4s;
   }
 
+  .label {
+    position: absolute;
+    width: 100%;
+    color: var(--label-color);
+    transition: 0.3s;
+    letter-spacing: 1px;
+    pointer-events: none;
+    font-size: .9rem;
+  }
+
   .calendar {
 
-    &:has(.input[aria-expanded="true"]) ~ .border {
-      width: 100%;
-      border-top: 1px solid var(--primary);
+    &:has(.input[aria-expanded="true"]) {
+      & ~ .border {
+        width: 100%;
+        border-top: 1px solid var(--primary);
+      }
+
+      & ~ .label {
+        margin-top: -19px;
+        font-size: .7rem;
+        color: var(--primary);
+        transition: 0.3s;
+      }
+    }
+
+    &:has(.input[required]:valid) {
+      & ~ .label {
+        margin-top: -19px;
+        font-size: .7rem;
+        transition: 0.3s;
+      }
     }
 
     .input {
       border: none;
       display: flex;
-      padding: 7px 0;
-      font-size: 1rem;
+      padding: 4px 0;
+      font-size: .9rem;
       transition: all 0.4s;
+      color: #333;
 
       &::placeholder {
         color: var(--gray);

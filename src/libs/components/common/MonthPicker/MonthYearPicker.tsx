@@ -1,38 +1,36 @@
 import { Calendar } from 'primereact/calendar';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, ReactNode, useEffect, useState } from 'react';
 import { FormEvent, Nullable } from 'primereact/ts-helpers';
 import styles from './MonthYearPicker.module.scss';
 import { CheckBox } from '~/components/components';
 
-export const MonthYearPickerWithRange: FC = () => {
-    // const today = new Date();
-    // const month = today.getMonth();
-    // const year = today.getFullYear();
-    // const prevMonth = (month === 0) ? 11 : month - 1;
-    // const prevYear = (prevMonth === 11) ? year - 1 : year;
-    // const nextMonth = (month === 11) ? 0 : month + 1;
-    // const nextYear = (nextMonth === 0) ? year + 1 : year;
-    //
-    //
-    // const minDate = new Date();
-    // minDate.setMonth(prevMonth);
-    // minDate.setFullYear(prevYear);
-    //
-    // const maxDate = new Date();
-    // maxDate.setMonth(nextMonth);
-    // maxDate.setFullYear(nextYear);
+interface IMonthYearPickerWithRangeProps {
+    singleValue?: Nullable<Date | null>;
+    rangeValue?: Nullable<(Date | null)[]>;
+    duration: Nullable<Date | (Date | null)[]>;
+    setDuration: React.Dispatch<React.SetStateAction<Nullable<Date | (Date | null)[]>>>;
+    children?: ReactNode;
+    isYear: boolean;
+    isPresent?: boolean;
+    inputRefRangeDates?: React.RefObject<HTMLInputElement>;
+    inputRefSingleDate?: React.RefObject<HTMLInputElement>;
+}
 
-    const [isPresent, setIsPresent] = useState(false);
+export const MonthYearPickerWithRange: FC<IMonthYearPickerWithRangeProps> = (
+    {
+        singleValue,
+        rangeValue,
+        duration,
+        setDuration,
+        isYear,
+        children,
+        inputRefRangeDates,
+        inputRefSingleDate,
+        isPresent = false
+    }) => {
+
     const [rangeDates, setRangeDates] = useState<Nullable<(Date | null)[]>>(null);
-    const [singleDate, setSingleDate] = useState<Nullable<Date>>(new Date("2024-04-30T21:00:00.000Z"));
-
-    const [duration, setDuration] = useState<Nullable<(Date | null)[] | Date>>([new Date("2022-04-30T21:00:00.000Z"), new Date("2024-04-30T21:00:00.000Z")]);
-
-    const [isYear, setIsYear] = useState(false);
-
-    const handleToggleYear = () => {
-        setIsYear(!isYear);
-    };
+    const [singleDate, setSingleDate] = useState<Nullable<Date | null>>(null);
 
     useEffect(() => {
         singleDate && setDuration(singleDate);
@@ -40,11 +38,10 @@ export const MonthYearPickerWithRange: FC = () => {
 
     }, [singleDate, rangeDates, duration]);
 
-    const handleToggleRange = () => {
-        setIsPresent(!isPresent);
+    useEffect(() => {
         isPresent && setRangeDates(null);
         !isPresent && setSingleDate(null);
-    };
+    }, [isPresent]);
 
 
     const handleChangeRangeDates = (e: FormEvent<(Date | null)[], React.SyntheticEvent<Element, Event>>) => {
@@ -52,83 +49,98 @@ export const MonthYearPickerWithRange: FC = () => {
     };
     const handleChangeSingleDate = (e: FormEvent<Date, React.SyntheticEvent<Element, Event>>) => {
         setSingleDate(e.value);
-        console.log(e.value);
     };
 
     return (
         <div className={ styles.container }>
-            <CheckBox
-                checked={ isYear }
-                onChange={ handleToggleYear }
-                title="Currently only Year"
-            />
-            <CheckBox
-                checked={ isPresent }
-                onChange={ handleToggleRange }
-                title="Currently work here"
-            />
+
             { isYear && isPresent &&
-                <Calendar
-                    onChange={ handleChangeSingleDate }
-                    value={ singleDate }
-                    dateFormat="yy - Present"
-                    placeholder="Start Date & Present"
-                    view="year"
-                    className={ styles.calendar }
-                    panelClassName={ styles.panel }
-                    inputClassName={ styles.input }
-                    hideOnRangeSelection
-                    readOnlyInput
-                    required
-                /> }
+                <>
+                    <Calendar
+                        onChange={ handleChangeSingleDate }
+                        value={ singleDate || singleValue }
+                        dateFormat="yy - Present"
+                        view="year"
+                        inputRef={ inputRefSingleDate }
+                        inputId="single-year-calendar"
+                        className={ styles.calendar }
+                        panelClassName={ styles.panel }
+                        inputClassName={ styles.input }
+                        hideOnRangeSelection
+                        required
+                    />
+                    <label
+                        htmlFor="single-year-calendar"
+                        className={ styles.label }>
+                        Start Year & Present</label>
+                </> }
             { !isYear && isPresent &&
-                <Calendar
-                    onChange={ handleChangeSingleDate }
-                    value={ singleDate }
-                    dateFormat="mm/yy - Present"
-                    placeholder="Start Date & Present"
-                    view="month"
-                    className={ styles.calendar }
-                    panelClassName={ styles.panel }
-                    inputClassName={ styles.input }
-                    hideOnRangeSelection
-                    readOnlyInput
-                    required
-                /> }
+                <>
+                    <Calendar
+                        onChange={ handleChangeSingleDate }
+                        value={ singleDate || singleValue }
+                        dateFormat="mm/yy - Present"
+                        inputId="single-month-calendar"
+                        view="month"
+                        inputRef={ inputRefSingleDate }
+                        className={ styles.calendar }
+                        panelClassName={ styles.panel }
+                        inputClassName={ styles.input }
+                        hideOnRangeSelection
+                        required
+                    />
+                    <label
+                        htmlFor="single-month-calendar"
+                        className={ styles.label }>
+                        Start Date & Present</label>
+                </> }
             { isYear && !isPresent &&
-                <Calendar
-                    onChange={ handleChangeRangeDates }
-                    selectionMode="range"
-                    value={ rangeDates }
-                    dateFormat="yy"
-                    placeholder="Start & End Date"
-                    view="year"
-                    className={ styles.calendar }
-                    panelClassName={ styles.panel }
-                    inputClassName={ styles.input }
-                    hideOnRangeSelection
-                    readOnlyInput
-                    required
-                />
-            }
+                <>
+                    <Calendar
+                        onChange={ handleChangeRangeDates }
+                        selectionMode="range"
+                        value={ rangeDates || rangeValue }
+                        dateFormat="yy"
+                        inputId="range-year-calendar"
+                        view="year"
+                        inputRef={ inputRefRangeDates }
+                        className={ styles.calendar }
+                        panelClassName={ styles.panel }
+                        inputClassName={ styles.input }
+                        hideOnRangeSelection
+                        required
+                    />
+                    <label
+                        htmlFor="range-year-calendar"
+                        className={ styles.label }>
+                        Start & End Year</label>
+                </> }
             { !isYear && !isPresent &&
-                <Calendar
-                    onChange={ handleChangeRangeDates }
-                    selectionMode="range"
-                    value={ rangeDates }
-                    dateFormat="mm/yy"
-                    placeholder="Start & End Date"
-                    view="month"
-                    className={ styles.calendar }
-                    panelClassName={ styles.panel }
-                    inputClassName={ styles.input }
-                    hideOnRangeSelection
-                    readOnlyInput
-                    required
-                />
+                <>
+                    <Calendar
+                        onChange={ handleChangeRangeDates }
+                        selectionMode="range"
+                        value={ rangeDates || rangeValue }
+                        dateFormat="mm/yy"
+                        inputId="range-month-calendar"
+                        view="month"
+                        inputRef={ inputRefRangeDates }
+                        className={ styles.calendar }
+                        panelClassName={ styles.panel }
+                        inputClassName={ styles.input }
+                        hideOnRangeSelection
+                        required
+                    />
+                    <label
+                        htmlFor="range-month-calendar"
+                        className={ styles.label }>
+                        Start & End Date</label>
+                </>
             }
 
             <span className={ styles.border }></span>
+
+            { children }
 
         </div>
     );
@@ -148,42 +160,52 @@ export const MonthYearPickerSingle: FC = () => {
 
     return (
         <div className={ styles.container }>
+
+            { isYear &&
+                <>
+                    <Calendar
+                        onChange={ handleChangeDate }
+                        value={ date }
+                        dateFormat="yy"
+                        inputId="single-year"
+                        view="year"
+                        className={ styles.calendar }
+                        panelClassName={ styles.panel }
+                        inputClassName={ styles.input }
+                        hideOnRangeSelection
+                        required
+                    />
+                    <label
+                        htmlFor="single-year"
+                        className={ styles.label }>
+                        Year</label>
+                </> }
+            { !isYear &&
+                <>
+                    <Calendar
+                        onChange={ handleChangeDate }
+                        value={ date }
+                        dateFormat="mm/yy"
+                        inputId="single-month"
+                        view="month"
+                        className={ styles.calendar }
+                        panelClassName={ styles.panel }
+                        inputClassName={ styles.input }
+                        hideOnRangeSelection
+                        required
+                    />
+                    <label
+                        htmlFor="single-month"
+                        className={ styles.label }>
+                        Month & Year</label>
+                </> }
+
+            <span className={ styles.border }></span>
             <CheckBox
                 checked={ isYear }
                 onChange={ handleToggleYear }
                 title="Currently only Year"
             />
-
-            { isYear &&
-                <Calendar
-                    onChange={ handleChangeDate }
-                    value={ date }
-                    dateFormat="yy"
-                    placeholder="Year"
-                    view="year"
-                    className={ styles.calendar }
-                    panelClassName={ styles.panel }
-                    inputClassName={ styles.input }
-                    hideOnRangeSelection
-                    readOnlyInput
-                    required
-                /> }
-            { !isYear &&
-                <Calendar
-                    onChange={ handleChangeDate }
-                    value={ date }
-                    dateFormat="mm/yy"
-                    placeholder="Month & Year"
-                    view="month"
-                    className={ styles.calendar }
-                    panelClassName={ styles.panel }
-                    inputClassName={ styles.input }
-                    hideOnRangeSelection
-                    readOnlyInput
-                    required
-                /> }
-
-            <span className={ styles.border }></span>
         </div>
     );
 };
