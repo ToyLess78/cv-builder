@@ -2,10 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage } from '~/utils/local-storage.utills';
 
-interface Experience {
+export interface IExperience {
     id: string;
     duration: string;
     isYear: boolean;
+    isPresent: boolean;
     employer: string;
     jobTitle: string;
     location: string;
@@ -15,18 +16,19 @@ interface ExperiencesState {
     title: string;
     editedId: string;
     isExperiences: boolean;
-    data: Experience[];
+    data: IExperience[];
 }
 
 const initialState: ExperiencesState = loadFromLocalStorage('experiences') || {
-    title: 'work experience',
+    title: 'experience',
     editedId: '',
     isExperiences: true,
     data: [
         {
             id: '31T22:00:00.000Z',
-            duration: 'Aug 2024',
+            duration: '07/2024 - Present',
             isYear: false,
+            isPresent: true,
             employer: 'Food & Delivery',
             jobTitle: 'Web Developer',
             location: 'Remote, California',
@@ -34,12 +36,10 @@ const initialState: ExperiencesState = loadFromLocalStorage('experiences') || {
         },
         {
             id: '30T21:00:00.000Z',
-            duration: [
-                'Jan 2023',
-                'Jun 2024'
-            ],
+            duration: '01/2023 - 06/2024',
             isYear: false,
-            employer: 'City Group Bank',
+            isPresent: false,
+            employer: 'Bank City Group',
             jobTitle: 'Junior Web Developer',
             location: 'Kyiv, Ukraine',
             description: '<ul><li>Managed front-end and back-end development in the company\'s Portfolio Analyst, Employee Track, and Account Management systems.</li><li>Successfully identified, diagnosed, and fixed website problems, including broken links, typographical errors, and formatting issues.</li><li>Helped to achieve a consistent look and visual theme across the website by promoting uniform fonts, formatting, images, and layout.</li></ul>'
@@ -63,7 +63,7 @@ const experiencesSlice = createSlice({
         setIsExperiences(state, action: PayloadAction<boolean>) {
             state.isExperiences = action.payload;
         },
-        setEditedExperience(state, action: PayloadAction<{experience: Partial<Experience>}>) {
+        setEditedExperience(state, action: PayloadAction<{experience: Partial<IExperience>}>) {
             state.data = state.data.map(exp => {
                 if (exp.id === action.payload.experience.id) {
                     return {
@@ -74,13 +74,16 @@ const experiencesSlice = createSlice({
                 return exp;
             });
         },
-        addExperience(state, action: PayloadAction<Experience>) {
+        removeExperience(state, action: PayloadAction<string>) {
+            state.data = state.data.filter(item => item.id !== action.payload);
+        },
+        addExperience(state, action: PayloadAction<IExperience>) {
             state.data = [...state.data, action.payload];
         }
     }
 });
 
-export const { setExperiences, setEditedId, setEditedExperience, addExperience, setIsExperiences} = experiencesSlice.actions;
+export const { setExperiences, setEditedId, setEditedExperience, addExperience, setIsExperiences, removeExperience} = experiencesSlice.actions;
 
 export const selectExperiences = (state: RootState) => state.experiences;
 
