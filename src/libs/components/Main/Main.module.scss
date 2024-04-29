@@ -1,0 +1,21 @@
+.main {
+  position: relative;
+}
+
+.wrapper {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: 1rem auto;
+
+  p {
+    margin-right: 2rem;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

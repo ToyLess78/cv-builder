@@ -91,7 +91,7 @@ export const ShowButton: React.FC<IEditButtonProps> = ({onClick, title, offset =
     );
 };
 
-export const AddItemButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 0, style = {bottom: '0'}}) => {
+export const AddItemButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 20, style = {bottom: '0'}}) => {
     return (
         <IoMdAddCircleOutline
             className={ styles.hide }
@@ -143,16 +143,18 @@ export const ReturnButton: React.FC<IEditButtonProps> = ({onClick, title}) => {
 interface IRemoveButtonProps {
     onRemove?: () => void;
     removeStyle?: React.CSSProperties;
+    style?: React.CSSProperties;
+    removeOffset?: number;
 }
 
-export const RemoveButton: React.FC<IRemoveButtonProps> = ({onRemove, removeStyle}) => {
+export const RemoveButton: React.FC<IRemoveButtonProps> = ({onRemove, removeStyle, style, removeOffset = 0}) => {
     return (
-        <div className={ styles.remove }>
+        <div className={ styles.remove } style={style}>
             <IoMdRemoveCircleOutline
                 data-tooltip-content="Remove"
                 data-tooltip-id="tooltip"
                 size="1.2rem"
-                data-tooltip-offset={ 0 }
+                data-tooltip-offset={ removeOffset }
                 onClick={ onRemove }
                 style={ removeStyle }
             />

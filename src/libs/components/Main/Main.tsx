@@ -1,7 +1,10 @@
-import React from 'react';
-import styles from './Main.module.css';
-import { BreezeTitle, MonthYearPickerSingle, MonthYearPickerWithRange } from '~/components';
-import Experience from '~/components/experience/Experience';
+import React, { useState } from 'react';
+import styles from './Main.module.scss';
+import { BreezeTitle, Experience, MonthYearPickerSingle, MonthYearPickerWithRange } from '~/components';
+import { useSelector } from 'react-redux';
+import { RootState } from '~/store/store';
+import { selectExperiences } from '~/slices/experiences.slice';
+import { Nullable } from 'primereact/ts-helpers';
 
 
 interface IMainProps {
@@ -9,8 +12,11 @@ interface IMainProps {
 }
 
 export const Main: React.FC<IMainProps> = () => {
+    const [duration, setDuration] = useState<Nullable<(Date | null)[] | Date>>(null);
+    const isYear = false;
 
-    // const router = useRouter();
+    const experience = useSelector((state: RootState) => selectExperiences(state));
+
     return (
         <section className={ styles.main } >
             {/*<article>*/}
@@ -18,9 +24,10 @@ export const Main: React.FC<IMainProps> = () => {
             {/*    <p className='subtitle'>A CSS Wizard</p>*/}
             {/*</article>*/}
             <Experience>
-                <BreezeTitle text={'work experience'}/>
+                <BreezeTitle text={experience.title}/>
             </Experience>
-            <MonthYearPickerWithRange/>
+            <div style={{marginBottom: '3rem'}}></div>
+            <MonthYearPickerWithRange {...{duration, setDuration, isYear}}/>
             <MonthYearPickerSingle/>
 
             <input type='tel' name='phone'  required onChange={(e) => console.log(e.currentTarget.value)}/>

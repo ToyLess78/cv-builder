@@ -8,12 +8,12 @@ interface IAboutProps {
     summary: string
 }
 
-export const About: React.FC<{ children?: ReactNode, props?: IAboutProps }> = ({children, props}) => {
+export const Summary: React.FC<{ children?: ReactNode, props?: IAboutProps }> = ({children, props}) => {
 
     const info = useSelector((state: RootState) => selectInfo(state));
 
     return (
-        <section className={styles.about}>
+        <section className={styles.summary}>
             {children}
             <div dangerouslySetInnerHTML={{ __html: props?.summary || info.summary }}></div>
         </section>

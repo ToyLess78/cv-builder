@@ -1,6 +1,7 @@
 .container {
   position: relative;
   text-align: left;
+  height: max-content;
 
   input {
     font: 15px/24px Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -20,7 +21,7 @@
 
 .underline {
   border: 0;
-  padding: 4px 0;
+  padding: 3px 0;
   background-color: transparent;
 
   ~ {
@@ -38,10 +39,10 @@
       position: absolute;
       left: 0;
       width: 100%;
-      top: 9px;
+      top: 3px;
       color: var(--label-color);
       transition: 0.3s;
-      z-index: -1;
+      pointer-events: none;
       letter-spacing: 1px;
     }
   }

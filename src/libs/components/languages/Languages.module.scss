@@ -24,7 +24,7 @@
 
     &::after {
       content: '';
-      border-bottom: 2px dotted #AAA;
+      border-bottom: 2px dotted var(--secondary-text);
       flex: 1;
       margin: 10px 10px;
     }

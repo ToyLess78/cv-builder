@@ -22,10 +22,6 @@ export const Breeze: React.FC = () => {
     const aside = useSelector((state: RootState) => selectSkills(state));
     const certificates = useSelector((state: RootState) => selectCertificates(state));
 
-
-
-
-
     return (
         <>
 

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectInfo } from '~/slices/info.slice';
 import { Info } from '~/components/header/Info';
-import { About } from '~/components/header/About';
+import { Summary } from '~/components/header/Summary';
 import { setIsEdit } from '~/slices/edit.slice';
 
 export const Header: React.FC = () => {
@@ -24,13 +24,13 @@ export const Header: React.FC = () => {
                     />
                 </Info>
 
-                <About>
+                <Summary>
                     <EditButton
-                        onClick={() => dispatch(setIsEdit('about'))}
+                        onClick={() => dispatch(setIsEdit('summary'))}
                         title={info.title}
                     />
                     <BreezeTitle text={info.title}/>
-                </About>
+                </Summary>
             </div>
             <Image styles={styles.img}/>
         </header>
