@@ -15,7 +15,7 @@ import { loadFromLocalStorage } from '~/utils/local-storage.utills';
 import { selectInfo } from '~/slices/info.slice';
 
 const Menu = lazy(() => import('~/components/common/Carousel/Carousel'));
-const EditCertificates = lazy(() => import('~/components/certificates/EditCertificates'));
+const EditCertificates = lazy(() => import('~/components/certificates/EditCertifications'));
 const EditSummary = lazy(() => import('~/components/header/EditSummary'));
 const EditInfo = lazy(() => import('~/components/header/EditInfo'));
 const EditSkills = lazy(() => import('~/components/skills/EditSkills'));

@@ -1,7 +1,7 @@
 export { Aside } from '~/components/common/Aside/Aside';
 export { AsideItem } from '~/components/common/Aside/AsideItem';
 export { Body } from '~/components/common/Body/Body';
-export { Certificates } from '~/components/certificates/Certificates';
+export { Certifications } from '~/components/certificates/Certifications';
 export { Additional } from '~/components/additional/Additional';
 export { AdditionalList } from '~/components/additional/AdditionalList';
 export { ColorPicker } from '~/components/common/ColorPicker/ColorPicker';

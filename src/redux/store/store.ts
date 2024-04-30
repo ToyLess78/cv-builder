@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import infoReducer from '~/slices/info.slice';
 import asideReducer from '~/slices/skills.slice';
 import languagesReducer from '~/slices/languages.slice';
-import certificatesReducer from '~/slices/certificates.slice';
+import certificationsReducer from '~/slices/certifications.slice';
 import contactReducer from '~/slices/contact.slice';
 import themeReducer from '~/slices/theme.slice';
 import editReducer from '~/slices/edit.slice';
@@ -19,7 +19,7 @@ export const store = configureStore({
         info: infoReducer,
         skills: asideReducer,
         languages: languagesReducer,
-        certificates: certificatesReducer,
+        certifications: certificationsReducer,
         contact: contactReducer,
         theme: themeReducer,
         edit: editReducer,

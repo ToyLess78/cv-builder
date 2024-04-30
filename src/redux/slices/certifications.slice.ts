@@ -9,15 +9,15 @@ export interface ICertificate {
     link: string;
 }
 
-export interface ICertificatesState {
-    isCertificates: boolean;
+export interface ICertificationsState {
+    isCertifications: boolean;
     title: string;
     data: ICertificate[];
 }
 
-const defaultCertificates = {
-    isCertificates: true,
-    title: 'certificates',
+const defaultCertifications = {
+    isCertifications: true,
+    title: 'certifications',
     data: [
         {
             id: "648sgvg2gfd",
@@ -45,28 +45,28 @@ const defaultCertificates = {
         }
     ]
 };
-const initialState: ICertificatesState = loadFromLocalStorage('certificates') || defaultCertificates;
+const initialState: ICertificationsState = loadFromLocalStorage('certifications') || defaultCertifications;
 
-const certificatesSlice = createSlice({
-    name: 'certificates',
+const certificationsSlice = createSlice({
+    name: 'certifications',
     initialState,
     reducers: {
 
-        setCertificatesData(state, action: PayloadAction<ICertificate[]>) {
+        setCertificationsData(state, action: PayloadAction<ICertificate[]>) {
             state.data = action.payload;
         },
-        setIsCertificates(state, action: PayloadAction<boolean>) {
-            state.isCertificates = action.payload;
+        setIsCertifications(state, action: PayloadAction<boolean>) {
+            state.isCertifications = action.payload;
         },
-        setDefaultCertificates(state) {
-            state = defaultCertificates;
-            saveToLocalStorage('certificates', state);
+        setDefaultCertifications(state) {
+            state = defaultCertifications;
+            saveToLocalStorage('certifications', state);
         }
     }
 });
 
-export const { setCertificatesData, setIsCertificates, setDefaultCertificates } = certificatesSlice.actions;
+export const { setCertificationsData, setIsCertifications, setDefaultCertifications } = certificationsSlice.actions;
 
-export const selectCertificates = (state: RootState) => state.certificates;
+export const selectCertifications = (state: RootState) => state.certifications;
 
-export default certificatesSlice.reducer;
+export default certificationsSlice.reducer;

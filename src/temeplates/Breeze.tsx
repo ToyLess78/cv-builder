@@ -2,13 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectSkills } from '~/slices/skills.slice';
-import { selectCertificates } from '~/slices/certificates.slice';
+import { selectCertifications } from '~/slices/certifications.slice';
 import {
     Additional,
     Aside,
     Body,
     BreezeTitle,
-    Certificates,
+    Certifications,
     Contacts,
     Header,
     Languages,
@@ -20,7 +20,7 @@ import {
 export const Breeze: React.FC = () => {
 
     const aside = useSelector((state: RootState) => selectSkills(state));
-    const certificates = useSelector((state: RootState) => selectCertificates(state));
+    const certificates = useSelector((state: RootState) => selectCertifications(state));
 
     return (
         <>
@@ -40,9 +40,9 @@ export const Breeze: React.FC = () => {
                         <BreezeTitle text={aside?.additional.title}/>
                     </Additional>
 
-                    <Certificates>
+                    <Certifications>
                         <BreezeTitle text={certificates.title}/>
-                    </Certificates>
+                    </Certifications>
 
                     <Languages>
                         <BreezeTitle text='languages'/>

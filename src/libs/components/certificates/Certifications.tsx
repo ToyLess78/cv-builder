@@ -2,10 +2,10 @@ import React, { ReactNode } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { ICertificate, selectCertificates, setIsCertificates } from '~/slices/certificates.slice';
+import { ICertificate, selectCertifications, setIsCertifications } from '~/slices/certifications.slice';
 import { AsideItem } from '~/components/common/Aside/AsideItem';
 import { EditButton, EditButtonsBox, HideButton, ShowAsideButton } from '~/components/common/Buttons/Buttons';
-import styles from './Certificates.module.scss';
+import styles from './Certifications.module.scss';
 import { setIsEdit } from '~/slices/edit.slice';
 
 interface ICertificatesProps {
@@ -16,36 +16,36 @@ interface ICertificatesProps {
     edited?: ICertificate;
 }
 
-export const Certificates: React.FC<ICertificatesProps> = ({children, data = null,  onRemove, onEdit, edited}) => {
-    const certificates = useSelector((state: RootState) => selectCertificates(state));
-    const {isCertificates} = certificates;
+export const Certifications: React.FC<ICertificatesProps> = ({children, data = null,  onRemove, onEdit, edited}) => {
+    const certificates = useSelector((state: RootState) => selectCertifications(state));
+    const {isCertifications} = certificates;
     const dispatch = useDispatch();
-    const handleSetIsCertificates = () => {
-        dispatch(setIsCertificates(!isCertificates));
+    const handleSetIsCertifications = () => {
+        dispatch(setIsCertifications(!isCertifications));
     };
 
     return (
         <>
 
-            { !isCertificates &&
+            { !isCertifications &&
                 <ShowAsideButton
-                    onClick={ handleSetIsCertificates }
+                    onClick={ handleSetIsCertifications }
                     title={ certificates.title }
                 /> }
 
-            { isCertificates && !data &&
+            { isCertifications && !data &&
                 <AsideItem>
                     <EditButton
                         title={ certificates.title }
                         onClick={ () => dispatch(setIsEdit('certificates')) }
                     />
                     <HideButton
-                        onClick={ handleSetIsCertificates }
+                        onClick={ handleSetIsCertifications }
                         title={ certificates.title }
                     />
 
                     { children }
-                    <ul className={ styles.certificates }>
+                    <ul className={ styles.certifications }>
                         { certificates.data?.map(c => {
                             return <li key={ c.id }>
                                 <p>{ c.title }</p>
@@ -54,12 +54,12 @@ export const Certificates: React.FC<ICertificatesProps> = ({children, data = nul
                         }) }
                     </ul>
                 </AsideItem> }
-            { isCertificates && data &&
+            { isCertifications && data &&
 
                 <AsideItem>
 
                     { children }
-                    <ul className={ styles.certificates }>
+                    <ul className={ styles.certifications }>
                         { data?.map(c => {
                             return <li key={ c.id }>
                                 <EditButtonsBox
