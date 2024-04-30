@@ -46,4 +46,13 @@
 
 .ql-toolbar.ql-snow {
   background-color: var(--primary-opacity);
+  border: none !important;
+}
+
+.ql-container.ql-snow {
+  border: none !important;
+}
+
+.p-component.p-editor-container {
+  border: 1px solid var(--primary);
 }
