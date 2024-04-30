@@ -2,20 +2,33 @@ import { Nullable } from 'primereact/ts-helpers';
 
 const regexIsPresent = / - Present*/;
 const regexIsRange = / - */;
-const regexIsSlash = /(\d{2})\/(\d{4})/;
+const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const parseMonthYearString = (dateString: string) => {
+    const parts = dateString.split(' ');
+
+    if (parts.length === 1) {
+        const year = parseInt(parts[0]);
+        return new Date(year, 0);
+    } else {
+        const monthIndex = monthNames.findIndex(month => month.toLowerCase() === parts[0].toLowerCase());
+
+        if (monthIndex === -1) {
+            return null;
+        }
+
+        const year = parseInt(parts[1]);
+
+        return new Date(year, monthIndex);
+    }
+};
 
 export const reformatDateSingle = (datesString: string): Nullable<Date | null> => {
     if (!datesString) return null;
 
     if (regexIsPresent.test(datesString)) {
         const cleanedString = datesString.replace(regexIsPresent, '');
-        if (regexIsSlash.test(cleanedString)) {
-            const formattedString = cleanedString.replace(regexIsSlash, '$2/$1');
-            return new Date(formattedString);
-        } else if (cleanedString) {
-            return new Date(cleanedString) || null;
-        }
-
+            return parseMonthYearString(cleanedString) || null;
     } else {
         return null;
     }
@@ -29,11 +42,8 @@ export const reformatDateRange = (datesString: string): Nullable<(Date | null)[]
         return datesArray.map(date => {
             if (!date) {
                 return null;
-            }
-            if (regexIsSlash.test(date)) {
-                return new Date(date.replace(regexIsSlash, '$2/$1')) || null;
             } else {
-                return new Date(date) || null;
+                return parseMonthYearString(date) || null;
             }
         });
     } else {
