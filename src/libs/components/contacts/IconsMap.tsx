@@ -1,4 +1,4 @@
-import { FaBitbucket, FaFacebook, FaGithub, FaLinkedin, FaTelegramPlane } from 'react-icons/fa';
+import { FaBitbucket, FaCodepen, FaFacebook, FaGithub, FaLinkedin, FaTelegramPlane } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { BsDiscord, BsGitlab, BsReddit, BsWechat, BsWhatsapp } from 'react-icons/bs';
 import { IoLogoYoutube } from 'react-icons/io';
@@ -45,6 +45,11 @@ const icons = {
     discord: <BsDiscord
         data-tooltip-id="tooltip"
         data-tooltip-content="discord"
+        size="1.3rem"
+        data-tooltip-offset="0"/>,
+    codePen: <FaCodepen
+        data-tooltip-id="tooltip"
+        data-tooltip-content="codePen"
         size="1.3rem"
         data-tooltip-offset="0"/>,
     reddit: <BsReddit
