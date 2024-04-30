@@ -36,11 +36,16 @@
   }
 }
 .inputs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
   gap: 2rem;
+  padding: 0 1rem;
+
   div {
     -webkit-flex: 1 1 auto;
     flex: 1 1 auto;
+
     &:first-child {
       margin-bottom: .5rem;
     }

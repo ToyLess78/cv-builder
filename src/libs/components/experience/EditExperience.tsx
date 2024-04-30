@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import {
     BreezeTitle,
     CheckBox,
@@ -8,12 +8,13 @@ import {
     MonthYearPickerWithRange,
     UnderlineInput
 } from '~/components';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectExperiences } from '~/slices/experiences.slice';
+import { selectExperiences, setEditedExperience } from '~/slices/experiences.slice';
 import styles from './Experience.module.scss';
 import { Nullable } from 'primereact/ts-helpers';
 import { reformatDateRange, reformatDateSingle } from '~/utils/format-date.utils';
+import { setIsEdit } from '~/slices/edit.slice';
 
 const EditExperience: FC = () => {
 
@@ -80,8 +81,16 @@ const EditExperience: FC = () => {
         setRangeValue(reformatDateRange(experienceItem.duration));
     }, []);
 
+    const dispatch = useDispatch();
+    const handlerOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        dispatch(setEditedExperience({experience: experienceItem}));
+        dispatch(setIsEdit(''));
+    };
+
     return (
         <MainEditWrapper
+            onSubmit={ handlerOnSubmit }
             style={ {width: '90%'} }
             preview={
                 <Experience experienceItem={ experienceItem }>

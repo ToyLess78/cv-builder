@@ -26,7 +26,7 @@ const initialState: ExperiencesState = loadFromLocalStorage('experiences') || {
     data: [
         {
             id: '31T22:00:00.000Z',
-            duration: '07/2024 - Present',
+            duration: 'Aug 2024 - Present',
             isYear: false,
             isPresent: true,
             employer: 'Food & Delivery',
@@ -36,7 +36,7 @@ const initialState: ExperiencesState = loadFromLocalStorage('experiences') || {
         },
         {
             id: '30T21:00:00.000Z',
-            duration: '01/2023 - 06/2024',
+            duration: 'Jan 2023 - Jun 2024',
             isYear: false,
             isPresent: false,
             employer: 'Bank City Group',
@@ -64,15 +64,23 @@ const experiencesSlice = createSlice({
             state.isExperiences = action.payload;
         },
         setEditedExperience(state, action: PayloadAction<{experience: Partial<IExperience>}>) {
-            state.data = state.data.map(exp => {
-                if (exp.id === action.payload.experience.id) {
-                    return {
-                        ...exp,
-                        ...action.payload.experience
-                    };
-                }
-                return exp;
-            });
+            const { experience } = action.payload;
+
+            const existingExperienceIndex = state.data.findIndex(exp => exp.id === experience.id);
+
+            if (existingExperienceIndex !== -1) {
+                state.data = state.data.map(exp => {
+                    if (exp.id === experience.id) {
+                        return {
+                            ...exp,
+                            ...experience
+                        };
+                    }
+                    return exp;
+                });
+            } else {
+                state.data.push(experience as IExperience);
+            }
         },
         removeExperience(state, action: PayloadAction<string>) {
             state.data = state.data.filter(item => item.id !== action.payload);

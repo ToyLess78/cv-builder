@@ -37,7 +37,7 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
 
     return (
         <>
-            { isExperiences && !experienceItem ?
+            { isExperiences && !experienceItem &&
                 <section className={ styles.experience }>
                     { children }
                     <div className={ styles.wrapper }>
@@ -72,7 +72,8 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
                         title="experience"
                         onClick={ handlerAddExperience }
                     />
-                </section> :
+                </section>}
+            {!isExperiences && !experienceItem &&
                 <ShowAsideButton
                     title={ title }
                     style={ {top: '-1rem'} }
