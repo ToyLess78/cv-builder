@@ -16,7 +16,6 @@ export const Main: React.FC<IMainProps> = () => {
     const isYear = false;
 
     const experience = useSelector((state: RootState) => selectExperiences(state));
-
     return (
         <section className={ styles.main } >
             {/*<article>*/}

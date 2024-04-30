@@ -51,7 +51,6 @@ const App: React.FC = () => {
     const theme = 'breeze';
     const [color, setColor] = useState(loadFromLocalStorage(theme) || breezePalette[0]);
 
-
     return (
         <>
             <ColorPicker { ...{theme, palette: breezePalette, color, setColor} } />

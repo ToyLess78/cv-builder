@@ -70,6 +70,11 @@ const defaultContactsState = {
             isShow: false
         },
         {
+            id: 'codePen',
+            link: 'https://codepen.io/',
+            isShow: false
+        },
+        {
             id: 'youTube',
             link: 'https://www.youtube.com/',
             isShow: false
