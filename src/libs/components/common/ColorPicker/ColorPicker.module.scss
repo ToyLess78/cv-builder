@@ -3,15 +3,7 @@
     display: none;
   }
 }
-@keyframes slideOut {
-  from {
-    border-width: 0 0 0 1.25rem;
-  }
 
-  to {
-    border-width: 0 1.25rem 0 0;
-  }
-}
 .container {
   position: sticky;
   top: 2rem;
@@ -48,7 +40,12 @@
       border-width: 0 1.25rem 0 0;
 
       &.last {
-        animation: slideOut 0.5s ease;
+        -webkit-transition: border-width .5s ease;
+        -moz-transition: border-width .5s ease;
+        -ms-transition: border-width .5s ease;
+        -o-transition: border-width .5s ease;
+        transition: border-width .5s ease;
+        border-width: 0 1.25rem 0 0;
       }
 
       &:hover {
