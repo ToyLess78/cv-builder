@@ -79,7 +79,7 @@ export const MonthYearPickerWithRange: FC<IMonthYearPickerWithRangeProps> = (
                     <Calendar
                         onChange={ handleChangeSingleDate }
                         value={ singleDate || singleValue }
-                        dateFormat="mm/yy - Present"
+                        dateFormat="M yy - Present"
                         inputId="single-month-calendar"
                         view="month"
                         inputRef={ inputRefSingleDate }
@@ -121,7 +121,7 @@ export const MonthYearPickerWithRange: FC<IMonthYearPickerWithRangeProps> = (
                         onChange={ handleChangeRangeDates }
                         selectionMode="range"
                         value={ rangeDates || rangeValue }
-                        dateFormat="mm/yy"
+                        dateFormat="M yy"
                         inputId="range-month-calendar"
                         view="month"
                         inputRef={ inputRefRangeDates }
@@ -185,7 +185,7 @@ export const MonthYearPickerSingle: FC = () => {
                     <Calendar
                         onChange={ handleChangeDate }
                         value={ date }
-                        dateFormat="mm/yy"
+                        dateFormat="M yy"
                         inputId="single-month"
                         view="month"
                         className={ styles.calendar }
