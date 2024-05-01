@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
-import { loadFromLocalStorage, saveToLocalStorage } from '~/utils/utils';
+import { loadFromLocalStorage, removeFromLocalStorage } from '~/utils/utils';
 
 export interface ICertificate {
     id: string;
@@ -58,9 +58,9 @@ const certificationsSlice = createSlice({
         setIsCertifications(state, action: PayloadAction<boolean>) {
             state.isCertifications = action.payload;
         },
-        setDefaultCertifications(state) {
-            state = defaultCertifications;
-            saveToLocalStorage('certifications', state);
+        setDefaultCertifications() {
+            removeFromLocalStorage('certifications');
+            return defaultCertifications;
         }
     }
 });
