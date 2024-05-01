@@ -57,7 +57,7 @@ const experiencesSlice = createSlice({
                 ...action.payload
             };
         },
-        setEditedId(state, action: PayloadAction<string>) {
+        setEditedExperienceId(state, action: PayloadAction<string>) {
             state.editedId = action.payload;
         },
         setIsExperiences(state, action: PayloadAction<boolean>) {
@@ -91,7 +91,7 @@ const experiencesSlice = createSlice({
     }
 });
 
-export const { setExperiences, setEditedId, setEditedExperience, addExperience, setIsExperiences, removeExperience} = experiencesSlice.actions;
+export const { setExperiences, setEditedExperienceId, setEditedExperience, addExperience, setIsExperiences, removeExperience} = experiencesSlice.actions;
 
 export const selectExperiences = (state: RootState) => state.experiences;
 

@@ -6,7 +6,7 @@ import {
     IExperience,
     removeExperience,
     selectExperiences,
-    setEditedId,
+    setEditedExperienceId,
     setIsExperiences
 } from '~/slices/experiences.slice';
 import { AddItemButton, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
@@ -26,12 +26,12 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
     const dispatch = useDispatch();
 
     const handlerSetEdit = (id: string) => {
-        dispatch(setEditedId(id));
+        dispatch(setEditedExperienceId(id));
         dispatch(setIsEdit('experience'));
     };
 
     const handlerAddExperience = () => {
-        dispatch(setEditedId(nextId()));
+        dispatch(setEditedExperienceId(nextId()));
         dispatch(setIsEdit('experience'));
     };
 
