@@ -22,6 +22,7 @@ const EditSkills = lazy(() => import('~/components/skills/EditSkills'));
 const EditLanguage = lazy(() => import('~/components/languages/EditLanguage'));
 const EditContacts = lazy(() => import('~/components/contacts/EditContacts'));
 const EditExperience = lazy(() => import('~/components/experience/EditExperience'));
+const EditEducation = lazy(() => import('~/components/education/EditEducation'));
 
 
 const App: React.FC = () => {
@@ -65,6 +66,7 @@ const App: React.FC = () => {
                     { isEdit === 'languages' && <EditLanguage/> }
                     { isEdit === 'contacts' && <EditContacts/> }
                     { isEdit === 'experience' && <EditExperience/> }
+                    { isEdit === 'education' && <EditEducation/> }
                 </Suspense>
             </Overlay>
             <MenuOverlay { ...{isOpen, setIsOpen} }>

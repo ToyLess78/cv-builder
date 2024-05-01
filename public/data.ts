@@ -29,7 +29,7 @@ export const data = {
         ],
 
     },
-    certificates: [
+    certifications: [
         {
             id: '6486462gfd',
             title: 'IT security: protection against digital cyber fraud',
@@ -72,7 +72,34 @@ export const data = {
         ['Ukrainian', 'Native'],
         ['Russian', 'Advanced']
     ],
-    templates: ['breeze', 'strong', 'galaxy']
+    templates: ['breeze', 'strong', 'galaxy'],
+    education: {
+        title: 'education',
+        editedId: '',
+        isEducations: true,
+        data: [
+            {
+                id: '31T22000000Z',
+                duration: '2011 - 2015',
+                isYear: true,
+                isPresent: false,
+                school: 'Pepperdine University',
+                degree: 'Master of Computer Science',
+                location: 'Malibu',
+                description: ''
+            },
+            {
+                id: '30T210000sddZ',
+                duration: '2007 - 2010',
+                isYear: true,
+                isPresent: false,
+                school: 'University of California at Los Angeles',
+                degree: 'Bachelor of Computer Science',
+                location: 'Los Angeles',
+                description: ''
+            }
+        ]
+    }
 
 
 }

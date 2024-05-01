@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styles from './Main.module.scss';
-import { BreezeTitle, Experience, MonthYearPickerSingle, MonthYearPickerWithRange } from '~/components';
+import { BreezeTitle, Education, Experience, MonthYearPickerSingle, MonthYearPickerWithRange } from '~/components';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectExperiences } from '~/slices/experiences.slice';
 import { Nullable } from 'primereact/ts-helpers';
+import { selectEducation } from '~/slices/education.slice';
 
 
 interface IMainProps {
@@ -16,6 +17,7 @@ export const Main: React.FC<IMainProps> = () => {
     const isYear = false;
 
     const experience = useSelector((state: RootState) => selectExperiences(state));
+    const education = useSelector((state: RootState) => selectEducation(state));
     return (
         <section className={ styles.main } >
             {/*<article>*/}
@@ -25,6 +27,9 @@ export const Main: React.FC<IMainProps> = () => {
             <Experience>
                 <BreezeTitle text={experience.title}/>
             </Experience>
+            <Education>
+                <BreezeTitle text={education.title}/>
+            </Education>
             <div style={{marginBottom: '3rem'}}></div>
             <MonthYearPickerWithRange {...{duration, setDuration, isYear}}/>
             <MonthYearPickerSingle/>
