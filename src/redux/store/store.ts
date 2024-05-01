@@ -7,6 +7,7 @@ import contactReducer from '~/slices/contact.slice';
 import themeReducer from '~/slices/theme.slice';
 import editReducer from '~/slices/edit.slice';
 import experienceReducer from '~/slices/experiences.slice';
+import educationReducer from '~/slices/education.slice';
 
 type ReducerKey = keyof RootState;
 
@@ -23,7 +24,8 @@ export const store = configureStore({
         contact: contactReducer,
         theme: themeReducer,
         edit: editReducer,
-        experiences: experienceReducer
+        experiences: experienceReducer,
+        education: educationReducer
     }
 });
 
