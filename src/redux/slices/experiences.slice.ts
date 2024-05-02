@@ -12,14 +12,14 @@ export interface IExperience {
     location: string;
     description: string
 }
-interface ExperiencesState {
+interface IExperiencesState {
     title: string;
     editedId: string;
     isExperiences: boolean;
     data: IExperience[];
 }
 
-const initialState: ExperiencesState = loadFromLocalStorage('experiences') || {
+const initialState: IExperiencesState = loadFromLocalStorage('experiences') || {
     title: 'experience',
     editedId: '',
     isExperiences: true,
@@ -51,7 +51,7 @@ const experiencesSlice = createSlice({
     name: 'experiences',
     initialState,
     reducers: {
-        setExperiences(state, action: PayloadAction<Partial<ExperiencesState>>) {
+        setExperiences(state, action: PayloadAction<Partial<IExperiencesState>>) {
             return {
                 ...state,
                 ...action.payload
@@ -95,4 +95,4 @@ export const { setExperiences, setEditedExperienceId, setEditedExperience, addEx
 
 export const selectExperiences = (state: RootState) => state.experiences;
 
-export default experiencesSlice.reducer
+export default experiencesSlice.reducer;
