@@ -37,7 +37,7 @@ const initialState: IProjectsState = loadFromLocalStorage('projects') || {
             isPresent: false,
             technologies: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Objection', 'WebRTC'],
             type: 'personal project',
-            description: 'A platform for recording, storing, and supporting podcasts. The solution allows you to record a podcast in real time (people can go in and comment on the podcast while recording). Users can create favorite podcast lists, leave comments and likes. A private podcast option is also available.'
+            description: '<p>A platform for recording, storing, and supporting podcasts. The solution allows you to record a podcast in real time (people can go in and comment on the podcast while recording). Users can create favorite podcast lists, leave comments and likes. A private podcast option is also available.</p>'
         },
         {
             id: 'FundraisingPlatform',
@@ -49,7 +49,7 @@ const initialState: IProjectsState = loadFromLocalStorage('projects') || {
             isPresent: false,
             technologies: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'TypeORM'],
             type: 'team project',
-            description: 'This platform helps people create their own fundraising projects and attract sponsors. The user can support somebody’s idea and donate towards its realization. There are several features such as recommendations for project authors and sponsors, statistics on top themes, diagrams of hype dynamic on certain themes, information about related projects and their current state, and many more.'
+            description: '<p>This platform helps people create their own fundraising projects and attract sponsors. The user can support somebody’s idea and donate towards its realization. There are several features such as recommendations for project authors and sponsors, statistics on top themes, diagrams of hype <a>dynamic on certain</a> themes, information about related projects and their current state, and many more.</p>'
         }
     ]
 };
