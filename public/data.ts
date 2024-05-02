@@ -101,13 +101,13 @@ export const data = {
         ]
     },
     projects: {
-        title: 'education',
+        title: 'projects',
         editedId: '',
         isProjects: true,
         data: [
             {
                 id: 'PodcastPlatform',
-                title: 'Podcast Platform',
+                projectName: 'Podcast Platform',
                 link: '',
                 duration: '2011 - 2015',
                 isDuration: true,
@@ -119,7 +119,7 @@ export const data = {
             },
             {
                 id: 'FundraisingPlatform',
-                title: 'Fundraising Platform',
+                projectName: 'Fundraising Platform',
                 link: '',
                 duration: '2011 - 2015',
                 isDuration: true,
