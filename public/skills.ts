@@ -72,4 +72,9 @@ export const skills = [
     'AWS Lambda',
     'Docker',
     'Docker Compose',
+    'Objection',
+    'WebRTC',
+    'TypeORM',
+    'Scrum',
+    'Agile'
 ];
