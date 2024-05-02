@@ -3,7 +3,7 @@ export const data = {
         name: 'Your Name',
         position: 'Trainee JavaScript Developer',
         title: 'about',
-        introduction: 'As a burgeoning developer embarking on the initial phases of my journey, I am fervently driven to bolster my skills and expertise. I recognize *COMPANY* as a pivotal platform that aligns seamlessly with my aspirations in the field of development. My unyielding conviction lies in the belief that the realm of coding presents an array of untapped opportunities for me to delve into and adeptly conquer.'
+        introduction: 'A Software Developer with entry-level experience specializing in user interface design, application development, data security, and continuous improvement. Adept at identifying opportunities to enhance the user experience and develop new features to improve app functionality. As a burgeoning developer embarking on the initial phases of my journey, I am fervently driven to bolster my skills and expertise. I recognize *COMPANY* as a pivotal platform that aligns seamlessly with my aspirations in the field of development. My unyielding conviction lies in the belief that the realm of coding presents an array of untapped opportunities for me to delve into and adeptly conquer.'
     },
     aside: {
         skills: [
@@ -97,6 +97,37 @@ export const data = {
                 degree: 'Bachelor of Computer Science',
                 location: 'Los Angeles',
                 description: ''
+            }
+        ]
+    },
+    projects: {
+        title: 'education',
+        editedId: '',
+        isProjects: true,
+        data: [
+            {
+                id: 'PodcastPlatform',
+                title: 'Podcast Platform',
+                link: '',
+                duration: '2011 - 2015',
+                isDuration: true,
+                isYear: true,
+                isPresent: false,
+                technologies: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Objection', 'WebRTC'],
+                type: 'personal project',
+                description: 'A platform for recording, storing, and supporting podcasts. The solution allows you to record a podcast in real time (people can go in and comment on the podcast while recording). Users can create favorite podcast lists, leave comments and likes. A private podcast option is also available.'
+            },
+            {
+                id: 'FundraisingPlatform',
+                title: 'Fundraising Platform',
+                link: '',
+                duration: '2011 - 2015',
+                isDuration: true,
+                isYear: true,
+                isPresent: false,
+                technologies: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'TypeORM'],
+                type: 'team project',
+                description: 'This platform helps people create their own fundraising projects and attract sponsors. The user can support somebody’s idea and donate towards its realization. There are several features such as recommendations for project authors and sponsors, statistics on top themes, diagrams of hype dynamic on certain themes, information about related projects and their current state, and many more.'
             }
         ]
     }
