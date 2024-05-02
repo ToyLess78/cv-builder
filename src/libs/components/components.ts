@@ -36,3 +36,4 @@ export { CheckBox } from '~/components/common/CheckBox/CheckBox';
 export { Experience } from '~/components/experience/Experience';
 export { MainEditWrapper } from '~/components/Main/MainEditWrapper';
 export { Education } from '~/components/education/Education';
+export { Projects } from '~/components/projects/Projects';
