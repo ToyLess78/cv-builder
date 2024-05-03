@@ -49,7 +49,7 @@ const initialState: IProjectsState = loadFromLocalStorage('projects') || {
             isPresent: false,
             technologies: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'TypeORM'],
             type: 'team project',
-            description: '<p>This platform helps people create their own fundraising projects and attract sponsors. The user can support somebody’s idea and donate towards its realization. There are several features such as recommendations for project authors and sponsors, statistics on top themes, diagrams of hype <a>dynamic on certain</a> themes, information about related projects and their current state, and many more.</p>'
+            description: '<p>This platform helps people create their own fundraising projects and attract sponsors. The user can support somebody’s idea and donate towards its realization. There are several features such as recommendations for project authors and sponsors, statistics on top themes, diagrams of hype <a href="http://localhost:5173/">dynamic on certain</a> themes, information about related projects and their current state, and many more.</p>'
         }
     ]
 };
