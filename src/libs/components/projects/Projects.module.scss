@@ -1,5 +1,5 @@
 .projects {
-  justify-self: stretch;
+  padding-top: 3rem;
   display: flex;
   position: relative;
   min-height: 7.4rem;
@@ -9,6 +9,22 @@
     gap: 1rem;
     -webkit-flex: 1 1 auto;
     flex: 1 1 auto;
+    .name {
+      display: flex;
+
+    }
+    .link {
+      text-decoration: none;
+      display: flex;
+      flex: 1;
+      color: var(--gray);
+      &:before {
+        content: "";
+        border-bottom: 2px dotted var(--gray);
+        flex: 1;
+        margin: 10px 10px;
+      }
+    }
   }
   .title {
     position: relative;
@@ -24,7 +40,6 @@
   em {
     float: right;
     padding-right: 2rem;
-    text-transform: capitalize;
     color: var(--gray);
     font-weight: normal;
   }
@@ -44,6 +59,9 @@
   }
   .duration {
     color: var(--gray);
+  }
+  .technologies {
+    color: var(--secondary-text);
   }
 }
 .inputs {
