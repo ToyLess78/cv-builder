@@ -6,6 +6,14 @@
   a {
     display: flex;
     text-decoration: none;
+    color: var(--gray);
+    &:hover,
+    &:active {
+      color: var(--secondary-text);
+      span:after {
+        border-bottom: 2px dotted var(--secondary-text);
+      }
+    }
   }
   span {
     flex-grow: 1;
@@ -13,7 +21,7 @@
     display: flex;
     &:after {
       content: '';
-      border-bottom: 2px dotted var(--secondary-text);
+      border-bottom: 2px dotted var(--gray);
       flex:1;
       margin: 10px 10px;
     }
