@@ -7,6 +7,7 @@ import { IEducation, removeEducation } from '~/slices/education.slice';
 import { AddItemButton, EditButton, HideButton, RemoveButton } from '~/components';
 import { setIsEdit } from '~/slices/edit.slice';
 import nextId from 'react-id-generator';
+import { FiExternalLink } from 'react-icons/fi';
 
 interface IProjectsProps {
     children?: ReactNode;
@@ -49,8 +50,15 @@ export const Projects: FC<IProjectsProps> = ({children}) => {
                                     removeOffset={ 20 }
                                     onRemove={ () => dispatch(removeEducation(pro.id)) }
                                 /> }
-                                <strong>{ pro.type }<em> </em></strong>
-                                <span className={ styles.duration }>{ pro.duration }</span>
+                                <div className={styles.name}>
+                                <strong className={styles.dots}>{ pro.projectName }</strong>{pro.link ? <a className={styles.link} href={pro.link}><FiExternalLink/></a> : ''}
+                                </div>
+
+                                    <small className={styles.technologies}>{`[ ${pro.technologies.join(', ')}, ect. ]`}</small>
+                                <em style={{textTransform: 'capitalize'
+                                }}>{pro.type}</em>
+                                <br/>
+                                {pro.isDuration && <span className={ styles.duration }>{ pro.duration }</span>}
                                 <div className={ styles.description }
                                      dangerouslySetInnerHTML={ {__html: pro.description} }></div>
 
