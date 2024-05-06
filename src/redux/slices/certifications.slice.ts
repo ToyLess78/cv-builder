@@ -40,8 +40,8 @@ const defaultCertifications = {
         {
             id: "64gfg62gfd",
             title: "Layout and Creation of Websites from Scratch",
-            issue: "Udemy",
-            link: "https://www.udemy.com/certificate/UC-ef47402f-9686-4f79-a2c3-84528ccbc79a/",
+            issue: "LinkedIn",
+            link: "https://www.linkedin.com/",
         }
     ]
 };
