@@ -1,0 +1,78 @@
+.wrapper {
+  position: relative;
+
+  .label {
+    position: absolute;
+    text-transform: capitalize;
+    top: -16px;
+    font-size: 0.7rem;
+    transition: color 0.3s;
+    color: var(--label-color);
+    pointer-events: none;
+    letter-spacing: 1px;
+  }
+
+  .label:has(+.autoComplete .input:focus) {
+    color: var(--primary);
+  }
+
+  .autoComplete {
+    padding: 7px 0;
+
+    ul {
+      display: flex;
+      gap: 1rem;
+    }
+
+    li {
+      &:not(:last-child) {
+        padding: .2rem .5rem;
+        border-radius: .25rem;
+        background-color: var(--primary-opacity);
+        color: var(--secondary-text);
+      }
+
+      svg {
+        color: var(--gray);
+        margin-left: .5rem;
+
+        &:hover {
+          color: var(--primary);
+        }
+      }
+    }
+
+    .panel {
+      background-color: white;
+      padding: .5rem;
+      box-shadow: rgba(0, 0, 0, 0.133) 0 1px 1px 0, rgba(0, 0, 0, 0.11) 0 1px 1px 0;
+
+      li:hover {
+        background: var(--hover-bg);
+      }
+    }
+
+    .input {
+      width: 7rem;
+      border-bottom: 1px solid var(--gray);
+      padding: 7px 0;
+      font-size: 1rem;
+      transition: all 0.4s;
+
+      &::placeholder {
+        color: var(--gray);
+        font-size: .8rem;
+      }
+
+      &:focus {
+        &::placeholder {
+          color: var(--primary);
+        }
+
+        width: 100%;
+        border-bottom: 1px solid var(--primary);
+        transition: all 0.4s;
+      }
+    }
+  }
+}
