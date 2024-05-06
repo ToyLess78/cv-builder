@@ -6,6 +6,7 @@ export interface IProject {
     id: string;
     projectName: string;
     link: string;
+    isLink: boolean;
     duration: string;
     isDuration: boolean;
     isYear: boolean;
@@ -31,7 +32,8 @@ const initialState: IProjectsState = loadFromLocalStorage('projects') || {
             id: 'PodcastPlatform',
             projectName: 'Podcast Platform',
             link: 'http://localhost:5173/',
-            duration: '2011 - 2015',
+            isLink: true,
+            duration: '',
             isDuration: false,
             isYear: true,
             isPresent: false,
@@ -43,9 +45,10 @@ const initialState: IProjectsState = loadFromLocalStorage('projects') || {
             id: 'FundraisingPlatform',
             projectName: 'Fundraising Platform',
             link: '',
+            isLink: false,
             duration: 'Aug 2007 - Nov 2010',
             isDuration: true,
-            isYear: true,
+            isYear: false,
             isPresent: false,
             technologies: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'TypeORM'],
             type: 'team project',
