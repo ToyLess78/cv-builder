@@ -53,7 +53,10 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
                                     removeOffset={ 20 }
                                     onRemove={ () => dispatch(removeExperience(exp.id)) }
                                 /> }
-                                <strong>{ `${ exp.jobTitle } - ${ exp.employer }` } <em> { exp.location }</em></strong>
+                                <strong>{ `${ exp.jobTitle } ` }
+                                    {exp.employer ? <small
+                                    >{ `[ ${ exp.employer } ]` }</small> : ''}
+                                    <em> { exp.location }</em></strong>
                                 <br/>
                                 <span className={ styles.duration }>{ exp.duration }</span>
                                 <div className={ styles.description }
@@ -84,7 +87,10 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
                     { children }
                     <div className={ styles.wrapper }>
                         <div className={ styles.title }>
-                            <strong>{ `${ experienceItem.jobTitle } ${experienceItem.employer.length ? ' - ' : ''} ${ experienceItem.employer }` } <em> { experienceItem.location }</em></strong>
+                            <strong>{ `${ experienceItem.jobTitle } ` }
+                                {experienceItem.employer ? <small
+                            >{ `[ ${ experienceItem.employer } ]` }</small> : ''}
+                                <em> { experienceItem.location }</em></strong>
                             <br/>
                             <span className={ styles.duration }>{ experienceItem.duration }</span>
                             <div className={ styles.description }

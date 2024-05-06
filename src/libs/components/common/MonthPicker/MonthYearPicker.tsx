@@ -14,6 +14,7 @@ interface IMonthYearPickerWithRangeProps {
     isPresent?: boolean;
     inputRefRangeDates?: React.RefObject<HTMLInputElement>;
     inputRefSingleDate?: React.RefObject<HTMLInputElement>;
+    disabled?: boolean;
 }
 
 export const MonthYearPickerWithRange: FC<IMonthYearPickerWithRangeProps> = (
@@ -26,7 +27,8 @@ export const MonthYearPickerWithRange: FC<IMonthYearPickerWithRangeProps> = (
         children,
         inputRefRangeDates,
         inputRefSingleDate,
-        isPresent = false
+        isPresent = false,
+        disabled = false
     }) => {
 
     const [rangeDates, setRangeDates] = useState<Nullable<(Date | null)[]>>(null);
@@ -41,7 +43,9 @@ export const MonthYearPickerWithRange: FC<IMonthYearPickerWithRangeProps> = (
     useEffect(() => {
         isPresent && setRangeDates(null);
         !isPresent && setSingleDate(null);
-    }, [isPresent]);
+        disabled && setRangeDates(null);
+        disabled && setSingleDate(null);
+    }, [isPresent, disabled]);
 
 
     const handleChangeRangeDates = (e: FormEvent<(Date | null)[], React.SyntheticEvent<Element, Event>>) => {
@@ -67,6 +71,7 @@ export const MonthYearPickerWithRange: FC<IMonthYearPickerWithRangeProps> = (
                         panelClassName={ styles.panel }
                         inputClassName={ styles.input }
                         hideOnRangeSelection
+                        disabled={disabled}
                         required
                     />
                     <label
@@ -87,6 +92,7 @@ export const MonthYearPickerWithRange: FC<IMonthYearPickerWithRangeProps> = (
                         panelClassName={ styles.panel }
                         inputClassName={ styles.input }
                         hideOnRangeSelection
+                        disabled={disabled}
                         required
                     />
                     <label
@@ -108,6 +114,7 @@ export const MonthYearPickerWithRange: FC<IMonthYearPickerWithRangeProps> = (
                         panelClassName={ styles.panel }
                         inputClassName={ styles.input }
                         hideOnRangeSelection
+                        disabled={disabled}
                         required
                     />
                     <label
@@ -129,6 +136,7 @@ export const MonthYearPickerWithRange: FC<IMonthYearPickerWithRangeProps> = (
                         panelClassName={ styles.panel }
                         inputClassName={ styles.input }
                         hideOnRangeSelection
+                        disabled={disabled}
                         required
                     />
                     <label

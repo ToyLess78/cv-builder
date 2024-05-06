@@ -42,16 +42,6 @@
       }
     }
 
-    .panel {
-      background-color: white;
-      padding: .5rem;
-      box-shadow: rgba(0, 0, 0, 0.133) 0 1px 1px 0, rgba(0, 0, 0, 0.11) 0 1px 1px 0;
-
-      li:hover {
-        background: var(--hover-bg);
-      }
-    }
-
     .input {
       width: 7rem;
       border-bottom: 1px solid var(--gray);
@@ -74,5 +64,15 @@
         transition: all 0.4s;
       }
     }
+  }
+}
+
+.panel {
+  background-color: white;
+  padding: .5rem;
+  box-shadow: rgba(0, 0, 0, 0.133) 0 1px 1px 0, rgba(0, 0, 0, 0.11) 0 1px 1px 0;
+
+  li:hover {
+    background: var(--hover-bg);
   }
 }

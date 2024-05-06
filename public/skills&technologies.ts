@@ -1,4 +1,4 @@
-export const skills = [
+export const skillsTechnologies = [
     'JavaScript (ES6+)',
     'Typescript',
     'React.js',
@@ -76,5 +76,7 @@ export const skills = [
     'WebRTC',
     'TypeORM',
     'Scrum',
-    'Agile'
+    'Agile',
+    'ect.',
+    'end ect.'
 ];

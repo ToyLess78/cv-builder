@@ -55,7 +55,8 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
                                 /> }
                                 <strong>{ ed.degree }<em> { ed.location }</em></strong>
                                 <br/>
-                                <strong className={styles.school}>{ ed.school }</strong>
+                                {ed.school ? <strong><small
+                                >{ `[ ${ ed.school } ]` }</small></strong> : ''}
                                 <br/>
                                 <span className={ styles.duration }>{ ed.duration }</span>
                                 <div className={ styles.description }
@@ -82,8 +83,7 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
                         style={ {top: '-1rem'} }
                         onClick={ () => dispatch(setIsEducation(true)) }
                     />
-                </div>
- }
+                </div>}
 
             { isEducation && educationItem &&
                 <section className={ styles.education }>
@@ -92,7 +92,8 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
                         <div className={ styles.title }>
                             <strong>{ educationItem.degree }<em> { educationItem.location }</em></strong>
                             <br/>
-                            <strong>{ educationItem.school }</strong>
+                            {educationItem.school ? <strong><small
+                            >{ `[ ${ educationItem.school } ]` }</small></strong> : ''}
                             <br/>
                             <span className={ styles.duration }>{ educationItem.duration }</span>
                             <div className={ styles.description }

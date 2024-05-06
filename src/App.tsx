@@ -23,7 +23,7 @@ const EditLanguage = lazy(() => import('~/components/languages/EditLanguage'));
 const EditContacts = lazy(() => import('~/components/contacts/EditContacts'));
 const EditExperience = lazy(() => import('~/components/experience/EditExperience'));
 const EditEducation = lazy(() => import('~/components/education/EditEducation'));
-
+const EditProjects = lazy(() => import('~/components/projects/EditProjects'));
 
 const App: React.FC = () => {
     resetId();
@@ -67,6 +67,7 @@ const App: React.FC = () => {
                     { isEdit === 'contacts' && <EditContacts/> }
                     { isEdit === 'experience' && <EditExperience/> }
                     { isEdit === 'education' && <EditEducation/> }
+                    { isEdit === 'projects' && <EditProjects/> }
                 </Suspense>
             </Overlay>
             <MenuOverlay { ...{isOpen, setIsOpen} }>

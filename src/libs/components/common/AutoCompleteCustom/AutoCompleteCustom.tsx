@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './AutoCompleteCustom.module.scss';
 import { AutoComplete, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
-import { skills } from '~/public/skills';
+import { skillsTechnologies } from '~/public/skills&technologies';
 
 interface IAutoCompleteCustomProps {
     selectedSkillsOrTechnologies: string[];
@@ -16,9 +16,9 @@ export const AutoCompleteCustom: React.FC<IAutoCompleteCustomProps> = ({
                                                                        }) => {
     const search = (event: AutoCompleteCompleteEvent) => {
         const query = event.query.trim().toLowerCase();
-        let _filteredSkills = [...skills];
+        let _filteredSkills = [...skillsTechnologies];
 
-        if (query && !skills.some(skill => skill.toLowerCase().startsWith(query)) && !_filteredSkills.some(skill => skill.toLowerCase() === query)) {
+        if (query && !skillsTechnologies.some(skill => skill.toLowerCase().startsWith(query)) && !_filteredSkills.some(skill => skill.toLowerCase() === query)) {
             _filteredSkills.push(event.query.trim());
         }
 

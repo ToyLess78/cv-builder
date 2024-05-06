@@ -3,7 +3,7 @@ export const data = {
         name: 'Your Name',
         position: 'Trainee JavaScript Developer',
         title: 'about',
-        introduction: 'A Software Developer with entry-level experience specializing in user interface design, application development, data security, and continuous improvement. Adept at identifying opportunities to enhance the user experience and develop new features to improve app functionality. As a burgeoning developer embarking on the initial phases of my journey, I am fervently driven to bolster my skills and expertise. I recognize *COMPANY* as a pivotal platform that aligns seamlessly with my aspirations in the field of development. My unyielding conviction lies in the belief that the realm of coding presents an array of untapped opportunities for me to delve into and adeptly conquer.'
+        introduction: 'A Software Developer with entry-level experience specializing in user interface design, application development, data security, and continuous improvement. Adept at identifying opportunities to enhance the user experience and develop new features to improve app functionality. As a burgeoning developer embarking on the initial phases of my journey, I am fervently driven to bolster my skillsTechnologies and expertise. I recognize *COMPANY* as a pivotal platform that aligns seamlessly with my aspirations in the field of development. My unyielding conviction lies in the belief that the realm of coding presents an array of untapped opportunities for me to delve into and adeptly conquer.'
     },
     aside: {
         skills: [

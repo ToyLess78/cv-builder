@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { AutoComplete, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 import { selectSkills, setAdditional, setSkills } from '~/slices/skills.slice';
 import styles from './Skills.module.scss';
-import { AsideItem, BreezeTitle, EditWrapper, Skills, UnderlineInput } from '~/components';
+import { AsideItem, AutoCompleteCustom, BreezeTitle, EditWrapper, Skills, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { skills } from '~/public/skills';
 import { setIsEdit } from '~/slices/edit.slice';
 
 interface IEditSkillsAutoCompleteProps {
@@ -20,31 +18,15 @@ const EditSkills: React.FC<IEditSkillsAutoCompleteProps> =
         const data = isAdditional ? aside.additional : aside.skills;
         const [isSkills, setIsSkills] = useState(data);
 
-        const [selectedSkills, setSelectedSkills] = useState<string[]>([...isSkills.data]);
-        const [filteredSkills, setFilteredSkills] = useState<string[]>([]);
+        const [selectedSkillsOrTechnologies, setSelectedSkillsOrTechnologies] = useState<string[]>([...isSkills.data]);
 
         useEffect(() => {
-            setIsSkills({...isSkills, data: selectedSkills});
-        }, [selectedSkills]);
-
-        const search = (event: AutoCompleteCompleteEvent) => {
-            const query = event.query.trim().toLowerCase();
-            let _filteredSkills = [...skills];
-
-            if (query && !skills.some(skill => skill.toLowerCase().startsWith(query)) && !_filteredSkills.some(skill => skill.toLowerCase() === query)) {
-                _filteredSkills.push(event.query.trim());
-            }
-
-            if (query) {
-                _filteredSkills = _filteredSkills.filter(skill => skill.toLowerCase().startsWith(query) && !selectedSkills.includes(skill));
-            }
-
-            setFilteredSkills(_filteredSkills);
-        };
+            setIsSkills({...isSkills, data: selectedSkillsOrTechnologies});
+        }, [selectedSkillsOrTechnologies]);
 
         const handlerOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
-            setIsSkills({...isSkills, data: selectedSkills});
+            setIsSkills({...isSkills, data: selectedSkillsOrTechnologies});
             isAdditional ? dispatch(setAdditional(isSkills)) : dispatch(setSkills(isSkills));
             dispatch(setIsEdit(''));
         };
@@ -70,17 +52,7 @@ const EditSkills: React.FC<IEditSkillsAutoCompleteProps> =
                                 onChange={ (e) => setIsSkills({...isSkills, title: e.currentTarget.value}) }
                             />
                         </div>
-                        <AutoComplete
-                            multiple
-                            placeholder="+ more"
-                            value={ selectedSkills }
-                            suggestions={ filteredSkills }
-                            completeMethod={ search }
-                            className={ styles.autoComplete }
-                            panelClassName={ styles.panel }
-                            inputClassName={ styles.input }
-                            onChange={ (e) => setSelectedSkills(e.value) }
-                        />
+                        <AutoCompleteCustom { ...{selectedSkillsOrTechnologies, setSelectedSkillsOrTechnologies, label: isSkills.title} } />
                     </>
                 }
                 onSubmit={ handlerOnSubmit }
