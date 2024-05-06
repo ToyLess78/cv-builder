@@ -9,26 +9,33 @@ interface InputProps extends React.HTMLProps<HTMLElement> {
     type?: string;
     value?: string | undefined;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    disabled?: boolean;
 }
 
 
 export const BorderInput: React.FC<InputProps> = ({label, type = 'text', value, onChange}) => {
     return (
-        <div className={styles.container}>
-            <input className={styles.border} type={type} value={value} onChange={onChange} required/>
-            <label>{label}</label>
-            <span className={styles.focus}>
+        <div className={ styles.container }>
+            <input className={ styles.border } type={ type } value={ value } onChange={ onChange } required/>
+            <label>{ label }</label>
+            <span className={ styles.focus }>
                 <i/>
             </span>
         </div>
-    )
+    );
 }
-export const UnderlineInput: React.FC<InputProps> = ({label, type='text', value, onChange }) => {
+export const UnderlineInput: React.FC<InputProps> = ({label, type = 'text', value, onChange, disabled = false}) => {
     return (
-        <div className={styles.container}>
-            <input className={styles.underline} type={type} value={value} onChange={onChange} required/>
-            <label>{label}</label>
-            <span className={styles.focus}>
+        <div className={ styles.container }>
+            <input
+                className={ styles.underline }
+                type={ type }
+                value={ value }
+                onChange={ onChange }
+                disabled={ disabled }
+                required/>
+            <label>{ label }</label>
+            <span className={ styles.focus }>
                 <i/>
             </span>
         </div>
