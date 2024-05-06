@@ -52,7 +52,7 @@
       cursor: pointer;
       &:after {
         padding-left: .2rem;
-        content: url("data:image/svg+xml,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M11%207.66667V11.6667C11%2012.0203%2010.8595%2012.3594%2010.6095%2012.6095C10.3594%2012.8595%2010.0203%2013%209.66667%2013H2.33333C1.97971%2013%201.64057%2012.8595%201.39052%2012.6095C1.14048%2012.3594%201%2012.0203%201%2011.6667V4.33333C1%203.97971%201.14048%203.64057%201.39052%203.39052C1.64057%203.14048%201.97971%203%202.33333%203H6.33333M9%201H13M13%201V5M13%201L5.66667%208.33333%22%20stroke%3D%22%23A3A3A3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E%0A");
+        content: url("data:image/svg+xml,%3Csvg%20width%3D%2213%22%20height%3D%2213%22%20viewBox%3D%220%200%2013%2013%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M10.5833%207.38889V11.2222C10.5833%2011.5611%2010.4487%2011.8861%2010.2091%2012.1257C9.96945%2012.3654%209.64444%2012.5%209.30556%2012.5H2.27778C1.93889%2012.5%201.61388%2012.3654%201.37425%2012.1257C1.13462%2011.8861%201%2011.5611%201%2011.2222V4.19444C1%203.85556%201.13462%203.53055%201.37425%203.29092C1.61388%203.05129%201.93889%202.91667%202.27778%202.91667H6.11111M8.66667%201H12.5M12.5%201V4.83333M12.5%201L5.47222%208.02778%22%20stroke%3D%22%23CCCCCC%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E%0A");
 
       }
     }
@@ -60,23 +60,39 @@
   .duration {
     color: var(--gray);
   }
-  .technologies {
-    color: var(--secondary-text);
-  }
 }
-.inputs {
+.columns {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1.5fr 2fr 1fr;
   grid-template-rows: 1fr;
   gap: 2rem;
   padding: 0 1rem;
 
-  div {
-    -webkit-flex: 1 1 auto;
-    flex: 1 1 auto;
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
 
-    &:first-child {
-      margin-bottom: .5rem;
-    }
+.show {
+  position: relative;
+  margin-top: 5rem;
+}
+
+.checkbox {
+  visibility: visible;
+  opacity: 1;
+  transition: all .4s ease;
+
+  &[data-visible="false"] {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.link {
+  div:first-child {
+    margin-bottom: .5rem;
   }
 }
