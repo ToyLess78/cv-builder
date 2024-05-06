@@ -2,14 +2,14 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    justify-content: space-between;
     ul {
         list-style-type: none;
     }
 }
 
 .item {
-    display: grid;
-    grid-template-columns: min-content 1fr;
+    display: flex;
     gap: 2rem 0;
     position: relative;
 }
