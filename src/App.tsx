@@ -1,9 +1,9 @@
 import './App.css';
 import { Tooltip } from 'react-tooltip';
-import { Breeze } from './temeplates/Breeze';
+import { Breeze } from './templates/Breeze';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectThemeColor } from '~/slices/theme.slice';
+import { selectTheme } from '~/slices/theme.slice';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { setAlphaToRGBA } from '~/utils/color.utils';
 import { MenuOverlay, Overlay } from '~/components/common/Overlay/Overlay';
@@ -13,6 +13,7 @@ import { selectIsEdit } from '~/slices/edit.slice';
 import { breezePalette } from '~/public/palettes';
 import { loadFromLocalStorage } from '~/utils/local-storage.utills';
 import { selectInfo } from '~/slices/info.slice';
+import Strong from './templates/Strong';
 
 const Menu = lazy(() => import('~/components/common/Carousel/Carousel'));
 const EditCertificates = lazy(() => import('~/components/certificates/EditCertifications'));
@@ -27,7 +28,8 @@ const EditProjects = lazy(() => import('~/components/projects/EditProjects'));
 
 const App: React.FC = () => {
     resetId();
-    const themeColor = useSelector((state: RootState) => selectThemeColor(state));
+    const themeState = useSelector((state: RootState) => selectTheme(state));
+    const themeColor = themeState.color;
     useEffect(() => {
         document.documentElement.style.setProperty('--primary', themeColor as string);
         document.documentElement.style.setProperty('--primary-opacity', setAlphaToRGBA(themeColor as string, .06));
@@ -49,7 +51,7 @@ const App: React.FC = () => {
     // const templates = ['success', 'advance', 'headway', 'breeze', 'strong', 'precise', 'serene', 'modern', 'fortune', 'recency', 'verdure', 'master', 'primary', 'prime', 'grand', 'alpha', 'galaxy', 'goodly', 'gallant', 'winner', 'elegant', 'future']
     // style={{'--primary': themeColor, '--primary-opacity': setAlphaToRGBA(themeColor as string, 0.1)} as React.CSSProperties}
     const isEdit = useSelector((state: RootState) => selectIsEdit(state));
-    const theme = 'breeze';
+    const {template: theme} = useSelector((state: RootState) => selectTheme(state));
     const [color, setColor] = useState(loadFromLocalStorage(theme) || breezePalette[0]);
 
     return (
@@ -97,7 +99,10 @@ const App: React.FC = () => {
             <MoreButton
                 onClick={ () => setIsOpen(!isOpen) }
             />
-            <Breeze/>
+            {theme === 'breeze' &&
+            <Breeze/>}
+            {theme === 'strong' &&
+            <Strong />}
         </div>
         </>
     )
