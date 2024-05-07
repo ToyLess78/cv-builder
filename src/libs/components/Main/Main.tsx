@@ -7,14 +7,11 @@ import { selectExperiences } from '~/slices/experiences.slice';
 import { selectEducation } from '~/slices/education.slice';
 import { selectProjects } from '~/slices/projects.slice';
 
-
 interface IMainProps {
     isOrder?: boolean;
 }
 
 export const Main: React.FC<IMainProps> = () => {
-    // const [duration, setDuration] = useState<Nullable<(Date | null)[] | Date>>(null);
-    // const isYear = false;
 
     const experience = useSelector((state: RootState) => selectExperiences(state));
     const education = useSelector((state: RootState) => selectEducation(state));
@@ -34,13 +31,6 @@ export const Main: React.FC<IMainProps> = () => {
             <Education>
                 <BreezeTitle text={education.title}/>
             </Education>
-
-            {/*<div style={{marginBottom: '3rem'}}></div>*/}
-            {/*<MonthYearPickerWithRange {...{duration, setDuration, isYear}}/>*/}
-            {/*<MonthYearPickerSingle/>*/}
-
-            {/*<input type='tel' name='phone'  required onChange={(e) => console.log(e.currentTarget.value)}/>*/}
-            {/*<input type='url' name='url' id='url' required />*/}
         </section>
 
     )

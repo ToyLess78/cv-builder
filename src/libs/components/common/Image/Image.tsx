@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectInfo } from '~/slices/info.slice';
-import { selectThemeColor } from '~/slices/theme.slice';
+import { selectTheme } from '~/slices/theme.slice';
 import { ImageType } from '~/types/image-uploading.types';
 import classes from './Image.module.scss';
 import ImageUploading from './ImageUploading';
@@ -17,7 +17,7 @@ export const Image: React.FC<IImageProps> = ({styles}) => {
     const [image, setImage] = React.useState<ImageType | null>(null);
     const [opacity, setOpacity] = useState(true);
     const info = useSelector((state: RootState) => selectInfo(state));
-    const themeColor = useSelector((state: RootState) => selectThemeColor(state));
+    const themeColor = useSelector((state: RootState) => selectTheme(state));
 
     const onChange = (imageList: ImageType[]) => {
         setImage(imageList[0] || null);

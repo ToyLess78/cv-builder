@@ -5,8 +5,8 @@ import { Image } from '~/components/common/Image/Image';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectInfo } from '~/slices/info.slice';
-import { Info } from '~/components/header/Info';
-import { Summary } from '~/components/header/Summary';
+import { Info } from './Info';
+import { Summary } from './Summary';
 import { setIsEdit } from '~/slices/edit.slice';
 
 export const Header: React.FC = () => {
