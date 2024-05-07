@@ -4,10 +4,12 @@ import { RootState } from '~/store/store';
 
 interface ThemeState {
     color: CssColor | string | number;
+    template: string;
 }
 
 const initialState: ThemeState = {
-    color: 'rgba(25, 118, 210, 1)'
+    color: 'rgba(25, 118, 210, 1)',
+    template: 'strong'
 };
 
 export const themeSlice = createSlice({
@@ -16,11 +18,14 @@ export const themeSlice = createSlice({
     reducers: {
         setThemeColor(state, action: PayloadAction<string | CssColor>) {
             state.color = action.payload;
+        },
+        setTemplate(state, action: PayloadAction<string>) {
+            state.template = action.payload;
         }
     }
 });
 
-export const { setThemeColor } = themeSlice.actions;
-export const selectThemeColor = (state: RootState) => state.theme.color;
+export const { setThemeColor, setTemplate } = themeSlice.actions;
+export const selectTheme = (state: RootState) => state.theme;
 
 export default themeSlice.reducer;
