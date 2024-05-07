@@ -29,12 +29,12 @@ export {
     MoreButton,
     AddItemButton
 } from './common/Buttons/Buttons';
-export { MonthYearPickerWithRange, MonthYearPickerSingle } from './common/MonthPicker/MonthYearPicker';
 export { Loading } from '~/components/common/Loading/Loading';
 export { EditWrapper } from './common/EditWrapper/EditWrapper';
 export { CheckBox } from '~/components/common/CheckBox/CheckBox';
 export { Experience } from '~/components/experience/Experience';
-export { MainEditWrapper } from '~/components/Main/MainEditWrapper';
-export { Education } from '~/components/education/Education';
 export { Projects } from '~/components/projects/Projects';
 export { AutoCompleteCustom } from '~/components/common/AutoCompleteCustom/AutoCompleteCustom';
+export { Education } from '~/components/education/Education';
+export { StrongLayout } from './strong/StrongLayout';
+export { StrongTitle } from './strong/StrongTitle';
