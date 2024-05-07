@@ -54,5 +54,29 @@
 }
 
 .p-component.p-editor-container {
-  border: 1px solid var(--primary);
+  border: 1px solid var(--gray);
+  transition: border-color .4s ease;
+
+  &:focus-within {
+    border: 1px solid var(--primary);
+  }
+}
+
+.editor-wrapper {
+  position: relative;
+
+  .editor-label {
+    position: absolute;
+    text-transform: capitalize;
+    top: -23px;
+    font-size: 0.7rem;
+    transition: color 0.3s;
+    color: var(--label-color);
+    pointer-events: none;
+    letter-spacing: 1px;
+  }
+
+  .editor-label:has(+.p-component.p-editor-container:focus-within) {
+    color: var(--primary);
+  }
 }

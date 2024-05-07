@@ -1,13 +1,4 @@
-import {
-    AutoCompleteCustom,
-    BreezeTitle,
-    CheckBox,
-    EditorCustom,
-    MainEditWrapper,
-    MonthYearPickerWithRange,
-    Projects,
-    UnderlineInput
-} from '~/components';
+import { AutoCompleteCustom, BreezeTitle, CheckBox, EditorCustom, UnderlineInput } from '~/components';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
@@ -16,6 +7,9 @@ import styles from './Projects.module.scss';
 import { Nullable } from 'primereact/ts-helpers';
 import { reformatDateRange, reformatDateSingle } from '~/utils/format-date.utils';
 import { setIsEdit } from '~/slices/edit.slice';
+import { MainEditWrapper } from '~/components/Main/MainEditWrapper';
+import { MonthYearPickerWithRange } from '~/components/common/MonthPicker/MonthYearPicker';
+import { Projects } from './Projects';
 
 const EditProjects: React.FC = () => {
 

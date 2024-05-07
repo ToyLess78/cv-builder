@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { selectSkills, setAdditional, setSkills } from '~/slices/skills.slice';
 import styles from './Skills.module.scss';
-import { AsideItem, AutoCompleteCustom, BreezeTitle, EditWrapper, Skills, UnderlineInput } from '~/components';
+import {
+    AsideItem,
+    AutoCompleteCustom,
+    BreezeTitle,
+    EditWrapper,
+    Skills,
+    StrongTitle,
+    UnderlineInput
+} from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { setIsEdit } from '~/slices/edit.slice';
+import { selectTheme } from '~/slices/theme.slice';
 
 interface IEditSkillsAutoCompleteProps {
     isAdditional?: boolean;
@@ -30,18 +39,20 @@ const EditSkills: React.FC<IEditSkillsAutoCompleteProps> =
             isAdditional ? dispatch(setAdditional(isSkills)) : dispatch(setSkills(isSkills));
             dispatch(setIsEdit(''));
         };
-
+        const {template} = useSelector((state: RootState) => selectTheme(state));
         return (
             <EditWrapper
                 preview={
                     <AsideItem>
-                        <div className={ styles.box }>
-                            <BreezeTitle text={ isSkills.title }/>
                             <Skills
                                 isButtons={ false }
                                 data={ isSkills }
-                            />
-                        </div>
+                            >
+                                {template === 'breeze' &&
+                                    <BreezeTitle text={ isSkills.title }/>}
+                                {template === 'strong' &&
+                                    <StrongTitle text={ isSkills.title }/>}
+                            </Skills>
                     </AsideItem> }
                 edit={
                     <>

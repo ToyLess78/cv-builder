@@ -3,9 +3,6 @@ import {
     BreezeTitle,
     CheckBox,
     EditorCustom,
-    Experience,
-    MainEditWrapper,
-    MonthYearPickerWithRange,
     UnderlineInput
 } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +12,9 @@ import styles from './Experience.module.scss';
 import { Nullable } from 'primereact/ts-helpers';
 import { reformatDateRange, reformatDateSingle } from '~/utils/format-date.utils';
 import { setIsEdit } from '~/slices/edit.slice';
+import { Experience } from './Experience';
+import { MainEditWrapper } from '~/components/Main/MainEditWrapper';
+import { MonthYearPickerWithRange } from '~/components/common/MonthPicker/MonthYearPicker';
 
 const EditExperience: FC = () => {
 

@@ -7,7 +7,7 @@ import { setIsEdit } from '~/slices/edit.slice';
 import { Summary } from '~/components/header/Summary';
 import { BreezeTitle } from '~/components/breeze/BreezeTitle/BreezeTitle';
 import { EditorCustom } from '~/components/common/Editor/EditorCustom';
-import { MainEditWrapper } from '~/components';
+import { MainEditWrapper } from '~/components/Main/MainEditWrapper';
 
 const EditSummary: FC = () => {
 

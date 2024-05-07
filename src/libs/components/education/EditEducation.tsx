@@ -8,12 +8,12 @@ import { setIsEdit } from '~/slices/edit.slice';
 import {
     BreezeTitle,
     CheckBox, EditorCustom,
-    Education,
-    MainEditWrapper,
-    MonthYearPickerWithRange,
     UnderlineInput
 } from '~/components';
 import styles from '~/components/education/Education.module.scss';
+import { MainEditWrapper } from '~/components/Main/MainEditWrapper';
+import { MonthYearPickerWithRange } from '~/components/common/MonthPicker/MonthYearPicker';
+import { Education } from '~/components/education/Education';
 
 const EditEducation: FC = () => {
 
