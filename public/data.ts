@@ -58,7 +58,7 @@ export const data = {
             at: 'Mar 2024'
         }
     ],
-    contact:
+    contacts:
         {
             location: 'Ukraine',
             email: 'hello@example.com',
