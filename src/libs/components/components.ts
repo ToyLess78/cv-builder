@@ -1,7 +1,7 @@
 export { Aside } from '~/components/common/Aside/Aside';
 export { AsideItem } from '~/components/common/Aside/AsideItem';
 export { Body } from '~/components/common/Body/Body';
-export { Certifications } from '~/components/certificates/Certifications';
+export { Certifications } from '~/components/certifications/Certifications';
 export { Additional } from '~/components/additional/Additional';
 export { AdditionalList } from '~/components/additional/AdditionalList';
 export { ColorPicker } from '~/components/common/ColorPicker/ColorPicker';
@@ -38,3 +38,4 @@ export { AutoCompleteCustom } from '~/components/common/AutoCompleteCustom/AutoC
 export { Education } from '~/components/education/Education';
 export { StrongLayout } from './strong/StrongLayout';
 export { StrongTitle } from './strong/StrongTitle';
+export { CurrentTitle } from '~/components/common/CurrentComponents/CurrentTitle';

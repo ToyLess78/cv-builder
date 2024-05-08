@@ -4,8 +4,9 @@ import styles from './Strong.module.scss';
 interface IStrongLayoutProps {
     info: ReactNode;
     aside: ReactNode;
+    main: ReactNode;
 }
-export const StrongLayout: React.FC<IStrongLayoutProps> = ({info, aside}) => {
+export const StrongLayout: React.FC<IStrongLayoutProps> = ({info, aside, main}) => {
     return (
         <div className={styles.container}>
             <div className={styles.column}></div>
@@ -16,7 +17,9 @@ export const StrongLayout: React.FC<IStrongLayoutProps> = ({info, aside}) => {
                     </div>
                 </div>
             </div>
-            <div className={styles.main}></div>
+            <div className={styles.main}>
+                {main}
+            </div>
             <div className={styles.aside}>
                 {aside}
             </div>

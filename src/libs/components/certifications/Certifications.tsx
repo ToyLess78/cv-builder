@@ -7,6 +7,9 @@ import { AsideItem } from '~/components/common/Aside/AsideItem';
 import { EditButton, EditButtonsBox, HideButton, ShowAsideButton } from '~/components/common/Buttons/Buttons';
 import styles from './Certifications.module.scss';
 import { setIsEdit } from '~/slices/edit.slice';
+import RootConstants from '~/constants/root.constants';
+import { selectTheme } from '~/slices/theme.slice';
+import TemplateConstants from '~/constants/template.constants';
 
 interface ICertificatesProps {
     children: ReactNode;
@@ -16,13 +19,15 @@ interface ICertificatesProps {
     edited?: ICertificate;
 }
 
-export const Certifications: React.FC<ICertificatesProps> = ({children, data = null,  onRemove, onEdit, edited}) => {
+export const Certifications: React.FC<ICertificatesProps> = ({children, data = null, onRemove, onEdit, edited}) => {
     const certificates = useSelector((state: RootState) => selectCertifications(state));
     const {isCertifications} = certificates;
     const dispatch = useDispatch();
     const handleSetIsCertifications = () => {
         dispatch(setIsCertifications(!isCertifications));
     };
+
+    const {template} = useSelector((state: RootState) => selectTheme(state));
 
     return (
         <>
@@ -37,7 +42,7 @@ export const Certifications: React.FC<ICertificatesProps> = ({children, data = n
                 <AsideItem>
                     <EditButton
                         title={ certificates.title }
-                        onClick={ () => dispatch(setIsEdit('certificates')) }
+                        onClick={ () => dispatch(setIsEdit(RootConstants.Certifications)) }
                     />
                     <HideButton
                         onClick={ handleSetIsCertifications }
@@ -45,7 +50,8 @@ export const Certifications: React.FC<ICertificatesProps> = ({children, data = n
                     />
 
                     { children }
-                    <ul className={ styles.certifications }>
+                    <ul className={ styles.certifications }
+                        style={ {minHeight: template === TemplateConstants.Breeze ? '8.2rem' : 'auto'} }>
                         { certificates.data?.map(c => {
                             return <li key={ c.id }>
                                 <p>{ c.title }</p>
@@ -59,17 +65,20 @@ export const Certifications: React.FC<ICertificatesProps> = ({children, data = n
                 <AsideItem>
 
                     { children }
-                    <ul className={ styles.certifications }>
+                    <ul
+                        className={ styles.certifications }
+                        style={ {minHeight: template === TemplateConstants.Breeze ? '8.2rem' : 'auto'} }>
                         { data?.map(c => {
                             return <li key={ c.id }>
                                 <EditButtonsBox
-                                    onRemove={onRemove ? () => onRemove(c.id) : undefined}
-                                    onEdit={onEdit ? () => onEdit(c.id) : undefined}
-                                    editeStyle={{visibility: c.id === edited?.id ? 'hidden' : 'visible'}}
-                                    removeStyle={{visibility: c.issue.length &&  c.title.length ? 'visible' : 'hidden'}}
+                                    onRemove={ onRemove ? () => onRemove(c.id) : undefined }
+                                    onEdit={ onEdit ? () => onEdit(c.id) : undefined }
+                                    editeStyle={ {visibility: c.id === edited?.id ? 'hidden' : 'visible'} }
+                                    removeStyle={ {visibility: c.issue.length && c.title.length ? 'visible' : 'hidden'} }
                                 />
                                 <p>{ c.title }</p>
-                                {c.issue.length ? <a href={ c.link }><span>{ c.issue }</span><FiExternalLink/></a> : ''}
+                                { c.issue.length ?
+                                    <a href={ c.link }><span>{ c.issue }</span><FiExternalLink/></a> : '' }
                             </li>;
                         }) }
                     </ul>

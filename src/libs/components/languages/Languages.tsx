@@ -6,6 +6,9 @@ import { AsideItem } from '~/components/common/Aside/AsideItem';
 import styles from './Languages.module.scss';
 import { EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components/common/Buttons/Buttons';
 import { setIsEdit } from '~/slices/edit.slice';
+import RootConstants from '~/constants/root.constants';
+import TemplateConstants from '~/constants/template.constants';
+import { selectTheme } from '~/slices/theme.slice';
 
 interface ILanguagesProps {
     children: ReactNode;
@@ -22,6 +25,8 @@ export const Languages: React.FC<ILanguagesProps> = ({children, data = null, onR
         dispatch(setIsLanguages(!isLanguages));
     };
 
+    const {template} = useSelector((state: RootState) => selectTheme(state));
+
     return (
         <>
             { !isLanguages && !data &&
@@ -35,17 +40,19 @@ export const Languages: React.FC<ILanguagesProps> = ({children, data = null, onR
                     { isLanguages &&
                         <>
                             <EditButton
-                                title="languages"
-                                onClick={ () => dispatch(setIsEdit('languages')) }
+                                title={RootConstants.Languages}
+                                onClick={ () => dispatch(setIsEdit(RootConstants.Languages)) }
                             />
                             <HideButton
                                 onClick={ handleSetIsLanguages }
-                                title="languages"
+                                title={RootConstants.Languages}
 
                             />
                         </>}
                     {children}
-                    <ul className={ styles.languages }>
+                    <ul
+                        className={ styles.languages }
+                        style={{minHeight: template === TemplateConstants.Breeze ? '7.4rem' : 'auto'}}>
                         {languages.data?.map(l => {
                             return <li key={ l.id }><span>{ l.language?.name }</span>
                                 <p>{ l.level?.name }</p>
@@ -57,7 +64,9 @@ export const Languages: React.FC<ILanguagesProps> = ({children, data = null, onR
             {data && isLanguages &&
                 <AsideItem>
                     {children}
-                    <ul className={ styles.languages }>
+                    <ul
+                        className={ styles.languages }
+                    style={{minHeight: template === TemplateConstants.Breeze ? '7.4rem' : 'auto'}}>
                         {data?.map(l => {
                             return l?.language?.name.length &&
                             <li key={ l.id }><span>{ l?.language?.name }</span>

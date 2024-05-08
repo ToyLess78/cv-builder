@@ -34,7 +34,15 @@
   justify-self: stretch;
   display: flex;
   position: relative;
-  min-height: 4.72rem;
+  flex-direction: column;
+  gap: .5rem 0;
+  padding-left: .7rem;
+
+  &.breeze {
+    min-height: 4.72rem;
+    flex-direction: row;
+    padding-left: 0;
+  }
 
   p {
     margin-right: 2rem;

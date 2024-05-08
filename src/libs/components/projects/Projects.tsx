@@ -7,6 +7,9 @@ import { AddItemButton, EditButton, HideButton, RemoveButton, ShowAsideButton } 
 import { setIsEdit } from '~/slices/edit.slice';
 import nextId from 'react-id-generator';
 import { FiExternalLink } from 'react-icons/fi';
+import RootConstants from '~/constants/root.constants';
+import { selectTheme } from '~/slices/theme.slice';
+import TemplateConstants from '~/constants/template.constants';
 
 interface IProjectsProps {
     children?: ReactNode;
@@ -23,29 +26,31 @@ export const Projects: FC<IProjectsProps> = ({children, projectsItem = null}) =>
 
     const handlerSetEdit = (id: string) => {
         dispatch(setEditedProjectId(id));
-        dispatch(setIsEdit('projects'));
+        dispatch(setIsEdit(RootConstants.Projects));
     };
 
     const handlerAddProject = () => {
         dispatch(setEditedProjectId(nextId()));
-        dispatch(setIsEdit('projects'));
+        dispatch(setIsEdit(RootConstants.Projects));
     };
+
+    const {template} = useSelector((state: RootState) => selectTheme(state));
 
     return (
         <>
             { isProjects && !projectsItem &&
-                <section className={ styles.projects }>
+                <section className={`${styles.projects} ${styles[template]}`}>
                     { children }
                     <div className={ styles.wrapper }>
                         { data.map(pro => (
                             <div key={ pro.id } className={ styles.title }>
                                 <EditButton
-                                    style={ {left: '-3.7rem'} }
+                                    style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
                                     title={ pro.projectName }
                                     onClick={ () => handlerSetEdit(pro.id) }
                                 />
                                 { data.length > 1 && <RemoveButton
-                                    style={ {left: '-3.8rem', top: '1.5rem'} }
+                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.5rem'} }
                                     removeOffset={ 20 }
                                     onRemove={ () => dispatch(removeProject(pro.id)) }
                                 /> }
@@ -69,26 +74,27 @@ export const Projects: FC<IProjectsProps> = ({children, projectsItem = null}) =>
                     </div>
                     <HideButton
                         title={ title }
-                        style={ {bottom: '1.3rem'} }
+                        style={ {bottom: '.9rem'} }
                         offset={ 0 }
                         onClick={ () => dispatch(setIsProjects(false)) }
                     />
                     <AddItemButton
+                        style={ {bottom: '-.4rem'} }
                         title="project"
                         onClick={ handlerAddProject }
                     />
                 </section>
             }
             {!isProjects && !projectsItem &&
-                <div className={styles.show}>
+                <div className={`${styles.show} ${styles[template]}`}>
                     <ShowAsideButton
                         title={ title }
-                        style={ {top: '-3rem'} }
+                        style={ {top: template === TemplateConstants.Breeze ?'-3rem' : '2rem'} }
                         onClick={ () => dispatch(setIsProjects(true)) }
                     />
                 </div>}
             {isProjects && projectsItem &&
-                <section className={ styles.projects }>
+                <section className={`${styles.projects} ${styles[template]}`}>
                     { children }
                     <div className={ styles.wrapper }>
                             <div key={ projectsItem.id } className={ styles.title }>

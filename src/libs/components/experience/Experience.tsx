@@ -5,13 +5,16 @@ import { RootState } from '~/store/store';
 import {
     IExperience,
     removeExperience,
-    selectExperiences,
+    selectExperience,
     setEditedExperienceId,
-    setIsExperiences
+    setIsExperience
 } from '~/slices/experiences.slice';
 import { AddItemButton, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
 import { setIsEdit } from '~/slices/edit.slice';
 import nextId from 'react-id-generator';
+import RootConstants from '~/constants/root.constants';
+import { selectTheme } from '~/slices/theme.slice';
+import TemplateConstants from '~/constants/template.constants';
 
 interface IExperienceProps {
     children?: ReactNode;
@@ -20,36 +23,38 @@ interface IExperienceProps {
 
 export const Experience: React.FC<IExperienceProps> = ({children, experienceItem = null}) => {
 
-    const experience = useSelector((state: RootState) => selectExperiences(state));
-    const {isExperiences, title, data} = experience;
+    const experience = useSelector((state: RootState) => selectExperience(state));
+    const {isExperience, title, data} = experience;
 
     const dispatch = useDispatch();
 
     const handlerSetEdit = (id: string) => {
         dispatch(setEditedExperienceId(id));
-        dispatch(setIsEdit('experience'));
+        dispatch(setIsEdit(RootConstants.Experience));
     };
 
     const handlerAddExperience = () => {
         dispatch(setEditedExperienceId(nextId()));
-        dispatch(setIsEdit('experience'));
+        dispatch(setIsEdit(RootConstants.Experience));
     };
+
+    const {template} = useSelector((state: RootState) => selectTheme(state));
 
     return (
         <>
-            { isExperiences && !experienceItem &&
-                <section className={ styles.experience }>
+            { isExperience && !experienceItem &&
+                <section className={`${styles.experience} ${styles[template]}`}>
                     { children }
                     <div className={ styles.wrapper }>
                         { data.map(exp => (
                             <div key={ exp.id } className={ styles.title }>
                                 <EditButton
-                                    style={ {left: '-3.7rem'} }
+                                    style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
                                     title={ exp.jobTitle }
                                     onClick={ () => handlerSetEdit(exp.id) }
                                 />
                                 { data.length > 1 && <RemoveButton
-                                    style={ {left: '-3.8rem', top: '1.5rem'} }
+                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.5rem'} }
                                     removeOffset={ 20 }
                                     onRemove={ () => dispatch(removeExperience(exp.id)) }
                                 /> }
@@ -69,20 +74,22 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
                         title={ title }
                         style={ {bottom: '1.3rem'} }
                         offset={ 0 }
-                        onClick={ () => dispatch(setIsExperiences(false)) }
+                        onClick={ () => dispatch(setIsExperience(false)) }
                     />
                     <AddItemButton
-                        title="experience"
+                        title={RootConstants.Experience}
                         onClick={ handlerAddExperience }
                     />
                 </section>}
-            {!isExperiences && !experienceItem &&
-                <ShowAsideButton
-                    title={ title }
-                    style={ {top: '-1rem'} }
-                    onClick={ () => dispatch(setIsExperiences(true)) }
-                /> }
-            {isExperiences && experienceItem &&
+            {!isExperience && !experienceItem &&
+                <div className={`${styles.show} ${styles[template]}`}>
+                    <ShowAsideButton
+                        title={ title }
+                        style={ {top: template === TemplateConstants.Breeze ?'-3rem' : '2rem'} }
+                        onClick={ () => dispatch(setIsExperience(true)) }
+                    />
+                </div>}
+            {isExperience && experienceItem &&
                 <section className={ styles.experience }>
                     { children }
                     <div className={ styles.wrapper }>

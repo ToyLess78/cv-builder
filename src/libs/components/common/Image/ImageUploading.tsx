@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { ImageListType, ImageUploadingPropsType } from '~/types/image-uploading.types';
-import { DEFAULT_DATA_URL_KEY, DEFAULT_NULL_INDEX } from '~/constants/constants';
+import { DEFAULT_DATA_URL_KEY, DEFAULT_NULL_INDEX } from '~/constants/image-uploading.constants';
 import { getAcceptTypeString, getListFiles, openFileDialog } from '~/utils/utils';
 
 

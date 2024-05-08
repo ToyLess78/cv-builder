@@ -17,7 +17,7 @@ export const Image: React.FC<IImageProps> = ({styles}) => {
     const [image, setImage] = React.useState<ImageType | null>(null);
     const [opacity, setOpacity] = useState(true);
     const info = useSelector((state: RootState) => selectInfo(state));
-    const themeColor = useSelector((state: RootState) => selectTheme(state));
+    const {color} = useSelector((state: RootState) => selectTheme(state));
 
     const onChange = (imageList: ImageType[]) => {
         setImage(imageList[0] || null);
@@ -33,7 +33,7 @@ export const Image: React.FC<IImageProps> = ({styles}) => {
 
                }) => (
                 <section className={styles}>
-                    <div className={classes.polygon} style={ { background: themeColor, opacity: Number(!opacity) } }>
+                    <div className={classes.polygon} style={ { background: color, opacity: Number(!opacity) } }>
                         <h2>{ info.firstname.trim().charAt(0) }</h2>
                         <h2>{ info.lastname.trim().charAt(0) }</h2>
                     </div>

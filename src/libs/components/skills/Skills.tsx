@@ -7,6 +7,9 @@ import nextId from 'react-id-generator';
 import styles from './Skills.module.scss';
 import { EditButton, ReturnButton } from '~/components/common/Buttons/Buttons';
 import { setIsEdit } from '~/slices/edit.slice';
+import RootConstants from '~/constants/root.constants';
+import TemplateConstants from '~/constants/template.constants';
+import { selectTheme } from '~/slices/theme.slice';
 
 interface ISkillsProps {
     children?: ReactNode;
@@ -19,6 +22,7 @@ export const Skills: React.FC<ISkillsProps> = ({children, isButtons = true, data
     const aside = useSelector((state: RootState) => selectSkills(state));
     const dispatch = useDispatch();
 
+    const {template} = useSelector((state: RootState) => selectTheme(state));
 
     return (
         <>
@@ -26,11 +30,13 @@ export const Skills: React.FC<ISkillsProps> = ({children, isButtons = true, data
                 <AsideItem>
                     <EditButton
                         title={ aside?.skills.title }
-                        onClick={ () => dispatch(setIsEdit('skills')) }
+                        onClick={ () => dispatch(setIsEdit(RootConstants.Skills)) }
                     />
 
                     { children }
-                    <ul className={ styles.skills }>
+                    <ul
+                        className={ styles.skills }
+                        style={ {minHeight: template === TemplateConstants.Breeze ? '4.7rem' : 'auto'} }>
                         { aside?.skills.data?.map(s => {
                             return <li key={ nextId() }>{ s }</li>;
                         }) }
@@ -50,7 +56,9 @@ export const Skills: React.FC<ISkillsProps> = ({children, isButtons = true, data
                 <AsideItem>
 
                     { children }
-                    <ul className={ styles.skills }>
+                    <ul
+                        className={ styles.skills }
+                        style={ {minHeight: template === TemplateConstants.Breeze ? '4.7rem' : 'auto'} }>
                         { data?.data?.map(s => {
                             return <li key={ nextId() }>{ s }</li>;
                         }) }

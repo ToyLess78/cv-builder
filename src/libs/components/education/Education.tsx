@@ -12,6 +12,9 @@ import {
 import { setIsEdit } from '~/slices/edit.slice';
 import nextId from 'react-id-generator';
 import { AddItemButton, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
+import RootConstants from '~/constants/root.constants';
+import { selectTheme } from '~/slices/theme.slice';
+import TemplateConstants from '~/constants/template.constants';
 
 interface IEducationProps {
     children?: ReactNode;
@@ -27,29 +30,31 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
 
     const handlerSetEdit = (id: string) => {
         dispatch(setEditedEducationId(id));
-        dispatch(setIsEdit('education'));
+        dispatch(setIsEdit(RootConstants.Education));
     };
 
     const handlerAddEducation = () => {
         dispatch(setEditedEducationId(nextId()));
-        dispatch(setIsEdit('education'));
+        dispatch(setIsEdit(RootConstants.Education));
     };
+
+    const {template} = useSelector((state: RootState) => selectTheme(state));
 
     return (
         <>
             { isEducation && !educationItem &&
-                <section className={ styles.education }>
+                <section className={`${styles.education} ${styles[template]}`}>
                     { children }
                     <div className={ styles.wrapper }>
                         { data.map(ed => (
                             <div key={ ed.id } className={ styles.title }>
                                 <EditButton
-                                    style={ {left: '-3.7rem'} }
+                                    style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
                                     title={ ed.degree }
                                     onClick={ () => handlerSetEdit(ed.id) }
                                 />
                                 { data.length > 1 && <RemoveButton
-                                    style={ {left: '-3.8rem', top: '1.5rem'} }
+                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.5rem'} }
                                     removeOffset={ 20 }
                                     onRemove={ () => dispatch(removeEducation(ed.id)) }
                                 /> }
@@ -67,12 +72,13 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
                     </div>
                     <HideButton
                         title={ title }
-                        style={ {bottom: '1.3rem'} }
+                        style={ {bottom: '.9rem'} }
                         offset={ 0 }
                         onClick={ () => dispatch(setIsEducation(false)) }
                     />
                     <AddItemButton
-                        title="education"
+                        style={ {bottom: '-.4rem'} }
+                        title={RootConstants.Education}
                         onClick={ handlerAddEducation }
                     />
                 </section> }
@@ -86,7 +92,7 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
                 </div>}
 
             { isEducation && educationItem &&
-                <section className={ styles.education }>
+                <section className={ `${styles.education} ${styles[template]}` }>
                     { children }
                     <div className={ styles.wrapper }>
                         <div className={ styles.title }>

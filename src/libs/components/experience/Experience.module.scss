@@ -2,7 +2,21 @@
   justify-self: stretch;
   display: flex;
   position: relative;
-  min-height: 7.4rem;
+  flex-direction: column;
+  gap: .5rem 0;
+  padding-left: .7rem;
+  margin-top: 2rem;
+
+  &.breeze {
+    min-height: 7.4rem;
+    flex-direction: row;
+    padding-left: 0;
+
+    em {
+      padding-right: 2rem;
+    }
+  }
+
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -23,7 +37,6 @@
   }
   em {
     float: right;
-    padding-right: 2rem;
     text-transform: capitalize;
     color: var(--gray);
     font-weight: normal;
@@ -49,5 +62,12 @@
     &:first-child {
       margin-bottom: .5rem;
     }
+  }
+}
+.show {
+  position: relative;
+
+  &.breeze {
+    margin-top: 5rem;
   }
 }

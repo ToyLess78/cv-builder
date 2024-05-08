@@ -3,7 +3,7 @@ import styles from './Main.module.scss';
 import { BreezeTitle, Education, Experience, Projects } from '~/components';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectExperiences } from '~/slices/experiences.slice';
+import { selectExperience } from '~/slices/experiences.slice';
 import { selectEducation } from '~/slices/education.slice';
 import { selectProjects } from '~/slices/projects.slice';
 
@@ -13,9 +13,10 @@ interface IMainProps {
 
 export const Main: React.FC<IMainProps> = () => {
 
-    const experience = useSelector((state: RootState) => selectExperiences(state));
+    const experience = useSelector((state: RootState) => selectExperience(state));
     const education = useSelector((state: RootState) => selectEducation(state));
     const projects = useSelector((state: RootState) => selectProjects(state));
+
     return (
         <section className={ styles.main } >
             {/*<article>*/}

@@ -12,9 +12,9 @@ export const AsideItem: React.FC<IAsideItemProps> = ({children}) => {
     const themeState = useSelector((state: RootState) => selectTheme(state));
     const template = themeState.template;
 
+
     return (
-        <div className={ styles.item } style={ template === 'breeze' ? {flexDirection: 'row', gap: '2rem 0'} :{flexDirection: 'column',
-            gap: '.5rem 0', padding: '0 1rem'} }>
+        <div className={`${styles.item} ${styles[template]}`} >
             { children }
         </div>
     );
