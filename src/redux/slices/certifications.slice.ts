@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage, removeFromLocalStorage } from '~/utils/utils';
+import RootConstants from '~/constants/root.constants';
 
 export interface ICertificate {
     id: string;
@@ -17,7 +18,7 @@ export interface ICertificationsState {
 
 const defaultCertifications = {
     isCertifications: true,
-    title: 'certifications',
+    title: RootConstants.Certifications,
     data: [
         {
             id: "648sgvg2gfd",
@@ -45,10 +46,10 @@ const defaultCertifications = {
         }
     ]
 };
-const initialState: ICertificationsState = loadFromLocalStorage('certifications') || defaultCertifications;
+const initialState: ICertificationsState = loadFromLocalStorage(RootConstants.Certifications) || defaultCertifications;
 
 const certificationsSlice = createSlice({
-    name: 'certifications',
+    name: RootConstants.Certifications,
     initialState,
     reducers: {
 
@@ -59,7 +60,7 @@ const certificationsSlice = createSlice({
             state.isCertifications = action.payload;
         },
         setDefaultCertifications() {
-            removeFromLocalStorage('certifications');
+            removeFromLocalStorage(RootConstants.Certifications);
             return defaultCertifications;
         }
     }

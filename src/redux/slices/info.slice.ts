@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage } from '~/utils/local-storage.utills';
+import RootConstants from '~/constants/root.constants';
 
 interface InfoState {
     firstname: string;
@@ -10,7 +11,7 @@ interface InfoState {
     summary: string;
 }
 
-const initialState: InfoState = loadFromLocalStorage('info') || {
+const initialState: InfoState = loadFromLocalStorage(RootConstants.Info) || {
     firstname: 'Your',
     lastname: 'Name',
     position: 'Web Developer',
@@ -19,7 +20,7 @@ const initialState: InfoState = loadFromLocalStorage('info') || {
 };
 
 const infoSlice = createSlice({
-    name: 'info',
+    name: RootConstants.Info,
     initialState,
     reducers: {
         setInfo(state, action: PayloadAction<Partial<InfoState>>) {

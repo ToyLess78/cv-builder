@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CssColor } from '~/types/color-types';
+import { CssColor } from '~/types/color.types';
 import { RootState } from '~/store/store';
+import TemplateConstants from '~/constants/template.constants';
+import RootConstants from '~/constants/root.constants';
 
 interface ThemeState {
     color: CssColor | string | number;
@@ -9,11 +11,11 @@ interface ThemeState {
 
 const initialState: ThemeState = {
     color: 'rgba(25, 118, 210, 1)',
-    template: 'strong'
+    template: TemplateConstants.Breeze
 };
 
 export const themeSlice = createSlice({
-    name: 'theme',
+    name: RootConstants.Theme,
     initialState,
     reducers: {
         setThemeColor(state, action: PayloadAction<string | CssColor>) {

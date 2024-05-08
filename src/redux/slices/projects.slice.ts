@@ -1,6 +1,7 @@
 import { loadFromLocalStorage } from '~/utils/local-storage.utills';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
+import RootConstants from '~/constants/root.constants';
 
 export interface IProject {
     id: string;
@@ -23,8 +24,8 @@ interface IProjectsState {
     data: IProject[];
 }
 
-const initialState: IProjectsState = loadFromLocalStorage('projects') || {
-    title: 'projects',
+const initialState: IProjectsState = loadFromLocalStorage(RootConstants.Projects) || {
+    title: RootConstants.Projects,
     editedId: '',
     isProjects: true,
     data: [
@@ -58,7 +59,7 @@ const initialState: IProjectsState = loadFromLocalStorage('projects') || {
 };
 
 const projectsSlice = createSlice({
-    name: 'projects',
+    name: RootConstants.Projects,
     initialState,
     reducers: {
         setProjects(state, action: PayloadAction<Partial<IProjectsState>>) {

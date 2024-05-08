@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage } from '~/utils/local-storage.utills';
+import RootConstants from '~/constants/root.constants';
 
 export interface IExperience {
     id: string;
@@ -12,17 +13,17 @@ export interface IExperience {
     location: string;
     description: string
 }
-interface IExperiencesState {
+interface IExperienceState {
     title: string;
     editedId: string;
-    isExperiences: boolean;
+    isExperience: boolean;
     data: IExperience[];
 }
 
-const initialState: IExperiencesState = loadFromLocalStorage('experiences') || {
-    title: 'experience',
+const initialState: IExperienceState = loadFromLocalStorage(RootConstants.Experience) || {
+    title: RootConstants.Experience,
     editedId: '',
-    isExperiences: true,
+    isExperience: true,
     data: [
         {
             id: '31T22:00:00.000Z',
@@ -47,11 +48,11 @@ const initialState: IExperiencesState = loadFromLocalStorage('experiences') || {
     ]
 };
 
-const experiencesSlice = createSlice({
-    name: 'experiences',
+const experienceSlice = createSlice({
+    name: RootConstants.Experience,
     initialState,
     reducers: {
-        setExperiences(state, action: PayloadAction<Partial<IExperiencesState>>) {
+        setExperience(state, action: PayloadAction<Partial<IExperienceState>>) {
             return {
                 ...state,
                 ...action.payload
@@ -60,8 +61,8 @@ const experiencesSlice = createSlice({
         setEditedExperienceId(state, action: PayloadAction<string>) {
             state.editedId = action.payload;
         },
-        setIsExperiences(state, action: PayloadAction<boolean>) {
-            state.isExperiences = action.payload;
+        setIsExperience(state, action: PayloadAction<boolean>) {
+            state.isExperience = action.payload;
         },
         setEditedExperience(state, action: PayloadAction<{experience: Partial<IExperience>}>) {
             const { experience } = action.payload;
@@ -91,8 +92,8 @@ const experiencesSlice = createSlice({
     }
 });
 
-export const { setExperiences, setEditedExperienceId, setEditedExperience, addExperience, setIsExperiences, removeExperience} = experiencesSlice.actions;
+export const { setExperience, setEditedExperienceId, setEditedExperience, addExperience, setIsExperience, removeExperience} = experienceSlice.actions;
 
-export const selectExperiences = (state: RootState) => state.experiences;
+export const selectExperience = (state: RootState) => state.experience;
 
-export default experiencesSlice.reducer;
+export default experienceSlice.reducer;

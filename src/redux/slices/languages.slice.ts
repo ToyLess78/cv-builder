@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage, removeFromLocalStorage } from '~/utils/utils';
+import RootConstants from '~/constants/root.constants';
 
 interface ILanguagesState {
         isLanguages: boolean,
@@ -58,10 +59,10 @@ const defaultLanguages = {
         ]
 }
 
-const initialState: ILanguagesState = loadFromLocalStorage('languages') || defaultLanguages;
+const initialState: ILanguagesState = loadFromLocalStorage(RootConstants.Languages) || defaultLanguages;
 
 const languagesSlice = createSlice({
-    name: 'languages',
+    name: RootConstants.Languages,
     initialState,
     reducers: {
         setLanguages(state, action: PayloadAction<Partial<ILanguagesState>>) {
@@ -74,7 +75,7 @@ const languagesSlice = createSlice({
             state.isLanguages = action.payload;
         },
         setDefaultLanguages() {
-            removeFromLocalStorage('languages');
+            removeFromLocalStorage(RootConstants.Languages);
             return defaultLanguages;
         },
         setLanguagesData(state, action: PayloadAction<ILanguage[]>) {

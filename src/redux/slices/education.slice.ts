@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage } from '~/utils/local-storage.utills';
+import RootConstants from '~/constants/root.constants';
 
 export interface IEducation {
     id: string;
@@ -19,8 +20,8 @@ interface EducationState {
     data: IEducation[];
 }
 
-const initialState: EducationState = loadFromLocalStorage('education') || {
-    title: 'education',
+const initialState: EducationState = loadFromLocalStorage(RootConstants.Education) || {
+    title: RootConstants.Education,
     editedId: '',
     isEducation: true,
     data: [
@@ -48,7 +49,7 @@ const initialState: EducationState = loadFromLocalStorage('education') || {
 };
 
 const educationSlice = createSlice({
-    name: 'education',
+    name: RootConstants.Education,
     initialState,
     reducers: {
         setEducation(state, action: PayloadAction<Partial<EducationState>>) {

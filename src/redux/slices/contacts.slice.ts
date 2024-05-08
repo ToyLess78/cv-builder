@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage, removeFromLocalStorage } from '~/utils/utils';
+import RootConstants from '~/constants/root.constants';
 
 export interface ISocialItem {
     id: string;
@@ -107,10 +108,10 @@ const defaultContactsState = {
 
     ]
 }
-const initialState: ContactsState = loadFromLocalStorage('contact') || defaultContactsState;
+const initialState: ContactsState = loadFromLocalStorage(RootConstants.Contacts) || defaultContactsState;
 
 const contactsSlice = createSlice({
-    name: 'contact',
+    name: RootConstants.Contacts,
     initialState,
     reducers: {
         setContacts(state, action: PayloadAction<Partial<ContactsState>>) {
@@ -122,11 +123,11 @@ const contactsSlice = createSlice({
         setIsSocials(state, action: PayloadAction<boolean>) {
             state.isSocials = action.payload;
         },
-        setContactData(state, action: PayloadAction<ISocialItem[]>) {
+        setContactsData(state, action: PayloadAction<ISocialItem[]>) {
             state.data = action.payload;
         },
         setDefaultContactsState() {
-            removeFromLocalStorage('contact');
+            removeFromLocalStorage(RootConstants.Contacts);
             return defaultContactsState;
         }
     }
@@ -135,10 +136,10 @@ const contactsSlice = createSlice({
 export const {
     setContacts,
     setIsSocials,
-    setContactData,
+    setContactsData,
     setDefaultContactsState
 } = contactsSlice.actions;
 
-export const selectContacts = (state: RootState) => state.contact;
+export const selectContacts = (state: RootState) => state.contacts;
 
 export default contactsSlice.reducer;

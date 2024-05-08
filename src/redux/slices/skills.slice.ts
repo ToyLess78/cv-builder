@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
 import { loadFromLocalStorage } from '~/utils/utils';
+import RootConstants from '~/constants/root.constants';
 
 export interface IAdditionalState {
     isAdditional: boolean;
@@ -51,7 +52,7 @@ const initialState: IAsideState = loadFromLocalStorage('skills') ||  {
 };
 
 const skillsSlice = createSlice({
-    name: 'skills',
+    name: RootConstants.Skills,
     initialState,
     reducers: {
         setIsAdditional(state, action: PayloadAction<boolean>) {

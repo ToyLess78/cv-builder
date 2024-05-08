@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '~/store/store';
+import RootConstants from '~/constants/root.constants';
 
 interface EditState {
     isEdit: string;
@@ -10,7 +11,7 @@ const initialState: EditState = {
 };
 
 export const editSlice = createSlice({
-    name: 'edit',
+    name: RootConstants.Edit,
     initialState,
     reducers: {
         setIsEdit(state, action: PayloadAction<string>) {

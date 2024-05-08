@@ -3,7 +3,7 @@ import infoReducer from '~/slices/info.slice';
 import asideReducer from '~/slices/skills.slice';
 import languagesReducer from '~/slices/languages.slice';
 import certificationsReducer from '~/slices/certifications.slice';
-import contactReducer from '~/slices/contact.slice';
+import contactsReducer from '~/slices/contacts.slice';
 import themeReducer from '~/slices/theme.slice';
 import editReducer from '~/slices/edit.slice';
 import experienceReducer from '~/slices/experiences.slice';
@@ -22,10 +22,10 @@ export const store = configureStore({
         skills: asideReducer,
         languages: languagesReducer,
         certifications: certificationsReducer,
-        contact: contactReducer,
+        contacts: contactsReducer,
         theme: themeReducer,
         edit: editReducer,
-        experiences: experienceReducer,
+        experience: experienceReducer,
         education: educationReducer,
         projects: projectsReducer
     }
