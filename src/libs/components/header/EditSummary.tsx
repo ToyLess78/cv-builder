@@ -5,9 +5,9 @@ import { RootState } from '~/store/store';
 import { selectInfo, setInfo } from '~/slices/info.slice';
 import { setIsEdit } from '~/slices/edit.slice';
 import { Summary } from '~/components/header/Summary';
-import { BreezeTitle } from '~/components/breeze/BreezeTitle/BreezeTitle';
 import { EditorCustom } from '~/components/common/Editor/EditorCustom';
 import { MainEditWrapper } from '~/components/Main/MainEditWrapper';
+import { CurrentTitle } from '~/components';
 
 const EditSummary: FC = () => {
 
@@ -31,7 +31,7 @@ const EditSummary: FC = () => {
            onSubmit={handlerOnSubmit}
            preview={
                <Summary props={editSummary}>
-                   <BreezeTitle text={editSummary.title}/>
+                   <CurrentTitle text={editSummary.title}/>
                </Summary>
            }
            edit={

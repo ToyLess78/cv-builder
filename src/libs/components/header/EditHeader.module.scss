@@ -25,3 +25,14 @@
     margin-top: 1rem;
   }
 }
+.breeze {
+  text-align: left;
+  flex-grow: 1;
+}
+.strong {
+  text-align: center;
+  text-transform: uppercase;
+  border: 2px solid var(--secondary-text);
+  flex-grow: 1;
+  padding: 1rem 0;
+}

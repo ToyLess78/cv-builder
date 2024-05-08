@@ -1,4 +1,4 @@
-import { AutoCompleteCustom, BreezeTitle, CheckBox, EditorCustom, UnderlineInput } from '~/components';
+import { AutoCompleteCustom, CheckBox, CurrentTitle, EditorCustom, UnderlineInput } from '~/components';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
@@ -116,7 +116,7 @@ const EditProjects: React.FC = () => {
             onSubmit={ handlerOnSubmit }
             preview={
                 <Projects projectsItem={ projectsItem }>
-                    <BreezeTitle text={ projectsState.title }/>
+                    <CurrentTitle text={ projectsState.title }/>
                 </Projects>
             }
 

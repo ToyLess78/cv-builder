@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectInfo, setInfo } from '~/slices/info.slice';
 import { setIsEdit } from '~/slices/edit.slice';
+import { selectTheme } from '~/slices/theme.slice';
 
 const EditInfo: React.FC = () => {
 
@@ -21,11 +22,15 @@ const EditInfo: React.FC = () => {
     }
     useEffect(() => {
         document.title = `CV_${editeInfo.position}_${editeInfo.firstname} ${editeInfo.lastname}`;
-    }, [editeInfo])
+    }, [editeInfo]);
+
+    const {template} = useSelector((state: RootState) => selectTheme(state));
 
     return (
         <div className={styles.info}>
+            <div className={styles[template]}>
             <Info props={editeInfo}/>
+            </div>
             <form className={styles.inputs} onSubmit={handlerOnSubmit}>
                 <div className={styles.name}>
                     <UnderlineInput

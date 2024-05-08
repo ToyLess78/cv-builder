@@ -3,13 +3,12 @@ import { DropdownChangeEvent } from 'primereact/dropdown';
 import levels from '~/public/levels';
 import languages from '~/public/languages';
 import styles from './Languages.module.scss';
-import { AddButton, BreezeTitle, EditWrapper, Languages, Select, StrongTitle } from '~/components';
+import { AddButton, CurrentTitle, EditWrapper, Languages, Select } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectLanguages, setLanguagesData } from '~/slices/languages.slice';
 import nextId from 'react-id-generator';
 import { setIsEdit } from '~/slices/edit.slice';
-import { selectTheme } from '~/slices/theme.slice';
 
 const EditLanguage: React.FC = () => {
 
@@ -46,8 +45,6 @@ const EditLanguage: React.FC = () => {
         dispatch(setIsEdit(''));
     };
 
-    const {template} = useSelector((state: RootState) => selectTheme(state));
-
     return (
         <EditWrapper
             width='35rem'
@@ -57,10 +54,7 @@ const EditLanguage: React.FC = () => {
                     data={languageState}
                     onRemove={removeLanguage}
                 >
-                    { template === 'breeze' &&
-                        <BreezeTitle text='languages'/> }
-                    { template === 'strong' &&
-                        <StrongTitle text='languages'/> }
+                    <CurrentTitle text="languages"/>
                 </Languages>
             </div>
             }

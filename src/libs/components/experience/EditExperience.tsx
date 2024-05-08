@@ -1,13 +1,8 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
-import {
-    BreezeTitle,
-    CheckBox,
-    EditorCustom,
-    UnderlineInput
-} from '~/components';
+import { CheckBox, CurrentTitle, EditorCustom, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectExperiences, setEditedExperience } from '~/slices/experiences.slice';
+import { selectExperience, setEditedExperience } from '~/slices/experiences.slice';
 import styles from './Experience.module.scss';
 import { Nullable } from 'primereact/ts-helpers';
 import { reformatDateRange, reformatDateSingle } from '~/utils/format-date.utils';
@@ -18,7 +13,7 @@ import { MonthYearPickerWithRange } from '~/components/common/MonthPicker/MonthY
 
 const EditExperience: FC = () => {
 
-    const experienceState = useSelector((state: RootState) => selectExperiences(state));
+    const experienceState = useSelector((state: RootState) => selectExperience(state));
 
     const {data, editedId} = experienceState;
 
@@ -94,7 +89,7 @@ const EditExperience: FC = () => {
             style={ {width: '90%'} }
             preview={
                 <Experience experienceItem={ experienceItem }>
-                    <BreezeTitle text={ experienceState.title }/>
+                    <CurrentTitle text={ experienceState.title } />
                 </Experience>
             }
             edit={

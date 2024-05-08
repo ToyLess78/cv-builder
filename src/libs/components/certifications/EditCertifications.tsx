@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { AddButton, BreezeTitle, Certifications, EditWrapper, StrongTitle, UnderlineInput } from '~/components';
+import { AddButton, Certifications, CurrentTitle, EditWrapper, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectCertifications, setCertificationsData } from '~/slices/certifications.slice';
 import nextId from 'react-id-generator';
 import { setIsEdit } from '~/slices/edit.slice';
-import { selectTheme } from '~/slices/theme.slice';
 
 const EditCertifications: React.FC = () => {
 
@@ -60,8 +59,6 @@ const EditCertifications: React.FC = () => {
         dispatch(setIsEdit(''));
     };
 
-    const {template} = useSelector((state: RootState) => selectTheme(state));
-
     return (
         <EditWrapper
             preview={
@@ -71,10 +68,7 @@ const EditCertifications: React.FC = () => {
                     onEdit={ editeCertificate }
                     edited={ edited }
                 >
-                    { template === 'breeze' &&
-                        <BreezeTitle text={stateCertificates.title }/> }
-                    { template === 'strong' &&
-                        <StrongTitle text={stateCertificates.title }/> }
+                    <CurrentTitle text={stateCertificates.title} />
                 </Certifications>
             }
             edit={

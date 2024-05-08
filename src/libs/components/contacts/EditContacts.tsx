@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { BreezeTitle, CheckBox, Contacts, EditWrapper, StrongTitle, UnderlineInput } from '~/components';
+import { CheckBox, Contacts, CurrentTitle, EditWrapper, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
-import { selectContacts, setContacts } from '~/slices/contact.slice';
+import { selectContacts, setContacts } from '~/slices/contacts.slice';
 import styles from './Contacts.module.scss';
 import { TabPanel, TabView } from 'primereact/tabview';
 import { SpeedDial } from 'primereact/speeddial';
 import { MenuItem } from 'primereact/menuitem';
 import { IconsMap } from '~/components/contacts/IconsMap';
 import { setIsEdit } from '~/slices/edit.slice';
-import { selectTheme } from '~/slices/theme.slice';
+import RootConstants from '~/constants/root.constants';
 
 const EditContacts: React.FC = () => {
     const contactState = useSelector((state: RootState) => selectContacts(state));
@@ -58,16 +58,12 @@ const EditContacts: React.FC = () => {
                 command: () => setIsShow(s?.id)
             }
         ));
-    const {template} = useSelector((state: RootState) => selectTheme(state));
 
     return (
         <EditWrapper
             preview={
                 <Contacts data={ editContacts }>
-                    { template === 'breeze' &&
-                        <BreezeTitle text="contacts"/> }
-                    { template === 'strong' &&
-                        <StrongTitle text="contacts"/> }
+                    <CurrentTitle text={ RootConstants.Contacts }/>
                 </Contacts>
             }
             edit={
