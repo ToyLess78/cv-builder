@@ -1,4 +1,4 @@
-import { CssColor } from '~/types/color-types';
+import { CssColor } from '~/types/color.types';
 
 export const hexToRGBAConvert = (hex: CssColor | string) => {
     const red = parseInt(hex.substring(1, 3), 16);
