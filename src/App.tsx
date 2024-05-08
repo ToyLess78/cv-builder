@@ -9,22 +9,15 @@ import { setAlphaToRGBA } from '~/utils/color.utils';
 import { MenuOverlay, Overlay } from '~/components/common/Overlay/Overlay';
 import { ColorPicker, Loading, MoreButton, SaveButton } from '~/components';
 import { resetId } from 'react-id-generator';
-import { selectIsEdit } from '~/slices/edit.slice';
 import { breezePalette } from '~/public/palettes';
 import { loadFromLocalStorage } from '~/utils/local-storage.utills';
 import { selectInfo } from '~/slices/info.slice';
 import Strong from './templates/Strong';
 
+
 const Menu = lazy(() => import('~/components/common/Carousel/Carousel'));
-const EditCertificates = lazy(() => import('~/components/certificates/EditCertifications'));
-const EditSummary = lazy(() => import('~/components/header/EditSummary'));
-const EditInfo = lazy(() => import('~/components/header/EditInfo'));
-const EditSkills = lazy(() => import('~/components/skills/EditSkills'));
-const EditLanguage = lazy(() => import('~/components/languages/EditLanguage'));
-const EditContacts = lazy(() => import('~/components/contacts/EditContacts'));
-const EditExperience = lazy(() => import('~/components/experience/EditExperience'));
-const EditEducation = lazy(() => import('~/components/education/EditEducation'));
-const EditProjects = lazy(() => import('~/components/projects/EditProjects'));
+const CurrentEdit = lazy(() => import('~/components/common/CurrentComponents/CurrentEdit'));
+
 
 const App: React.FC = () => {
     resetId();
@@ -50,7 +43,8 @@ const App: React.FC = () => {
 
     // const templates = ['success', 'advance', 'headway', 'breeze', 'strong', 'precise', 'serene', 'modern', 'fortune', 'recency', 'verdure', 'master', 'primary', 'prime', 'grand', 'alpha', 'galaxy', 'goodly', 'gallant', 'winner', 'elegant', 'future']
     // style={{'--primary': themeColor, '--primary-opacity': setAlphaToRGBA(themeColor as string, 0.1)} as React.CSSProperties}
-    const isEdit = useSelector((state: RootState) => selectIsEdit(state));
+
+
     const {template: theme} = useSelector((state: RootState) => selectTheme(state));
     const [color, setColor] = useState(loadFromLocalStorage(theme) || breezePalette[0]);
 
@@ -60,16 +54,7 @@ const App: React.FC = () => {
         <div id="app">
             <Overlay>
                 <Suspense fallback={ <Loading/> }>
-                    { isEdit === 'additional' && <EditSkills isAdditional/> }
-                    { isEdit === 'info' && <EditInfo/> }
-                    { isEdit === 'summary' && <EditSummary/> }
-                    { isEdit === 'skills' && <EditSkills/> }
-                    { isEdit === 'certificates' && <EditCertificates/> }
-                    { isEdit === 'languages' && <EditLanguage/> }
-                    { isEdit === 'contacts' && <EditContacts/> }
-                    { isEdit === 'experience' && <EditExperience/> }
-                    { isEdit === 'education' && <EditEducation/> }
-                    { isEdit === 'projects' && <EditProjects/> }
+                    <CurrentEdit/>
                 </Suspense>
             </Overlay>
             <MenuOverlay { ...{isOpen, setIsOpen} }>
@@ -83,7 +68,7 @@ const App: React.FC = () => {
                 variant="light"
                 style={ {
                     color: 'var(--secondary-text)',
-                    backgroundColor: '#ffffff95',
+                    backgroundColor: '#ffffff980',
                     zIndex: 1000,
                     textTransform: 'capitalize'
                 } }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectSkills, setIsAdditional } from '~/slices/skills.slice';
 import { setIsEdit } from '~/slices/edit.slice';
+import RootConstants from '~/constants/root.constants';
 
 interface IAdditionalProps {
     children: ReactNode;
@@ -32,7 +33,7 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
                     { isAdditional &&
                         <>
                             <EditButton
-                                onClick={ () => dispatch(setIsEdit('additional')) }
+                                onClick={ () => dispatch(setIsEdit(RootConstants.Additional)) }
                                 title={ aside?.additional.title }
                             />
                             <HideButton
