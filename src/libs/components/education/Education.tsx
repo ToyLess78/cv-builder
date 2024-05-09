@@ -11,7 +11,7 @@ import {
 } from '~/slices/education.slice';
 import { setIsEdit } from '~/slices/edit.slice';
 import nextId from 'react-id-generator';
-import { AddItemButton, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
+import { AddItemButton, CollapsedWrapper, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
 import RootConstants from '~/constants/root.constants';
 import { selectTheme } from '~/slices/theme.slice';
 import TemplateConstants from '~/constants/template.constants';
@@ -42,46 +42,60 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
 
     return (
         <>
-            { isEducation && !educationItem &&
-                <section className={`${styles.education} ${styles[template]}`}>
-                    { children }
-                    <div className={ styles.wrapper }>
-                        { data.map(ed => (
-                            <div key={ ed.id } className={ styles.title }>
-                                <EditButton
-                                    style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
-                                    title={ ed.degree }
-                                    onClick={ () => handlerSetEdit(ed.id) }
-                                />
-                                { data.length > 1 && <RemoveButton
-                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
-                                    removeOffset={ 20 }
-                                    onRemove={ () => dispatch(removeEducation(ed.id)) }
-                                /> }
-                                <strong>{ ed.degree }<em> { ed.location }</em></strong>
-                                <br/>
-                                {ed.school ? <strong><small
-                                >{ `[ ${ ed.school } ]` }</small></strong> : ''}
-                                <br/>
-                                <span className={ styles.duration }>{ ed.duration }</span>
-                                <div className={ styles.description }
-                                     dangerouslySetInnerHTML={ {__html: ed.description} }></div>
+            {!educationItem &&
+                <CollapsedWrapper
+                    isShow={isEducation}
+                    buttons={
+                    <>
+                        <HideButton
+                            title={ title }
+                            style={ {bottom: '.6rem'} }
+                            offset={ 0 }
+                            onClick={ () => dispatch(setIsEducation(false)) }
+                        />
+                        <AddItemButton
+                            style={ {bottom: '-.4rem'} }
+                            title={RootConstants.Education}
+                            onClick={ handlerAddEducation }
+                        />
+                    </>
+                    }
 
+                    content={
+                        <section className={`${styles.education} ${styles[template]}`}>
+                            { children }
+                            <div className={ styles.wrapper }>
+                                { data.map(ed => (
+                                    <div key={ ed.id } className={ styles.title }>
+                                        <EditButton
+                                            style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
+                                            title={ ed.degree }
+                                            onClick={ () => handlerSetEdit(ed.id) }
+                                        />
+                                        { data.length > 1 && <RemoveButton
+                                            style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
+                                            removeOffset={ 20 }
+                                            onRemove={ () => dispatch(removeEducation(ed.id)) }
+                                        /> }
+                                        <strong>{ ed.degree }<em> { ed.location }</em></strong>
+                                        <br/>
+                                        {ed.school ? <strong><small
+                                        >{ `[ ${ ed.school } ]` }</small></strong> : ''}
+                                        <br/>
+                                        <span className={ styles.duration }>{ ed.duration }</span>
+                                        <div className={ styles.description }
+                                             dangerouslySetInnerHTML={ {__html: ed.description} }></div>
+
+                                    </div>
+                                )) }
                             </div>
-                        )) }
-                    </div>
-                    <HideButton
-                        title={ title }
-                        style={ {bottom: '.6rem'} }
-                        offset={ 0 }
-                        onClick={ () => dispatch(setIsEducation(false)) }
-                    />
-                    <AddItemButton
-                        style={ {bottom: '-.4rem'} }
-                        title={RootConstants.Education}
-                        onClick={ handlerAddEducation }
-                    />
-                </section> }
+
+                        </section>
+                    }
+
+                />
+            }
+
             {!isEducation && !educationItem &&
                 <div className={styles.show}>
                     <ShowAsideButton
