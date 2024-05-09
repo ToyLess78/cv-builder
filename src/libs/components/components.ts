@@ -39,3 +39,4 @@ export { Education } from '~/components/education/Education';
 export { StrongLayout } from './strong/StrongLayout';
 export { StrongTitle } from './strong/StrongTitle';
 export { CurrentTitle } from '~/components/common/CurrentComponents/CurrentTitle';
+export { CollapsedWrapper } from '~/components/common/CollapsedWrapper/CollapsedWrapper';
