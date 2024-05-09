@@ -50,7 +50,7 @@ export const Projects: FC<IProjectsProps> = ({children, projectsItem = null}) =>
                                     onClick={ () => handlerSetEdit(pro.id) }
                                 />
                                 { data.length > 1 && <RemoveButton
-                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.5rem'} }
+                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
                                     removeOffset={ 20 }
                                     onRemove={ () => dispatch(removeProject(pro.id)) }
                                 /> }
@@ -74,12 +74,12 @@ export const Projects: FC<IProjectsProps> = ({children, projectsItem = null}) =>
                     </div>
                     <HideButton
                         title={ title }
-                        style={ {bottom: '.9rem'} }
+                        style={ {bottom: '3rem'} }
                         offset={ 0 }
                         onClick={ () => dispatch(setIsProjects(false)) }
                     />
                     <AddItemButton
-                        style={ {bottom: '-.4rem'} }
+                        style={ {bottom: '2rem'} }
                         title="project"
                         onClick={ handlerAddProject }
                     />
@@ -89,7 +89,7 @@ export const Projects: FC<IProjectsProps> = ({children, projectsItem = null}) =>
                 <div className={`${styles.show} ${styles[template]}`}>
                     <ShowAsideButton
                         title={ title }
-                        style={ {top: template === TemplateConstants.Breeze ?'-3rem' : '2rem'} }
+                        style={ {top: template === TemplateConstants.Breeze ?'-2rem' : '2rem'} }
                         onClick={ () => dispatch(setIsProjects(true)) }
                     />
                 </div>}
