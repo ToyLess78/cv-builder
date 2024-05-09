@@ -1,31 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ColorPicker.module.scss';
 import nextId from 'react-id-generator';
-import { saveToLocalStorage } from '~/utils/utils';
-import { CssColor } from '~/types/color-types';
-import { useDispatch } from 'react-redux';
-import { setThemeColor } from '~/slices/theme.slice';
+import { loadFromLocalStorage, saveToLocalStorage } from '~/utils/utils';
+import { CssColor } from '~/types/color.types';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTheme, setThemeColor } from '~/slices/theme.slice';
+import palettesMap, { breezePalette } from '~/public/palettes';
+import { RootState } from '~/store/store';
 
-interface IColourPickerProps {
-    theme: string;
-    palette: string[] | CssColor[];
-    color: string | CssColor;
-    setColor: React.Dispatch<React.SetStateAction<string | CssColor>>;
-}
-
-export const ColorPicker: React.FC<IColourPickerProps> = ({ theme, palette, color, setColor }) => {
+export const ColorPicker: React.FC = () => {
 
     const dispatch = useDispatch();
-    const [lastActive, setLastActive] = useState('')
+    const [lastActive, setLastActive] = useState('');
+
+    const {template} = useSelector((state: RootState) => selectTheme(state));
+
+    const [palette, setPalette] = useState<string[] | CssColor[]>(palettesMap.get(template) || breezePalette);
+
+    const [color, setColor] = useState(loadFromLocalStorage(template) || palette[0]);
 
     useEffect(() => {
-        dispatch(setThemeColor(color))
-    }, [color, dispatch]);
+        const newColor = loadFromLocalStorage(template) || palettesMap.get(template)[0] || breezePalette[0]
+        setColor(newColor);
+        setPalette(palettesMap.get(template) || breezePalette);
+        dispatch(setThemeColor(newColor));
+    }, [template]);
 
     const handleOnChange = (e: React.FormEvent<HTMLInputElement>): void => {
         setLastActive(color);
         setColor(e.currentTarget.value)
-        saveToLocalStorage(theme, e.currentTarget.value)
+        saveToLocalStorage(template, e.currentTarget.value)
+        dispatch(setThemeColor(e.currentTarget.value));
     };
 
     return (

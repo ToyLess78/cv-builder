@@ -2,6 +2,9 @@ import React, { CSSProperties, ReactNode, useState } from 'react';
 import styles from './Carousel.module.scss';
 import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
 import { loadFromLocalStorage, saveToLocalStorage } from '~/utils/local-storage.utills';
+import TemplateConstants from '~/constants/template.constants';
+import { useDispatch } from 'react-redux';
+import { setTemplate, setThemeColor } from '~/slices/theme.slice';
 
 const MAX_VISIBILITY = 3;
 
@@ -10,26 +13,13 @@ interface CardProps {
     src?: string;
     onClick: () => void
 }
-const  templatesArr = [
-    './templates/1.png',
-    './templates/2.png',
-    './templates/3.png',
-    './templates/4.png',
-    './templates/5.png',
-    './templates/6.png',
-    './templates/7.png',
-    './templates/8.png',
-    './templates/9.png',
-    './templates/10.png',
-    './templates/11.png',
-    './templates/12.png',
-    './templates/13.png',
-]
+
+const templates = Object.values(TemplateConstants).filter((v) => isNaN(Number(v)));
+
 const Card: React.FC<CardProps> = ({ title, src, onClick }) => (
     <div className={styles.card} onClick={onClick}>
-        {src && <img src={src} alt='template'/>}
         <h5>{title}</h5>
-
+        {src && <img src={src} alt='template'/>}
     </div>
 );
 
@@ -89,17 +79,21 @@ interface MenuProps {
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const Menu: React.FC<MenuProps> = ({isOpen, setIsOpen}) => {
+    const dispatch = useDispatch();
+
     return (
                     <Carousel>
-                        {templatesArr.map((src, i) => (
+                        {templates.map((template, i) => (
                             <Card
                                 onClick={() => {
                                     setIsOpen(!isOpen);
                                     saveToLocalStorage('active', i )
+                                    dispatch(setTemplate(template));
+                                    loadFromLocalStorage(template) && dispatch(setThemeColor(loadFromLocalStorage(template)));
                                 }}
                                 key={i}
-                                title={'Card ' + (i + 1)}
-                                src={src}
+                                title={template}
+                                src={`./templates/${template}.svg` || `./templates/${template}.png`}
                             />
                         ))}
                     </Carousel>
