@@ -3,16 +3,19 @@ import { CssColor } from '~/types/color.types';
 import { RootState } from '~/store/store';
 import TemplateConstants from '~/constants/template.constants';
 import RootConstants from '~/constants/root.constants';
+import { loadFromLocalStorage } from '~/utils/local-storage.utills';
 
-interface ThemeState {
+interface IThemeState {
     color: CssColor | string | number;
     template: string;
 }
 
-const initialState: ThemeState = {
+const defaultThemeState: IThemeState = {
     color: 'rgba(25, 118, 210, 1)',
     template: TemplateConstants.Breeze
 };
+
+const initialState: IThemeState = loadFromLocalStorage(RootConstants.Theme) || defaultThemeState;
 
 export const themeSlice = createSlice({
     name: RootConstants.Theme,

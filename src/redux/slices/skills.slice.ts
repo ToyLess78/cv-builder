@@ -18,7 +18,7 @@ export interface IAsideState {
 }
 
 const defaultSkillsState = {
-    title: 'skills',
+    title: RootConstants.Skills,
     data: [
         'JavaScript (ES6+)',
         'Typescript',
@@ -46,7 +46,7 @@ const defaultAdditionalState = {
     ]
 }
 
-const initialState: IAsideState = loadFromLocalStorage('skills') ||  {
+const initialState: IAsideState = loadFromLocalStorage(RootConstants.Skills) ||  {
     skills: defaultSkillsState,
     additional: defaultAdditionalState
 };
@@ -58,10 +58,10 @@ const skillsSlice = createSlice({
         setIsAdditional(state, action: PayloadAction<boolean>) {
             state.additional.isAdditional = action.payload;
         },
-        setSkills(state, action: PayloadAction<Partial<IAsideState['skills']>>) {
+        setSkills(state, action: PayloadAction<Partial<IAsideState[RootConstants.Skills]>>) {
             state.skills = { ...state.skills, ...action.payload };
         },
-        setAdditional(state, action: PayloadAction<Partial<IAsideState['additional']>>) {
+        setAdditional(state, action: PayloadAction<Partial<IAsideState[RootConstants.Additional]>>) {
             state.additional = { ...state.additional, ...action.payload };
         },
         setDefaultSkills(state) {
