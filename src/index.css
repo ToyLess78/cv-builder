@@ -42,7 +42,7 @@
     -moz-osx-font-smoothing: grayscale;
 
     --primary: rgba(25, 118, 210, 1);
-    --primary-alpha-50: rgba(25, 118, 210, .5);
+    --primary-alpha: rgba(25, 118, 210, .3);
     --primary-opacity: rgba(25, 118, 210, .06);
     --gray: #ccc;
     --hover-bg: #f3f4f6;

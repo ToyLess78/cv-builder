@@ -1,6 +1,5 @@
 import './App.css';
 import { Tooltip } from 'react-tooltip';
-import { Breeze } from './templates/Breeze';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectTheme } from '~/slices/theme.slice';
@@ -9,10 +8,8 @@ import { setAlphaToRGBA } from '~/utils/color.utils';
 import { MenuOverlay, Overlay } from '~/components/common/Overlay/Overlay';
 import { ColorPicker, Loading, MoreButton, SaveButton } from '~/components';
 import { resetId } from 'react-id-generator';
-import { breezePalette } from '~/public/palettes';
-import { loadFromLocalStorage } from '~/utils/local-storage.utills';
 import { selectInfo } from '~/slices/info.slice';
-import Strong from './templates/Strong';
+import CurrentTemplate from './templates/CurrentTemplate';
 
 
 const Menu = lazy(() => import('~/components/common/Carousel/Carousel'));
@@ -26,6 +23,7 @@ const App: React.FC = () => {
     useEffect(() => {
         document.documentElement.style.setProperty('--primary', themeColor as string);
         document.documentElement.style.setProperty('--primary-opacity', setAlphaToRGBA(themeColor as string, .06));
+        document.documentElement.style.setProperty('--primary-alpha', setAlphaToRGBA(themeColor as string, .11));
     }, [themeColor]);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -45,12 +43,16 @@ const App: React.FC = () => {
     // style={{'--primary': themeColor, '--primary-opacity': setAlphaToRGBA(themeColor as string, 0.1)} as React.CSSProperties}
 
 
-    const {template: theme} = useSelector((state: RootState) => selectTheme(state));
-    const [color, setColor] = useState(loadFromLocalStorage(theme) || breezePalette[0]);
+    // const {template: theme, } = useSelector((state: RootState) => selectTheme(state));
+    //
+    // const [color, setColor] = useState(loadFromLocalStorage(theme) || breezePalette[0]);
+    // useEffect(() => {
+    //     setColor(loadFromLocalStorage(theme) || breezePalette[0]);
+    // }, [theme])
 
     return (
         <>
-            <ColorPicker { ...{theme, palette: breezePalette, color, setColor} } />
+            <ColorPicker />
         <div id="app">
             <Overlay>
                 <Suspense fallback={ <Loading/> }>
@@ -84,10 +86,11 @@ const App: React.FC = () => {
             <MoreButton
                 onClick={ () => setIsOpen(!isOpen) }
             />
-            {theme === 'breeze' &&
-            <Breeze/>}
-            {theme === 'strong' &&
-            <Strong />}
+            {/*{theme === 'breeze' &&*/}
+            {/*<Breeze/>}*/}
+            {/*{theme === 'strong' &&*/}
+            {/*<Strong />}*/}
+            <CurrentTemplate />
         </div>
         </>
     )
