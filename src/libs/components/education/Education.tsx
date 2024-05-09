@@ -54,7 +54,7 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
                                     onClick={ () => handlerSetEdit(ed.id) }
                                 />
                                 { data.length > 1 && <RemoveButton
-                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.5rem'} }
+                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
                                     removeOffset={ 20 }
                                     onRemove={ () => dispatch(removeEducation(ed.id)) }
                                 /> }
@@ -72,7 +72,7 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
                     </div>
                     <HideButton
                         title={ title }
-                        style={ {bottom: '.9rem'} }
+                        style={ {bottom: '.6rem'} }
                         offset={ 0 }
                         onClick={ () => dispatch(setIsEducation(false)) }
                     />
@@ -86,7 +86,7 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
                 <div className={styles.show}>
                     <ShowAsideButton
                         title={ title }
-                        style={ {top: '-1rem'} }
+                        style={ {top: template === TemplateConstants.Breeze ?'-3rem' : '-1rem'} }
                         onClick={ () => dispatch(setIsEducation(true)) }
                     />
                 </div>}

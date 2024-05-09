@@ -54,7 +54,7 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
                                     onClick={ () => handlerSetEdit(exp.id) }
                                 />
                                 { data.length > 1 && <RemoveButton
-                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.5rem'} }
+                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
                                     removeOffset={ 20 }
                                     onRemove={ () => dispatch(removeExperience(exp.id)) }
                                 /> }
@@ -72,11 +72,12 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
                     </div>
                     <HideButton
                         title={ title }
-                        style={ {bottom: '1.3rem'} }
+                        style={ {bottom: '3rem'} }
                         offset={ 0 }
                         onClick={ () => dispatch(setIsExperience(false)) }
                     />
                     <AddItemButton
+                        style={ {bottom: '2rem'} }
                         title={RootConstants.Experience}
                         onClick={ handlerAddExperience }
                     />
@@ -85,7 +86,7 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
                 <div className={`${styles.show} ${styles[template]}`}>
                     <ShowAsideButton
                         title={ title }
-                        style={ {top: template === TemplateConstants.Breeze ?'-3rem' : '2rem'} }
+                        style={ {top: template === TemplateConstants.Breeze ?'-2rem' : '2rem'} }
                         onClick={ () => dispatch(setIsExperience(true)) }
                     />
                 </div>}
