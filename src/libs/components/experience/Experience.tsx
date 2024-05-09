@@ -9,7 +9,7 @@ import {
     setEditedExperienceId,
     setIsExperience
 } from '~/slices/experiences.slice';
-import { AddItemButton, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
+import { AddItemButton, CollapsedWrapper, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
 import { setIsEdit } from '~/slices/edit.slice';
 import nextId from 'react-id-generator';
 import RootConstants from '~/constants/root.constants';
@@ -42,46 +42,57 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
 
     return (
         <>
-            { isExperience && !experienceItem &&
-                <section className={`${styles.experience} ${styles[template]}`}>
-                    { children }
-                    <div className={ styles.wrapper }>
-                        { data.map(exp => (
-                            <div key={ exp.id } className={ styles.title }>
-                                <EditButton
-                                    style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
-                                    title={ exp.jobTitle }
-                                    onClick={ () => handlerSetEdit(exp.id) }
-                                />
-                                { data.length > 1 && <RemoveButton
-                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
-                                    removeOffset={ 20 }
-                                    onRemove={ () => dispatch(removeExperience(exp.id)) }
-                                /> }
-                                <strong>{ `${ exp.jobTitle } ` }
-                                    {exp.employer ? <small
-                                    >{ `[ ${ exp.employer } ]` }</small> : ''}
-                                    <em> { exp.location }</em></strong>
-                                <br/>
-                                <span className={ styles.duration }>{ exp.duration }</span>
-                                <div className={ styles.description }
-                                     dangerouslySetInnerHTML={ {__html: exp.description} }></div>
+            { !experienceItem &&
+                <CollapsedWrapper
+                    isShow={isExperience}
+                    buttons={
+                    <>
+                        <HideButton
+                            title={ title }
+                            style={ {bottom: '3rem'} }
+                            offset={ 0 }
+                            onClick={ () => dispatch(setIsExperience(false)) }
+                        />
+                        <AddItemButton
+                            style={ {bottom: '2rem'} }
+                            title={RootConstants.Experience}
+                            onClick={ handlerAddExperience }
+                        />
+                    </>
+                    }
+                    content={
+                        <section className={`${styles.experience} ${styles[template]}`}>
+                            { children }
+                            <div className={ styles.wrapper }>
+                                { data.map(exp => (
+                                    <div key={ exp.id } className={ styles.title }>
+                                        <EditButton
+                                            style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
+                                            title={ exp.jobTitle }
+                                            onClick={ () => handlerSetEdit(exp.id) }
+                                        />
+                                        { data.length > 1 && <RemoveButton
+                                            style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
+                                            removeOffset={ 20 }
+                                            onRemove={ () => dispatch(removeExperience(exp.id)) }
+                                        /> }
+                                        <strong>{ `${ exp.jobTitle } ` }
+                                            {exp.employer ? <small
+                                            >{ `[ ${ exp.employer } ]` }</small> : ''}
+                                            <em> { exp.location }</em></strong>
+                                        <br/>
+                                        <span className={ styles.duration }>{ exp.duration }</span>
+                                        <div className={ styles.description }
+                                             dangerouslySetInnerHTML={ {__html: exp.description} }></div>
 
+                                    </div>
+                                )) }
                             </div>
-                        )) }
-                    </div>
-                    <HideButton
-                        title={ title }
-                        style={ {bottom: '3rem'} }
-                        offset={ 0 }
-                        onClick={ () => dispatch(setIsExperience(false)) }
-                    />
-                    <AddItemButton
-                        style={ {bottom: '2rem'} }
-                        title={RootConstants.Experience}
-                        onClick={ handlerAddExperience }
-                    />
-                </section>}
+
+                        </section>
+                    }
+                />
+  }
             {!isExperience && !experienceItem &&
                 <div className={`${styles.show} ${styles[template]}`}>
                     <ShowAsideButton
