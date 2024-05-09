@@ -114,7 +114,7 @@
   flex-direction: column;
   gap: .2rem;
   right: -2rem;
-  top: 1rem;
+  top: .5rem;
   color: var(--light-gray);
 
   svg {
@@ -196,9 +196,9 @@
 }
 
 .visible {
-  top: 1.5rem;
+  top: 1.3rem;
   position: absolute;
-  left: -1.2rem;
+  left: -1.3rem;
   color: var(--light-gray);
   cursor: pointer;
 

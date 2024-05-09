@@ -35,7 +35,7 @@ export const EditButton: React.FC<IEditButtonProps> = ({onClick, title, style}) 
     );
 };
 
-export const HideButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 20, style = {top: '1.5rem'}}) => {
+export const HideButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 20, style = {top: '1.3rem'}}) => {
     return (
         <BiHide
             size="1.3rem"
