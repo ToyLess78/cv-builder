@@ -73,7 +73,7 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
                 style={ {minHeight: template === TemplateConstants.Breeze ? '6.7rem' : 'auto'} }>
                 <li>
                     {!isIcons && <div className={styles.icon}>
-                        <FaLocationDot className={isSocials ? styles.opacity  : styles.visible} /><span className={!isSocials ? styles.opacity : styles.visible}>L: </span>
+                        <FaLocationDot className={iconClass} /><span className={letterClass}>L: </span>
                     </div>}
                     {isIcons && <FaLocationDot className={styles.visible} />}
                     <a href={ `https://www.google.com/maps/search/?api=1&query=${ contacts.location }` }>{ contacts.location }</a>
@@ -81,17 +81,24 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
                 </li>
 
                 <li>
-                    <div className={styles.icon}>
-                        <IoMailSharp className={iconClass} style={ {bottom: '-.1rem'} }/><span className={letterClass}>E:  </span>
-                    </div>
+                    {!isIcons &&
+                        <div className={styles.icon}>
+                            <IoMailSharp className={iconClass} style={ {bottom: '-.1rem'} }/><span className={letterClass}>E:  </span>
+                        </div>}
+
+                    {isIcons && <IoMailSharp className={styles.visible}  style={ {bottom: '-.1rem'} }/>}
                     <a href={ `mailto:${ contacts.email }` }>{ contacts.email }</a>
 
                 </li>
 
                 <li>
-                    <div className={styles.icon}>
-                        <FaPhone className={isSocials ? styles.opacity  : styles.visible}/><span className={!isSocials ? styles.opacity : styles.visible}>T: </span>
-                    </div>
+                    {!isIcons &&
+                        <div className={styles.icon}>
+                            <FaPhone className={iconClass}/><span className={letterClass}>T: </span>
+                        </div>}
+
+                    {isIcons && <FaPhone className={styles.visible} />}
+
                     <a href={ `tel:${ contacts.phone }` }>{ contacts.phone }</a>
 
                 </li>
