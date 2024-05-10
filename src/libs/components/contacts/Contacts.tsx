@@ -13,6 +13,7 @@ import { IconsMap } from '~/components/contacts/IconsMap';
 import RootConstants from '~/constants/root.constants';
 import { selectTheme } from '~/slices/theme.slice';
 import TemplateConstants from '~/constants/template.constants';
+import { CollapsedWrapper } from '~/components/common/CollapsedWrapper/CollapsedWrapper';
 
 interface ISocialProps {
     data?: ContactsState | null;
@@ -47,6 +48,8 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
     };
 
     const {template} = useSelector((state: RootState) => selectTheme(state));
+    const iconClass = (isSocials) ? styles.opacity  : styles.visible;
+    const letterClass = (!isSocials) ? styles.opacity  : styles.visible;
 
     return (
         <AsideItem>
@@ -68,36 +71,40 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
             <ul
                 className={ styles.contacts }
                 style={ {minHeight: template === TemplateConstants.Breeze ? '6.7rem' : 'auto'} }>
-                <li>{ !isSocials || isIcons ?
-
-                    <FaLocationDot className={ styles.icon }/> : 'L: ' }
+                <li>
+                    {!isIcons && <div className={styles.icon}>
+                        <FaLocationDot className={isSocials ? styles.opacity  : styles.visible} /><span className={!isSocials ? styles.opacity : styles.visible}>L: </span>
+                    </div>}
+                    {isIcons && <FaLocationDot className={styles.visible} />}
                     <a href={ `https://www.google.com/maps/search/?api=1&query=${ contacts.location }` }>{ contacts.location }</a>
 
                 </li>
 
-                <li>{ !isSocials || isIcons ?
-
-                    <IoMailSharp className={ styles.icon } style={ {marginBottom: '-.1rem'} }/> : 'E: ' }
+                <li>
+                    <div className={styles.icon}>
+                        <IoMailSharp className={iconClass} style={ {bottom: '-.1rem'} }/><span className={letterClass}>E:  </span>
+                    </div>
                     <a href={ `mailto:${ contacts.email }` }>{ contacts.email }</a>
 
                 </li>
 
-                <li>{ !isSocials || isIcons ?
-
-                    <FaPhone className={ styles.icon }/> : 'T: ' }
+                <li>
+                    <div className={styles.icon}>
+                        <FaPhone className={isSocials ? styles.opacity  : styles.visible}/><span className={!isSocials ? styles.opacity : styles.visible}>T: </span>
+                    </div>
                     <a href={ `tel:${ contacts.phone }` }>{ contacts.phone }</a>
 
                 </li>
-
-                { isSocials ?
-
-                    <li>
+                <CollapsedWrapper
+                    isShow={ isSocials }
+                    content={ <li>
                         <Social data={ contacts }/>
-                    </li> :
+                    </li> }
+                />
 
-                    !data && social &&
+                { !isSocials && !data && social &&
                     <ShowButton
-                        title={RootConstants.Social}
+                        title={ RootConstants.Social }
                         offset={ 20 }
                         onClick={ handleSetIsSocial }
                     />
