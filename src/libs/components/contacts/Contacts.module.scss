@@ -1,22 +1,43 @@
 .contacts {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
 
   a {
     text-decoration: none;
+    margin-left: .5rem;
   }
 
   .icon {
     color: var(--secondary-text);
-    margin-right: .5rem;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    svg, span {
+      transition: opacity .4s ease;
+      position: absolute;
+      left: 0;
+    }
+    .opacity {
+      opacity: 0;
+    }
+    .visible {
+      opacity: 1;
+    }
   }
+
   li {
     text-align: left;
+    &:has(.icon) {
+      display: inline-flex;
+    }
   }
 }
 
 .social {
   padding-top: 1rem;
   display: flex;
-  gap: 1rem;
+  gap: .5rem;
   flex-wrap: wrap;
 }
 
