@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { AdditionalList, AsideItem, EditButton, HideButton, ShowAsideButton } from '~/components';
+import { AdditionalList, AsideItem, CollapsedWrapper, EditButton, HideButton, ShowAsideButton } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectSkills, setIsAdditional } from '~/slices/skills.slice';
@@ -27,10 +27,12 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
                 <ShowAsideButton
                     onClick={ handleSetIsAdditional }
                     title={ aside?.additional.title }
+                    toggleClass
                 /> }
-            { aside?.additional && isAdditional &&
-                <AsideItem>
-                    { isAdditional &&
+            { aside?.additional &&
+                <CollapsedWrapper
+                    isShow={isAdditional}
+                    buttons={
                         <>
                             <EditButton
                                 onClick={ () => dispatch(setIsEdit(RootConstants.Additional)) }
@@ -40,10 +42,15 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
                                 onClick={ handleSetIsAdditional }
                                 title={ aside?.additional.title }
                             />
-                        </>}
-                    {children}
-                    <AdditionalList {...aside.additional}/>
-                </AsideItem>
+                        </>
+                    }
+                    content={
+                        <AsideItem>
+                            {children}
+                            <AdditionalList {...aside.additional}/>
+                        </AsideItem>
+                    }
+                />
             }
         </>
     );
