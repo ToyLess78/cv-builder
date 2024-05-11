@@ -7,6 +7,7 @@ import { Breeze } from './Breeze';
 import { Loading } from '~/components';
 
 const Strong = lazy(() => import('./Strong'));
+const Accent = lazy(() => import('./Accent'));
 
 const CurrentTemplate: React.FC = () => {
     const {template} = useSelector((state: RootState) => selectTheme(state));
@@ -21,6 +22,12 @@ const CurrentTemplate: React.FC = () => {
             return (
                 <Suspense fallback={ <Loading/> }>
                     <Strong/>
+                </Suspense>);
+        }
+        case TemplateConstants.Accent: {
+            return (
+                <Suspense fallback={ <Loading/> }>
+                    <Accent/>
                 </Suspense>);
         }
         default: {
