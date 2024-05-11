@@ -67,7 +67,6 @@
   color: var(--light-gray);
   cursor: pointer;
   top: .2rem;
-
   &:hover {
     color: var(--secondary-text);
   }
@@ -87,9 +86,16 @@
 .show {
   position: relative;
   margin-top: -2rem;
+  z-index: 100;
 
   .hide {
     top: .9rem;
+  }
+}
+.toggle {
+  position: relative;
+  .hide {
+    top: -1rem;
   }
 }
 
@@ -184,17 +190,6 @@
   }
 }
 
-@media print {
-  .more,
-  .edit,
-  .visible,
-  .save,
-  .hide,
-  .remove {
-    display: none;
-  }
-}
-
 .visible {
   top: 1.3rem;
   position: absolute;
@@ -234,6 +229,17 @@
     color: var(--primary);
   }
 }
+.clear  {
+  position: absolute;
+  color: var(--light-gray);
+  left: 2.2rem;
+  top: .6rem;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary);
+  }
+}
 
 .more {
   position: absolute;
@@ -247,5 +253,17 @@
 
   &:hover {
     color: var(--primary);
+  }
+}
+
+@media print {
+  .more,
+  .edit,
+  .visible,
+  .save,
+  .hide,
+  .remove,
+  .clear {
+    display: none;
   }
 }

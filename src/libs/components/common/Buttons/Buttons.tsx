@@ -8,6 +8,7 @@ import { IoMdAddCircleOutline, IoMdRemoveCircleOutline } from 'react-icons/io';
 import { LuUpload } from 'react-icons/lu';
 import { HiOutlineSave } from 'react-icons/hi';
 import { RiMoreLine } from 'react-icons/ri';
+import { TbRestore } from 'react-icons/tb';
 
 export const MainButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({children}) => {
     return (
@@ -20,6 +21,7 @@ interface IEditButtonProps {
     title?: string;
     offset?: number;
     style?: React.CSSProperties | undefined;
+    toggleClass?: boolean;
 }
 
 export const EditButton: React.FC<IEditButtonProps> = ({onClick, title, style}) => {
@@ -62,9 +64,15 @@ export const UploadButton: React.FC<IEditButtonProps> = ({onClick, offset = 0}) 
     );
 };
 
-export const ShowAsideButton: React.FC<IEditButtonProps> = ({onClick, title, offset = 0, style}) => {
+export const ShowAsideButton: React.FC<IEditButtonProps> = ({
+                                                                onClick,
+                                                                title,
+                                                                offset = 0,
+                                                                style,
+                                                                toggleClass = false
+                                                            }) => {
     return (
-        <div className={ styles.show }>
+        <div className={ toggleClass ? styles.toggle : styles.show }>
             <MdOutlineVisibility
                 size="1.2rem"
                 className={ styles.hide }
@@ -126,7 +134,19 @@ export const SaveButton: React.FC<IEditButtonProps> = ({onClick}) => {
             onClick={ onClick }
             data-tooltip-id="tooltip"
             data-tooltip-content="Save PDF"
-            data-tooltip-offset={0}
+            data-tooltip-offset={ 0 }
+        />
+    );
+};
+export const ClearButton: React.FC<IEditButtonProps> = ({onClick}) => {
+    return (
+        <TbRestore
+            className={ styles.clear }
+            size="1.2rem"
+            onClick={ onClick }
+            data-tooltip-id="tooltip"
+            data-tooltip-content="Clear Local Storage"
+            data-tooltip-offset={ 0 }
         />
     );
 };
