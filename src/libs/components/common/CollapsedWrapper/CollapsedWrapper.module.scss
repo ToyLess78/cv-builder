@@ -2,13 +2,23 @@
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.5s ease-out;
-position: relative;
+  position: relative;
+
   &.open {
     grid-template-rows: 1fr;
   }
 
   .content {
     overflow: hidden;
+    margin-left: -3rem;
+    padding-left: 3rem;
 
+  }
+
+}
+
+@media print {
+  .collapsed:not(.open)  {
+    display: none;
   }
 }
