@@ -14,7 +14,7 @@ export const AsideItem: React.FC<IAsideItemProps> = ({children}) => {
 
 
     return (
-        <div className={`${styles.item} ${styles[template]}`} >
+        <div className={`${styles.item} ${styles[template]}`}>
             { children }
         </div>
     );
