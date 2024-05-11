@@ -93,7 +93,7 @@ const Menu: React.FC<MenuProps> = ({isOpen, setIsOpen}) => {
                                 }}
                                 key={i}
                                 title={template}
-                                src={`./templates/${template}.svg` || `./templates/${template}.png`}
+                                src={`./templates/${template}.webp` || `./templates/${template}.png`}
                             />
                         ))}
                     </Carousel>
