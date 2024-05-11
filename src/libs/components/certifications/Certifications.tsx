@@ -10,6 +10,7 @@ import { setIsEdit } from '~/slices/edit.slice';
 import RootConstants from '~/constants/root.constants';
 import { selectTheme } from '~/slices/theme.slice';
 import TemplateConstants from '~/constants/template.constants';
+import { CollapsedWrapper } from '~/components/common/CollapsedWrapper/CollapsedWrapper';
 
 interface ICertificatesProps {
     children: ReactNode;
@@ -36,10 +37,12 @@ export const Certifications: React.FC<ICertificatesProps> = ({children, data = n
                 <ShowAsideButton
                     onClick={ handleSetIsCertifications }
                     title={ certificates.title }
+                    toggleClass
                 /> }
-
-            { isCertifications && !data &&
-                <AsideItem>
+            {!data && <CollapsedWrapper
+                isShow={isCertifications}
+                buttons={
+                <>
                     <EditButton
                         title={ certificates.title }
                         onClick={ () => dispatch(setIsEdit(RootConstants.Certifications)) }
@@ -48,18 +51,23 @@ export const Certifications: React.FC<ICertificatesProps> = ({children, data = n
                         onClick={ handleSetIsCertifications }
                         title={ certificates.title }
                     />
+                </>
+                }
+                content={
+                    <AsideItem>
+                        { children }
+                        <ul className={ styles.certifications }
+                            style={ {minHeight: template === TemplateConstants.Breeze ? '8.2rem' : 'auto'} }>
+                            { certificates.data?.map(c => {
+                                return <li key={ c.id }>
+                                    <p>{ c.title }</p>
+                                    <a href={ c.link }><span>{ c.issue }</span><FiExternalLink/></a>
+                                </li>;
+                            }) }
+                        </ul>
+                    </AsideItem> }
+            />}
 
-                    { children }
-                    <ul className={ styles.certifications }
-                        style={ {minHeight: template === TemplateConstants.Breeze ? '8.2rem' : 'auto'} }>
-                        { certificates.data?.map(c => {
-                            return <li key={ c.id }>
-                                <p>{ c.title }</p>
-                                <a href={ c.link }><span>{ c.issue }</span><FiExternalLink/></a>
-                            </li>;
-                        }) }
-                    </ul>
-                </AsideItem> }
             { isCertifications && data &&
 
                 <AsideItem>
