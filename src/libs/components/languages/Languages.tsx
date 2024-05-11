@@ -9,6 +9,7 @@ import { setIsEdit } from '~/slices/edit.slice';
 import RootConstants from '~/constants/root.constants';
 import TemplateConstants from '~/constants/template.constants';
 import { selectTheme } from '~/slices/theme.slice';
+import { CollapsedWrapper } from '~/components/common/CollapsedWrapper/CollapsedWrapper';
 
 interface ILanguagesProps {
     children: ReactNode;
@@ -33,34 +34,40 @@ export const Languages: React.FC<ILanguagesProps> = ({children, data = null, onR
                 <ShowAsideButton
                     onClick={ handleSetIsLanguages }
                     title="Languages"
+                    toggleClass
                 />
             }
-            {!data && languages && isLanguages &&
-                <AsideItem>
-                    { isLanguages &&
-                        <>
-                            <EditButton
-                                title={RootConstants.Languages}
-                                onClick={ () => dispatch(setIsEdit(RootConstants.Languages)) }
-                            />
-                            <HideButton
-                                onClick={ handleSetIsLanguages }
-                                title={RootConstants.Languages}
+            {!data && languages.data.length &&
+            <CollapsedWrapper
+                isShow={isLanguages}
+                buttons={<>
+                    <EditButton
+                        title={RootConstants.Languages}
+                        onClick={ () => dispatch(setIsEdit(RootConstants.Languages)) }
+                    />
+                    <HideButton
+                        onClick={ handleSetIsLanguages }
+                        title={RootConstants.Languages}
 
-                            />
-                        </>}
-                    {children}
-                    <ul
-                        className={ styles.languages }
-                        style={{minHeight: template === TemplateConstants.Breeze ? '7.4rem' : 'auto'}}>
-                        {languages.data?.map(l => {
-                            return <li key={ l.id }><span>{ l.language?.name }</span>
-                                <p>{ l.level?.name }</p>
-                            </li>;
-                        }) }
-                    </ul>
-                </AsideItem>
-            }
+                    />
+                </>}
+                content={
+                    <AsideItem
+                    >
+                        {children}
+                        <ul
+                            className={ styles.languages }
+                            style={{minHeight: template === TemplateConstants.Breeze ? '7.4rem' : 'auto'}}>
+                            {languages.data?.map(l => {
+                                return <li key={ l.id }><span>{ l.language?.name }</span>
+                                    <p>{ l.level?.name }</p>
+                                </li>;
+                            }) }
+                        </ul>
+                    </AsideItem>
+                }
+            />}
+
             {data && isLanguages &&
                 <AsideItem>
                     {children}
