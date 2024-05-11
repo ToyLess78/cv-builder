@@ -16,7 +16,7 @@ const initialState: InfoState = loadFromLocalStorage(RootConstants.Info) || {
     lastname: 'Name',
     position: 'Web Developer',
     title: 'summary',
-    summary: '<p>Experienced web developer adept in all stages of advanced web development. Knowledgeable in user interface, testing, and debugging processes. Bringing forth expertise in design, installation, testing and maintenance of web systems. Equipped with a diverse and promising skill-set. Proficient in an assortment of technologies, including Java, ASP.NET, C#, IIS, Tomcat, and Microsoft SQL Server. Able to effectively self-manage during independent projects, as well as collaborate in a team setting.</p>'
+    summary: '<p>Experienced web developer adept in all stages of advanced web development. Knowledgeable in user interface, testing, and debugging processes. Bringing forth expertise in design, installation, testing and maintenance of web systems. Equipped with a diverse and promising skill-set. Proficient in an assortment of technologies, including Typescript, React.js, NodeJS, ExpressJS, Next.js, and WebSocket. Able to effectively self-manage during independent projects, as well as collaborate in a team setting.</p>'
 };
 
 const infoSlice = createSlice({
