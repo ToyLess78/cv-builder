@@ -1,9 +1,10 @@
 enum TemplateConstants {
     Strong = 'strong',
-    Success = 'success',
+    Accent = 'accent',
     Breeze = 'breeze',
     Advance = 'advance',
     Headway = 'headway',
+    Success = 'success',
     Precise = 'precise',
     Modern = 'modern',
     Fortune = 'fortune',
