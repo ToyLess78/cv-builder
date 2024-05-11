@@ -27,7 +27,8 @@ export {
     UploadButton,
     SaveButton,
     MoreButton,
-    AddItemButton
+    AddItemButton,
+    ClearButton
 } from './common/Buttons/Buttons';
 export { Loading } from '~/components/common/Loading/Loading';
 export { EditWrapper } from './common/EditWrapper/EditWrapper';
@@ -40,3 +41,4 @@ export { StrongLayout } from './strong/StrongLayout';
 export { StrongTitle } from './strong/StrongTitle';
 export { CurrentTitle } from '~/components/common/CurrentComponents/CurrentTitle';
 export { CollapsedWrapper } from '~/components/common/CollapsedWrapper/CollapsedWrapper';
+export { AccentLayout } from './accent/AccentLayout';

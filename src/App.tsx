@@ -6,7 +6,7 @@ import { selectTheme } from '~/slices/theme.slice';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { setAlphaToRGBA } from '~/utils/color.utils';
 import { MenuOverlay, Overlay } from '~/components/common/Overlay/Overlay';
-import { ColorPicker, Loading, MoreButton, SaveButton } from '~/components';
+import { ClearButton, ColorPicker, Loading, MoreButton, SaveButton } from '~/components';
 import { resetId } from 'react-id-generator';
 import { selectInfo } from '~/slices/info.slice';
 import CurrentTemplate from './templates/CurrentTemplate';
@@ -38,6 +38,11 @@ const App: React.FC = () => {
     window.onafterprint = () => {
         document.title = 'CV Builder';
     };
+
+    const handleClearLocalStorage = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
 
     // const templates = ['success', 'advance', 'headway', 'breeze', 'strong', 'precise', 'serene', 'modern', 'fortune', 'recency', 'verdure', 'master', 'primary', 'prime', 'grand', 'alpha', 'galaxy', 'goodly', 'gallant', 'winner', 'elegant', 'future']
     // style={{'--primary': themeColor, '--primary-opacity': setAlphaToRGBA(themeColor as string, 0.1)} as React.CSSProperties}
@@ -83,13 +88,13 @@ const App: React.FC = () => {
             <SaveButton
                 onClick={ handlerSaveOnClick }
             />
+            <ClearButton
+                onClick={ handleClearLocalStorage }
+            />
             <MoreButton
                 onClick={ () => setIsOpen(!isOpen) }
             />
-            {/*{theme === 'breeze' &&*/}
-            {/*<Breeze/>}*/}
-            {/*{theme === 'strong' &&*/}
-            {/*<Strong />}*/}
+
             <CurrentTemplate />
         </div>
         </>
