@@ -7,7 +7,7 @@ import {
     Additional,
     Aside,
     Body,
-    BreezeTitle,
+    Title,
     Certifications,
     Contacts,
     Header,
@@ -29,27 +29,29 @@ export const Breeze: React.FC = () => {
             <Header/>
 
             <Body>
-                <Main isOrder={false}/>
+                <section className="main" style={{position: 'relative'}}>
+                    <Main />
+                </section>
                 <Aside>
 
                     <Skills>
-                        <BreezeTitle text={aside?.skills.title}/>
+                        <Title text={aside?.skills.title}/>
                     </Skills>
 
                     <Additional>
-                        <BreezeTitle text={aside?.additional.title}/>
+                        <Title text={aside?.additional.title}/>
                     </Additional>
 
                     <Certifications>
-                        <BreezeTitle text={certificates.title}/>
+                        <Title text={certificates.title}/>
                     </Certifications>
 
                     <Languages>
-                        <BreezeTitle text='languages'/>
+                        <Title text='languages'/>
                     </Languages>
 
                     <Contacts>
-                        <BreezeTitle text='contacts'/>
+                        <Title text='contacts'/>
                     </Contacts>
 
                 </Aside>

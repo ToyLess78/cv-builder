@@ -13,7 +13,6 @@ export { Header } from '~/components/header/Header';
 export { Image } from '~/components/common/Image/Image';
 export { Main } from '~/components/Main/Main';
 export { Overlay } from '~/components/common/Overlay/Overlay';
-export { BreezeTitle } from '~/components/breeze/BreezeTitle/BreezeTitle';
 export { BgInput, BorderInput, UnderlineInput, PrimaryInput, Select } from './common/Inputs/Inputs';
 export {
     EditButton,
@@ -38,7 +37,6 @@ export { Projects } from '~/components/projects/Projects';
 export { AutoCompleteCustom } from '~/components/common/AutoCompleteCustom/AutoCompleteCustom';
 export { Education } from '~/components/education/Education';
 export { StrongLayout } from './strong/StrongLayout';
-export { StrongTitle } from './strong/StrongTitle';
-export { CurrentTitle } from '~/components/common/CurrentComponents/CurrentTitle';
 export { CollapsedWrapper } from '~/components/common/CollapsedWrapper/CollapsedWrapper';
 export { AccentLayout } from './accent/AccentLayout';
+export { Title } from './common/Title/Title';

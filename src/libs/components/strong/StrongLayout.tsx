@@ -10,19 +10,19 @@ export const StrongLayout: React.FC<IStrongLayoutProps> = ({info, aside, main}) 
     return (
         <div className={styles.container}>
             <div className={styles.column}></div>
-            <div className={styles.header}>
+            <section className={styles.header}>
                 <div className={styles.head}>
                     <div className={styles.text}>
                         {info}
                     </div>
                 </div>
-            </div>
-            <div className={styles.main}>
+            </section>
+            <section className={styles.main}>
                 {main}
-            </div>
-            <div className={styles.aside}>
+            </section>
+            <section className={styles.aside}>
                 {aside}
-            </div>
+            </section>
         </div>
     )
 }
