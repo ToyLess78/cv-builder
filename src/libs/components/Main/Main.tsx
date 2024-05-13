@@ -1,38 +1,29 @@
 import React from 'react';
-import styles from './Main.module.scss';
-import { BreezeTitle, Education, Experience, Projects } from '~/components';
+import { Education, Experience, Projects, Title } from '~/components';
 import { useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectExperience } from '~/slices/experiences.slice';
 import { selectEducation } from '~/slices/education.slice';
 import { selectProjects } from '~/slices/projects.slice';
 
-interface IMainProps {
-    isOrder?: boolean;
-}
-
-export const Main: React.FC<IMainProps> = () => {
+export const Main: React.FC = () => {
 
     const experience = useSelector((state: RootState) => selectExperience(state));
     const education = useSelector((state: RootState) => selectEducation(state));
     const projects = useSelector((state: RootState) => selectProjects(state));
 
     return (
-        <section className={ styles.main } >
-            {/*<article>*/}
-            {/*    <h1 className='title'>I'm alphardex.</h1>*/}
-            {/*    <p className='subtitle'>A CSS Wizard</p>*/}
-            {/*</article>*/}
+        <>
             <Experience>
-                <BreezeTitle text={experience.title}/>
+                <Title text={ experience.title }/>
             </Experience>
             <Projects>
-                <BreezeTitle text={projects.title}/>
+                <Title text={ projects.title }/>
             </Projects>
             <Education>
-                <BreezeTitle text={education.title}/>
+                <Title text={ education.title }/>
             </Education>
-        </section>
+        </>
 
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Header.module.scss';
-import { BreezeTitle, EditButton } from '~/components/components';
+import { Title, EditButton } from '~/components/components';
 import { Image } from '~/components/common/Image/Image';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
                         onClick={() => dispatch(setIsEdit(RootConstants.Summary))}
                         title={info.title}
                     />
-                    <BreezeTitle text={info.title}/>
+                    <Title text={info.title}/>
                 </Summary>
             </div>
             <Image styles={styles.img}/>
