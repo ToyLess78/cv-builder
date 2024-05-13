@@ -1,9 +1,10 @@
+@import "../../../../assets/mixins";
+
 .panel {
   background-color: white;
   border: 1px solid var(--primary);
-  -webkit-animation: var(--animation);
-  animation: var(--animation);
   margin-top: -.05rem;
+  @include animation-base;
 
   span {
     padding: 0.5rem;
@@ -60,7 +61,7 @@
     width: 8.5rem;
     border-top: 1px solid var(--gray);
     margin-bottom: .5rem;
-    transition: all 0.4s;
+@include transition-all;
   }
 
   .label {
@@ -102,8 +103,8 @@
       display: flex;
       padding: 4px 0;
       font-size: .9rem;
-      transition: all 0.4s;
-      color: #333;
+      color: var(--secondary-text);
+      @include transition-all;
 
       &::placeholder {
         color: var(--gray);
@@ -115,7 +116,7 @@
           color: var(--primary);
         }
 
-        transition: all 0.4s;
+        @include transition-all;
       }
     }
   }

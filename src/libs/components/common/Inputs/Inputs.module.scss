@@ -1,3 +1,5 @@
+@import "../../../../assets/mixins";
+
 .container {
   position: relative;
   text-align: left;
@@ -23,7 +25,7 @@
   border: 0;
   padding: 3px 0;
   background-color: transparent;
-  transition: all 0.4s;
+  @include transition-all;
 
   &:disabled {
     background-color: light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3));
@@ -37,18 +39,14 @@
       width: 7rem;
       height: 1px;
       background-color: var(--gray);
-      transition: all 0.4s;
+      @include transition-all;
     }
 
     label {
-      position: absolute;
+      @include label-style;
       left: 0;
       width: 100%;
       top: 3px;
-      color: var(--label-color);
-      transition: 0.3s;
-      pointer-events: none;
-      letter-spacing: 1px;
     }
   }
 
@@ -75,7 +73,7 @@
         label {
           top: -16px;
           font-size: .7rem;
-          transition: 0.3s;
+          @include transition-all;
         }
       }
     }
@@ -85,7 +83,7 @@
 .border {
   border: 1px solid var(--gray);
   padding: 7px 14px;
-  transition: 0.4s;
+  @include transition-all;
   background: transparent;
 
   ~ {
@@ -425,8 +423,7 @@
   border: 1px solid var(--primary);
   width: 16rem;
   margin-top: -.1rem;
-  -webkit-animation: var(--animation);
-  animation: var(--animation);
+  @include animation-base;
 
   [data-pc-section="filtercontainer"] {
     position: relative;
@@ -445,7 +442,7 @@
     color: var(--secondary-text);
     background: transparent;
     border-bottom: 1px solid var(--primary);
-    transition: all .2s ease;
+    @include transition-all;
 
     &:hover,
     &:focus {

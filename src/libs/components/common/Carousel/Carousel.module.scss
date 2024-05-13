@@ -1,3 +1,5 @@
+@import "../../../../assets/mixins";
+
 .carousel {
   position: relative;
   min-width: 21rem;
@@ -17,7 +19,7 @@
   height: 100%;
   transform: rotateY(calc(var(--offset) * 50deg)) scaleY(calc(1 + var(--abs-offset) * -0.2)) translateZ(calc(var(--abs-offset) * -50rem)) translateX(calc(var(--direction) * -10rem));
   filter: blur(calc(var(--abs-offset) * .03rem));
-  transition: all 0.3s ease-out;
+  @include transition-all;
 }
 
 .card {
@@ -26,7 +28,7 @@
   padding: 2rem;
   cursor: pointer;
   text-align: justify;
-  transition: all 0.3s ease-out;
+  @include transition-all;
 
   h5 {
     text-align: center;
@@ -38,7 +40,7 @@
   }
 
   p, h5 {
-    transition: all 0.3s ease-out;
+    @include transition-all;
     opacity: var(--active);
   }
 }
@@ -47,9 +49,6 @@
   color: var(--gray);
   font-size: 3rem;
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   top: 50%;
   z-index: 2;
   cursor: pointer;
@@ -59,6 +58,7 @@
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
   border-radius: 50%;
+  @include flex-center;
 
   &:hover,
   &:focus,

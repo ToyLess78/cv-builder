@@ -1,15 +1,11 @@
+@import "../../../../assets/mixins";
+
 .wrapper {
   position: relative;
 
   .label {
-    position: absolute;
-    text-transform: capitalize;
+    @include label-style;
     top: -16px;
-    font-size: 0.7rem;
-    transition: color 0.3s;
-    color: var(--label-color);
-    pointer-events: none;
-    letter-spacing: 1px;
   }
 
   .label:has(+.autoComplete .input:focus) {
@@ -35,10 +31,7 @@
       svg {
         color: var(--gray);
         margin-left: .5rem;
-
-        &:hover {
-          color: var(--primary);
-        }
+        @include hover-primary;
       }
     }
 
@@ -47,7 +40,7 @@
       border-bottom: 1px solid var(--gray);
       padding: 7px 0;
       font-size: 1rem;
-      transition: all 0.4s;
+      @include transition-all;
 
       &::placeholder {
         color: var(--gray);
@@ -61,7 +54,7 @@
 
         width: 100%;
         border-bottom: 1px solid var(--primary);
-        transition: all 0.4s;
+        @include transition-all;
       }
     }
   }

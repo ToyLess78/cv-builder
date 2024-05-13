@@ -1,14 +1,25 @@
+@import "../../../assets/mixins";
 
 .accent {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1.1fr;
   grid-template-rows: min-content min-content min-content max-content;
   grid-auto-rows: 1fr;
   gap: 0 1rem;
   grid-auto-flow: row;
-  grid-template-areas: "mark contacts" "info contacts" "summary summary" "main aside";
+  grid-template-areas: "header header" "header header" "summary summary" "main aside";
   text-align: left;
 
+  .header {
+    display: grid;
+    grid-template-columns: 3fr 1.1fr;
+    grid-template-rows: min-content min-content;
+    gap: 0 1rem;
+    grid-auto-flow: row;
+    grid-template-areas: "mark contacts" "info contacts";
+    grid-area: header;
+    border-bottom: 1px solid var(--light-gray);
+  }
 
   .summary {
     grid-area: summary;
@@ -34,10 +45,14 @@
 
   .main {
     grid-area: main;
+
   }
 
   .aside {
     grid-area: aside;
+    border-left: 1px solid var(--light-gray);
+    padding-left: 2rem;
+
   }
 
   .mark {
@@ -49,3 +64,8 @@
   }
 }
 
+@media print {
+  .mark {
+    @include media-print;
+  }
+}

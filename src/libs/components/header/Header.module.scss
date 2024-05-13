@@ -1,3 +1,5 @@
+@import "../../../assets/mixins";
+
 .header {
   text-align: left;
   grid-template-columns: 2.5fr 1fr;
@@ -16,8 +18,7 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   justify-content: space-around;
 }
 
@@ -39,10 +40,9 @@
 }
 
 .summary {
+  @include flex-column;
   justify-self: stretch;
-  display: flex;
   position: relative;
-  flex-direction: column;
   gap: .5rem 0;
   padding-left: .7rem;
 
@@ -66,6 +66,6 @@
   position: relative;
 
   img {
-    transition: opacity .6s ease-in-out;
+    @include transition-opacity;
   }
 }

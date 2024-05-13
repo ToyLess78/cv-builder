@@ -1,14 +1,13 @@
+@import "../../../../assets/mixins";
+
 .wrapper {
-  display: flex;
+  @include flex-center;
   gap: 6rem;
-  justify-content: center;
   text-align: left;
-  align-items: center;
   min-height: 50vh;
 
   .form {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     justify-content: center;
     gap: 2rem;
     height: 100%;

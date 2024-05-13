@@ -1,3 +1,5 @@
+@import "../../../../assets/mixins";
+
 @media print {
   .container {
     display: none;
@@ -29,22 +31,14 @@
       border-style: solid;
       cursor: pointer;
       border-color: #e8e7e7;
-      -webkit-transition: border-width .5s ease;
-      -moz-transition: border-width .5s ease;
-      -ms-transition: border-width .5s ease;
-      -o-transition: border-width .5s ease;
-      transition: border-width .5s ease;
+      @include transition-border-width;
     }
 
     .color {
       border-width: 0 1.25rem 0 0;
 
       &.last {
-        -webkit-transition: border-width .5s ease;
-        -moz-transition: border-width .5s ease;
-        -ms-transition: border-width .5s ease;
-        -o-transition: border-width .5s ease;
-        transition: border-width .5s ease;
+        @include transition-border-width;
         border-width: 0 1.25rem 0 0;
       }
 

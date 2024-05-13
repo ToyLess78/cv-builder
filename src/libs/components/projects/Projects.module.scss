@@ -1,7 +1,8 @@
+@import "../../../assets/mixins";
+
 .projects {
-  display: flex;
+  @include flex-column;
   position: relative;
-  flex-direction: column;
   gap: .5rem 0;
   padding-left: .7rem;
   padding-bottom: 2rem;
@@ -35,11 +36,9 @@
   }
 
   .wrapper {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
+    @include flex-full;
     gap: 1rem;
-    -webkit-flex: 1 1 auto;
-    flex: 1 1 auto;
 
     .name {
       display: flex;
@@ -101,8 +100,7 @@
   padding: 0 1rem;
 
   .inputs {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     gap: 2rem;
   }
 }
@@ -118,7 +116,7 @@
 .checkbox {
   visibility: visible;
   opacity: 1;
-  transition: all .4s ease;
+  @include transition-all;
 
   &[data-visible="false"] {
     visibility: hidden;

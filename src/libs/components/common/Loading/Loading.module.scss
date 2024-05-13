@@ -1,5 +1,5 @@
+@import "../../../../assets/mixins";
+
 .spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
 }

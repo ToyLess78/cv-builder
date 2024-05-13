@@ -1,0 +1,200 @@
+@mixin media-print {
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-full {
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+@mixin transition-color {
+  -webkit-transition: color .4s ease;
+  -moz-transition: color .4s ease;
+  -ms-transition: color .4s ease;
+  -o-transition: color .4s ease;
+  transition: color .4s ease;
+}
+
+@mixin transition-opacity {
+  -webkit-transition: opacity .4s ease;
+  -moz-transition: opacity .4s ease;
+  -ms-transition: opacity .4s ease;
+  -o-transition: opacity .4s ease;
+  transition: opacity .4s ease;
+}
+
+@mixin transition-border-width {
+  -webkit-transition: border-width .4s ease;
+  -moz-transition: border-width .4s ease;
+  -ms-transition: border-width .4s ease;
+  -o-transition: border-width .4s ease;
+  transition: border-width .4s ease;
+}
+
+@mixin transition-background {
+  -webkit-transition: background .4s ease;
+  -moz-transition: background .4s ease;
+  -ms-transition: background .4s ease;
+  -o-transition: background .4s ease;
+  transition: background .4s ease;
+}
+
+@mixin transition-border-color {
+  -webkit-transition: border-color .4s ease;
+  -moz-transition: border-color .4s ease;
+  -ms-transition: border-color .4s ease;
+  -o-transition: border-color .4s ease;
+  transition: border-color .4s ease;
+}
+
+@mixin transition-background-opacity {
+  -webkit-transition: background .4s ease, opacity .5s ease-in-out;
+  -moz-transition: background .5s ease, opacity .5s ease-in-out;
+  -ms-transition: background .5s ease, opacity .5s ease-in-out;
+  -o-transition: background .5s ease, opacity .5s ease-in-out;
+  transition: background .5s ease, opacity .5s ease-in-out;
+}
+
+@mixin transition-all {
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+@mixin label-style {
+  position: absolute;
+  text-transform: capitalize;
+  font-size: 0.7rem;
+  color: var(--label-color);
+  pointer-events: none;
+  letter-spacing: 1px;
+  @include transition-color;
+
+}
+
+@mixin button-hover-base {
+  &:hover {
+    color: var(--secondary-text);
+  }
+}
+
+@mixin hover-primary {
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+@mixin button {
+  position: absolute;
+  color: var(--light-gray);
+  cursor: pointer;
+}
+
+@mixin button-base {
+  @include button;
+  @include button-hover-base;
+}
+
+@mixin btn-reset-style {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  font-size: 1rem;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+@mixin inset-position {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@mixin animation-base {
+  -webkit-animation: var(--animation);
+  -moz-animation: var(--animation);
+  -o-animation: var(--animation);
+  animation: var(--animation);
+}
+
+@mixin maim-item {
+  justify-self: stretch;
+  position: relative;
+  gap: .5rem 0;
+  padding-left: .7rem;
+}
+
+@mixin breeze-item {
+  flex-direction: row;
+  padding-left: 0;
+  em {
+    padding-right: 2rem;
+  }
+}
+
+@mixin main-wrapper {
+  @include flex-column;
+  gap: 1rem;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+@mixin main-block {
+  .wrapper {
+    @include main-wrapper;
+  }
+  .title {
+    position: relative;
+
+    strong {
+      text-transform: capitalize;
+    }
+  }
+
+  p {
+    margin-right: 2rem;
+  }
+  em {
+    float: right;
+    text-transform: capitalize;
+    color: var(--gray);
+    font-weight: normal;
+  }
+  .description {
+    padding: .5rem 0 0 1rem;
+  }
+  .duration {
+    color: var(--gray);
+  }
+}
+
+@mixin main-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  gap: 2rem;
+  padding: 0 1rem;
+}

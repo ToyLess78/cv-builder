@@ -1,3 +1,5 @@
+@import "../../../../assets/mixins";
+
 .button {
   &:hover {
     outline: none;
@@ -28,26 +30,16 @@
   border-radius: 1px;
 
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    transition: all .4s;
+    @include inset-position;
+    @include transition-all;
     border-radius: 0;
     margin-left: -100%;
     box-shadow: inset 0 0 0 3rem var(--primary);
   }
 
   &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    transition: all .4s;
+    @include inset-position;
+    @include transition-all;
     box-shadow: inset 0 0 0 0 var(--primary);
     background-color: var(--primary-opacity);
   }
@@ -57,30 +49,19 @@
     color: var(--primary);
     font-size: 1.2rem;
     text-transform: capitalize;
-    transition: color .4s ease;
+    @include transition-color;
   }
 }
 
 .edit {
-  position: absolute;
+  @include button-base;
   left: -1.2rem;
-  color: var(--light-gray);
-  cursor: pointer;
   top: .2rem;
-  &:hover {
-    color: var(--secondary-text);
-  }
 }
 
 .hide {
-  position: absolute;
+  @include button-base;
   left: -1.3rem;
-  color: var(--light-gray);
-  cursor: pointer;
-
-  &:hover {
-    color: var(--secondary-text);
-  }
 }
 
 .show {
@@ -100,24 +81,18 @@
 }
 
 .remove {
-  position: absolute;
+  @include button;
   right: -2rem;
   top: .2rem;
-  color: var(--light-gray);
 
   svg {
-    cursor: pointer;
-
-    &:hover {
-      color: var(--secondary-text);
-    }
+    @include button-hover-base;
   }
 }
 
 .box {
   position: absolute;
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: .2rem;
   right: -2rem;
   top: .5rem;
@@ -130,9 +105,7 @@
       margin-left: .2rem;
     }
 
-    &:hover {
-      color: var(--secondary-text);
-    }
+    @include button-hover-base;
   }
 }
 
@@ -142,42 +115,25 @@
   display: inline-block;
 
   .btn {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background: none;
-    font-size: 1rem;
-    text-transform: capitalize;
-    font-weight: 500;
     padding: .3rem .7rem;
     color: var(--primary);
-    transition: background .4s ease;
     display: inline-block;
     position: relative;
+    @include btn-reset-style;
+    @include transition-background;
 
     &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
+      @include inset-position;
       border-radius: 0;
       margin-left: -100%;
       box-shadow: inset 0 0 0 3rem var(--primary-opacity);
-      transition: all .4s;
+      @include transition-all;
     }
 
     &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      transition: all .4s;
+      @include inset-position;
       box-shadow: inset 0 0 0 0 var(--primary-opacity);
-
+      @include transition-all;
     }
 
     &:hover {
@@ -192,49 +148,25 @@
 
 .visible {
   top: 1.3rem;
-  position: absolute;
   left: -1.3rem;
-  color: var(--light-gray);
-  cursor: pointer;
-
-  &:hover {
-    color: var(--secondary-text);
-  }
+  @include button-base;
 
   svg {
     outline: none;
   }
 }
 
-.edit {
-  top: .2rem;
-  position: absolute;
-  left: -1.2rem;
-  color: var(--light-gray);
-  cursor: pointer;
-
-  &:hover {
-    color: var(--secondary-text);
-  }
-}
-
 .save {
-  position: absolute;
-  color: var(--light-gray);
   left: .7rem;
   top: .5rem;
-  cursor: pointer;
-
-  &:hover {
-    color: var(--primary);
-  }
+  @include button;
+  @include hover-primary;
 }
-.clear  {
-  position: absolute;
-  color: var(--light-gray);
+
+.clear {
   left: 2.2rem;
   top: .6rem;
-  cursor: pointer;
+  @include button-base;
 
   &:hover {
     color: var(--primary);
@@ -242,18 +174,13 @@
 }
 
 .more {
-  position: absolute;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   top: .2rem;
-  color: var(--light-gray);
-  cursor: pointer;
-
-  &:hover {
-    color: var(--primary);
-  }
+  @include button;
+  @include hover-primary;
 }
 
 @media print {

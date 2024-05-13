@@ -1,28 +1,23 @@
+@import "../../../../assets/mixins";
+
 .polygon {
+  @include flex-center;
+  @include transition-background-opacity;
   width: 5rem;
   height: 12rem;
   position: absolute;
   clip-path: polygon(0 0, 0 100%, 50% 88%, 100% 100%, 100% 0);
   color: white;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   top: -1rem;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  -webkit-transition: background .5s ease, opacity .6s ease-in-out;
-  -moz-transition: background .5s ease, opacity .6s ease-in-out;
-  -ms-transition: background .5s ease, opacity .6s ease-in-out;
-  -o-transition: background .5s ease, opacity .6s ease-in-out;
-  transition: background .5s ease, opacity .6s ease-in-out;
 }
 
 @media print {
   .polygon {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
+    @include media-print;
   }
 }

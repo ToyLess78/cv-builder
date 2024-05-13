@@ -1,24 +1,26 @@
+@import "../../../../assets/mixins";
+
 .aside {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
 
     ul {
         list-style-type: none;
 
     }
+
     margin-bottom: -2rem;
 }
 
 .item {
-    display: flex;
+    @include flex-column;
     position: relative;
-    flex-direction: column;
     padding-bottom: 2rem;
     gap: .5rem 0;
 
     &.strong {
         padding: 0 1rem 3rem 1rem;
     }
+
     &.breeze {
         flex-direction: row;
         gap: 2rem 0;

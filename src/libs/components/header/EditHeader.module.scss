@@ -1,7 +1,7 @@
+@import "../../../assets/mixins";
+
 .info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   padding: 2rem;
   gap: 4rem;
 }
@@ -16,8 +16,7 @@
 }
 
 .inputs {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 2rem;
   width: 60%;
 
