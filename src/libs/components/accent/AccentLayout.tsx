@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styles from './Accent.module.scss';
-import { RiAppStoreFill } from 'react-icons/ri';
-import { IoLocationSharp } from 'react-icons/io5';
 
-export const AccentLayout: React.FC = () => {
+interface IAccentLayoutProps {
+    info: ReactNode;
+    contacts: ReactNode;
+    summary: ReactNode;
+    main: ReactNode;
+    aside: ReactNode;
+}
+export const AccentLayout: React.FC<IAccentLayoutProps> = ({info, contacts, summary, main, aside}) => {
     return (
         <div className={ styles.accent }>
-            <div className={ styles.mark }></div>
-            <div className={ styles.info }></div>
 
-            <div className={ styles.contacts }>
-                <RiAppStoreFill size="1.3rem"/>
-                <IoLocationSharp size="1.3rem"/>
-            </div>
-            <div className={ styles.summary }>
-                Experienced web developer adept in all stages of advanced web development. Knowledgeable in user interface, testing, and debugging processes. Bringing forth expertise in design, installation, testing and maintenance of web systems. Equipped with a diverse and promising skill-set. Proficient in an assortment of technologies, including Typescript, React.js, NodeJS, ExpressJS, Next.js, and WebSocket. Able to effectively self-manage during independent projects, as well as collaborate in a team setting.
-            </div>
+            <section className={ styles.header }>
 
-            <div className={ styles.main }></div>
-            <div className={ styles.aside }></div>
+                <div className={ styles.mark }/>
+                <div className={ styles.info }>{info}</div>
+                <div className={ styles.contacts }>{contacts}</div>
+
+            </section>
+            <section className={ styles.summary }>{summary}</section>
+            <section className={ styles.main }>{main}</section>
+            <section className={ styles.aside }>{aside}</section>
+
         </div>
     )
 }
