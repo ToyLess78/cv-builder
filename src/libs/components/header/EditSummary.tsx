@@ -7,7 +7,7 @@ import { setIsEdit } from '~/slices/edit.slice';
 import { Summary } from '~/components/header/Summary';
 import { EditorCustom } from '~/components/common/Editor/EditorCustom';
 import { MainEditWrapper } from '~/components/Main/MainEditWrapper';
-import { CurrentTitle } from '~/components';
+import { Title } from '~/components';
 
 const EditSummary: FC = () => {
 
@@ -31,7 +31,7 @@ const EditSummary: FC = () => {
            onSubmit={handlerOnSubmit}
            preview={
                <Summary props={editSummary}>
-                   <CurrentTitle text={editSummary.title}/>
+                   <Title text={editSummary.title}/>
                </Summary>
            }
            edit={

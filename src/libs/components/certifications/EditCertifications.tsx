@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AddButton, Certifications, CurrentTitle, EditWrapper, UnderlineInput } from '~/components';
+import { AddButton, Certifications, Title, EditWrapper, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectCertifications, setCertificationsData } from '~/slices/certifications.slice';
@@ -68,7 +68,7 @@ const EditCertifications: React.FC = () => {
                     onEdit={ editeCertificate }
                     edited={ edited }
                 >
-                    <CurrentTitle text={stateCertificates.title} />
+                    <Title text={stateCertificates.title} />
                 </Certifications>
             }
             edit={

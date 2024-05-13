@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckBox, Contacts, CurrentTitle, EditWrapper, UnderlineInput } from '~/components';
+import { CheckBox, Contacts, Title, EditWrapper, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectContacts, setContacts } from '~/slices/contacts.slice';
@@ -63,7 +63,7 @@ const EditContacts: React.FC = () => {
         <EditWrapper
             preview={
                 <Contacts data={ editContacts }>
-                    <CurrentTitle text={ RootConstants.Contacts }/>
+                    <Title text={ RootConstants.Contacts }/>
                 </Contacts>
             }
             edit={

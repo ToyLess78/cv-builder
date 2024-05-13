@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
-import { CheckBox, CurrentTitle, EditorCustom, UnderlineInput } from '~/components';
+import { CheckBox, Title, EditorCustom, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectExperience, setEditedExperience } from '~/slices/experiences.slice';
@@ -89,7 +89,7 @@ const EditExperience: FC = () => {
             style={ {width: '90%'} }
             preview={
                 <Experience experienceItem={ experienceItem }>
-                    <CurrentTitle text={ experienceState.title } />
+                    <Title text={ experienceState.title } />
                 </Experience>
             }
             edit={

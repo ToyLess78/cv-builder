@@ -5,7 +5,7 @@ import { selectEducation, setEditedEducation } from '~/slices/education.slice';
 import { Nullable } from 'primereact/ts-helpers';
 import { reformatDateRange, reformatDateSingle } from '~/utils/format-date.utils';
 import { setIsEdit } from '~/slices/edit.slice';
-import { CheckBox, CurrentTitle, EditorCustom, UnderlineInput } from '~/components';
+import { CheckBox, Title, EditorCustom, UnderlineInput } from '~/components';
 import styles from '~/components/education/Education.module.scss';
 import { MainEditWrapper } from '~/components/Main/MainEditWrapper';
 import { MonthYearPickerWithRange } from '~/components/common/MonthPicker/MonthYearPicker';
@@ -89,7 +89,7 @@ const EditEducation: FC = () => {
             style={ {width: '90%'} }
             preview={
                 <Education educationItem={ educationItem }>
-                    <CurrentTitle text={ educationState.title } />
+                    <Title text={ educationState.title } />
                 </Education>
             }
             edit={

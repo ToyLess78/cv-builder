@@ -3,7 +3,7 @@ import { DropdownChangeEvent } from 'primereact/dropdown';
 import levels from '~/public/levels';
 import languages from '~/public/languages';
 import styles from './Languages.module.scss';
-import { AddButton, CurrentTitle, EditWrapper, Languages, Select } from '~/components';
+import { AddButton, Title, EditWrapper, Languages, Select } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectLanguages, setLanguagesData } from '~/slices/languages.slice';
@@ -54,7 +54,7 @@ const EditLanguage: React.FC = () => {
                     data={languageState}
                     onRemove={removeLanguage}
                 >
-                    <CurrentTitle text="languages"/>
+                    <Title text="languages"/>
                 </Languages>
             </div>
             }
