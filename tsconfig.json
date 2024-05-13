@@ -25,6 +25,7 @@
       "~/components": ["./src/libs/components/components.ts"],
       "~/slices/*": ["./src/redux/slices/*"],
       "~/store/*": ["./src/redux/store/*"],
+      "~/assets/*": ["./src/assets/*"],
       "~/public/*": ["./public/*"]
     }
   },
