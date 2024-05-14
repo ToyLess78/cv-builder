@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import styles from './Education.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
@@ -40,6 +40,18 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
 
     const {template} = useSelector((state: RootState) => selectTheme(state));
 
+    const [isItem, setIsItem] = useState([...data.map(pro => pro.id)]);
+
+    const handleOnRemove = (id: string) => {
+        setIsItem(isItem.filter((item) => item !== id));
+
+        const timeoutId = setTimeout(() => {
+            dispatch(removeEducation(id));
+        }, 500);
+
+        return () => clearTimeout(timeoutId);
+    };
+
     return (
         <>
             {!educationItem &&
@@ -66,27 +78,35 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
                             { children }
                             <div className={ styles.wrapper }>
                                 { data.map(ed => (
-                                    <div key={ ed.id } className={ styles.title }>
-                                        <EditButton
-                                            style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
-                                            title={ ed.degree }
-                                            onClick={ () => handlerSetEdit(ed.id) }
-                                        />
-                                        { data.length > 1 && <RemoveButton
-                                            style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
-                                            removeOffset={ 20 }
-                                            onRemove={ () => dispatch(removeEducation(ed.id)) }
-                                        /> }
-                                        <strong>{ ed.degree }<em> { ed.location }</em></strong>
-                                        <br/>
-                                        {ed.school ? <strong><small
-                                        >{ `[ ${ ed.school } ]` }</small></strong> : ''}
-                                        <br/>
-                                        <span className={ styles.duration }>{ ed.duration }</span>
-                                        <div className={ styles.description }
-                                             dangerouslySetInnerHTML={ {__html: ed.description} }></div>
 
-                                    </div>
+                                    <CollapsedWrapper
+                                        key={ ed.id }
+                                        isShow={ isItem.some(id => id === ed.id) }
+                                        content={
+                                            <div className={ styles.title }>
+                                                <EditButton
+                                                    style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
+                                                    title={ ed.degree }
+                                                    onClick={ () => handlerSetEdit(ed.id) }
+                                                />
+                                                { data.length > 1 && <RemoveButton
+                                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
+                                                    removeOffset={ 20 }
+                                                    onRemove={ () => handleOnRemove(ed.id) }
+                                                /> }
+                                                <strong>{ ed.degree }<em> { ed.location }</em></strong>
+                                                <br/>
+                                                {ed.school ? <strong><small
+                                                >{ `[ ${ ed.school } ]` }</small></strong> : ''}
+                                                <br/>
+                                                <span className={ styles.duration }>{ ed.duration }</span>
+                                                <div className={ styles.description }
+                                                     dangerouslySetInnerHTML={ {__html: ed.description} }></div>
+
+                                            </div>
+                                        }
+                                    />
+
                                 )) }
                             </div>
 

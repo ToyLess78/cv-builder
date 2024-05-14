@@ -78,9 +78,9 @@ export const Languages: React.FC<ILanguagesProps> = ({children, data = null, onR
                             return l?.language?.name.length &&
                             <li key={ l.id }><span>{ l?.language?.name }</span>
                                 <p>{ l?.level?.name }</p>
-                                <RemoveButton
-                                    onRemove={onRemove ? () => onRemove(l.id) : undefined}
-                                />
+                                { data.length > 1 && <RemoveButton
+                                    onRemove={ onRemove ? () => onRemove(l.id) : undefined }
+                                /> }
                             </li>;
                         }) }
                     </ul>
