@@ -78,12 +78,12 @@ export const Certifications: React.FC<ICertificatesProps> = ({children, data = n
                         style={ {minHeight: template === TemplateConstants.Breeze ? '8.2rem' : 'auto'} }>
                         { data?.map(c => {
                             return <li key={ c.id }>
-                                <EditButtonsBox
+                                { data.length > 1 && <EditButtonsBox
                                     onRemove={ onRemove ? () => onRemove(c.id) : undefined }
                                     onEdit={ onEdit ? () => onEdit(c.id) : undefined }
                                     editeStyle={ {visibility: c.id === edited?.id ? 'hidden' : 'visible'} }
                                     removeStyle={ {visibility: c.issue.length && c.title.length ? 'visible' : 'hidden'} }
-                                />
+                                /> }
                                 <p>{ c.title }</p>
                                 { c.issue.length ?
                                     <a href={ c.link }><span>{ c.issue }</span><FiExternalLink/></a> : '' }

@@ -12,7 +12,6 @@ import { setIsEdit } from '~/slices/edit.slice';
 import { IconsMap } from '~/components/contacts/IconsMap';
 import RootConstants from '~/constants/root.constants';
 import { selectTheme } from '~/slices/theme.slice';
-import TemplateConstants from '~/constants/template.constants';
 import { CollapsedWrapper } from '~/components/common/CollapsedWrapper/CollapsedWrapper';
 
 interface ISocialProps {
@@ -21,7 +20,7 @@ interface ISocialProps {
 
 interface IContactProps extends ISocialProps {
     isIcons?: boolean;
-    children: ReactNode;
+    children?: ReactNode;
     social?: boolean;
 }
 
@@ -69,8 +68,7 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
             { children }
 
             <ul
-                className={ styles.contacts }
-                style={ {minHeight: template === TemplateConstants.Breeze ? '6.7rem' : 'auto'} }>
+                className={ `${styles.contacts} ${styles[template]}` }>
                 <li>
                     {!isIcons && <div className={styles.icon}>
                         <FaLocationDot className={iconClass} /><span className={letterClass}>L: </span>
