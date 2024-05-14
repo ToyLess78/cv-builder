@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { CheckBox, Contacts, Title, EditWrapper, UnderlineInput } from '~/components';
+import React, { useEffect, useState } from 'react';
+import { CheckBox, CollapsedWrapper, Contacts, EditWrapper, Title, UnderlineInput } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectContacts, setContacts } from '~/slices/contacts.slice';
@@ -10,6 +10,7 @@ import { MenuItem } from 'primereact/menuitem';
 import { IconsMap } from '~/components/contacts/IconsMap';
 import { setIsEdit } from '~/slices/edit.slice';
 import RootConstants from '~/constants/root.constants';
+import { selectTheme } from '~/slices/theme.slice';
 
 const EditContacts: React.FC = () => {
     const contactState = useSelector((state: RootState) => selectContacts(state));
@@ -38,6 +39,7 @@ const EditContacts: React.FC = () => {
     };
 
     const setIsShow = (id: string) => {
+        setActiveIndex(activeIndex ? activeIndex -1 : 1)
         setEditContacts({...editContacts, data: editContacts.data.map(x => (x.id === id ? {...x, isShow: !x.isShow} : x))});
     };
 
@@ -58,6 +60,19 @@ const EditContacts: React.FC = () => {
                 command: () => setIsShow(s?.id)
             }
         ));
+
+
+    const [activeIndex, setActiveIndex] = useState<number>((editContacts.data
+        .map((x, i) => x.isShow === true ? i : -1)
+        .filter(index => index !== -1))[0]);
+
+    useEffect(() => {
+        setActiveIndex((editContacts.data
+            .map((x, i) => x.isShow === true ? i : -1)
+            .filter(index => index !== -1))[0]);
+    }, [editContacts.data])
+
+    const {template} = useSelector((state: RootState) => selectTheme(state));
 
     return (
         <EditWrapper
@@ -95,43 +110,55 @@ const EditContacts: React.FC = () => {
                             title="Show socials"
                         />
                     </div>
-
-                    { editContacts.isSocials &&
-                        <>
-                            <SpeedDial
-                                model={ menuItems } direction="left"
-                                className={ styles.menu }
-                                data-tooltip-id="tooltip"
-                                data-tooltip-content="Add social"
-                                data-tooltip-place='top-end'
+                    <CollapsedWrapper
+                        isShow={editContacts.isSocials}
+                        content={
+                            <>
+                                <SpeedDial
+                                    model={ menuItems } direction="left"
+                                    className={ `${styles.menu} ${styles[template]}` }
+                                    data-tooltip-id="tooltip"
+                                    data-tooltip-content="Add social"
+                                    data-tooltip-place='top-end'
                                 />
 
-                            <TabView className={ styles.tab }>
-                                { editContacts.data?.map((s) => {
-                                    return (
-                                        s.isShow &&
-                                        <TabPanel
-                                            className={ styles.item }
-                                            key={ s.id }
-                                            header={ IconsMap.get(s?.id) }>
-                                            <div style={ {padding: '2.5rem 0'} }>
-                                                <UnderlineInput
-                                                    label={ s.id }
-                                                    type="link"
-                                                    value={ s.link }
-                                                    onChange={ (e) => editLink(e, s.id) }
+                                <TabView
+                                    className={ `${styles.tab} ${styles[template]}` }
+                                    activeIndex={activeIndex}
+                                    onTabChange={(e) => {
+                                        setActiveIndex(e.index);
+                                    }}>
+                                    { editContacts.data?.map((s) => {
+                                        return (
+                                            s.isShow &&
+                                            <TabPanel
+                                                className={ styles.item }
+                                                key={ s.id }
+                                                header={ IconsMap.get(s?.id) }>
+                                                <div style={ {padding: '2.5rem 0'} }>
+                                                    <UnderlineInput
+                                                        label={ s.id }
+                                                        type="link"
+                                                        value={ s.link }
+                                                        onChange={ (e) => editLink(e, s.id) }
+                                                    />
+                                                </div>
+                                                <CheckBox
+                                                    checked={ s.isShow }
+                                                    onChange={ () => {
+                                                        setIsShow(s?.id);
+                                                    } }
+                                                    title={ s.id }
                                                 />
-                                            </div>
-                                            <CheckBox
-                                                checked={ s.isShow }
-                                                onChange={ () => setIsShow(s?.id) }
-                                                title={ s.id }
-                                            />
-                                        </TabPanel>
-                                    );
-                                }) }
-                            </TabView>
-                        </> }
+                                            </TabPanel>
+                                        );
+                                    }) }
+                                </TabView>
+
+                            </>
+                        }
+                    />
+
                 </div>
             }
             onSubmit={ handlerOnSubmit }
