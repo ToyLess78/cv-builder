@@ -5,12 +5,14 @@ import { RootState } from '~/store/store';
 import { selectSkills, setIsAdditional } from '~/slices/skills.slice';
 import { setIsEdit } from '~/slices/edit.slice';
 import RootConstants from '~/constants/root.constants';
+import TemplateConstants from '~/constants/template.constants';
+import { selectTheme } from '~/slices/theme.slice';
 
 interface IAdditionalProps {
     children: ReactNode;
 }
 
-export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
+export const Additional: React.FC<IAdditionalProps> = ({children}) => {
 
     const aside = useSelector((state: RootState) => selectSkills(state));
     const isAdditional = aside.additional.isAdditional;
@@ -21,6 +23,8 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
         dispatch(setIsAdditional(!isAdditional));
     };
 
+    const {template} = useSelector((state: RootState) => selectTheme(state));
+
     return (
         <>
             { !isAdditional &&
@@ -29,9 +33,9 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
                     title={ aside?.additional.title }
                     toggleClass
                 /> }
-            { aside?.additional &&
+            { aside?.additional ?
                 <CollapsedWrapper
-                    isShow={isAdditional}
+                    isShow={ isAdditional }
                     buttons={
                         <>
                             <EditButton
@@ -45,12 +49,13 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
                         </>
                     }
                     content={
-                        <AsideItem>
-                            {children}
-                            <AdditionalList {...aside.additional}/>
+                        <AsideItem
+                            style={ {minHeight: template === TemplateConstants.Breeze ? '7.4rem' : 'auto'} }>
+                            { children }
+                            <AdditionalList { ...aside.additional }/>
                         </AsideItem>
                     }
-                />
+                /> : ''
             }
         </>
     );
