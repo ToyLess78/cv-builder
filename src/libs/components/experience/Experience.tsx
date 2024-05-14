@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styles from './Experience.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
@@ -39,6 +39,17 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
     };
 
     const {template} = useSelector((state: RootState) => selectTheme(state));
+    const [isItem, setIsItem] = useState([...data.map(exp => exp.id)]);
+
+    const handleOnRemove = (id: string) => {
+        setIsItem(isItem.filter((item) => item !== id));
+
+        const timeoutId = setTimeout(() => {
+            dispatch(removeExperience(id));
+        }, 500);
+
+        return () => clearTimeout(timeoutId);
+    };
 
     return (
         <>
@@ -65,27 +76,34 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
                             { children }
                             <div className={ styles.wrapper }>
                                 { data.map(exp => (
-                                    <div key={ exp.id } className={ styles.title }>
-                                        <EditButton
-                                            style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
-                                            title={ exp.jobTitle }
-                                            onClick={ () => handlerSetEdit(exp.id) }
-                                        />
-                                        { data.length > 1 && <RemoveButton
-                                            style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
-                                            removeOffset={ 20 }
-                                            onRemove={ () => dispatch(removeExperience(exp.id)) }
-                                        /> }
-                                        <strong>{ `${ exp.jobTitle } ` }
-                                            {exp.employer ? <small
-                                            >{ `[ ${ exp.employer } ]` }</small> : ''}
-                                            <em> { exp.location }</em></strong>
-                                        <br/>
-                                        <span className={ styles.duration }>{ exp.duration }</span>
-                                        <div className={ styles.description }
-                                             dangerouslySetInnerHTML={ {__html: exp.description} }></div>
+                                    <CollapsedWrapper
+                                        key={ exp.id }
+                                        isShow={ isItem.some(id => id === exp.id) }
+                                        content={
+                                            <div className={ styles.title }>
+                                                <EditButton
+                                                    style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
+                                                    title={ exp.jobTitle }
+                                                    onClick={ () => handlerSetEdit(exp.id) }
+                                                />
+                                                { data.length > 1 && <RemoveButton
+                                                    style={ {left: template === TemplateConstants.Breeze ? '-3.8rem' : '-2.1rem', top: '1.3rem'} }
+                                                    removeOffset={ 20 }
+                                                    onRemove={ () => handleOnRemove(exp.id) }
+                                                /> }
+                                                <strong>{ `${ exp.jobTitle } ` }
+                                                    {exp.employer ? <small
+                                                    >{ `[ ${ exp.employer } ]` }</small> : ''}
+                                                    <em> { exp.location }</em></strong>
+                                                <br/>
+                                                <span className={ styles.duration }>{ exp.duration }</span>
+                                                <div className={ styles.description }
+                                                     dangerouslySetInnerHTML={ {__html: exp.description} }></div>
 
-                                    </div>
+                                            </div>
+                                        }
+                                    />
+
                                 )) }
                             </div>
 
@@ -102,7 +120,7 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
                     />
                 </div>}
             {isExperience && experienceItem &&
-                <section className={ styles.experience }>
+                <section className={ `${styles.experience} ${styles[template]}` }>
                     { children }
                     <div className={ styles.wrapper }>
                         <div className={ styles.title }>

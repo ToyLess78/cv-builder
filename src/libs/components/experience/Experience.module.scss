@@ -7,6 +7,7 @@
 
   &.breeze {
     min-height: 7.4rem;
+    @include flex-row;
     @include breeze-item;
   }
 
