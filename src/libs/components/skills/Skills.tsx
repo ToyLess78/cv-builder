@@ -5,7 +5,7 @@ import { ISkillsState, selectSkills } from '~/slices/skills.slice';
 import { AsideItem } from '~/components/common/Aside/AsideItem';
 import nextId from 'react-id-generator';
 import styles from './Skills.module.scss';
-import { EditButton, ReturnButton } from '~/components/common/Buttons/Buttons';
+import { EditButton } from '~/components/common/Buttons/Buttons';
 import { setIsEdit } from '~/slices/edit.slice';
 import RootConstants from '~/constants/root.constants';
 import TemplateConstants from '~/constants/template.constants';
@@ -15,54 +15,48 @@ interface ISkillsProps {
     children?: ReactNode;
     isButtons?: boolean;
     data?: ISkillsState;
+    isAdditional?: boolean;
 }
 
-export const Skills: React.FC<ISkillsProps> = ({children, isButtons = true, data}) => {
+export const Skills: React.FC<ISkillsProps> = ({children, isButtons = true, isAdditional = false, data}) => {
 
     const aside = useSelector((state: RootState) => selectSkills(state));
     const dispatch = useDispatch();
 
     const {template} = useSelector((state: RootState) => selectTheme(state));
 
+    const height = (template === TemplateConstants.Breeze && !isAdditional) ? '4.7rem' :
+        (template === TemplateConstants.Breeze && isAdditional) ? '7.4rem' : 'auto';
+
     return (
         <>
-            { isButtons && aside?.skills.data.length &&
-                <AsideItem>
+            { isButtons &&
+                <AsideItem style={ {minHeight: height} }>
                     <EditButton
                         title={ aside?.skills.title }
                         onClick={ () => dispatch(setIsEdit(RootConstants.Skills)) }
                     />
 
                     { children }
-                    <ul
-                        className={ styles.skills }
-                        style={ {minHeight: template === TemplateConstants.Breeze ? '4.7rem' : 'auto'} }>
+                    { aside?.skills.data.length ? <ul
+                        className={ styles.skills }>
                         { aside?.skills.data?.map(s => {
                             return <li key={ nextId() }>{ s }</li>;
                         }) }
-                    </ul>
+                    </ul> : '' }
 
                 </AsideItem> }
-            { isButtons && !aside?.skills.data.length &&
-                <AsideItem>
-                    { children }
 
-                    <div className={ styles.empty }>
-                        <ReturnButton title={ aside?.skills.title }/>
-                    </div>
-                </AsideItem> }
-
-            { !isButtons && data?.data.length &&
-                <AsideItem>
+            { !isButtons &&
+                <AsideItem style={ {minHeight: height} }>
 
                     { children }
-                    <ul
-                        className={ styles.skills }
-                        style={ {minHeight: template === TemplateConstants.Breeze ? '4.7rem' : 'auto'} }>
+                    { data?.data.length ? <ul
+                        className={ styles.skills }>
                         { data?.data?.map(s => {
                             return <li key={ nextId() }>{ s }</li>;
                         }) }
-                    </ul>
+                    </ul> : '' }
 
                 </AsideItem> }
 
