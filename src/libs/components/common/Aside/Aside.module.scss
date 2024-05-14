@@ -17,8 +17,9 @@
     padding-bottom: 2rem;
     gap: .5rem 0;
 
-    &.strong {
-        padding: 0 1rem 3rem 1rem;
+    &.strong,
+    &.accent {
+        padding: 0 .5rem 3rem .5rem;
     }
 
     &.breeze {
