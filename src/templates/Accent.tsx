@@ -40,9 +40,7 @@ const Accent: React.FC = () => {
             }
             contacts={
                 <Aside>
-                    <Contacts>
-                        <Title text={ RootConstants.Contacts }/>
-                    </Contacts>
+                    <Contacts />
                 </Aside> }
 
             summary={
