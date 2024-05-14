@@ -16,10 +16,13 @@ export const Info: React.FC<{ children?: ReactNode, props?:  IInfoProps}> = ({ch
     const {template} = useSelector((state: RootState) => selectTheme(state));
 
     return (
-        <section className={`${styles.info} ${styles[template]}`}>
-            {children}
-            <h2>{`${props?.firstname || info.firstname} ${props?.lastname || info.lastname}`}</h2>
-            <h4>{props?.position || info.position}</h4>
+        <section className={ `${ styles.info } ${ styles[template] }` }>
+            { children }
+            <div className={ styles[template] }>
+                <h2>{ props?.firstname || info.firstname }</h2>
+                <h2>{ props?.lastname || info.lastname }</h2>
+            </div>
+            <h4>{ props?.position || info.position }</h4>
         </section>
     )
 }
