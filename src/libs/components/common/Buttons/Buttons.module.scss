@@ -62,12 +62,13 @@
 .hide {
   @include button-base;
   left: -1.3rem;
+  z-index: 50;
 }
 
 .show {
   position: relative;
   margin-top: -2rem;
-  z-index: 100;
+  z-index: 50;
 
   .hide {
     top: .9rem;
