@@ -23,7 +23,6 @@
 }
 
 .info {
-  //justify-self: stretch;
   position: relative;
   min-width: 30%;
   &.accent {
@@ -93,5 +92,11 @@
 
   img {
     @include transition-opacity;
+  }
+}
+
+@media print {
+  .info {
+    @include media-print;
   }
 }
