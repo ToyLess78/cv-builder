@@ -9,7 +9,7 @@ import {
     setEditedExperienceId,
     setIsExperience
 } from '~/slices/experiences.slice';
-import { AddItemButton, CollapsedWrapper, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
+import { AddItemButton, CollapsedWrapper, EditButton, HideButton, RemoveButton, ShowMaineButton } from '~/components';
 import { setIsEdit } from '~/slices/edit.slice';
 import nextId from 'react-id-generator';
 import RootConstants from '~/constants/root.constants';
@@ -113,9 +113,9 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
   }
             {!isExperience && !experienceItem &&
                 <div className={`${styles.show} ${styles[template]}`}>
-                    <ShowAsideButton
+                    <ShowMaineButton
+                        toggleClass={true}
                         title={ title }
-                        style={ {top: template === TemplateConstants.Breeze ?'-2rem' : '2rem'} }
                         onClick={ () => dispatch(setIsExperience(true)) }
                     />
                 </div>}
