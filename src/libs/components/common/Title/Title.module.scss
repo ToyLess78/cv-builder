@@ -10,7 +10,7 @@
   }
 
   &.accent {
-font-size: 1.2rem;
+    font-size: 1.2rem;
     letter-spacing: .2rem;
   }
 
@@ -29,6 +29,13 @@ font-size: 1.2rem;
       @include transition-border-color;
       @include flex-full;
     }
+  }
+
+  &.headway {
+    letter-spacing: .2rem;
+    border-bottom: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, var(--primary) 0%, var(--primary) 3rem, var(--light-gray) 3rem, var(--light-gray) 100%);
   }
 }
 
