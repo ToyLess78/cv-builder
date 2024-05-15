@@ -39,9 +39,23 @@ const accentPalette = [
     'rgba(91, 49, 164, 1)'
 ];
 
+const headwayPalette = [
+    'rgba(22, 38, 57, 1)',
+    'rgba(32, 42, 81, 1)',
+    'rgba(42, 37, 81, 1)',
+    'rgba(32, 81, 66, 1)',
+    'rgba(22, 57, 46, 1)',
+    'rgba(26, 27, 57, 1)',
+    'rgba(40, 15, 27, 1)',
+    'rgba(31, 76, 81, 1)',
+    'rgba(193, 177, 75, 1)',
+    'rgba(57, 53, 22, 1)'
+];
+
 const palettesMap = new Map();
 palettesMap.set(TemplateConstants.Strong, strongPalette);
 palettesMap.set(TemplateConstants.Breeze, breezePalette);
 palettesMap.set(TemplateConstants.Accent, accentPalette);
+palettesMap.set(TemplateConstants.Headway, headwayPalette);
 
 export default palettesMap;
