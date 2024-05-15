@@ -64,18 +64,43 @@ export const UploadButton: React.FC<IEditButtonProps> = ({onClick, offset = 0}) 
     );
 };
 
-export const ShowAsideButton: React.FC<IEditButtonProps> = ({
-                                                                onClick,
-                                                                title,
-                                                                offset = 0,
-                                                                style,
-                                                                toggleClass = false
-                                                            }) => {
+export const ShowAsideButton: React.FC<IEditButtonProps> = (
+    {
+        onClick,
+        title,
+        offset = 0,
+        style,
+        toggleClass = false
+    }
+) => {
     return (
         <div className={ toggleClass ? styles.toggle : styles.show }>
             <MdOutlineVisibility
                 size="1.2rem"
                 className={ styles.hide }
+                data-tooltip-id="tooltip"
+                data-tooltip-content={ `Show ${ title }` }
+                data-tooltip-offset={ offset }
+                onClick={ onClick }
+                style={ style }
+            />
+        </div>
+    );
+};
+
+export const ShowMaineButton: React.FC<IEditButtonProps> = (
+    {
+        onClick,
+        title,
+        offset = 0,
+        style,
+    }
+) => {
+    return (
+        <div className={ styles.show }>
+            <MdOutlineVisibility
+                size="1.2rem"
+                className={ styles.main }
                 data-tooltip-id="tooltip"
                 data-tooltip-content={ `Show ${ title }` }
                 data-tooltip-offset={ offset }
