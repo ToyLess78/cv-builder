@@ -1,0 +1,73 @@
+@import "../../../assets/mixins";
+
+.headway {
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1.7fr 3fr;
+  grid-template-rows: min-content max-content 5rem 5rem 1fr;
+  gap: 0 1rem;
+  text-align: left;
+
+  .contacts {
+    grid-area: 1 / 1 / 2 / 3;
+
+    ul {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+  }
+
+  .header {
+    grid-area: 2 / 1 / 4 / 3;
+    height: 13rem;
+    background-color: var(--primary);
+  }
+
+  .info {
+    grid-area: 2 / 1 / 3 / 3;
+    color: white;
+  }
+
+  .image {
+    grid-area: 3 / 1 / 5 / 2;
+    position: relative;
+
+    img {
+      margin-left: 20%;
+        position: relative;
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        padding: .3rem;
+        border: 2px solid var(--primary);
+      }
+  }
+
+  .aside {
+    grid-area: 5 / 1 / 6 / 2;
+    padding: 1rem;
+
+    section:first-child {
+      padding-bottom: 2rem;
+    }
+
+  }
+
+  .main {
+    grid-area: 4 / 2 / 6 / 3;
+    padding: 0 1rem 0 2.5rem;
+    margin-top: 2rem;
+    border-left: 1px solid var(--light-gray);
+  }
+}
+
+@media print {
+  .header {
+    @include media-print;
+  }
+}
