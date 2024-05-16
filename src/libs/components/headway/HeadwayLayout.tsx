@@ -16,7 +16,7 @@ export const HeadwayLayout: React.FC<IHeadwayLayoutProps> = ({main, aside, info,
             <div className={ styles.header }></div>
             <div className={ styles.info }>{info}</div>
             <div className={ styles.image }>
-                <Image styles={styles.img}/>
+                    <Image styles={styles.img}/>
             </div>
             <div className={ styles.aside }>
                 {aside}
