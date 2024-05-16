@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
                     <Title text={info.title}/>
                 </Summary>
             </div>
-            <Image styles={styles.img}/>
+            <Image styles={styles.img} isPolygon/>
         </header>
     )
 }
