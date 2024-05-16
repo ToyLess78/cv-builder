@@ -58,7 +58,7 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
                     onClick={ () => dispatch(setIsEdit(RootConstants.Contacts)) }
                 />}
 
-            {isSocials && !data && social &&
+            {isSocials && !data && social && !isIcons &&
                 <HideButton
                     onClick={ handleSetIsSocial }
                     title={RootConstants.Social}
@@ -100,14 +100,14 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
                     <a href={ `tel:${ contacts.phone }` }>{ contacts.phone }</a>
 
                 </li>
-                <CollapsedWrapper
+                {!isIcons && <CollapsedWrapper
                     isShow={ isSocials }
                     content={ <li>
                         <Social data={ contacts }/>
                     </li> }
-                />
+                />}
 
-                { !isSocials && !data && social &&
+                { !isSocials && !data && social && !isIcons &&
                     <ShowButton
                         title={ RootConstants.Social }
                         offset={ 20 }
