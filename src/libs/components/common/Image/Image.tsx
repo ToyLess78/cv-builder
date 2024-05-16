@@ -54,7 +54,7 @@ export const Image: React.FC<IImageProps> = ({styles}) => {
                             title="Photo"
                             onClick={ () => setOpacity(!opacity) }
                         /> }
-                    <img src={ image?.dataURL || 'avatar.jpg' } alt='photo' style={ { opacity: Number(opacity) } }/>
+                    <img src={ image?.dataURL || 'avatar.jpg' } alt='photo' style={ { opacity: Number(opacity), filter: 'grayscale(85%)'} }/>
                 </section>
             ) }
         </ImageUploading>
