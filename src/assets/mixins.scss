@@ -39,6 +39,13 @@
   -o-transition: opacity .4s ease;
   transition: opacity .4s ease;
 }
+@mixin transition-margin-top {
+  -webkit-transition: margin-top .4s ease;
+  -moz-transition: margin-top .4s ease;
+  -ms-transition: margin-top .4s ease;
+  -o-transition: margin-top .4s ease;
+  transition: margin-top .4s ease;
+}
 
 @mixin transition-border-width {
   -webkit-transition: border-width .4s ease;
