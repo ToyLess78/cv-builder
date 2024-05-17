@@ -96,8 +96,8 @@ export const ShowMaineButton: React.FC<IEditButtonProps> = (
         style,
     }
 ) => {
+
     return (
-        <div className={ styles.show }>
             <MdOutlineVisibility
                 size="1.2rem"
                 className={ styles.main }
@@ -107,7 +107,6 @@ export const ShowMaineButton: React.FC<IEditButtonProps> = (
                 onClick={ onClick }
                 style={ style }
             />
-        </div>
     );
 };
 

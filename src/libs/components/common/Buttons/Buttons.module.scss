@@ -73,15 +73,18 @@
   .hide {
     top: .9rem;
   }
-  .main {
-    margin-top: 0;
-    @include button;
-    margin-left: -1.2rem;
-  }
-
 }
+
+.main {
+  top: -1rem;
+  @include button-base;
+  left: -1.3rem;
+  z-index: 50;
+}
+
 .toggle {
   position: relative;
+
   .hide {
     top: -1rem;
   }
