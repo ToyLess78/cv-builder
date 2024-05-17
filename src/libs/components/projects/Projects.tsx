@@ -3,7 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { IProject, removeProject, selectProjects, setEditedProjectId, setIsProjects } from '~/slices/projects.slice';
 import styles from './Projects.module.scss';
-import { AddItemButton, CollapsedWrapper, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
+import {
+    AddItemButton,
+    CollapsedWrapper,
+    EditButton,
+    HideButton,
+    RemoveButton,
+    ShowMaineButton
+} from '~/components';
 import { setIsEdit } from '~/slices/edit.slice';
 import nextId from 'react-id-generator';
 import { FiExternalLink } from 'react-icons/fi';
@@ -121,10 +128,9 @@ export const Projects: FC<IProjectsProps> = ({children, projectsItem = null}) =>
             }
 
             {!isProjects && !projectsItem &&
-                <div className={`${styles.show} ${styles[template]}`}>
-                    <ShowAsideButton
+                <div className={ styles.show }>
+                    <ShowMaineButton
                         title={ title }
-                        style={ {top: template === TemplateConstants.Breeze ?'-2rem' : '2rem'} }
                         onClick={ () => dispatch(setIsProjects(true)) }
                     />
                 </div>}
