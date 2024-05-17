@@ -11,7 +11,7 @@ import {
 } from '~/slices/education.slice';
 import { setIsEdit } from '~/slices/edit.slice';
 import nextId from 'react-id-generator';
-import { AddItemButton, CollapsedWrapper, EditButton, HideButton, RemoveButton, ShowAsideButton } from '~/components';
+import { AddItemButton, CollapsedWrapper, EditButton, HideButton, RemoveButton, ShowMaineButton } from '~/components';
 import RootConstants from '~/constants/root.constants';
 import { selectTheme } from '~/slices/theme.slice';
 import TemplateConstants from '~/constants/template.constants';
@@ -117,10 +117,9 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
             }
 
             {!isEducation && !educationItem &&
-                <div className={styles.show}>
-                    <ShowAsideButton
+                <div className={ styles.show }>
+                    <ShowMaineButton
                         title={ title }
-                        style={ {top: template === TemplateConstants.Breeze ?'-3rem' : '-1rem'} }
                         onClick={ () => dispatch(setIsEducation(true)) }
                     />
                 </div>}
