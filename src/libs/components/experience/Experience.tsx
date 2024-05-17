@@ -112,9 +112,8 @@ export const Experience: React.FC<IExperienceProps> = ({children, experienceItem
                 />
   }
             {!isExperience && !experienceItem &&
-                <div className={`${styles.show} ${styles[template]}`}>
+                <div className={ styles.show }>
                     <ShowMaineButton
-                        toggleClass={true}
                         title={ title }
                         onClick={ () => dispatch(setIsExperience(true)) }
                     />

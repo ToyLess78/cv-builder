@@ -26,23 +26,4 @@
 }
 .show {
   position: relative;
-
-  &.breeze, {
-    margin-top: 2rem;
-    svg {
-      top: -2rem;
-    }
-  }
-  &.strong {
-    //svg {
-    //  top: 2rem;
-    //}
-  }
-
-  &.accent {
-    //margin-top: 2rem;
-    //svg {
-    //  top: -1rem;
-    //}
-  }
 }
