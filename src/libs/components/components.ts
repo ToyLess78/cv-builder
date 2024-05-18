@@ -42,3 +42,4 @@ export { CollapsedWrapper } from '~/components/common/CollapsedWrapper/Collapsed
 export { AccentLayout } from './accent/AccentLayout';
 export { Title } from './common/Title/Title';
 export { HeadwayLayout } from '~/components/headway/HeadwayLayout';
+export { ReplaceAsideItem } from '~/components/headway/ReplaceAsideItem';
