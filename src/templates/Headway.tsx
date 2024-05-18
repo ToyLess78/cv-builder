@@ -7,7 +7,7 @@ import {
     HeadwayLayout,
     Languages,
     Main,
-    Skills,
+    Skills, SocialsBox,
     Title
 } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -61,11 +61,10 @@ const Headway: React.FC = () => {
                     <Languages>
                         <Title text={RootConstants.Languages}/>
                     </Languages>
+                    <SocialsBox />
                 </Aside>
             }
-            // image={
-            //     <Image styles={styles.img}/>
-            // }
+
         />
     )
 };
