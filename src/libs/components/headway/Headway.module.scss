@@ -104,8 +104,22 @@
   }
 }
 
+
+.replace {
+  position: absolute;
+  left: -1.2rem;
+  top: 2.6rem;
+  z-index: 50;
+  @include button-base;
+}
+
 @media print {
-  .header, img {
+
+  .header, img, .item {
     @include media-print;
+  }
+
+  .replace {
+    display: none;
   }
 }
