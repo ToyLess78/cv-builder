@@ -24,15 +24,26 @@
     margin-top: 1rem;
   }
 }
+
 .breeze,
-.accent {
+.accent,
+.headway {
   text-align: left;
-  flex-grow: 1;
+  @include flex-full;
 }
+
 .strong {
   text-align: center;
   text-transform: uppercase;
   border: 2px solid var(--secondary-text);
-  flex-grow: 1;
+  @include flex-full;
   padding: 1rem 0;
+}
+
+.headway {
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem;
 }
