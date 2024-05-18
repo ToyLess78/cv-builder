@@ -32,6 +32,8 @@ const CurrentEdit: React.FC = () => {
             return <EditLanguage/>;
         case RootConstants.Contacts:
             return <EditContacts/>;
+        case RootConstants.Social:
+            return <EditContacts isShare/>;
         case RootConstants.Experience:
             return <EditExperience/>;
         case RootConstants.Education:
