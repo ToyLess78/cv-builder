@@ -7,7 +7,7 @@ import { RootState } from '~/store/store';
 import { ContactsState, selectContacts, setIsSocials } from '~/slices/contacts.slice';
 import { AsideItem } from '~/components/common/Aside/AsideItem';
 import styles from './Contacts.module.scss';
-import { EditButton, HideButton, ShowButton } from '~/components/common/Buttons/Buttons';
+import { EditButton, HideButton, ShowAsideButton, ShowButton } from '~/components/common/Buttons/Buttons';
 import { setIsEdit } from '~/slices/edit.slice';
 import { IconsMap } from '~/components/contacts/IconsMap';
 import RootConstants from '~/constants/root.constants';
@@ -21,7 +21,6 @@ interface ISocialProps {
 interface IContactProps extends ISocialProps {
     isIcons?: boolean;
     children?: ReactNode;
-    social?: boolean;
 }
 
 export const Social: React.FC<ISocialProps> = ({data}) => {
@@ -37,7 +36,7 @@ export const Social: React.FC<ISocialProps> = ({data}) => {
     );
 };
 
-export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, data = null, social = true}) => {
+export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, data = null}) => {
     const contactState = useSelector((state: RootState) => selectContacts(state));
     const contacts = data || contactState;
     const {isSocials} = contacts;
@@ -47,7 +46,7 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
     };
 
     const {template} = useSelector((state: RootState) => selectTheme(state));
-    const iconClass = (isSocials) ? styles.opacity  : styles.visible;
+    const iconClass = (isSocials) ? styles.opacity : styles.visible;
     const letterClass = (!isSocials) ? styles.opacity  : styles.visible;
 
     return (
@@ -58,11 +57,11 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
                     onClick={ () => dispatch(setIsEdit(RootConstants.Contacts)) }
                 />}
 
-            {isSocials && !data && social && !isIcons &&
+            { isSocials && !data && !isIcons &&
                 <HideButton
                     onClick={ handleSetIsSocial }
-                    title={RootConstants.Social}
-                />}
+                    title={ RootConstants.Social }
+                /> }
 
 
             { children }
@@ -107,7 +106,7 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
                     </li> }
                 />}
 
-                { !isSocials && !data && social && !isIcons &&
+                { !isSocials && !data && !isIcons &&
                     <ShowButton
                         title={ RootConstants.Social }
                         offset={ 20 }
@@ -119,4 +118,50 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
         </AsideItem>
 
     )
-}
+};
+
+export const SocialsBox: React.FC<IContactProps> = ({data = null}) => {
+
+    const contactState = useSelector((state: RootState) => selectContacts(state));
+    const contacts = data || contactState;
+    const {isSocials} = contacts;
+    const dispatch = useDispatch();
+    const handleSetIsSocial = () => {
+        dispatch(setIsSocials(!isSocials));
+    };
+    const {template} = useSelector((state: RootState) => selectTheme(state));
+
+    return (
+        <div className={`${styles.socials} ${styles[template]}`}>
+            { !isSocials && !data &&
+                <ShowAsideButton
+                    title={ RootConstants.Social }
+                    offset={ 20 }
+                    onClick={ handleSetIsSocial }
+                    toggleClass
+                />
+            }
+            <CollapsedWrapper
+                isShow={ isSocials }
+                buttons={
+                    <>
+                        { !data &&
+                            <EditButton
+                                title={ RootConstants.Social }
+                                onClick={ () => dispatch(setIsEdit(RootConstants.Social)) }
+                            /> }
+
+                        { isSocials && !data &&
+                            <HideButton
+                                onClick={ handleSetIsSocial }
+                                title={ RootConstants.Social }
+                            /> }
+                    </>
+                }
+                content={
+                    <Social data={ contacts }/>
+                }
+            />
+        </div>
+    );
+};

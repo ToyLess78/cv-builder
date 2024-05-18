@@ -8,7 +8,8 @@
     min-height: 6.7rem;
   }
 
-  &.accent {
+  &.accent,
+  &.headway {
     li {
       svg {
         color: var(--primary);
@@ -88,7 +89,8 @@
   top: -1px;
   right: .5rem;
 
-  &.accent {
+  &.accent,
+  &.headway {
     li[data-pc-section="menuitem"] {
       a {
         @include hover-primary;
@@ -134,7 +136,8 @@
   justify-content: space-between;
   margin-bottom: -.5rem;
 
-  &.accent {
+  &.accent,
+  &.headway {
     a[aria-selected="true"] svg {
       color: var(--primary);
     }
@@ -159,6 +162,25 @@
 
   svg {
     @include button-hover-base;
+  }
+
+}
+
+.socials {
+  position: relative;
+  padding-bottom: 1rem;
+  &.headway {
+    .social {
+      justify-content: space-evenly;
+      svg {
+        color: var(--primary);
+      }
+    }
+  }
+  .social {
+    gap: 1rem;
+    padding-left: 1rem;
+    padding-top: 0.2rem;
   }
 
 }

@@ -7,7 +7,7 @@ export { AdditionalList } from '~/components/additional/AdditionalList';
 export { ColorPicker } from '~/components/common/ColorPicker/ColorPicker';
 export { Languages } from '~/components/languages/Languages';
 export { Skills } from '~/components/skills/Skills';
-export { Contacts } from '~/components/contacts/Contacts';
+export { Contacts, SocialsBox } from '~/components/contacts/Contacts';
 export { EditorCustom } from '~/components/common/Editor/EditorCustom';
 export { Header } from '~/components/header/Header';
 export { Image } from '~/components/common/Image/Image';

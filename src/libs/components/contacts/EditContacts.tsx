@@ -11,8 +11,10 @@ import { IconsMap } from '~/components/contacts/IconsMap';
 import { setIsEdit } from '~/slices/edit.slice';
 import RootConstants from '~/constants/root.constants';
 import { selectTheme } from '~/slices/theme.slice';
+import TemplateConstants from '~/constants/template.constants';
+import { Social } from '~/components/contacts/Contacts';
 
-const EditContacts: React.FC = () => {
+const EditContacts: React.FC<{isShare?: boolean}> = ({isShare = false}) => {
     const contactState = useSelector((state: RootState) => selectContacts(state));
     const [editContacts, setEditContacts] = useState(contactState);
 
@@ -73,17 +75,21 @@ const EditContacts: React.FC = () => {
     }, [editContacts.data])
 
     const {template} = useSelector((state: RootState) => selectTheme(state));
+    const isIcons = (template === TemplateConstants.Headway);
 
     return (
         <EditWrapper
             preview={
-                <Contacts data={ editContacts }>
+                !isShare ? <Contacts data={ editContacts } isIcons={isIcons}>
                     <Title text={ RootConstants.Contacts }/>
-                </Contacts>
+                </Contacts> :
+                    <div className={`${styles.socials} ${styles[template]}`}>
+                        <Social data={ editContacts }/>
+                    </div>
             }
             edit={
                 <div className={ styles.wrapper }>
-                    <div className={ styles.column }>
+                    {!isShare && <div className={ styles.column }>
                         <UnderlineInput
                             label="location"
                             value={ editContacts.location }
@@ -104,13 +110,13 @@ const EditContacts: React.FC = () => {
                             onChange={ setPhone }
                         />
 
-                        <CheckBox
+                        {!isIcons && !isShare &&  <CheckBox
                             checked={ editContacts.isSocials }
                             onChange={ setIsSocials }
                             title="Show socials"
-                        />
-                    </div>
-                    <CollapsedWrapper
+                        />}
+                    </div>}
+                    {(!isIcons || isShare) && <CollapsedWrapper
                         isShow={editContacts.isSocials}
                         content={
                             <>
@@ -157,7 +163,7 @@ const EditContacts: React.FC = () => {
 
                             </>
                         }
-                    />
+                    />}
 
                 </div>
             }
