@@ -70,7 +70,7 @@ export const Certifications: React.FC<ICertificatesProps> = ({children, data = n
 
             { isCertifications && data &&
 
-                <AsideItem>
+                <AsideItem style={{flexGrow: '1', padding: '2rem'}}>
 
                     { children }
                     <ul

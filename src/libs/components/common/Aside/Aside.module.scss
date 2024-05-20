@@ -21,12 +21,20 @@
     &.accent {
         padding: 0 .5rem 3rem .5rem;
     }
-    &.headway {
+    &.headway,
+    &.success {
         padding-left: .7rem;
     }
 
     &.breeze {
         flex-direction: row;
         gap: 2rem 0;
+    }
+
+    &.advance {
+        padding-left: 2.5rem;
+        padding-right: 1rem;
+        background-color: var(--primary);
+        color: var(--secondary-white);
     }
 }

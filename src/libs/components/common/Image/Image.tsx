@@ -12,9 +12,10 @@ import TemplateConstants from '~/constants/template.constants';
 interface IImageProps {
     styles: string;
     isPolygon?: boolean;
+    isHide?: boolean;
 }
 
-export const Image: React.FC<IImageProps> = ({styles, isPolygon = false}) => {
+export const Image: React.FC<IImageProps> = ({styles, isPolygon = false, isHide = false}) => {
 
     const [image, setImage] = React.useState<ImageType | null>(null);
     const [opacity, setOpacity] = useState(true);
@@ -26,7 +27,7 @@ export const Image: React.FC<IImageProps> = ({styles, isPolygon = false}) => {
     };
 
     const {template} = useSelector((state: RootState) => selectTheme(state));
-    const avatar = template === TemplateConstants.Headway ? 'avatar2.jpg' : 'avatar.jpg';
+    const avatar = template === TemplateConstants.Breeze ? 'avatar-breeze.jpg' : 'avatar.jpg';
 
     return (
         <ImageUploading
@@ -48,11 +49,11 @@ export const Image: React.FC<IImageProps> = ({styles, isPolygon = false}) => {
                             <UploadButton
                                 onClick={ () => onImageUpdate(0) }
                             />
-                            <HideButton
+                            {!isHide && <HideButton
                                 offset={ 0 }
                                 title="Photo"
                                 onClick={ () => setOpacity(!opacity) }
-                            />
+                            />}
                         </> }
 
                     { !opacity &&

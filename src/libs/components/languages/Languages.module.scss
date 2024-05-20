@@ -25,7 +25,7 @@
 
     &::after {
       content: '';
-      border-bottom: 2px dotted var(--secondary-text);
+      border-bottom: 2px dotted var(--gray);
       flex: 1;
       margin: 10px 10px;
     }

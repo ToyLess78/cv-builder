@@ -69,7 +69,7 @@ export const Languages: React.FC<ILanguagesProps> = ({children, data = null, onR
             />}
 
             {data && isLanguages &&
-                <AsideItem>
+                <AsideItem style={{padding: '2rem'}}>
                     {children}
                     <ul
                         className={ styles.languages }
