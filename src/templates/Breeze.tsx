@@ -15,6 +15,7 @@ import {
     Main,
     Skills
 } from '~/components/components';
+import RootConstants from "~/constants/root.constants";
 
 
 export const Breeze: React.FC = () => {
@@ -47,11 +48,11 @@ export const Breeze: React.FC = () => {
                     </Certifications>
 
                     <Languages>
-                        <Title text='languages'/>
+                        <Title text={RootConstants.Languages}/>
                     </Languages>
 
                     <Contacts>
-                        <Title text='contacts'/>
+                        <Title text={RootConstants.Contacts}/>
                     </Contacts>
 
                 </Aside>

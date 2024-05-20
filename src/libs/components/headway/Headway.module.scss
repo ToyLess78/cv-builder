@@ -35,7 +35,7 @@
 
   .info {
     grid-area: 2 / 1 / 3 / 3;
-    color: white;
+    color: var(--secondary-white);
     text-transform: uppercase;
     letter-spacing: 0.5rem;
     padding-top: 1rem;
@@ -89,7 +89,7 @@
   .aside {
     grid-area: 5 / 1 / 6 / 2;
     padding-right: 2rem;
-    @include transition-margin-top;
+    @include transition-margin;
 
     section:first-child {
       padding-bottom: 2rem;
