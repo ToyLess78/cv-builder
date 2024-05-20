@@ -63,9 +63,9 @@
 .panel {
   background-color: white;
   padding: .5rem;
-  box-shadow: rgba(0, 0, 0, 0.133) 0 1px 1px 0, rgba(0, 0, 0, 0.11) 0 1px 1px 0;
+  @include box-shadow;
 
   li:hover {
-    background: var(--hover-bg);
+    background: var(--secondary-white);
   }
 }

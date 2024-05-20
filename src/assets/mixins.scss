@@ -24,6 +24,12 @@
   flex: 1 1 auto;
 }
 
+@mixin box-shadow {
+  box-shadow: rgba(0, 0, 0, 0.133) 0 1px 1px 0, rgba(0, 0, 0, 0.11) 0 1px 1px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.133) 0 1px 1px 0, rgba(0, 0, 0, 0.11) 0 1px 1px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.133) 0 1px 1px 0, rgba(0, 0, 0, 0.11) 0 1px 1px 0;
+}
+
 @mixin transition-color {
   -webkit-transition: color .4s ease;
   -moz-transition: color .4s ease;
@@ -39,12 +45,13 @@
   -o-transition: opacity .4s ease;
   transition: opacity .4s ease;
 }
-@mixin transition-margin-top {
-  -webkit-transition: margin-top .4s ease;
-  -moz-transition: margin-top .4s ease;
-  -ms-transition: margin-top .4s ease;
-  -o-transition: margin-top .4s ease;
-  transition: margin-top .4s ease;
+
+@mixin transition-margin {
+  -webkit-transition: margin .4s ease;
+  -moz-transition: margin .4s ease;
+  -ms-transition: margin .4s ease;
+  -o-transition: margin .4s ease;
+  transition: margin .4s ease;
 }
 
 @mixin transition-border-width {

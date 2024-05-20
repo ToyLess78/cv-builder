@@ -10,6 +10,9 @@
   }
 
   @include main-block;
+  &.advance {
+    padding-bottom: 2rem;
+  }
 }
 
 .inputs {

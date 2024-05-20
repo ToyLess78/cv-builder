@@ -1,7 +1,7 @@
-import { FC, ReactNode, useState } from 'react';
+import {FC, ReactNode, useState} from 'react';
 import styles from './Education.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '~/store/store';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '~/store/store';
 import {
     IEducation,
     removeEducation,
@@ -9,12 +9,13 @@ import {
     setEditedEducationId,
     setIsEducation
 } from '~/slices/education.slice';
-import { setIsEdit } from '~/slices/edit.slice';
+import {setIsEdit} from '~/slices/edit.slice';
 import nextId from 'react-id-generator';
-import { AddItemButton, CollapsedWrapper, EditButton, HideButton, RemoveButton, ShowMaineButton } from '~/components';
+import {AddItemButton, CollapsedWrapper, EditButton, HideButton, RemoveButton, ShowMaineButton} from '~/components';
 import RootConstants from '~/constants/root.constants';
-import { selectTheme } from '~/slices/theme.slice';
+import {selectTheme} from '~/slices/theme.slice';
 import TemplateConstants from '~/constants/template.constants';
+import {selectContacts} from "~/slices/contacts.slice";
 
 interface IEducationProps {
     children?: ReactNode;
@@ -52,21 +53,30 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
         return () => clearTimeout(timeoutId);
     };
 
+    const addItemButtonStyle = template === TemplateConstants.Advance ? {bottom: '2rem'} : {bottom: '-.4rem'};
+
+    const hideButtonStyle = template === TemplateConstants.Advance ? {bottom: '3rem'} : {bottom: '.6rem'};
+
+    const {isSocials} = useSelector((state: RootState) => selectContacts(state));
+
+    const sectionStyle = (template === TemplateConstants.Advance && isSocials) ? {borderBottom: '1px solid var(--light-gray)'} : {};
+
+
     return (
         <>
             {!educationItem &&
                 <CollapsedWrapper
                     isShow={isEducation}
                     buttons={
-                    <>
-                        <HideButton
-                            title={ title }
-                            style={ {bottom: '.6rem'} }
-                            offset={ 0 }
+                        <>
+                            <HideButton
+                                title={title}
+                                style={hideButtonStyle}
+                                offset={0}
                             onClick={ () => dispatch(setIsEducation(false)) }
                         />
                         <AddItemButton
-                            style={ {bottom: '-.4rem'} }
+                            style={addItemButtonStyle}
                             title={RootConstants.Education}
                             onClick={ handlerAddEducation }
                         />
@@ -74,16 +84,18 @@ export const Education: FC<IEducationProps> = ({children, educationItem = null})
                     }
 
                     content={
-                        <section className={`${styles.education} ${styles[template]}`}>
-                            { children }
-                            <div className={ styles.wrapper }>
-                                { data.map(ed => (
+                        <section
+                            className={`${styles.education} ${styles[template]}`}
+                            style={sectionStyle}>
+                            {children}
+                            <div className={styles.wrapper}>
+                                {data.map(ed => (
 
                                     <CollapsedWrapper
-                                        key={ ed.id }
-                                        isShow={ isItem.some(id => id === ed.id) }
+                                        key={ed.id}
+                                        isShow={isItem.some(id => id === ed.id)}
                                         content={
-                                            <div className={ styles.title }>
+                                            <div className={styles.title}>
                                                 <EditButton
                                                     style={ {left: template === TemplateConstants.Breeze ? '-3.7rem' : '-1.9rem'} }
                                                     title={ ed.degree }
