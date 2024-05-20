@@ -15,6 +15,7 @@ export interface ContactsState {
     location: string;
     email: string;
     phone: string;
+    linkedIn: string;
     data: ISocialItem[];
 
 }
@@ -24,6 +25,7 @@ const defaultContactsState = {
     location: 'Ukraine',
     email: 'hello@example.com',
     phone: '001122334455',
+    linkedIn: 'https://www.linkedin.com/',
     data: [
         {
             id: 'linkedIn',

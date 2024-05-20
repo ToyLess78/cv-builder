@@ -4,12 +4,19 @@
   text-align: left;
   @include flex-column;
 
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: .5rem;
+  }
+
   &.breeze {
     min-height: 6.7rem;
   }
 
   &.accent,
-  &.headway {
+  &.headway,
+  &.success {
     li {
       svg {
         color: var(--primary);
@@ -22,9 +29,23 @@
     }
   }
 
-  a {
-    text-decoration: none;
-    margin-left: .5rem;
+  &.advance {
+    a {
+      color: var(--light-gray);
+    }
+  }
+
+  &.success {
+    li {
+      display: flex;
+      &:not(:first-child) {
+        padding-top: .3rem;
+      }
+      a {
+        border-bottom: 1px solid var(--light-gray);
+        @include flex-full;
+      }
+    }
   }
 
   .icon {
@@ -32,6 +53,7 @@
     position: relative;
     width: 1rem;
     height: 1rem;
+
     svg, span {
       @include transition-opacity;
       position: absolute;
@@ -61,6 +83,10 @@
   display: flex;
   gap: .5rem;
   flex-wrap: wrap;
+
+  &:has(a:nth-child(4)) {
+    justify-content: space-around;
+  }
 }
 
 .wrapper {
@@ -169,14 +195,28 @@
 .socials {
   position: relative;
   padding-bottom: 1rem;
+
+  .social {
+
+    &:has(a:nth-child(4)) {
+      justify-content: space-evenly;
+    }
+  }
+
+  &.advance {
+    .social {
+      padding-top: 1rem;
+    }
+  }
+
   &.headway {
     .social {
-      justify-content: space-evenly;
       svg {
         color: var(--primary);
       }
     }
   }
+
   .social {
     gap: 1rem;
     padding-left: 1rem;

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { FaPhone } from 'react-icons/fa';
+import { FaLinkedin, FaPhone } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
 import { IoMailSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,6 +20,7 @@ interface ISocialProps {
 
 interface IContactProps extends ISocialProps {
     isIcons?: boolean;
+    isLinkedIn?: boolean;
     children?: ReactNode;
 }
 
@@ -36,7 +37,7 @@ export const Social: React.FC<ISocialProps> = ({data}) => {
     );
 };
 
-export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, data = null}) => {
+export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, data = null, isLinkedIn = false}) => {
     const contactState = useSelector((state: RootState) => selectContacts(state));
     const contacts = data || contactState;
     const {isSocials} = contacts;
@@ -47,17 +48,18 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
 
     const {template} = useSelector((state: RootState) => selectTheme(state));
     const iconClass = (isSocials) ? styles.opacity : styles.visible;
-    const letterClass = (!isSocials) ? styles.opacity  : styles.visible;
+    const letterClass = (!isSocials) ? styles.opacity : styles.visible;
+    const style = data ? {flexGrow: '1', padding: '2rem'} : {};
 
     return (
-        <AsideItem>
+        <AsideItem style={ style }>
             { !data &&
                 <EditButton
-                    title={RootConstants.Contacts}
+                    title={ RootConstants.Contacts }
                     onClick={ () => dispatch(setIsEdit(RootConstants.Contacts)) }
-                />}
+                /> }
 
-            { isSocials && !data && !isIcons &&
+            { isSocials && !data && (!isIcons || !isLinkedIn) &&
                 <HideButton
                     onClick={ handleSetIsSocial }
                     title={ RootConstants.Social }
@@ -99,6 +101,11 @@ export const Contacts: React.FC<IContactProps> = ({isIcons = false, children, da
                     <a href={ `tel:${ contacts.phone }` }>{ contacts.phone }</a>
 
                 </li>
+                {isLinkedIn &&
+                <li>
+                    <FaLinkedin className={styles.visible} />
+                    <a href={ contacts.linkedIn }>www.linkedin.com</a>
+                </li>}
                 {!isIcons && <CollapsedWrapper
                     isShow={ isSocials }
                     content={ <li>

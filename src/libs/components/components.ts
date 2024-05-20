@@ -43,3 +43,5 @@ export { AccentLayout } from './accent/AccentLayout';
 export { Title } from './common/Title/Title';
 export { HeadwayLayout } from '~/components/headway/HeadwayLayout';
 export { ReplaceAsideItem } from '~/components/headway/ReplaceAsideItem';
+export { AdvanceLayout } from '~/components/advance/AdvanceLayout';
+export { SuccessLayout  } from '~/components/success/SuccessLayout';
