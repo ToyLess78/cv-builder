@@ -8,7 +8,9 @@ import { Loading } from '~/components';
 
 const Strong = lazy(() => import('./Strong'));
 const Accent = lazy(() => import('./Accent'));
+const Advance = lazy(() => import('./Advance'));
 const Headway = lazy(() => import('./Headway'));
+const Success = lazy(() => import('./Success'));
 
 const CurrentTemplate: React.FC = () => {
     const {template} = useSelector((state: RootState) => selectTheme(state));
@@ -31,10 +33,22 @@ const CurrentTemplate: React.FC = () => {
                     <Accent/>
                 </Suspense>);
         }
+        case TemplateConstants.Advance: {
+            return (
+                <Suspense fallback={ <Loading/> }>
+                    <Advance/>
+                </Suspense>);
+        }
         case TemplateConstants.Headway: {
             return (
                 <Suspense fallback={ <Loading/> }>
                     <Headway/>
+                </Suspense>);
+        }
+        case TemplateConstants.Success: {
+            return (
+                <Suspense fallback={ <Loading/> }>
+                    <Success/>
                 </Suspense>);
         }
         default: {

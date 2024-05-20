@@ -33,6 +33,10 @@ const EditContacts: React.FC<{isShare?: boolean}> = ({isShare = false}) => {
         setEditContacts({...editContacts, phone: e.currentTarget.value});
     };
 
+    const setLinkedIn = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEditContacts({...editContacts, linkedIn: e.currentTarget.value});
+    };
+
     const editLink = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
         setEditContacts({
             ...editContacts,
@@ -75,12 +79,14 @@ const EditContacts: React.FC<{isShare?: boolean}> = ({isShare = false}) => {
     }, [editContacts.data])
 
     const {template} = useSelector((state: RootState) => selectTheme(state));
-    const isIcons = (template === TemplateConstants.Headway);
+    const isIcons = (template === TemplateConstants.Headway || template === TemplateConstants.Advance || template === TemplateConstants.Success);
+    const isLinkedIn = template === TemplateConstants.Success;
 
     return (
         <EditWrapper
+
             preview={
-                !isShare ? <Contacts data={ editContacts } isIcons={isIcons}>
+                !isShare ? <Contacts data={ editContacts } isIcons={isIcons} isLinkedIn={isLinkedIn}>
                     <Title text={ RootConstants.Contacts }/>
                 </Contacts> :
                     <div className={`${styles.socials} ${styles[template]}`}>
@@ -109,6 +115,13 @@ const EditContacts: React.FC<{isShare?: boolean}> = ({isShare = false}) => {
                             value={ editContacts.phone }
                             onChange={ setPhone }
                         />
+                        {isLinkedIn ?
+                            <UnderlineInput
+                                label="linkedIn"
+                                type="link"
+                                value={ editContacts.linkedIn }
+                                onChange={ setLinkedIn }
+                            /> : ''}
 
                         {!isIcons && !isShare &&  <CheckBox
                             checked={ editContacts.isSocials }
