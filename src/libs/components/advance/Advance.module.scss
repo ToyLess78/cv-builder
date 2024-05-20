@@ -1,0 +1,59 @@
+@import "../../../assets/mixins";
+
+.advance {
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1.5fr 3fr;
+  grid-template-rows: min-content 1fr;
+  gap: 0 2rem;
+  grid-template-areas:
+    "header main"
+    "aside main";
+  text-align: left;
+
+  .aside {
+    grid-area: aside;
+    background-color: var(--primary);
+    color: var(--secondary-white);
+    padding: 1rem 0;
+  }
+
+  .header {
+    grid-area: header;
+    border: 2px solid var(--primary);
+    padding-bottom: 1rem;
+
+    .buttons {
+      position: relative;
+      margin-left: -.2rem;
+    }
+
+    .img {
+      @include flex-center;
+      position: relative;
+      padding: 3rem 3rem 0 3.2rem;
+      margin-left: -.2rem;
+
+      img {
+        max-width: 100%;
+        border-radius: 50%;
+        @include box-shadow;
+      }
+    }
+  }
+
+  .main {
+    grid-area: main;
+
+    ul {
+      list-style: square;
+    }
+  }
+}
+
+@media print {
+  .aside {
+    @include media-print;
+  }
+}
