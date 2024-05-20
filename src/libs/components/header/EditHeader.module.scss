@@ -27,9 +27,18 @@
 
 .breeze,
 .accent,
-.headway {
+.headway,
+.advance,
+.success {
   text-align: left;
   @include flex-full;
+}
+
+.success {
+  text-transform: uppercase;
+  background-color: var(--primary);
+  padding: 1rem;
+  color: white;
 }
 
 .strong {

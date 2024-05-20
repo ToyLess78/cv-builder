@@ -49,7 +49,7 @@ const EditLanguage: React.FC = () => {
         <EditWrapper
             width='35rem'
             preview={
-            <div style={{width: '17rem'}}>
+            <div style={{flexGrow: '1'}}>
                 <Languages
                     data={languageState}
                     onRemove={removeLanguage}

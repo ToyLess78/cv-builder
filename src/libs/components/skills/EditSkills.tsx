@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { selectSkills, setAdditional, setSkills } from '~/slices/skills.slice';
+import React, {useEffect, useState} from 'react';
+import {selectSkills, setAdditional, setSkills} from '~/slices/skills.slice';
 import styles from './Skills.module.scss';
-import { AsideItem, AutoCompleteCustom, EditWrapper, Skills, Title, UnderlineInput } from '~/components';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '~/store/store';
-import { setIsEdit } from '~/slices/edit.slice';
+import {AutoCompleteCustom, EditWrapper, Skills, Title, UnderlineInput} from '~/components';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '~/store/store';
+import {setIsEdit} from '~/slices/edit.slice';
 
 interface IEditSkillsAutoCompleteProps {
     isAdditional?: boolean;
@@ -34,7 +34,7 @@ const EditSkills: React.FC<IEditSkillsAutoCompleteProps> =
         return (
             <EditWrapper
                 preview={
-                    <AsideItem>
+
                             <Skills
                                 isAdditional={ isAdditional }
                                 isButtons={ false }
@@ -42,7 +42,7 @@ const EditSkills: React.FC<IEditSkillsAutoCompleteProps> =
                             >
                                 <Title text={ isSkills.title }/>
                             </Skills>
-                    </AsideItem> }
+                    }
                 edit={
                     <>
                         <div className={ styles.container }>
