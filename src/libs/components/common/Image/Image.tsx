@@ -27,7 +27,7 @@ export const Image: React.FC<IImageProps> = ({styles, isPolygon = false, isHide 
     };
 
     const {template} = useSelector((state: RootState) => selectTheme(state));
-    const avatar = template === TemplateConstants.Breeze ? 'avatar-breeze.jpg' : 'avatar.jpg';
+    const avatar = template === TemplateConstants.Breeze ? 'avatar-breeze.jpg' : template === TemplateConstants.Modern ? 'avatar-modern.jpg' : 'avatar.jpg';
 
     return (
         <ImageUploading
