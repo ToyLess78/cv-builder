@@ -28,6 +28,7 @@ export const breezePalette = [
 
 const accentPalette = [
     'rgba(234, 187, 70, 1)',
+    'rgba(233, 167, 3, 1)',
     'rgba(164, 145, 49, 1)',
     'rgba(132, 165, 157, 1)',
     'rgba(96, 115, 34, 1)',
@@ -79,18 +80,16 @@ const successPalette = [
 
 const modernPalette = [
     'rgba(67, 159, 195, 1)',
+    'rgba(32, 167, 197, 1)',
     'rgba(47, 123, 136, 1)',
-    'rgba(0, 119, 182, 1)',
-    'rgba(142, 202, 230, 1)',
+    'rgba(15, 112, 164, 1)',
+    'rgba(108, 153, 174, 1)',
     'rgba(2, 48, 71, 1)',
-    'rgba(255, 183, 3, 1)',
+    'rgba(212, 156, 19, 1)',
     'rgba(27, 38, 59, 1)',
     'rgba(65, 90, 119, 1)',
     'rgba(119, 141, 169, 1)',
-    'rgba(214, 204, 194, 1)',
-    'rgba(213, 189, 175, 1)',
     'rgba(94, 84, 142, 1)',
-    'rgba(159, 134, 192, 1)'
 ];
 
 const palettesMap = new Map();
