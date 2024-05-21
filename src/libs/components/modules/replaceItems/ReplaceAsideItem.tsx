@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectCertifications, setIsCertifications } from '~/slices/certifications.slice';
 import { selectSkills, setIsAdditional } from '~/slices/skills.slice';
-import { Additional, Certifications, CollapsedWrapper, ShowAsideButton, Title } from '~/components';
+import { Certifications, CollapsedWrapper, ShowAsideButton, Title } from '~/components';
+import { Additional } from '~/components/modules/additional/Additional';
 import RootConstants from '~/constants/root.constants';
 
 interface ISelectAsideItemProps {

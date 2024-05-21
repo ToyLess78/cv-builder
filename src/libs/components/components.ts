@@ -42,7 +42,6 @@ export { CollapsedWrapper } from '~/components/common/CollapsedWrapper/Collapsed
 export { AccentLayout } from '~/components/layouts/accent/AccentLayout';
 export { Title } from '~/components/modules/Title/Title';
 export { HeadwayLayout } from '~/components/layouts/headway/HeadwayLayout';
-export { ReplaceAsideItem } from '~/components/modules/replaceItems/ReplaceAsideItem';
 export { AdvanceLayout } from '~/components/layouts/advance/AdvanceLayout';
 export { SuccessLayout  } from '~/components/layouts/success/SuccessLayout';
 export { ModernLayout } from '~/components/layouts/modern/ModernLayout';

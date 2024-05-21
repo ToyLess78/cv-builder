@@ -1,5 +1,5 @@
 import React from 'react';
-import { Aside, EditButton, Languages, Main, ReplaceAsideItem, Skills, SuccessLayout, Title } from '~/components';
+import { Aside, EditButton, Languages, Skills, SuccessLayout, Title } from '~/components';
 import RootConstants from '~/constants/root.constants';
 import { Summary } from '~/components/modules/header/Summary';
 import { setIsEdit } from '~/slices/edit.slice';
@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
 import { selectSkills } from '~/slices/skills.slice';
 import { selectInfo } from '~/slices/info.slice';
+import { ReplaceAsideItem } from '~/components/modules/replaceItems/ReplaceAsideItem';
+import { Main } from '~/components/modules/Main/Main';
 
 const Success: React.FC = () => {
     const dispatch = useDispatch();

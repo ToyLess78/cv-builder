@@ -5,8 +5,6 @@ import {
     EditButton,
     HeadwayLayout,
     Languages,
-    Main,
-    ReplaceAsideItem,
     Skills,
     SocialsBox,
     Title
@@ -19,6 +17,8 @@ import { RootState } from '~/store/store';
 import { selectSkills } from '~/slices/skills.slice';
 import { selectInfo } from '~/slices/info.slice';
 import { Summary } from '~/components/modules/header/Summary';
+import { Main } from '~/components/modules/Main/Main';
+import { ReplaceAsideItem } from '~/components/modules/replaceItems/ReplaceAsideItem';
 
 
 const Headway: React.FC = () => {

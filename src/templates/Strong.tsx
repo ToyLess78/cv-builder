@@ -2,13 +2,11 @@ import React from 'react';
 import { Info } from '~/components/modules/header/Info';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    Additional,
     Aside,
     Certifications,
     Contacts,
     EditButton,
     Languages,
-    Main,
     Skills,
     StrongLayout,
     Title
@@ -20,6 +18,8 @@ import { selectCertifications } from '~/slices/certifications.slice';
 import { Summary } from '~/components/modules/header/Summary';
 import RootConstants from '~/constants/root.constants';
 import { selectInfo } from '~/slices/info.slice';
+import { Additional } from '~/components/modules/additional/Additional';
+import { Main } from '~/components/modules/Main/Main';
 
 const Strong: React.FC = () => {
 

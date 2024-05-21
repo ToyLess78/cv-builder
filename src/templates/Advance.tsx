@@ -1,23 +1,25 @@
-import React from "react";
+import React from 'react';
 import {
-    Additional,
-    AdvanceLayout, Aside,
+    AdvanceLayout,
+    Aside,
     Certifications,
     Contacts,
     EditButton,
     Languages,
-    Main,
-    Skills, SocialsBox,
+    Skills,
+    SocialsBox,
     Title
-} from "~/components";
-import {Summary} from "~/components/modules/header/Summary";
-import {setIsEdit} from "~/slices/edit.slice";
-import RootConstants from "~/constants/root.constants";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "~/store/store";
-import {selectSkills} from "~/slices/skills.slice";
-import {selectInfo} from "~/slices/info.slice";
-import {selectCertifications} from "~/slices/certifications.slice";
+} from '~/components';
+import { Summary } from '~/components/modules/header/Summary';
+import { setIsEdit } from '~/slices/edit.slice';
+import RootConstants from '~/constants/root.constants';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '~/store/store';
+import { selectSkills } from '~/slices/skills.slice';
+import { selectInfo } from '~/slices/info.slice';
+import { selectCertifications } from '~/slices/certifications.slice';
+import { Additional } from '~/components/modules/additional/Additional';
+import { Main } from '~/components/modules/Main/Main';
 
 const Advance: React.FC = () => {
     const dispatch = useDispatch();

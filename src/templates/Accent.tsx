@@ -1,13 +1,11 @@
 import React from 'react';
 import {
     AccentLayout,
-    Additional,
     Aside,
     Certifications,
     Contacts,
     EditButton,
     Languages,
-    Main,
     Skills,
     Title
 } from '~/components';
@@ -20,6 +18,8 @@ import { selectInfo } from '~/slices/info.slice';
 import { setIsEdit } from '~/slices/edit.slice';
 import { Summary } from '~/components/modules/header/Summary';
 import { Info } from '~/components/modules/header/Info';
+import { Additional } from '~/components/modules/additional/Additional';
+import { Main } from '~/components/modules/Main/Main';
 
 const Accent: React.FC = () => {
 
