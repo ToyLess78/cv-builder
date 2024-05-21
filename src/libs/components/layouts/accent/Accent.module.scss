@@ -1,0 +1,70 @@
+@import "../../../../assets/mixins";
+
+.accent {
+  display: grid;
+  grid-template-columns: 3fr 1.1fr;
+  grid-template-rows: min-content min-content min-content max-content;
+  grid-auto-rows: 1fr;
+  gap: 0 1rem;
+  grid-auto-flow: row;
+  grid-template-areas: "header header" "header header" "summary summary" "main aside";
+  text-align: left;
+
+  .header {
+    display: grid;
+    grid-template-columns: 3fr 1.1fr;
+    grid-template-rows: min-content min-content;
+    gap: 0 1rem;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "mark ."
+    "info contacts";
+    grid-area: header;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .summary {
+    grid-area: summary;
+    padding-left: 2rem;
+    margin: 2rem 0;
+    border-left: 2px solid var(--primary);
+  }
+
+  .contacts {
+    grid-area: contacts;
+    margin-top: auto;
+    font-size: 1.2rem;
+  }
+
+  .info {
+    grid-area: info;
+
+  }
+
+  .main {
+    grid-area: main;
+
+  }
+
+  .aside {
+    grid-area: aside;
+    border-left: 1px solid var(--light-gray);
+    padding-left: 2rem;
+
+  }
+
+  .mark {
+    grid-area: mark;
+    background-color: var(--primary);
+    height: 2rem;
+    width: 2.5rem;
+    clip-path: polygon(0 60%, 100% 0%, 100% 40%, 0% 100%);
+  }
+}
+
+@media print {
+  .mark {
+    @include media-print;
+  }
+}

@@ -1,0 +1,111 @@
+@import "../../../../assets/mixins";
+
+.success {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0 1rem;
+  grid-auto-flow: row dense;
+
+  .header {
+    display: grid;
+    grid-template-columns: 2.6fr 4rem 4.5rem 1.2fr 0;
+    grid-template-rows: 1fr;
+    grid-auto-flow: row;
+    grid-area: 1 / 1 / 2 / 2;
+
+    .left {
+      grid-area: 1 / 1 / 2 / 3;
+      background-color: var(--primary);
+      margin-left: -2rem;
+    }
+
+    .info {
+      grid-area: 1 / 1 / 2 / 2;
+      color: var(--secondary-white);
+      text-transform: uppercase;
+      text-align: left;
+      padding-left: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .right {
+      grid-area: 1 / 5 / 2 / 6;
+      background-color: var(--primary);
+      margin-right: -2rem;
+    }
+
+    .contacts {
+      grid-area: 1 / 4 / 2 / 5;
+      @include flex-center;
+
+      > div {
+        @include flex-full;
+        @include transition-margin;
+        padding: 0 .5rem;
+        margin-left: 1.5rem;
+      }
+
+      ul {
+        list-style: none;
+      }
+    }
+
+    .image:has(section[data-opacity="false"]) ~ .contacts {
+      > div {
+        margin-left: -3rem;
+      }
+    }
+
+    .image {
+      grid-area: 1 / 2 / 2 / 4;
+      padding: 1rem .5rem;
+
+      .img {
+        @include flex-center;
+        position: relative;
+        border-radius: 50%;
+        padding-left: .5rem;
+
+
+        img {
+          max-width: 100%;
+          border-radius: 50%;
+          border: 2px solid var(--light-gray);
+          padding: .3rem;
+          @include transition-opacity;
+        }
+      }
+    }
+  }
+
+  .body {
+    display: grid;
+    grid-template-columns: 1.5fr 3fr;
+    grid-template-rows: 1fr;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "aside main";
+    grid-area: 2 / 1 / 3 / 2;
+    text-align: left;
+    column-gap: 3rem;
+    padding-top: 2rem;
+
+    .main {
+      grid-area: main;
+    }
+
+    .aside {
+      grid-area: aside;
+    }
+  }
+}
+
+@media print {
+  .header {
+    @include media-print;
+  }
+}
+

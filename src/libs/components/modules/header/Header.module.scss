@@ -1,0 +1,178 @@
+@import "../../../../assets/mixins";
+
+.header {
+  text-align: left;
+  grid-template-columns: 2.5fr 1fr;
+  grid-template-rows: 1fr;
+  gap: .5rem 0;
+  grid-auto-flow: row;
+  display: grid;
+  justify-items: stretch;
+  align-items: stretch;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.container {
+  @include flex-column;
+  justify-content: space-around;
+}
+
+.info {
+  position: relative;
+  min-width: 30%;
+
+  &.accent {
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+
+    h4 {
+      font-weight: 500;
+      line-height: 2;
+      padding-left: .5rem;
+    }
+  }
+  &.modern {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+
+    h4 {
+      font-weight: 500;
+      line-height: 2;
+      padding-left: .7rem;
+    }
+    div {
+      padding-left: .5rem;
+    }
+  }
+
+  &.success {
+    padding-left: .5rem;
+    letter-spacing: 0.4rem;
+    h4 {
+      letter-spacing: 0.1rem;
+      font-weight: 500;
+      padding-top: .2rem;
+    }
+  }
+
+  div {
+    display: flex;
+    gap: 0 .5rem;
+
+    &.accent,
+    &.modern {
+      flex-direction: column;
+      font-size: 1.9rem;
+      line-height: 1;
+
+      h2:first-child {
+        font-weight: 400;
+        font-size: 1.85rem;
+      }
+
+    }
+
+    &.strong {
+      padding: 0 2rem;
+    }
+
+    &.success {
+      flex-direction: column;
+
+      h2 {
+        font-size: 1.9rem;
+        line-height: 1;      }
+    }
+
+    &.advance {
+      flex-direction: column;
+      letter-spacing: .2rem;
+      padding-top: 3rem;
+      border-bottom: 1px solid var(--light-gray);
+
+
+      h2 {
+        font-size: 1.9rem;
+      }
+
+
+    }
+  }
+  h4 {
+    font-size: 1.1rem;
+  }
+
+  &.strong {
+    h2 {
+      font-size: 1.9rem;
+    }
+
+    h4 {
+      font-size: 1rem;
+    }
+  }
+
+  &.advance {
+    margin-left: -.1rem;
+    padding-left: 2.5rem;
+    text-transform: uppercase;
+    padding-right: 1rem;
+
+    h4 {
+      padding-top: 1rem;
+
+    }
+  }
+}
+
+.summary {
+  @include flex-column;
+  justify-self: stretch;
+  position: relative;
+  gap: .5rem 0;
+  padding-left: .7rem;
+
+  &.strong {
+    padding-bottom: 2rem;
+  }
+
+  &.breeze {
+    min-height: 4.72rem;
+    flex-direction: row;
+    padding-left: 0;
+  }
+
+  &.advance,
+  &.success {
+    padding-bottom: 2rem;
+  }
+  &.modern {
+
+    h4 {
+      border-bottom: none;
+    }
+  }
+
+  p {
+    margin-right: 2rem;
+  }
+}
+
+.img {
+  margin: -2rem -2rem 0 2rem;
+  position: relative;
+
+  img {
+    @include transition-opacity;
+  }
+}
+
+@media print {
+  .info {
+    @include media-print;
+  }
+}

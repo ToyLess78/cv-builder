@@ -1,7 +1,7 @@
 import React from 'react';
 import { Aside, EditButton, Languages, Main, ReplaceAsideItem, Skills, SuccessLayout, Title } from '~/components';
 import RootConstants from '~/constants/root.constants';
-import { Summary } from '~/components/header/Summary';
+import { Summary } from '~/components/modules/header/Summary';
 import { setIsEdit } from '~/slices/edit.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store/store';
@@ -39,10 +39,7 @@ const Success: React.FC = () => {
                 </Aside>
             }
             main={
-                <>
-
                     <Main />
-                </>
             }
         />
     )

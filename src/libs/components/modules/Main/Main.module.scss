@@ -1,0 +1,17 @@
+@import "../../../../assets/mixins";
+
+.wrapper {
+  text-align: left;
+  @include flex-column;
+  gap: 3rem;
+  margin: 1rem auto;
+
+  p {
+    margin-right: 2rem;
+  }
+
+  .form {
+    @include flex-column;
+    gap: 2rem;
+  }
+}

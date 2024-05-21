@@ -12,13 +12,13 @@ import {
     Title
 } from '~/components';
 import { useDispatch, useSelector } from 'react-redux';
-import { Info } from '~/components/header/Info';
+import { Info } from '~/components/modules/header/Info';
 import { setIsEdit } from '~/slices/edit.slice';
 import RootConstants from '~/constants/root.constants';
 import { RootState } from '~/store/store';
 import { selectSkills } from '~/slices/skills.slice';
 import { selectInfo } from '~/slices/info.slice';
-import { Summary } from '~/components/header/Summary';
+import { Summary } from '~/components/modules/header/Summary';
 
 
 const Headway: React.FC = () => {

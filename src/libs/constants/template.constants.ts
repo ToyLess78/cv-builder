@@ -1,18 +1,18 @@
 enum TemplateConstants {
     Strong = 'strong',
-    Accent = 'accent',
+    Success = 'success',
     Breeze = 'breeze',
     Advance = 'advance',
-    Headway = 'headway',
-    Success = 'success',
     Modern = 'modern',
-    Precise = 'precise',
-    Fortune = 'fortune',
-    Recency = 'recency',
-    Master = 'master',
-    Winner = 'winner',
-    Elegant = 'elegant',
-    Future = 'future'
+    Accent = 'accent',
+    Headway = 'headway',
+    // Precise = 'precise',
+    // Fortune = 'fortune',
+    // Recency = 'recency',
+    // Master = 'master',
+    // Winner = 'winner',
+    // Elegant = 'elegant',
+    // Future = 'future'
 }
 
 export default TemplateConstants;

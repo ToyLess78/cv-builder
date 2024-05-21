@@ -10,7 +10,7 @@ import {
     Skills, SocialsBox,
     Title
 } from "~/components";
-import {Summary} from "~/components/header/Summary";
+import {Summary} from "~/components/modules/header/Summary";
 import {setIsEdit} from "~/slices/edit.slice";
 import RootConstants from "~/constants/root.constants";
 import {useDispatch, useSelector} from "react-redux";

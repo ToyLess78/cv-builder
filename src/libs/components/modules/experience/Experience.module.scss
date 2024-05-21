@@ -1,0 +1,29 @@
+@import "../../../../assets/mixins";
+
+.experience {
+  @include flex-column;
+  @include maim-item;
+  padding-bottom: 2rem;
+
+  &.breeze {
+    min-height: 7.4rem;
+    @include flex-row;
+    @include breeze-item;
+  }
+
+  @include main-block;
+}
+.inputs {
+  @include main-inputs;
+
+  div {
+    @include flex-full;
+
+    &:first-child {
+      margin-bottom: .5rem;
+    }
+  }
+}
+.show {
+  position: relative;
+}

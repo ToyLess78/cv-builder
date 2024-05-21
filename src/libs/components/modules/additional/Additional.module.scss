@@ -1,0 +1,5 @@
+@import "../../../../assets/mixins";
+
+.additional {
+@include flex-column;
+}

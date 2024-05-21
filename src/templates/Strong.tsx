@@ -1,5 +1,5 @@
 import React from 'react';
-import { Info } from '~/components/header/Info';
+import { Info } from '~/components/modules/header/Info';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     Additional,
@@ -17,7 +17,7 @@ import { setIsEdit } from '~/slices/edit.slice';
 import { RootState } from '~/store/store';
 import { selectSkills } from '~/slices/skills.slice';
 import { selectCertifications } from '~/slices/certifications.slice';
-import { Summary } from '~/components/header/Summary';
+import { Summary } from '~/components/modules/header/Summary';
 import RootConstants from '~/constants/root.constants';
 import { selectInfo } from '~/slices/info.slice';
 

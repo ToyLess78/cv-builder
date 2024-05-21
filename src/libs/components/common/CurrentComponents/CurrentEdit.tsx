@@ -4,15 +4,15 @@ import { RootState } from '~/store/store';
 import { selectIsEdit } from '~/slices/edit.slice';
 import RootConstants from '~/constants/root.constants';
 
-const EditCertificates = lazy(() => import('~/components/certifications/EditCertifications'));
-const EditSummary = lazy(() => import('~/components/header/EditSummary'));
-const EditInfo = lazy(() => import('~/components/header/EditInfo'));
-const EditSkills = lazy(() => import('~/components/skills/EditSkills'));
-const EditLanguage = lazy(() => import('~/components/languages/EditLanguage'));
-const EditContacts = lazy(() => import('~/components/contacts/EditContacts'));
-const EditExperience = lazy(() => import('~/components/experience/EditExperience'));
-const EditEducation = lazy(() => import('~/components/education/EditEducation'));
-const EditProjects = lazy(() => import('~/components/projects/EditProjects'));
+const EditCertificates = lazy(() => import('~/components/modules/certifications/EditCertifications'));
+const EditSummary = lazy(() => import('~/components/modules/header/EditSummary'));
+const EditInfo = lazy(() => import('~/components/modules/header/EditInfo'));
+const EditSkills = lazy(() => import('~/components/modules/skills/EditSkills'));
+const EditLanguage = lazy(() => import('~/components/modules/languages/EditLanguage'));
+const EditContacts = lazy(() => import('~/components/modules/contacts/EditContacts'));
+const EditExperience = lazy(() => import('~/components/modules/experience/EditExperience'));
+const EditEducation = lazy(() => import('~/components/modules/education/EditEducation'));
+const EditProjects = lazy(() => import('~/components/modules/projects/EditProjects'));
 
 const CurrentEdit: React.FC = () => {
     const isEdit = useSelector((state: RootState) => selectIsEdit(state));

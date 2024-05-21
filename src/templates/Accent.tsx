@@ -18,8 +18,8 @@ import { selectSkills } from '~/slices/skills.slice';
 import { selectCertifications } from '~/slices/certifications.slice';
 import { selectInfo } from '~/slices/info.slice';
 import { setIsEdit } from '~/slices/edit.slice';
-import { Summary } from '~/components/header/Summary';
-import { Info } from '~/components/header/Info';
+import { Summary } from '~/components/modules/header/Summary';
+import { Info } from '~/components/modules/header/Info';
 
 const Accent: React.FC = () => {
 

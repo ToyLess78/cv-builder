@@ -5,6 +5,7 @@ import { selectTheme, setTemplate } from '~/slices/theme.slice';
 import TemplateConstants from '~/constants/template.constants';
 import { Breeze } from './Breeze';
 import { Loading } from '~/components';
+import Modern from './Modern';
 
 const Strong = lazy(() => import('./Strong'));
 const Accent = lazy(() => import('./Accent'));
@@ -49,6 +50,12 @@ const CurrentTemplate: React.FC = () => {
             return (
                 <Suspense fallback={ <Loading/> }>
                     <Success/>
+                </Suspense>);
+        }        
+        case TemplateConstants.Modern: {
+            return (
+                <Suspense fallback={ <Loading/> }>
+                    <Modern/>
                 </Suspense>);
         }
         default: {

@@ -1,0 +1,71 @@
+@import "../../../../assets/mixins";
+
+.info {
+  @include flex-center;
+  padding: 2rem;
+  gap: 4rem;
+}
+
+.name {
+  display: flex;
+  gap: 2rem;
+
+  div {
+    width: 47%;
+  }
+}
+
+.inputs {
+  @include flex-column;
+  gap: 2rem;
+  width: 60%;
+
+  button {
+    margin-top: 1rem;
+  }
+}
+
+.breeze,
+.accent,
+.headway,
+.advance,
+.success,
+.modern {
+  text-align: left;
+  @include flex-full;
+}
+
+.success {
+  text-transform: uppercase;
+  background-color: var(--primary);
+  padding: 1rem;
+  color: white;
+}
+
+.modern {
+  color: white;
+  background-color: var(--primary);
+  padding: 1rem;
+}
+
+.strong {
+  text-align: center;
+  text-transform: uppercase;
+  border: 2px solid var(--secondary-text);
+  @include flex-full;
+  padding: 1rem 0;
+}
+
+.headway {
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem;
+  h2 {
+    font-size: 1.3rem;
+  }
+  h4 {
+    font-size: .8rem;
+  }
+}
