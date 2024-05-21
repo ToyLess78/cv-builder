@@ -10,6 +10,7 @@ import { ClearButton, ColorPicker, Loading, MoreButton, SaveButton } from '~/com
 import { resetId } from 'react-id-generator';
 import { selectInfo } from '~/slices/info.slice';
 import CurrentTemplate from './templates/CurrentTemplate';
+import TemplateConstants from '~/constants/template.constants';
 
 
 const Menu = lazy(() => import('~/components/common/Carousel/Carousel'));
@@ -44,16 +45,14 @@ const App: React.FC = () => {
         window.location.reload();
     }
 
-    // const templates = ['success', 'advance', 'headway', 'breeze', 'strong', 'precise', 'serene', 'modern', 'fortune', 'recency', 'verdure', 'master', 'primary', 'prime', 'grand', 'alpha', 'galaxy', 'goodly', 'gallant', 'winner', 'elegant', 'future']
-    // style={{'--primary': themeColor, '--primary-opacity': setAlphaToRGBA(themeColor as string, 0.1)} as React.CSSProperties}
+    const templates = Object.values(TemplateConstants).filter((v) => isNaN(Number(v)));
 
+    useEffect(() => {
+        templates.forEach(template => (new Image().src = `./templates/${template}.webp`));
+        new Image().src = './avatar.jpg';
+        new Image().src = './avatar-modern.jpg';
 
-    // const {template: theme, } = useSelector((state: RootState) => selectTheme(state));
-    //
-    // const [color, setColor] = useState(loadFromLocalStorage(theme) || breezePalette[0]);
-    // useEffect(() => {
-    //     setColor(loadFromLocalStorage(theme) || breezePalette[0]);
-    // }, [theme])
+    }, [])
 
     return (
         <>
