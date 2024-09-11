@@ -27,3 +27,18 @@
 .show {
   position: relative;
 }
+
+.description {
+  a {
+    color: var(--gray);
+    text-decoration: underline;
+    cursor: pointer;
+    &:after {
+      padding-left: .2rem;
+      content: url("data:image/svg+xml,%3Csvg%20width%3D%2213%22%20height%3D%2213%22%20viewBox%3D%220%200%2013%2013%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M10.5833%207.38889V11.2222C10.5833%2011.5611%2010.4487%2011.8861%2010.2091%2012.1257C9.96945%2012.3654%209.64444%2012.5%209.30556%2012.5H2.27778C1.93889%2012.5%201.61388%2012.3654%201.37425%2012.1257C1.13462%2011.8861%201%2011.5611%201%2011.2222V4.19444C1%203.85556%201.13462%203.53055%201.37425%203.29092C1.61388%203.05129%201.93889%202.91667%202.27778%202.91667H6.11111M8.66667%201H12.5M12.5%201V4.83333M12.5%201L5.47222%208.02778%22%20stroke%3D%22%23CCCCCC%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E%0A");
+    }
+    &:hover {
+      color: var(--secondary-text);
+    }
+  }
+}
