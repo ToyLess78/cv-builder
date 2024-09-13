@@ -1,72 +1,72 @@
 article {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  z-index: 1000;
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: white;
+	z-index: 1000;
 }
 
 article .title,
 article .subtitle {
-  position: relative;
-  width: 250px;
-  height: 30px;
-  color: transparent;
-  animation: fadeIn 2s 1.6s forwards;
+	position: relative;
+	width: 250px;
+	height: 30px;
+	color: transparent;
+	animation: fadeIn 2s 1.6s forwards;
 }
 article .title::before,
 article .subtitle::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: slideRight 2s cubic-bezier(0.75, 0, 0, 1) forwards;
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform: scaleX(0);
+	transform-origin: left;
+	animation: slideRight 2s cubic-bezier(0.75, 0, 0, 1) forwards;
 }
 article .title {
-  margin: 0;
-  font-family: Lora, serif;
-  font-size: 32px;
-  line-height: 30px;
+	margin: 0;
+	font-family: Lora, serif;
+	font-size: 32px;
+	line-height: 30px;
 }
 article .title::before {
-  background: #FF4081;
+	background: #ff4081;
 }
 article .subtitle {
-  margin: 10px 0 0 0;
-  font-family: Lato, sans-serif;
-  font-size: 12px;
-  line-height: 30px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  animation-delay: 3.2s;
+	margin: 10px 0 0 0;
+	font-family: Lato, sans-serif;
+	font-size: 12px;
+	line-height: 30px;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	animation-delay: 3.2s;
 }
 article .subtitle::before {
-  background: #03A9F4;
-  animation-delay: 2s;
+	background: #03a9f4;
+	animation-delay: 2s;
 }
 
 @keyframes fadeIn {
-  to {
-    color: black;
-  }
+	to {
+		color: black;
+	}
 }
 @keyframes slideRight {
-  50% {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-  50.1% {
-    transform-origin: right;
-  }
-  to {
-    transform-origin: right;
-  }
+	50% {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+	50.1% {
+		transform-origin: right;
+	}
+	to {
+		transform-origin: right;
+	}
 }
