@@ -1,14 +1,11 @@
-import React, { ReactNode } from 'react';
-import styles from './Body.module.scss';
+import type React from "react";
+import type { ReactNode } from "react";
+import styles from "./Body.module.scss";
 
 interface IBodyProps {
-    children: ReactNode
+	children: ReactNode;
 }
 
-export const Body: React.FC<IBodyProps> = ({children}) => {
-    return (
-        <div className={styles.body}>
-                {children}
-        </div>
-    )
+export const Body: React.FC<IBodyProps> = ({ children }) => {
+	return <div className={styles.body}>{children}</div>;
 };
