@@ -1,77 +1,75 @@
-import React from 'react';
+import type React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
-    AdvanceLayout,
-    Aside,
-    Certifications,
-    Contacts,
-    EditButton,
-    Languages,
-    Skills,
-    SocialsBox,
-    Title
-} from '~/components';
-import { Summary } from '~/components/modules/header/Summary';
-import { setIsEdit } from '~/slices/edit.slice';
-import RootConstants from '~/constants/root.constants';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '~/store/store';
-import { selectSkills } from '~/slices/skills.slice';
-import { selectInfo } from '~/slices/info.slice';
-import { selectCertifications } from '~/slices/certifications.slice';
-import { Additional } from '~/components/modules/additional/Additional';
-import { Main } from '~/components/modules/Main/Main';
+	AdvanceLayout,
+	Aside,
+	Certifications,
+	Contacts,
+	EditButton,
+	Languages,
+	Skills,
+	SocialsBox,
+	Title,
+} from "~/components";
+import { Main } from "~/components/modules/Main/Main";
+import { Additional } from "~/components/modules/additional/Additional";
+import { Summary } from "~/components/modules/header/Summary";
+import RootConstants from "~/constants/root.constants";
+import { selectCertifications } from "~/slices/certifications.slice";
+import { setIsEdit } from "~/slices/edit.slice";
+import { selectInfo } from "~/slices/info.slice";
+import { selectSkills } from "~/slices/skills.slice";
+import type { RootState } from "~/store/store";
 
 const Advance: React.FC = () => {
-    const dispatch = useDispatch();
-    const aside = useSelector((state: RootState) => selectSkills(state));
+	const dispatch = useDispatch();
+	const aside = useSelector((state: RootState) => selectSkills(state));
 
-    const info = useSelector((state: RootState) => selectInfo(state));
-    const certificates = useSelector((state: RootState) => selectCertifications(state));
+	const info = useSelector((state: RootState) => selectInfo(state));
+	const certificates = useSelector((state: RootState) =>
+		selectCertifications(state),
+	);
 
-    return (
-        <AdvanceLayout
+	return (
+		<AdvanceLayout
+			aside={
+				<Aside>
+					<Skills>
+						<Title text={aside?.skills.title} />
+					</Skills>
 
-            aside={
-                <Aside>
+					<Additional>
+						<Title text={aside?.additional.title} />
+					</Additional>
 
-                    <Skills>
-                        <Title text={aside?.skills.title}/>
-                    </Skills>
+					<Certifications>
+						<Title text={certificates.title} />
+					</Certifications>
 
-                    <Additional>
-                        <Title text={aside?.additional.title}/>
-                    </Additional>
+					<Languages>
+						<Title text={RootConstants.Languages} />
+					</Languages>
 
-                    <Certifications>
-                        <Title text={certificates.title}/>
-                    </Certifications>
-
-                    <Languages>
-                        <Title text={RootConstants.Languages}/>
-                    </Languages>
-
-                    <Contacts isIcons>
-                        <Title text={RootConstants.Contacts}/>
-                    </Contacts>
-
-                </Aside>
-            }
-
-            main={
-            <>
-                <Summary>
-                    <EditButton
-                        onClick={ () => dispatch(setIsEdit(RootConstants.Summary)) }
-                        title={ info.title }
-                    />
-                    <Title text={ info.title }/>
-                </Summary>
-                <Main />
-                <SocialsBox/>
-            </>
-            }
-        />
-    )
-}
+					<Contacts isIcons>
+						<Title text={RootConstants.Contacts} />
+					</Contacts>
+				</Aside>
+			}
+			main={
+				<>
+					<Summary>
+						<EditButton
+							onClick={() => dispatch(setIsEdit(RootConstants.Summary))}
+							title={info.title}
+						/>
+						<Title text={info.title} />
+					</Summary>
+					<Main />
+					<SocialsBox />
+				</>
+			}
+		/>
+	);
+};
 
 export default Advance;
