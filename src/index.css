@@ -1,95 +1,92 @@
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 @-webkit-keyframes scaleUp {
-    0% {
-        transform: scale(0.3);
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-    }
-    100% {
-        transform: scale(1);
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-    }
+	0% {
+		transform: scale(0.3);
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+	}
+	100% {
+		transform: scale(1);
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+	}
 }
 
 @keyframes scaleUp {
-    0% {
-        transform: scale(0.3);
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-    }
-    100% {
-        transform: scale(1);
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-    }
+	0% {
+		transform: scale(0.3);
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+	}
+	100% {
+		transform: scale(1);
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+	}
 }
 
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
 
-    color: #213547;
-    background-color: #E5E5E5;
+	color: #213547;
+	background-color: #e5e5e5;
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 
-    --primary: rgba(25, 118, 210, 1);
-    --primary-alpha: rgba(25, 118, 210, .3);
-    --primary-opacity: rgba(25, 118, 210, .06);
-    --gray: #ccc;
-    --secondary-gray: #F4F4F4;
-    --secondary-white: #f3f4f6;
-    --label-color: #aaa;
-    --light-gray: rgba(217, 217, 217, 1);
-    --primary-text: #213547;
-    --secondary-text: rgba(93, 107, 121, 1);
-    --animation: scaleUp .4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	--primary: rgba(25, 118, 210, 1);
+	--primary-alpha: rgba(25, 118, 210, 0.3);
+	--primary-opacity: rgba(25, 118, 210, 0.06);
+	--gray: #ccc;
+	--secondary-gray: #f4f4f4;
+	--secondary-white: #f3f4f6;
+	--label-color: #aaa;
+	--light-gray: rgba(217, 217, 217, 1);
+	--primary-text: #213547;
+	--secondary-text: rgba(93, 107, 121, 1);
+	--animation: scaleUp .4s cubic-bezier(0.39, 0.575, 0.565, 1.0) both;
 }
 
 body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    position: relative;
-
+	margin: 0;
+	display: flex;
+	place-items: center;
+	position: relative;
 }
 
 #root {
-    text-align: center;
-    margin: 0 auto;
-
+	text-align: center;
+	margin: 0 auto;
 }
 
 #app {
-    width: 998px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    background-color: #ffffff;
-    position: relative;
-    z-index: 0;
+	width: 998px;
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+	background-color: #ffffff;
+	position: relative;
+	z-index: 0;
 }
 
 :focus {
-    outline: none;
+	outline: none;
 }
 
 a {
-    color: var(--secondary-text);
+	color: var(--secondary-text);
 }
 
 @media print {
-    #tooltip {
-        display: none;
-    }
+	#tooltip {
+		display: none;
+	}
 }
-
