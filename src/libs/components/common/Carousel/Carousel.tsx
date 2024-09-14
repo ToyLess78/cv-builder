@@ -22,10 +22,10 @@ const templates = Object.values(TemplateConstants).filter((v) =>
 );
 
 const Card: React.FC<CardProps> = ({ title, src, onClick }) => (
-	<button className={styles.card} onClick={onClick} type="button">
+	<div className={styles.card} onClick={onClick}>
 		<h5>{title}</h5>
 		{src && <img src={src} alt="template" />}
-	</button>
+	</div>
 );
 
 interface CarouselProps {
