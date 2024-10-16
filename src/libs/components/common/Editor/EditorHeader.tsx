@@ -5,6 +5,7 @@ export const EditorHeader: React.FC = () => {
 	return (
 		<>
 			<span className="ql-formats">
+				<button className="ql-bold" aria-label="Bold"></button>
 				<button className="ql-italic" aria-label="Italic" type="button" />
 				<button className="ql-underline" aria-label="Underline" />
 				<button className="ql-strike" aria-label="Strike" />
@@ -21,13 +22,7 @@ export const EditorHeader: React.FC = () => {
 						<line className="ql-stroke" x1="7" x2="15" y1="4" y2="4" />
 						<line className="ql-stroke" x1="7" x2="15" y1="9" y2="9" />
 						<line className="ql-stroke" x1="7" x2="15" y1="14" y2="14" />
-						<line
-							className="ql-stroke ql-thin"
-							x1="2.5"
-							x2="4.5"
-							y1="5.5"
-							y2="5.5"
-						/>
+						<line className="ql-stroke ql-thin" x1="2.5" x2="4.5" y1="5.5" y2="5.5" />
 						<path
 							className="ql-fill"
 							d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"
