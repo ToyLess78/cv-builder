@@ -26,9 +26,7 @@ export const AutoCompleteCustom: React.FC<IAutoCompleteCustomProps> = ({
 
 		if (
 			query &&
-			!skillsTechnologies.some((skill) =>
-				skill.toLowerCase().startsWith(query),
-			) &&
+			!skillsTechnologies.some((skill) => skill.toLowerCase().startsWith(query)) &&
 			!_filteredSkills.some((skill) => skill.toLowerCase() === query)
 		) {
 			_filteredSkills.push(event.query.trim());

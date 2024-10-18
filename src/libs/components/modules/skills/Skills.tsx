@@ -60,9 +60,7 @@ export const Skills: React.FC<ISkillsProps> = ({
 			)}
 
 			{!isButtons && (
-				<AsideItem
-					style={{ minHeight: height, flexGrow: "1", padding: "2rem" }}
-				>
+				<AsideItem style={{ minHeight: height, flexGrow: "1", padding: "2rem" }}>
 					{children}
 					{data?.data.length ? (
 						<ul className={styles.skills}>

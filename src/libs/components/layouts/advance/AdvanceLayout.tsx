@@ -38,10 +38,7 @@ export const AdvanceLayout: React.FC<IAdvanceLayoutProps> = ({
 						/>
 					)}
 					{!isShowImg && (
-						<ShowButton
-							title="Photo"
-							onClick={() => setIsShowImg(!isShowImg)}
-						/>
+						<ShowButton title="Photo" onClick={() => setIsShowImg(!isShowImg)} />
 					)}
 				</div>
 				<CollapsedWrapper

@@ -19,11 +19,7 @@ export const EditWrapper: React.FC<IEditeWrapperProps> = ({
 	return (
 		<div className={styles.wrapper}>
 			{preview}
-			<form
-				className={styles.form}
-				onSubmit={onSubmit}
-				style={{ width: width }}
-			>
+			<form className={styles.form} onSubmit={onSubmit} style={{ width: width }}>
 				{edit}
 				<MainButton type="submit">Save Changes</MainButton>
 			</form>

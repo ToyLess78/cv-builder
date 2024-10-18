@@ -95,9 +95,7 @@ export const Projects: FC<IProjectsProps> = ({
 												<EditButton
 													style={{
 														left:
-															template === TemplateConstants.Breeze
-																? "-3.7rem"
-																: "-1.9rem",
+															template === TemplateConstants.Breeze ? "-3.7rem" : "-1.9rem",
 													}}
 													title={pro.projectName}
 													onClick={() => handlerSetEdit(pro.id)}
@@ -106,9 +104,7 @@ export const Projects: FC<IProjectsProps> = ({
 													<RemoveButton
 														style={{
 															left:
-																template === TemplateConstants.Breeze
-																	? "-3.8rem"
-																	: "-2.1rem",
+																template === TemplateConstants.Breeze ? "-3.8rem" : "-2.1rem",
 															top: "1.3rem",
 														}}
 														removeOffset={20}
@@ -116,9 +112,7 @@ export const Projects: FC<IProjectsProps> = ({
 													/>
 												)}
 												<div className={styles.name}>
-													<strong className={styles.dots}>
-														{pro.projectName}
-													</strong>
+													<strong className={styles.dots}>{pro.projectName}</strong>
 													{pro.link ? (
 														<a className={styles.link} href={pro.link}>
 															<FiExternalLink />
@@ -144,9 +138,7 @@ export const Projects: FC<IProjectsProps> = ({
 												</em>
 												<br />
 												{pro.duration ? (
-													<span className={styles.duration}>
-														{pro.duration}
-													</span>
+													<span className={styles.duration}>{pro.duration}</span>
 												) : (
 													""
 												)}
@@ -178,9 +170,7 @@ export const Projects: FC<IProjectsProps> = ({
 					<div className={styles.wrapper}>
 						<div key={projectsItem.id} className={styles.title}>
 							<div className={styles.name}>
-								<strong className={styles.dots}>
-									{projectsItem.projectName}
-								</strong>
+								<strong className={styles.dots}>{projectsItem.projectName}</strong>
 								{projectsItem.link ? (
 									<a className={styles.link} href={projectsItem.link}>
 										<FiExternalLink />

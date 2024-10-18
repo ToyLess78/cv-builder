@@ -94,9 +94,7 @@ export const Experience: React.FC<IExperienceProps> = ({
 												<EditButton
 													style={{
 														left:
-															template === TemplateConstants.Breeze
-																? "-3.7rem"
-																: "-1.9rem",
+															template === TemplateConstants.Breeze ? "-3.7rem" : "-1.9rem",
 													}}
 													title={exp.jobTitle}
 													onClick={() => handlerSetEdit(exp.id)}
@@ -105,9 +103,7 @@ export const Experience: React.FC<IExperienceProps> = ({
 													<RemoveButton
 														style={{
 															left:
-																template === TemplateConstants.Breeze
-																	? "-3.8rem"
-																	: "-2.1rem",
+																template === TemplateConstants.Breeze ? "-3.8rem" : "-2.1rem",
 															top: "1.3rem",
 														}}
 														removeOffset={20}
@@ -116,11 +112,7 @@ export const Experience: React.FC<IExperienceProps> = ({
 												)}
 												<strong>
 													{`${exp.jobTitle} `}
-													{exp.employer ? (
-														<small>{`[ ${exp.employer} ]`}</small>
-													) : (
-														""
-													)}
+													{exp.employer ? <small>{`[ ${exp.employer} ]`}</small> : ""}
 													<em> {exp.location}</em>
 												</strong>
 												<br />

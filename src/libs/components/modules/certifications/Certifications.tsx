@@ -64,9 +64,7 @@ export const Certifications: React.FC<ICertificatesProps> = ({
 						<>
 							<EditButton
 								title={certificates.title}
-								onClick={() =>
-									dispatch(setIsEdit(RootConstants.Certifications))
-								}
+								onClick={() => dispatch(setIsEdit(RootConstants.Certifications))}
 							/>
 							<HideButton
 								onClick={handleSetIsCertifications}
@@ -80,8 +78,7 @@ export const Certifications: React.FC<ICertificatesProps> = ({
 							<ul
 								className={styles.certifications}
 								style={{
-									minHeight:
-										template === TemplateConstants.Breeze ? "8.2rem" : "auto",
+									minHeight: template === TemplateConstants.Breeze ? "8.2rem" : "auto",
 								}}
 							>
 								{certificates.data?.map((c) => {
@@ -107,8 +104,7 @@ export const Certifications: React.FC<ICertificatesProps> = ({
 					<ul
 						className={styles.certifications}
 						style={{
-							minHeight:
-								template === TemplateConstants.Breeze ? "8.2rem" : "auto",
+							minHeight: template === TemplateConstants.Breeze ? "8.2rem" : "auto",
 						}}
 					>
 						{data?.map((c) => {
@@ -122,10 +118,7 @@ export const Certifications: React.FC<ICertificatesProps> = ({
 												visibility: c.id === edited?.id ? "hidden" : "visible",
 											}}
 											removeStyle={{
-												visibility:
-													c.issue.length && c.title.length
-														? "visible"
-														: "hidden",
+												visibility: c.issue.length && c.title.length ? "visible" : "hidden",
 											}}
 										/>
 									)}

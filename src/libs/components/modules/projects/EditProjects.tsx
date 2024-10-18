@@ -22,9 +22,7 @@ import { Projects } from "./Projects";
 import styles from "./Projects.module.scss";
 
 const EditProjects: React.FC = () => {
-	const projectsState = useSelector((state: RootState) =>
-		selectProjects(state),
-	);
+	const projectsState = useSelector((state: RootState) => selectProjects(state));
 
 	const { data, editedId } = projectsState;
 

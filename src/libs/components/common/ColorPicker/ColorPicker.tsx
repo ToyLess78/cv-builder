@@ -57,9 +57,7 @@ export const ColorPicker: React.FC = () => {
 							/>
 							<span
 								className={
-									lastActive === c
-										? `${styles.last} ${styles.color}`
-										: styles.color
+									lastActive === c ? `${styles.last} ${styles.color}` : styles.color
 								}
 								style={{ backgroundColor: c }}
 							/>

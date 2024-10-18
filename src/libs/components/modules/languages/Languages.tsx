@@ -71,8 +71,7 @@ export const Languages: React.FC<ILanguagesProps> = ({
 							<ul
 								className={styles.languages}
 								style={{
-									minHeight:
-										template === TemplateConstants.Breeze ? "7.4rem" : "auto",
+									minHeight: template === TemplateConstants.Breeze ? "7.4rem" : "auto",
 								}}
 							>
 								{languages.data?.map((l) => {
@@ -95,8 +94,7 @@ export const Languages: React.FC<ILanguagesProps> = ({
 					<ul
 						className={styles.languages}
 						style={{
-							minHeight:
-								template === TemplateConstants.Breeze ? "7.4rem" : "auto",
+							minHeight: template === TemplateConstants.Breeze ? "7.4rem" : "auto",
 						}}
 					>
 						{data?.map((l) => {

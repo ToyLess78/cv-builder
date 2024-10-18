@@ -99,16 +99,8 @@ const EditCertifications: React.FC = () => {
 									: "hidden",
 						}}
 					/>
-					<UnderlineInput
-						label="title"
-						value={edited.title}
-						onChange={setTitle}
-					/>
-					<UnderlineInput
-						label="issue"
-						value={edited.issue}
-						onChange={setIssue}
-					/>
+					<UnderlineInput label="title" value={edited.title} onChange={setTitle} />
+					<UnderlineInput label="issue" value={edited.issue} onChange={setIssue} />
 					<UnderlineInput
 						label="link"
 						type="link"

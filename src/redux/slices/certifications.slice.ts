@@ -24,19 +24,22 @@ const defaultCertifications = {
 			id: "648sgvg2gfd",
 			title: "React, React Router & Redux Toolkit",
 			issue: "Udemy",
-			link: "https://www.udemy.com/certificate/UC-6760c53d-b563-411c-af04-f760baad6e26/",
+			link:
+				"https://www.udemy.com/certificate/UC-6760c53d-b563-411c-af04-f760baad6e26/",
 		},
 		{
 			id: "6486462gfd",
 			title: "IT security: protection against digital cyber fraud",
 			issue: "Google",
-			link: "https://www.coursera.org/account/accomplishments/certificate/NUAE2JM7NCNZ",
+			link:
+				"https://www.coursera.org/account/accomplishments/certificate/NUAE2JM7NCNZ",
 		},
 		{
 			id: "64hhhtg2gfd",
 			title: "JavaScript Algorithms and Data Structures",
 			issue: "freeCodeCamp",
-			link: "https://www.freecodecamp.org/certification/fccf30fb616-0d1f-4b9f-acad-6b570afb74c2a/javascript-algorithms-and-data-structures",
+			link:
+				"https://www.freecodecamp.org/certification/fccf30fb616-0d1f-4b9f-acad-6b570afb74c2a/javascript-algorithms-and-data-structures",
 		},
 		{
 			id: "64gfg62gfd",

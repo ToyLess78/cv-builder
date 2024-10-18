@@ -18,8 +18,7 @@ export const AdditionalList: React.FC<IAdditionalState> = (additional) => {
 				<ul
 					className={styles.additional}
 					style={{
-						minHeight:
-							template === TemplateConstants.Breeze ? "7.4rem" : "auto",
+						minHeight: template === TemplateConstants.Breeze ? "7.4rem" : "auto",
 					}}
 				>
 					{data?.map((a) => {

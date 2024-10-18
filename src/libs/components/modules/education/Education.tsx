@@ -72,9 +72,7 @@ export const Education: FC<IEducationProps> = ({
 			? { bottom: "3rem" }
 			: { bottom: ".6rem" };
 
-	const { isSocials } = useSelector((state: RootState) =>
-		selectContacts(state),
-	);
+	const { isSocials } = useSelector((state: RootState) => selectContacts(state));
 
 	const sectionStyle =
 		template === TemplateConstants.Advance && isSocials
@@ -117,9 +115,7 @@ export const Education: FC<IEducationProps> = ({
 												<EditButton
 													style={{
 														left:
-															template === TemplateConstants.Breeze
-																? "-3.7rem"
-																: "-1.9rem",
+															template === TemplateConstants.Breeze ? "-3.7rem" : "-1.9rem",
 													}}
 													title={ed.degree}
 													onClick={() => handlerSetEdit(ed.id)}
@@ -128,9 +124,7 @@ export const Education: FC<IEducationProps> = ({
 													<RemoveButton
 														style={{
 															left:
-																template === TemplateConstants.Breeze
-																	? "-3.8rem"
-																	: "-2.1rem",
+																template === TemplateConstants.Breeze ? "-3.8rem" : "-2.1rem",
 															top: "1.3rem",
 														}}
 														removeOffset={20}

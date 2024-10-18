@@ -21,9 +21,7 @@ export const Summary: React.FC<{
 	return (
 		<section className={`${styles.summary} ${styles[template]}`} style={style}>
 			{children}
-			<div
-				dangerouslySetInnerHTML={{ __html: props?.summary || info.summary }}
-			/>
+			<div dangerouslySetInnerHTML={{ __html: props?.summary || info.summary }} />
 		</section>
 	);
 };

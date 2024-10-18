@@ -59,8 +59,7 @@ export const Additional: React.FC<IAdditionalProps> = ({ children }) => {
 					content={
 						<AsideItem
 							style={{
-								minHeight:
-									template === TemplateConstants.Breeze ? "7.4rem" : "auto",
+								minHeight: template === TemplateConstants.Breeze ? "7.4rem" : "auto",
 							}}
 						>
 							{children}

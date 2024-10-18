@@ -11,8 +11,7 @@ export const getAcceptTypeString = (
 	acceptType?: Array<string>,
 	allowNonImageType?: boolean,
 ): string => {
-	if (acceptType?.length)
-		return acceptType.map((item) => `.${item}`).join(", ");
+	if (acceptType?.length) return acceptType.map((item) => `.${item}`).join(", ");
 	if (allowNonImageType) return "";
 	return "image/*";
 };

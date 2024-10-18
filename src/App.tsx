@@ -29,10 +29,7 @@ const App: React.FC = () => {
 	const themeState = useSelector((state: RootState) => selectTheme(state));
 	const themeColor = themeState.color;
 	useEffect(() => {
-		document.documentElement.style.setProperty(
-			"--primary",
-			themeColor as string,
-		);
+		document.documentElement.style.setProperty("--primary", themeColor as string);
 		document.documentElement.style.setProperty(
 			"--primary-opacity",
 			setAlphaToRGBA(themeColor as string, 0.06),

@@ -285,12 +285,7 @@ export const AddButton: React.FC<IAddButtonProps> = ({
 }) => {
 	return (
 		<div className={styles.add}>
-			<button
-				className={styles.btn}
-				onClick={onClick}
-				style={style}
-				type="submit"
-			>
+			<button className={styles.btn} onClick={onClick} style={style} type="submit">
 				+ Add {text}
 			</button>
 		</div>

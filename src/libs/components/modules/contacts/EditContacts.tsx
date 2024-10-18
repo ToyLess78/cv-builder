@@ -107,11 +107,7 @@ const EditContacts: React.FC<{ isShare?: boolean }> = ({ isShare = false }) => {
 		<EditWrapper
 			preview={
 				!isShare ? (
-					<Contacts
-						data={editContacts}
-						isIcons={isIcons}
-						isLinkedIn={isLinkedIn}
-					>
+					<Contacts data={editContacts} isIcons={isIcons} isLinkedIn={isLinkedIn}>
 						<Title text={RootConstants.Contacts} />
 					</Contacts>
 				) : (

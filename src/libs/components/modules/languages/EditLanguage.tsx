@@ -66,9 +66,7 @@ const EditLanguage: React.FC = () => {
 						text="Language"
 						style={{
 							visibility:
-								languageState[
-									languageState.length - 1
-								]?.language?.name.trim() &&
+								languageState[languageState.length - 1]?.language?.name.trim() &&
 								languageState[languageState.length - 1]?.level?.name.trim()
 									? "visible"
 									: "hidden",
@@ -79,9 +77,7 @@ const EditLanguage: React.FC = () => {
 							<div className={styles.container} key={l.id}>
 								<Select
 									options={languages}
-									onChange={(e: DropdownChangeEvent) =>
-										onChangeLanguage(e, l.id)
-									}
+									onChange={(e: DropdownChangeEvent) => onChangeLanguage(e, l.id)}
 									value={l.language}
 									title="Language"
 									filter

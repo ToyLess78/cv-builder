@@ -110,10 +110,7 @@ export const Contacts: React.FC<IContactProps> = ({
 					)}
 
 					{isIcons && (
-						<IoMailSharp
-							className={styles.visible}
-							style={{ bottom: "-.1rem" }}
-						/>
+						<IoMailSharp className={styles.visible} style={{ bottom: "-.1rem" }} />
 					)}
 					<a href={`mailto:${contacts.email}`}>{contacts.email}</a>
 				</li>
@@ -193,10 +190,7 @@ export const SocialsBox: React.FC<IContactProps> = ({ data = null }) => {
 						)}
 
 						{isSocials && !data && (
-							<HideButton
-								onClick={handleSetIsSocial}
-								title={RootConstants.Social}
-							/>
+							<HideButton onClick={handleSetIsSocial} title={RootConstants.Social} />
 						)}
 					</>
 				}
