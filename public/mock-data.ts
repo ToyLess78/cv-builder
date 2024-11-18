@@ -63,9 +63,9 @@ export const data = {
 		location: "Ukraine",
 		email: "hello@example.com",
 		phone: "001122334455",
-		github: "https://github.com/ToyLess78",
+		github: "https://github.com/",
 		linkedin: "https://www.linkedin.com",
-		telegram: "https://t.me/JATly",
+		telegram: "https://t.me/",
 	},
 	languages: [
 		["English", "Intermediate"],
